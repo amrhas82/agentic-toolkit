@@ -1,5 +1,6 @@
-# Agent Dev Suite
+# Agentic Toolkit
 
+A ready-to-use suite of tools for AI-driven development, featuring agent workflows, automation scripts, and easy environment setup to boost productivity and streamline project management. 
 Complete Ubuntu/Debian development environment setup with AI-assisted workflows and agent-driven development.
 
 ## 🚀 Quick Start

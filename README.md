@@ -15,8 +15,10 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 
 ### For AI-Assisted Development:
 - **Simple 3-step workflow**: See `ai/simple/`
-- **Claude-optimized agents**: See `ai/claude-subagents/`
+- **Claude-optimized subagents**: See `ai/claude-subagents/`
+- **Opencode-optimized subagents**: See `ai/opecode-subagents/`
 - **BMAD framework**: See `ai/bmad/`
+- **Task Master framework**: See `ai/claude-subagents/`
 
 ## 📁 What's Included
 

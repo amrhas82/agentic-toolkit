@@ -7,11 +7,11 @@ Complete Ubuntu/Debian development environment setup with AI-assisted workflows 
 
 ### For Development Environment Setup:
 ```bash
-git clone https://github.com/your-repo/agent-dev-suite.git
-cd agent-dev-suite/tools
+git clone https://github.com/your-repo/agentic-toolkit.git
+cd agentic-toolkit/tools
 chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 ```
-- ⭐ **[Star this repo](https://github.com/amrhas82/agent-dev-suite)** to get notified of updates
+- ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** to get notified of updates
 - 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** to get help with your vibecoding struggles
 
 ### For AI-Assisted Development:
@@ -171,10 +171,10 @@ This suite is designed for developers who want to:
 clone git https://github.com/amrhas82/agent-dev-suit
 
 # Copy to Claude
-cp -rv ~/agent-dev-suite/ai/claude-subagents/* ~/.claude
+cp -rv ~/agentic-toolkit/ai/claude-subagents/* ~/.claude
 
 # copy to Opencode 
-cp -rv ~/agent-dev-suite/ai/opencode-subagents/* ~/.config/opencode 
+cp -rv ~/agentic-toolkit/ai/opencode-subagents/* ~/.config/opencode 
 ```
 
 
@@ -273,7 +273,7 @@ cd tools
 ## 🏗️ Architecture
 
 ```
-agent-dev-suite/
+agentic-toolkit/
 ├── ai/                          # AI workflows and agents
 │   ├── simple/                  # 3-step workflow (PRD → Tasks → Process)
 │   ├── claude-subagents/        # BMAD+Simple hybrid optimized for Claude subagents
@@ -327,8 +327,8 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ### Getting Help
 - **Documentation**: Check the relevant section in this README
-- **Issues**: [GitHub Issues](https://github.com/your-repo/agent-dev-suite/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-repo/agent-dev-suite/discussions)
+- **Issues**: [GitHub Issues](https://github.com/your-repo/agentic-toolkit/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-repo/agentic-toolkit/discussions)
 
 ### Common Issues
 - **Permission Errors**: Use `sudo` for system-level installations

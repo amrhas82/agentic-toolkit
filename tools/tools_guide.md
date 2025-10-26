@@ -27,7 +27,7 @@ The main entry point for installing all development tools. Provides an interacti
 
 #### **Quick Start:**
 ```bash
-cd /path/to/agent-dev-suite/tools
+cd /path/to/agentic-toolkit/tools
 chmod +x dev_tools_menu.sh
 ./dev_tools_menu.sh
 ```
@@ -277,8 +277,8 @@ echo "================================================"
 ### **For Complete Setup:**
 ```bash
 # Clone and run the main menu
-git clone <agent-dev-suite-repo>
-cd agent-dev-suite/tools
+git clone <agentic-toolkit-repo>
+cd agentic-toolkit/tools
 chmod +x dev_tools_menu.sh
 ./dev_tools_menu.sh
 

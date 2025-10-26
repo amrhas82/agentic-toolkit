@@ -6,14 +6,18 @@ Ready-to-use AI subagents for Claude Code and OpenCode environments. This collec
 
 ### Claude Code Users:
 ```bash
-cp -r claude-subagents/* ~/.claude/
-# Use: /agent_name command in Claude Code
+#clone repo
+clone git https://github.com/amrhas82/agentic-toolkit
+cp -rv claude-subagents/* ~/.claude/
+# Use: @agent_name command in Claude Code CLI
 ```
 
 ### OpenCode Users:
 ```bash
-cp -r opencode-subagents/* ~/.config/opencode/
-# Use: "As dev, ..." natural language activation
+#clone repo
+clone git https://github.com/amrhas82/agentic-toolkit
+cp -rv opencode-subagents/* ~/.config/opencode/
+# Use: @agent_name in Opencode CLI or "As ux-expert, ..." natural language activation
 ```
 
 ## 🎯 Available Agents

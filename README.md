@@ -211,14 +211,14 @@ cd ai/simple
 ### Claude Subagents (BMAD+Simple Hybrid)
 ```bash
 # Deploy tested agents to Claude
-cp -r ai/claude-subagents/* ~/.claude/
+cp -rv ai/claude-subagents/* ~/.claude/
 # Invoke agents directly with /agent_name in Claude Code
 ```
 
 ### OpenCode Subagents (BMAD+Simple Hybrid)
 ```bash
 # Deploy tested agents to OpenCode
-cp -r ai/opencode-subagents/* ~/.config/opencode/
+cp -rv ai/opencode-subagents/* ~/.config/opencode/
 # Invoke agents naturally with "As dev, ..." or role references
 ```
 
@@ -318,6 +318,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - ✅ **Environment Setup**: Complete with automated scripts
 - ✅ **Simple AI Workflow**: Ready for production use
 - ✅ **BMAD Framework**: Full implementation with all agents
+- ✅ **Claude/Opencode subagents**: Fully adapted, optimized subagents ready to use
 - ✅ **Task Master**: Integrated with MCP support for all major editors
 - ✅ **Integration Support**: MCP servers and external tools
 - 🔄 **Documentation**: Continuously improving
@@ -344,6 +345,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - 📚 **Better Documentation**: Comprehensive guides and examples
 
 ### Recent Updates
+- 🚀 **Claude/Opencode subagents**: Fully adapted and optimized subagents for Claude/Opencode
 - 🎯 **Task Master Integration**: Full MCP support for Cursor, VS Code, Windsurf, and Claude Code
 - 🔌 **MCP Server Integrations**: 200+ servers available
 - 🤖 **Enhanced BMAD Framework**: New agents and workflows

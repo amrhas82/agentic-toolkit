@@ -162,7 +162,7 @@ This suite is designed for developers who want to:
 
 ## 🔄 Workflow Examples
 
-### Agentic Directory
+### Agentic Directory - Invoke 13 Specialized subagents + 22 detailed tasks. [README](ai/subagentic-manual.md) 
 
 ```bash
 # Those agents are the best of two worlds, simple+bmad readily tested, adapated and compacted for for context

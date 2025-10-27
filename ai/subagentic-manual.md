@@ -20,7 +20,7 @@ cp -rv opencode-subagents/* ~/.config/opencode/
 # Use: @agent_name in Opencode CLI or "As ux-expert, ..." natural language activation
 ```
 
-## 🎯 Available Agents
+🎯 ### Agentic Directory - Invoke 13 Specialized subagents + 22 detailed tasks. [README](ai/subagentic-manual.md) 
 
 
 | Title | ID | When To Use |

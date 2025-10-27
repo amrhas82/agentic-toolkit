@@ -33,9 +33,9 @@ All commands require * prefix (e.g., *help):
 
 # Dependencies
 
-**Checklists** (~/.config/opencode/checklists): change-checklist.md, po-master-checklist.md
-**Tasks** (~/.config/opencode/tasks): correct-course.md, execute-checklist.md, shard-doc.md, validate-next-story.md
-**Templates** (~/.config/opencode/templates): story-tmpl.yaml
+**Checklists** (~/.claude/checklists): change-checklist.md, po-master-checklist.md
+**Tasks** (~/.claude/tasks): correct-course.md, execute-checklist.md, shard-doc.md, validate-next-story.md
+**Templates** (~/.claude/templates): story-tmpl.yaml
 
 # Operational Workflows
 

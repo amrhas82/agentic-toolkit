@@ -9,7 +9,6 @@ Perform a comprehensive test architecture review with quality gate decision. Thi
 ```yaml
 required:
   - story_id: '{epic}.{story}' # e.g., "1.3"
-  - story_path: '{devStoryLocation}/{epic}.{story}.*.md' # Path from core-config.yaml
   - story_title: '{title}' # If missing, derive from story file H1
   - story_slug: '{slug}' # If missing, derive from title (lowercase, hyphenated)
 ```
@@ -173,7 +172,6 @@ Gate: {STATUS} → qa.qaLocation/gates/{epic}.{story}-{slug}.yml
 Risk profile: qa.qaLocation/assessments/{epic}.{story}-risk-{YYYYMMDD}.md
 NFR assessment: qa.qaLocation/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md
 
-# Note: Paths should reference core-config.yaml for custom configurations
 
 ### Recommended Status
 
@@ -186,7 +184,7 @@ NFR assessment: qa.qaLocation/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md
 **Template and Directory:**
 
 - Render from `../templates/qa-gate-tmpl.yaml`
-- Create directory defined in `qa.qaLocation/gates` (see `.bmad-core/core-config.yaml`) if missing
+- Create directory defined in `qa.qaLocation/gates` (see `.core-config.yaml`) if missing
 - Save to: `qa.qaLocation/gates/{epic}.{story}-{slug}.yml`
 
 Gate file structure:

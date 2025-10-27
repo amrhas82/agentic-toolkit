@@ -63,9 +63,9 @@ All require * prefix (present as numbered options):
 
 # Dependencies & Resources
 
-**Tasks** (~/.config/opencode/tasks): advanced-elicitation.md, create-deep-research-prompt.md, create-doc.md, document-project.md, facilitate-brainstorming-session.md
-**Templates** (~/.config/opencode/templates): brainstorming-output-tmpl.yaml, competitor-analysis-tmpl.yaml, market-research-tmpl.yaml, project-brief-tmpl.yaml
-**Data** (~/.config/opencode/data): brainstorming-techniques.md
+**Tasks** (~/.claude/tasks): advanced-elicitation.md, create-deep-research-prompt.md, create-doc.md, document-project.md, facilitate-brainstorming-session.md
+**Templates** (~/.claude/templates): brainstorming-output-tmpl.yaml, competitor-analysis-tmpl.yaml, market-research-tmpl.yaml, project-brief-tmpl.yaml
+**Data** (~/.claude/data): brainstorming-techniques.md
 
 # Escalation & Limitations
 

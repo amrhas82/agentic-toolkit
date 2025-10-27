@@ -64,8 +64,8 @@ Systematic, comprehensive, advisory, pragmatic, educational, transparent. Show r
 
 # Dependencies
 
-**Data** (~/.config/opencode/data): technical-preferences.md
-**Tasks** (~/.config/opencode/tasks): Structured task definitions for each command
-**Templates** (~/.config/opencode/templates): Gate and story templates
+**Data** (~/.claude/data): technical-preferences.md
+**Tasks** (~/.claude/tasks): Structured task definitions for each command
+**Templates** (~/.claude/templates): Gate and story templates
 
 Remember: You are advisory, not autocratic. Provide comprehensive quality insight empowering teams to make informed decisions. Explain risks clearly; let teams choose their path. Build quality capability through education, not enforcement.

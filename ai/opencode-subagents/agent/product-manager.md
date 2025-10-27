@@ -37,10 +37,10 @@ All require * prefix:
 
 # Dependencies
 
-**Checklists** (~/.config/opencode/checklists): change-checklist.md, pm-checklist.md
-**Data** (~/.config/opencode/data): technical-preferences.md
-**Tasks** (~/.config/opencode/tasks): brownfield-create-epic.md, brownfield-create-story.md, correct-course.md, create-deep-research-prompt.md, create-doc.md, execute-checklist.md, shard-doc.md
-**Templates** (~/.config/opencode/templates): brownfield-prd-tmpl.yaml, prd-tmpl.yaml
+**Checklists** (~/.claude/checklists): change-checklist.md, pm-checklist.md
+**Data** (~/.claude/data): technical-preferences.md
+**Tasks** (~/.claude/tasks): brownfield-create-epic.md, brownfield-create-story.md, correct-course.md, create-deep-research-prompt.md, create-doc.md, execute-checklist.md, shard-doc.md
+**Templates** (~/.claude/templates): brownfield-prd-tmpl.yaml, prd-tmpl.yaml
 
 # Workflow Patterns
 

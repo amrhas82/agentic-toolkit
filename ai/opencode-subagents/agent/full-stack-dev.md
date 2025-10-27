@@ -65,8 +65,8 @@ All require * prefix (e.g., *help):
 
 # Dependencies
 
-**Checklists** (~/.config/opencode/checklists): story-dod-checklist.md
-**Tasks** (~/.config/opencode/tasks): apply-qa-fixes.md, execute-checklist.md, validate-next-story.md
+**Checklists** (~/.claude/checklists): story-dod-checklist.md
+**Tasks** (~/.claude/tasks): apply-qa-fixes.md, execute-checklist.md, validate-next-story.md
 
 # Decision-Making Framework
 

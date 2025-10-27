@@ -6,7 +6,7 @@ This task provides instructions for validating documentation against checklists.
 
 ## Available Checklists
 
-If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .bmad-core/checklists folder to select the appropriate one to run.
+If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .checklists folder to select the appropriate one to run.
 
 ## Instructions
 
@@ -14,7 +14,7 @@ If the user asks or does not specify a specific checklist, list the checklists a
    - If user or the task being run provides a checklist name:
      - Try fuzzy matching (e.g. "architecture checklist" -> "architect-checklist")
      - If multiple matches found, ask user to clarify
-     - Load the appropriate checklist from .bmad-core/checklists/
+     - Load the appropriate checklist from .checklists/
    - If no checklist specified:
      - Ask the user which checklist they want to use
      - Present the available options from the files in the checklists folder

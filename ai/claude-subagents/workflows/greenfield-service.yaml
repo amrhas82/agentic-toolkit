@@ -137,8 +137,7 @@ workflow:
         All stories implemented and reviewed!
         Service development phase complete.
 
-        Reference: .bmad-core/data/bmad-kb.md#IDE Development Workflow
-
+        
   flow_diagram: |
     ```mermaid
     graph TD

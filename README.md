@@ -259,6 +259,15 @@ task-master next
 # See ai/README-task-master.md for setup
 ```
 
+### Awesome LLM Skills
+[Github Repo](https://github.com/Prat011/awesome-llm-skills) | [README](ai/awesome-llm-SKILLS.md)
+
+```bash
+# Clone repo
+git clone https://github.com/Prat011/awesome-llm-skills.git
+
+```
+
 ### Environment Setup
 ```bash
 # Interactive tools setup
@@ -283,6 +292,7 @@ agentic-toolkit/
 │   │   ├── bmad-opencode/       # Ready-to-use OpenCode agents
 │   │   ├── bmad-core/           # Shared framework files
 │   │   └── bmb/                 # BMAD Builder for custom agents
+|   ├── awesome-llm-SKILLS.md    # Awesome LLM Skills
 │   └── README-task-master.md    # Task Master guide & setup
 ├── env/                         # Environment configuration
 │   ├── setup/                   # System setup

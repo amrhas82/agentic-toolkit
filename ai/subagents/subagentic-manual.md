@@ -10,7 +10,7 @@ Complete guide to ready-to-use AI subagents for Claude Code, OpenCode, and Amp. 
 ```bash
 git clone https://github.com/amrhas82/agentic-toolkit
 cd agentic-toolkit
-cp -r ai/claude/* ~/.claude/
+cp -r ai/subagents/claude/* ~/.claude/
 # Invoke: @agent-name or "As agent-name, ..." in Claude Code
 ```
 
@@ -18,7 +18,7 @@ cp -r ai/claude/* ~/.claude/
 ```bash
 git clone https://github.com/amrhas82/agentic-toolkit
 cd agentic-toolkit
-cp -r ai/opencode/* ~/.config/opencode/
+cp -r ai/subagents/opencode/* ~/.config/opencode/
 # Invoke: "As agent-name, ..." in natural language
 ```
 
@@ -26,7 +26,7 @@ cp -r ai/opencode/* ~/.config/opencode/
 ```bash
 git clone https://github.com/amrhas82/agentic-toolkit
 cd agentic-toolkit
-cp -r ai/ampcode/* ~/.amp/
+cp -r ai/subagents/ampcode/* ~/.amp/
 # Invoke: "As agent-name, ..." in natural language
 ```
 
@@ -42,14 +42,16 @@ Each subagent kit contains:
 
 ### Kit Comparison
 
-| Feature | Claude Subagents | OpenCode Subagents | Amp Subagents |
-|---------|------------------|-------------------|---------------|
+| Feature | claude | opencode | ampcode |
+|---------|--------|----------|---------|
+| **AI Tool** | Claude Code | OpenCode | Amp |
 | **Workflow Agents** | 3 | 3 | 3 |
 | **Specialist Agents** | 10 | 10 | 13 |
 | **Total Agents** | 13 | 13 | 16 |
-| **Reusable Tasks** | 22 | 22 | N/A |
+| **Reusable Tasks** | 22 | 22 | 0 |
 | **Invocation** | @agent or natural | Natural language | Natural language |
 | **Deploy Location** | `~/.claude/` | `~/.config/opencode/` | `~/.amp/` |
+| **Source Path** | `ai/subagents/claude/` | `ai/subagents/opencode/` | `ai/subagents/ampcode/` |
 
 ---
 
@@ -348,7 +350,10 @@ researcher (Amp) → architect → developer → technical-writer (Amp)
 **Problem**: AI tool doesn't recognize agents
 
 **Solutions:**
-- Verify files copied to correct location (`~/.claude/`, `~/.config/opencode/`, or `~/.amp/`)
+- Verify files copied to correct location:
+  - Claude: `~/.claude/`
+  - OpenCode: `~/.config/opencode/`
+  - Amp: `~/.amp/`
 - Restart your AI tool
 - Check file permissions: `chmod -R 644 ~/.claude/agents/*` (or equivalent)
 
@@ -358,7 +363,10 @@ researcher (Amp) → architect → developer → technical-writer (Amp)
 
 **Solutions:**
 - Check agent file isn't corrupted: `cat ~/.claude/agents/developer.md`
-- Re-copy from original: `cp -r ai/claude/* ~/.claude/`
+- Re-copy from original based on your tool:
+  - Claude: `cp -r ai/subagents/claude/* ~/.claude/`
+  - OpenCode: `cp -r ai/subagents/opencode/* ~/.config/opencode/`
+  - Amp: `cp -r ai/subagents/ampcode/* ~/.amp/`
 - Ensure you're using correct invocation: `As developer, ...` or `@developer`
 
 ### Task Not Working (Claude/OpenCode)

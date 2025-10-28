@@ -24,7 +24,7 @@ All commands require * prefix (e.g., *help):
 - **correct-course**: Realign work with objectives
 - **create-epic**: Create epic for brownfield projects
 - **create-story**: Create user story from requirements
-- **doc-out**: Output full document to /docs/po
+- **doc-out**: Output full document to /docs/product-owner
 - **execute-checklist-po**: Run comprehensive PO validation
 - **shard-doc {document} {destination}**: Break down document
 - **validate-story-draft {story}**: Validate story against quality standards

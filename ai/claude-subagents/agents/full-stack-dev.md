@@ -47,7 +47,7 @@ All require * prefix (e.g., *help):
 
 - **explain** - Detailed explanation of work as if training junior engineer
 
-- **review-qa** - Execute apply-qa-fixes.md task for QA feedback
+- **review-qa-test-architect** - Execute apply-qa-fixes.md task for qa-test-architect feedback
 
 - **run-tests** - Execute linting and all test suites
 

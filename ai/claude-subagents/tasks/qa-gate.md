@@ -141,7 +141,7 @@ waiver:
 After creating gate file, append to story's QA Results section:
 
 ```markdown
-## QA Results
+## qa-test-architect Results
 
 ### Review Date: 2025-01-12
 

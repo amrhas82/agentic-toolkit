@@ -1,23 +1,23 @@
 <!-- Powered by BMAD™ Core -->
 
-# apply-qa-fixes
+# apply-qa-test-architect-fixes
 
-Implement fixes based on QA results (gate and assessments) for a specific story. This task is for the Dev agent to systematically consume QA outputs and apply code/test changes while only updating allowed sections in the story file.
+Implement fixes based on qa-test-architect results (gate and assessments) for a specific story. This task is for the full-stack-dev agent to systematically consume qa-test-architect outputs and apply code/test changes while only updating allowed sections in the story file.
 
 ## Purpose
 
-- Read QA outputs for a story (gate YAML + assessment markdowns)
+- Read qa-test-architect outputs for a story (gate YAML + assessment markdowns)
 - Create a prioritized, deterministic fix plan
 - Apply code and test changes to close gaps and address issues
-- Update only the allowed story sections for the Dev agent
+- Update only the allowed story sections for the full-stack-dev agent
 
 ## Inputs
 
 ```yaml
 required:
   - story_id: '{epic}.{story}' # e.g., "2.2"
-  - qa_root: from `.bmad-core/core-config.yaml` key `qa.qaLocation` (e.g., `docs/project/qa`)
-  - story_root: from `.bmad-core/core-config.yaml` key `devStoryLocation` (e.g., `docs/project/stories`)
+  - qa_root: from `.core-config.yaml` key `qa.qaLocation` (e.g., `docs/project/qa`)
+  - story_root: from `.core-config.yaml` key `devStoryLocation` (e.g., `docs/project/stories`)
 
 optional:
   - story_title: '{title}' # derive from story H1 if missing
@@ -45,11 +45,11 @@ optional:
 
 ### 0) Load Core Config & Locate Story
 
-- Read `.bmad-core/core-config.yaml` and resolve `qa_root` and `story_root`
+- Read `.core-config.yaml` and resolve `qa_root` and `story_root`
 - Locate story file in `{story_root}/{epic}.{story}.*.md`
   - HALT if missing and ask for correct story id/path
 
-### 1) Collect QA Findings
+### 1) Collect qa-test-architect Findings
 
 - Parse the latest gate YAML:
   - `gate` (PASS|CONCERNS|FAIL|WAIVED)
@@ -91,10 +91,10 @@ Guidance:
 
 ### 5) Update Story (Allowed Sections ONLY)
 
-CRITICAL: Dev agent is ONLY authorized to update these sections of the story file. Do not modify any other sections (e.g., QA Results, Story, Acceptance Criteria, Dev Notes, Testing):
+CRITICAL: full-stack-dev agent is ONLY authorized to update these sections of the story file. Do not modify any other sections (e.g., qa-test-architect Results, Story, Acceptance Criteria, full-stack-dev Notes, Testing):
 
 - Tasks / Subtasks Checkboxes (mark any fix subtask you added as done)
-- Dev Agent Record →
+- full-stack-dev Agent Record →
   - Agent Model Used (if changed)
   - Debug Log References (commands/results, e.g., lint/tests)
   - Completion Notes List (what changed, why, how)
@@ -105,17 +105,17 @@ CRITICAL: Dev agent is ONLY authorized to update these sections of the story fil
 Status Rule:
 
 - If gate was PASS and all identified gaps are closed → set `Status: Ready for Done`
-- Otherwise → set `Status: Ready for Review` and notify QA to re-run the review
+- Otherwise → set `Status: Ready for Review` and notify qa-test-architect to re-run the review
 
 ### 6) Do NOT Edit Gate Files
 
-- Dev does not modify gate YAML. If fixes address issues, request QA to re-run `review-story` to update the gate
+- full-stack-dev does not modify gate YAML. If fixes address issues, request qa-test-architect to re-run `review-story` to update the gate
 
 ## Blocking Conditions
 
-- Missing `.bmad-core/core-config.yaml`
+- Missing `.core-config.yaml`
 - Story file not found for `story_id`
-- No QA artifacts found (neither gate nor assessments)
+- No qa-test-architect artifacts found (neither gate nor assessments)
   - HALT and request QA to generate at least a gate file (or proceed only with clear developer-provided fix list)
 
 ## Completion Checklist
@@ -139,7 +139,7 @@ Fix plan:
 
 - Add a test ensuring the Toolkit Menu "Back" action returns to Main Menu
 - Add a static test verifying imports for service/view go through `deps.ts`
-- Re-run lint/tests and update Dev Agent Record + File List accordingly
+- Re-run lint/tests and update full-stack-dev Agent Record + File List accordingly
 
 ## Key Principles
 
@@ -147,4 +147,4 @@ Fix plan:
 - Minimal, maintainable changes
 - Tests validate behavior and close gaps
 - Strict adherence to allowed story update areas
-- Gate ownership remains with QA; Dev signals readiness via Status
+- Gate ownership remains with QA; full-stack-dev signals readiness via Status

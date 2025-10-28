@@ -2,10 +2,10 @@
 bundle:
   name: Team IDE Minimal
   icon: ⚡
-  description: Only the bare minimum for the IDE PO SM dev qa cycle.
+  description: Only the bare minimum for the IDE PO scrum-master dev qa cycle.
 agents:
-  - product-owner
+  - po
   - scrum-master
-  - full-stack-dev
-  - qa-test-architect
+  - dev
+  - qa
 workflows: null

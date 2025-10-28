@@ -25,7 +25,7 @@
 
 11. **Five Whys**: Ask "why" and wait for their answer before asking next "why"
 12. **Morphological Analysis**: Ask them to list parameters first, then explore combinations together
-13. **Provocation Technique (PO)**: Give one provocative statement, ask them to extract useful ideas
+13. **Provocation Technique (product-owner)**: Give one provocative statement, ask them to extract useful ideas
 
 ## Advanced Techniques
 

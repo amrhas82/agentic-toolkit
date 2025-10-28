@@ -9,6 +9,7 @@ Perform a comprehensive test architecture review with quality gate decision. Thi
 ```yaml
 required:
   - story_id: '{epic}.{story}' # e.g., "1.3"
+  - story_path: '{devStoryLocation}/{epic}.{story}.*.md' # Path from core-config.yaml
   - story_title: '{title}' # If missing, derive from story file H1
   - story_slug: '{slug}' # If missing, derive from title (lowercase, hyphenated)
 ```
@@ -82,8 +83,8 @@ required:
 
 - Refactor code where safe and appropriate
 - Run tests to ensure changes don't break functionality
-- Document all changes in QA Results section with clear WHY and HOW
-- Do NOT alter story content beyond QA Results section
+- Document all changes in qa-test-architect Results section with clear WHY and HOW
+- Do NOT alter story content beyond qa-test-architect Results section
 - Do NOT change story Status or File List; recommend next status only
 
 ### 4. Standards Compliance Check
@@ -105,20 +106,20 @@ required:
 - Add comments for complex logic if missing
 - Ensure any API changes are documented
 
-## Output 1: Update Story File - QA Results Section ONLY
+## Output 1: Update Story File - qa-test-architect Results Section ONLY
 
-**CRITICAL**: You are ONLY authorized to update the "QA Results" section of the story file. DO NOT modify any other sections.
+**CRITICAL**: You are ONLY authorized to update the "qa-test-architect Results" section of the story file. DO NOT modify any other sections.
 
-**QA Results Anchor Rule:**
+**qa-test-architect Results Anchor Rule:**
 
-- If `## QA Results` doesn't exist, append it at end of file
+- If `## qa-test-architect Results` doesn't exist, append it at end of file
 - If it exists, append a new dated entry below existing entries
 - Never edit other sections
 
-After review and any refactoring, append your results to the story file in the QA Results section:
+After review and any refactoring, append your results to the story file in the qa-test-architect Results section:
 
 ```markdown
-## QA Results
+## qa-test-architect Results
 
 ### Review Date: [Date]
 
@@ -146,7 +147,7 @@ After review and any refactoring, append your results to the story file in the Q
 
 ### Improvements Checklist
 
-[Check off items you handled yourself, leave unchecked for dev to address]
+[Check off items you handled yourself, leave unchecked for full-stack-dev to address]
 
 - [x] Refactored user service for better error handling (services/user.service.ts)
 - [x] Added missing edge case tests (services/user.service.test.ts)
@@ -164,7 +165,7 @@ After review and any refactoring, append your results to the story file in the Q
 
 ### Files Modified During Review
 
-[If you modified files, list them here - ask Dev to update File List]
+[If you modified files, list them here - ask full-stack-dev to update File List]
 
 ### Gate Status
 
@@ -172,6 +173,7 @@ Gate: {STATUS} → qa.qaLocation/gates/{epic}.{story}-{slug}.yml
 Risk profile: qa.qaLocation/assessments/{epic}.{story}-risk-{YYYYMMDD}.md
 NFR assessment: qa.qaLocation/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md
 
+# Note: Paths should reference core-config.yaml for custom configurations
 
 ### Recommended Status
 
@@ -280,9 +282,9 @@ If `technical-preferences.md` defines custom weights, use those instead.
 
 For each issue in `top_issues`, include a `suggested_owner`:
 
-- `dev`: Code changes needed
-- `sm`: Requirements clarification needed
-- `po`: Business decision needed
+- `full-stack-dev`: Code changes needed
+- `scrum-master`: Requirements clarification needed
+- `product-owner`: Business decision needed
 
 ## Key Principles
 
@@ -310,5 +312,5 @@ After review:
 1. Update the QA Results section in the story file
 2. Create the gate file in directory from `qa.qaLocation/gates`
 3. Recommend status: "Ready for Done" or "Changes Required" (owner decides)
-4. If files were modified, list them in QA Results and ask Dev to update File List
+4. If files were modified, list them in QA Results and ask full-stack-dev to update File List
 5. Always provide constructive feedback and actionable recommendations

@@ -17,7 +17,7 @@ When this task is invoked:
 
 ## Critical: Template Discovery
 
-If a YAML Template has not been provided, list all templates from .bmad-core/templates or ask the user to provide another.
+If a YAML Template has not been provided, list all templates from .templates or ask the user to provide another.
 
 ## CRITICAL: Mandatory Elicitation Format
 
@@ -81,7 +81,7 @@ When processing sections with agent permission fields:
 **For sections with restricted access:**
 
 - Include a note in the generated document indicating the responsible agent
-- Example: "_(This section is owned by dev-agent and can only be modified by dev-agent)_"
+- Example: "_(This section is owned by full-stack-dev-agent and can only be modified by full-stack-dev-agent)_"
 
 ## YOLO Mode
 

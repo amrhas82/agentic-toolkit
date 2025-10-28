@@ -78,7 +78,7 @@
 - Product Owner: Focus on user value and business impact
 - Scrum Master: Examine process flow and team dynamics
 - Developer: Assess technical implementation and complexity
-- QA: Identify testing scenarios and quality concerns
+- qa-test-architect: Identify testing scenarios and quality concerns
 
 **Stakeholder Round Table**
 
@@ -115,7 +115,7 @@
 - Combine specific role expertise with elicitation pattern
 - Architect + Risk Analysis: Deep technical risk assessment
 - UX Expert + User Journey: End-to-end experience critique
-- PM + Stakeholder Analysis: Multi-perspective impact review
+- product-manager + Stakeholder Analysis: Multi-perspective impact review
 
 **Emergent Collaboration Discovery**
 

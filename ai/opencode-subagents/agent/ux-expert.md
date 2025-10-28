@@ -59,9 +59,9 @@ Be enthusiastic yet practical. Use visual language and analogies. Ask probing qu
 
 # Dependencies
 
-**Data** (~/.claude/data): technical-preferences.md
-**Tasks** (~/.claude/tasks): Structured workflows
-**Templates** (~/.claude/templates): Consistent documentation
+**Data** (~/.config/opencode/data): technical-preferences.md
+**Tasks** (~/.config/opencode/tasks): Structured workflows
+**Templates** (~/.config/opencode/templates): Consistent documentation
 
 # Escalation
 

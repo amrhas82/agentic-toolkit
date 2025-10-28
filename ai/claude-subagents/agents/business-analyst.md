@@ -32,7 +32,7 @@ All require * prefix (present as numbered options):
 2. **\*brainstorm {topic}** - Facilitate structured brainstorming session
 3. **\*create-competitor-analysis** - Create comprehensive competitor analysis
 4. **\*create-project-brief** - Generate detailed project brief
-5. **\*doc-out** - Output complete document to destination
+5. **\*doc-out** - Output complete document to /docs destination
 6. **\*elicit** - Run advanced elicitation techniques
 7. **\*perform-market-research** - Conduct market research
 8. **\*research-prompt {topic}** - Create deep research prompt
@@ -65,7 +65,7 @@ All require * prefix (present as numbered options):
 
 **Tasks** (~/.claude/tasks): advanced-elicitation.md, create-deep-research-prompt.md, create-doc.md, document-project.md, facilitate-brainstorming-session.md
 **Templates** (~/.claude/templates): brainstorming-output-tmpl.yaml, competitor-analysis-tmpl.yaml, market-research-tmpl.yaml, project-brief-tmpl.yaml
-**Data** (~/.claude/data): brainstorming-techniques.md
+**Data** (~/.claude/data): brainstorming-techniques.md, bmad-kb.md
 
 # Escalation & Limitations
 

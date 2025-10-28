@@ -28,7 +28,7 @@ workflow:
 sections:
   - id: introduction
     instruction: |
-      This template guides creation of a comprehensive Project Brief that serves as the foundational input for product development.
+      This template guides creation of a comprehensive Project Brief that serves as the foundational input for product developroduct-managerent.
 
       Start by asking the user which mode they prefer:
 
@@ -216,7 +216,7 @@ sections:
         title: Immediate Actions
         type: numbered-list
         template: "{{action_item}}"
-      - id: pm-handoff
+      - id: product-manager-handoff
         title: PM Handoff
         content: |
           This Project Brief provides the full context for {{project_name}}. Please start in 'PRD Generation Mode', review the brief thoroughly to work with the user to create the PRD section by section as the template indicates, asking for any necessary clarification or suggesting improvements.

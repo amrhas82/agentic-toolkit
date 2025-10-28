@@ -4,10 +4,10 @@ bundle:
   icon: 🔧
   description: Team with no UX or UI Planning.
 agents:
-  - orchestrator
+  -orchestrator
   - business-analyst
   - product-manager
-  - holistic-architect
+  - architect
   - product-owner
 workflows:
   - greenfield-service.yaml

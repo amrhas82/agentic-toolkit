@@ -10,7 +10,7 @@ To identify the next logical story based on project progress and epic definition
 
 ### 0. Load Core Configuration and Check Workflow
 
-- Load `.bmad-core/core-config.yaml` from the project root
+- Load `{root}/core-config.yaml` from the project root
 - If the file does not exist, HALT and inform the user: "core-config.yaml not found. This file is required for story creation. You can either: 1) Copy it from GITHUB bmad-core/core-config.yaml and configure it for your project OR 2) Run the BMad installer against your project to upgrade and add the file automatically. Please add and configure core-config.yaml before proceeding."
 - Extract key configurations: `devStoryLocation`, `prd.*`, `architecture.*`, `workflow.*`
 
@@ -31,7 +31,7 @@ To identify the next logical story based on project progress and epic definition
 ### 2. Gather Story Requirements and Previous Story Context
 
 - Extract story requirements from the identified epic file
-- If previous story exists, review Dev Agent Record sections for:
+- If previous story exists, review full-stack-dev Agent Record sections for:
   - Completion Notes and Debug Log References
   - Implementation deviations and technical decisions
   - Challenges encountered and lessons learned
@@ -79,7 +79,7 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
 
 - Create new story file: `{devStoryLocation}/{epicNum}.{storyNum}.story.md` using Story Template
 - Fill in basic story information: Title, Status (Draft), Story statement, Acceptance Criteria from Epic
-- **`Dev Notes` section (CRITICAL):**
+- **`full-stack-dev Notes` section (CRITICAL):**
   - CRITICAL: This section MUST contain ONLY information extracted from architecture documents. NEVER invent or assume technical details.
   - Include ALL relevant technical details from Steps 2-3, organized by category:
     - **Previous Story Insights**: Key learnings from previous story
@@ -104,11 +104,11 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
 - Verify all source references are included for technical details
 - Ensure tasks align with both epic requirements and architecture constraints
 - Update status to "Draft" and save the story file
-- Execute `.bmad-core/tasks/execute-checklist` `.bmad-core/checklists/story-draft-checklist`
+- Execute `{root}/tasks/execute-checklist` `{root}/checklists/story-draft-checklist`
 - Provide summary to user including:
   - Story created: `{devStoryLocation}/{epicNum}.{storyNum}.story.md`
   - Status: Draft
   - Key technical components included from architecture docs
   - Any deviations or conflicts noted between epic and architecture
   - Checklist Results
-  - Next steps: For Complex stories, suggest the user carefully review the story draft and also optionally have the PO run the task `.bmad-core/tasks/validate-next-story`
+  - Next steps: For Complex stories, suggest the user carefully review the story draft and also optionally have the PO run the task `{root}/tasks/validate-next-story`

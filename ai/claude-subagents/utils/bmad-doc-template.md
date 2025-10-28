@@ -186,16 +186,16 @@ choices:
   editors: [scrum-master]
   readonly: false
   sections:
-    - id: dev-notes
-      title: Dev Notes
-      owner: dev-agent
-      editors: [dev-agent]
+    - id: full-stack-dev-notes
+      title: full-stack-dev Notes
+      owner: full-stack-dev-agent
+      editors: [full-stack-dev-agent]
       readonly: false
       instruction: Implementation notes and technical details
-    - id: qa-results
-      title: QA Results
-      owner: qa-agent
-      editors: [qa-agent]
+    - id: qa-test-architect-results
+      title: qa-test-architect Results
+      owner: qa-test-architect-agent
+      editors: [qa-test-architect-agent]
       readonly: true
       instruction: Quality assurance test results
 ```

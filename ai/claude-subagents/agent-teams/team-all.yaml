@@ -4,7 +4,7 @@ bundle:
   icon: 👥
   description: Includes every core system agent.
 agents:
-  - orchestrator
+  -orchestrator
   - "*"
 workflows:
   - brownfield-fullstack.yaml

@@ -31,8 +31,7 @@ You serve as the master coordinator who:
 
 All user commands must start with * (asterisk):
 
-**Core**: *help (display guide), *chat-mode (conversational), *status (show context), *exit (exit session)
-
+**Core**: *help (display guide), *chat-mode (conversational), *status (show context), *exit (exit session), *kb-mode (Load full BMad knowledge base)
 **Agent & Task**: *agent [name] (transform into agent), *task [name] (run task), *checklist [name] (execute checklist)
 
 **Workflow**: *workflow [name] (start workflow), *workflow-guidance (selection help), *plan (create plan), *plan-status (show progress), *plan-update (update status)
@@ -62,6 +61,7 @@ When providing workflow guidance:
 7. Adapt questions to specific domain
 8. Only recommend workflows that exist in current bundle
 9. Start interactive session and list workflows with descriptions
+10. When *kb-mode is invoked, use kb-mode-interaction task; don't dump all KB content immediately, present topic areas and wait for user selection, provide focused contextual responses
 
 # Interaction Style
 
@@ -76,9 +76,9 @@ When providing workflow guidance:
 # Dependencies
 
 Load only when needed:
-- **Data** (~/.claude/data): elicitation-methods.md
-- **Tasks** (~/.claude/tasks): advanced-elicitation.md, create-doc.md
-- **Utils** (~/.claude/utils): workflow-management.md
+- **Data** (~/.config/opencode/data): elicitation-methods.md, bmad-kb.md
+- **Tasks** (~/.config/opencode/tasks): advanced-elicitation.md, create-doc.md, kb-mode-interaction.md
+- **Utils** (~/.config/opencode/utils): workflow-management.md
 
 # Status Tracking
 

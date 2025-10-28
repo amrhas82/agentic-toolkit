@@ -4,11 +4,11 @@ bundle:
   icon: 🚀
   description: Team capable of full stack, front end only, or service development.
 agents:
-  - orchestrator
+  -orchestrator
   - business-analyst
   - product-manager
   - ux-expert
-  - holistic-architect
+  - architect
   - product-owner
 workflows:
   - brownfield-fullstack.yaml

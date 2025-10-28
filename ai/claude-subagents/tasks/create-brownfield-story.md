@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Create detailed, implementation-ready stories for brownfield projects where traditional sharded PRD/architecture documents may not exist. This task bridges the gap between various documentation formats (document-project output, brownfield PRDs, epics, or user documentation) and executable stories for the Dev agent.
+Create detailed, implementation-ready stories for brownfield projects where traditional sharded PRD/architecture documents may not exist. This task bridges the gap between various documentation formats (document-project output, brownfield PRDs, epics, or user documentation) and executable stories for the full-stack-dev agent.
 
 ## When to Use This Task
 
@@ -139,10 +139,10 @@ Standard structure:
 
 Critical: This is where you'll need to be interactive with the user if information is missing
 
-Create Dev Technical Guidance section with available information:
+Create full-stack-dev Technical Guidance section with available information:
 
 ````markdown
-## Dev Technical Guidance
+## full-stack-dev Technical Guidance
 
 ### Existing System Context
 
@@ -158,7 +158,7 @@ Create Dev Technical Guidance section with available information:
 
 ### Missing Information
 
-Critical: List anything you couldn't find that dev will need and ask for the missing information
+Critical: List anything you couldn't find that full-stack-dev will need and ask for the missing information
 
 ### 4. Task Generation with Safety Checks
 
@@ -241,7 +241,7 @@ Before finalizing:
 
 3. **Information Gaps**:
    - [ ] All critical missing information gathered from user
-   - [ ] Remaining unknowns documented for dev agent
+   - [ ] Remaining unknowns documented for full-stack-dev agent
    - [ ] Exploration tasks added where needed
 
 ### 7. Story Output Format
@@ -289,14 +289,14 @@ Next Steps:
 1. Review story for accuracy
 2. Verify integration approach aligns with your system
 3. Approve story or request adjustments
-4. Dev agent can then implement with safety checks
+4. full-stack-dev agent can then implement with safety checks
 ```
 
 ## Success Criteria
 
 The brownfield story creation is successful when:
 
-1. Story can be implemented without requiring dev to search multiple documents
+1. Story can be implemented without requiring full-stack-dev to search multiple documents
 2. Integration approach is clear and safe for existing system
 3. All available technical context has been extracted and organized
 4. Missing information has been identified and addressed

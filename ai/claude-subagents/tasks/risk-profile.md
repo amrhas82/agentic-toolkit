@@ -147,7 +147,7 @@ mitigation:
     - 'Manual penetration testing of forms'
     - 'Unit tests for validation functions'
   residual_risk: 'Low - Some zero-day vulnerabilities may remain'
-  owner: 'dev'
+  owner: 'full-stack-dev'
   timeline: 'Before deployment'
 ```
 

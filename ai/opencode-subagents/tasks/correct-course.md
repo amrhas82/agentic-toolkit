@@ -4,7 +4,7 @@
 
 ## Purpose
 
-- Guide a structured response to a change trigger using the `.bmad-core/checklists/change-checklist`.
+- Guide a structured response to a change trigger using the `{root}/checklists/change-checklist`.
 - Analyze the impacts of the change on epics, project artifacts, and the MVP, guided by the checklist's structure.
 - Explore potential solutions (e.g., adjust scope, rollback elements, re-scope features) as prompted by the checklist.
 - Draft specific, actionable proposed updates to any affected project artifacts (e.g., epics, user stories, PRD sections, architecture document sections) based on the analysis.
@@ -18,7 +18,7 @@
 - **Acknowledge Task & Inputs:**
   - Confirm with the user that the "Correct Course Task" (Change Navigation & Integration) is being initiated.
   - Verify the change trigger and ensure you have the user's initial explanation of the issue and its perceived impact.
-  - Confirm access to all relevant project artifacts (e.g., PRD, Epics/Stories, Architecture Documents, UI/UX Specifications) and, critically, the `.bmad-core/checklists/change-checklist`.
+  - Confirm access to all relevant project artifacts (e.g., PRD, Epics/Stories, Architecture Documents, UI/UX Specifications) and, critically, the `{root}/checklists/change-checklist`.
 - **Establish Interaction Mode:**
   - Ask the user their preferred interaction mode for this task:
     - **"Incrementally (Default & Recommended):** Shall we work through the change-checklist section by section, discussing findings and collaboratively drafting proposed changes for each relevant part before moving to the next? This allows for detailed, step-by-step refinement."
@@ -37,7 +37,7 @@
 
 ### 3. Draft Proposed Changes (Iteratively or Batched)
 
-- Based on the completed checklist analysis (Sections 1-4) and the agreed "Recommended Path Forward" (excluding scenarios requiring fundamental replans that would necessitate immediate handoff to PM/Architect):
+- Based on the completed checklist analysis (Sections 1-4) and the agreed "Recommended Path Forward" (excluding scenarios requiring fundamental replans that would necessitate immediate handoff to product-manager/holistic-architect):
   - Identify the specific project artifacts that require updates (e.g., specific epics, user stories, PRD sections, architecture document components, diagrams).
   - **Draft the proposed changes directly and explicitly for each identified artifact.** Examples include:
     - Revising user story text, acceptance criteria, or priority.
@@ -61,8 +61,8 @@
 - Obtain explicit user approval for the "Sprint Change Proposal," including all the specific edits documented within it.
 - Provide the finalized "Sprint Change Proposal" document to the user.
 - **Based on the nature of the approved changes:**
-  - **If the approved edits sufficiently address the change and can be implemented directly or organized by a PO/SM:** State that the "Correct Course Task" is complete regarding analysis and change proposal, and the user can now proceed with implementing or logging these changes (e.g., updating actual project documents, backlog items). Suggest handoff to a PO/SM agent for backlog organization if appropriate.
-  - **If the analysis and proposed path (as per checklist Section 4 and potentially Section 6) indicate that the change requires a more fundamental replan (e.g., significant scope change, major architectural rework):** Clearly state this conclusion. Advise the user that the next step involves engaging the primary PM or Architect agents, using the "Sprint Change Proposal" as critical input and context for that deeper replanning effort.
+  - **If the approved edits sufficiently address the change and can be implemented directly or organized by a product-owner/scrum-master:** State that the "Correct Course Task" is complete regarding analysis and change proposal, and the user can now proceed with implementing or logging these changes (e.g., updating actual project documents, backlog items). Suggest handoff to a product-owner/scrum-master agent for backlog organization if appropriate.
+  - **If the analysis and proposed path (as per checklist Section 4 and potentially Section 6) indicate that the change requires a more fundamental replan (e.g., significant scope change, major architectural rework):** Clearly state this conclusion. Advise the user that the next step involves engaging the primary product-manager or Architect agents, using the "Sprint Change Proposal" as critical input and context for that deeper replanning effort.
 
 ## Output Deliverables
 

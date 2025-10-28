@@ -245,7 +245,7 @@ etc...
 - Unit Tests: 60% coverage (Jest)
 - Integration Tests: Minimal, in `tests/integration/`
 - E2E Tests: None
-- Manual Testing: Primary QA method
+- Manual Testing: Primary qa-test-architect method
 
 ### Running Tests
 

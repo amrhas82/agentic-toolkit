@@ -9,8 +9,11 @@ Quick NFR validation focused on the core four: security, performance, reliabilit
 ```yaml
 required:
   - story_id: '{epic}.{story}' # e.g., "1.3"
+  - story_path: `.core-config.yaml` for the `devStoryLocation`
 
 optional:
+  - architecture_refs: `.core-config.yaml` for the `architecture.architectureFile`
+  - technical_preferences: `.core-config.yaml` for the `technicalPreferences`
   - acceptance_criteria: From story file
 ```
 

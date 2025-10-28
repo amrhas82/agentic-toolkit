@@ -30,7 +30,7 @@ To comprehensively validate a story draft before implementation begins, ensuring
 ### 2. File Structure and Source Tree Validation
 
 - **File paths clarity**: Are new/existing files to be created/modified clearly specified?
-- **Source tree relevance**: Is relevant project structure included in Dev Notes?
+- **Source tree relevance**: Is relevant project structure included in full-stack-dev Notes?
 - **Directory structure**: Are new directories/components properly located according to project structure?
 - **File creation sequence**: Do tasks specify where files should be created in logical order?
 - **Path accuracy**: Are file paths consistent with project structure from architecture docs?
@@ -78,16 +78,16 @@ To comprehensively validate a story draft before implementation begins, ensuring
 ### 8. Anti-Hallucination Verification
 
 - **Source verification**: Every technical claim must be traceable to source documents
-- **Architecture alignment**: Dev Notes content matches architecture specifications
+- **Architecture alignment**: full-stack-dev Notes content matches architecture specifications
 - **No invented details**: Flag any technical decisions not supported by source documents
 - **Reference accuracy**: Verify all source references are correct and accessible
 - **Fact checking**: Cross-reference claims against epic and architecture documents
 
-### 9. Dev Agent Implementation Readiness
+### 9. full-stack-dev Agent Implementation Readiness
 
 - **Self-contained context**: Can the story be implemented without reading external docs?
 - **Clear instructions**: Are implementation steps unambiguous?
-- **Complete technical context**: Are all required technical details present in Dev Notes?
+- **Complete technical context**: Are all required technical details present in full-stack-dev Notes?
 - **Missing information**: Identify any critical information gaps
 - **Actionability**: Are all tasks actionable by a development agent?
 

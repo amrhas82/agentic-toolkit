@@ -68,7 +68,7 @@ Source: [.agents/ux-expert.md](.agent/ux-expert.md)
 Source: [.agents/scrum-master.md](.agent/scrum-master.md)
 
 - When to use: Use for story creation, epic management, retrospectives in party-mode, and agile process guidance
-- How to activate: Mention "As sm, ..." to get role-aligned behavior
+- How to activate: Mention "As scrum-master, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Test Architect & Quality Advisor (id: qa-test-architect)
@@ -82,21 +82,21 @@ Source: [.agents/qa-test-architect.md](.agent/qa-test-architect.md)
 Source: [.agents/product-owner.md](.agent/product-owner.md)
 
 - When to use: Use for backlog management, story refinement, acceptance criteria, sprint planning, and prioritization decisions
-- How to activate: Mention "As po, ..." to get role-aligned behavior
+- How to activate: Mention "As product-owner, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Product Manager (id: product-manager)
 Source: [.agents/product-manager.md](.agent/product-manager.md)
 
 - When to use: Use for creating PRDs, product strategy, feature prioritization, roadmap planning, and stakeholder communication
-- How to activate: Mention "As pm, ..." to get role-aligned behavior
+- How to activate: Mention "As product-manager, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Full Stack Developer (id: full-stack-dev)
 Source: [.agents/full-stack-dev.md](.agent/full-stack-dev.md)
 
 - When to use: Use for code implementation, debugging, refactoring, and development best practices
-- How to activate: Mention "As dev, ..." to get role-aligned behavior
+- How to activate: Mention "As full-stack-dev, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Master Orchestrator (id: orchestrator)
@@ -161,7 +161,7 @@ Source: [.tasks/review-story.md](.tasks/review-story.md)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
-### Task: qa-gate
+### Task: qa-test-architect-gate
 Source: [.tasks/qa-gate.md](.tasks/qa-gate.md)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)

@@ -1,7 +1,7 @@
 ## <!-- Powered by BMAD™ Core -->
 
 docOutputLocation: docs/brainstorming-session-results.md
-template: '.templates/brainstorming-output-tmpl.yaml'
+template: '{root}/templates/brainstorming-output-tmpl.yaml'
 
 ---
 
@@ -25,7 +25,7 @@ Ask 4 context questions (don't preview what happens next):
 After getting answers to Step 1, present 4 approach options (numbered):
 
 1. User selects specific techniques
-2. Analyst recommends techniques based on context
+2. business-analyst recommends techniques based on context
 3. Random technique selection for creative variety
 4. Progressive technique flow (start broad, narrow down)
 

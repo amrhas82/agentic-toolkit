@@ -13,23 +13,141 @@ A comprehensive guide for non-coders and vibecoders on building software with AI
 - Avoiding common pitfalls (the $1,000 UI trap)
 - Building sustainably without burning budget
 
-## Current Progress
+## Detailed Section Breakdown
 
-**Completed Sections (0-7):**
-- Introduction & Core Concepts
-- Tool Selection & Model Landscape
-- Temperature & Configuration
-- Access Methods (CLI vs Web vs IDE)
-- Approaches Spectrum
-- Context Window Management
-- Pricing Reality
+### ✅ Completed Sections (0-7)
 
-**In Development (8-12):**
-- Technical Essentials
-- MVP Priorities
-- Comparison Tables
-- FAQ
-- Glossary
+**Section 0: The Agentic Field - What You're Actually Getting Into**
+- Three Tiers of AI Assistance (Chat AI, Code Agents, Agentic Workflows)
+- The path most beginners take (and why it fails)
+- Uncomfortable truth about AI coding (what AI removes vs what it doesn't)
+- Hidden traps: UI trap, context windows, possible tuning, sunk cost trap
+- How successful non-coders actually do this (month-by-month progression)
+- Real wisdom from experience (price shocks, tool diversity, CLI benefits, GitHub from Day 1)
+
+**Section 1: The UI Trap - Why Most Beginners Fail**
+- Week-by-week failure pattern (honeymoon → cracks → spiral → wall)
+- Why it happens: the invisible 90% (database, auth, error handling vs UI)
+- The delusion of progress (80% UI complete ≠ 80% app complete)
+- Back-to-back prompting death spiral
+- Context window reality during the trap
+- Feature creep and MVP death
+- The $1,000 mistake (real costs breakdown)
+- When to restart vs keep fixing
+- Critical AI problem: models won't tell you to stop
+- How to actually avoid the trap
+
+**Section 2: Your First 48 Hours - Practical Starting Plan**
+- Hours 0-2: Tool setup (OS choice, AI tool selection, access methods)
+- Hours 2-4: Free model access (OpenCode CLI, OpenRouter, free tiers)
+- Hours 4-6: GitHub setup (Day 1, not eventually)
+- Hours 6-8: The 3-step method (templates that guide agents)
+- Hours 8-24: Execute first project (simplest, silliest thing)
+- Hours 24-48: Core first, UI last (if not working ugly, won't work beautiful)
+- 48-hour checklist (7+ items = on track)
+- Red flags vs green flags
+- Budget reality ($0, $20, $40 options)
+
+**Section 3: Model Landscape - Western vs Chinese, Pricing, 50/50 Framework**
+- The 50/50 framework (structure + right model mix)
+- Three access methods: CLI, IDE, Web
+- Western vs Chinese models (engagement training vs directness training)
+- Model personalities (DeepSeek, ChatGPT, Claude, Copilot, GLM, Gemini)
+- Real setup example ($40/month multi-tool strategy)
+- Pricing reality (Western API vs Chinese API costs)
+- Free tier viability (DeepSeek, GLM, Gemini, Grok, Poe)
+- Anti-vendor lock-in philosophy
+- 5-hour reset as feature, not limitation
+
+**Section 4: Temperature Explained - Control Without Changing Personality**
+- What temperature actually is (randomness control, NOT personality)
+- Temperature scale (0.0-0.3 deterministic, 0.5-0.7 balanced, 1.2-1.5 creative, 1.8-2.0 chaotic)
+- Real examples: Restaurant review bot, yoga planning bot at 0.5
+- Core tradeoff (consistency vs creativity)
+- When to use low temperature (specialized agents, one job)
+- When to use high temperature (strategic, creative roles)
+- Failure modes of high temperature (breaking character, context bloat, customer frustration)
+- Web vs CLI differences (hidden vs visible control)
+- Temperature vs personality: they're orthogonal
+- Guardrailing reduction: 50% → 1-2% with persona MD files
+
+**Section 5: Access Methods Deep Dive - Why CLI Changes Everything**
+- The problem with web (Replit time breakdown: 50% guardrailing, 25% fixing, 25% exhausted)
+- CLI transformation (50% guardrailing → 1-2% with @subagent invocation)
+- Why CLI won (repo control, local testing, context visibility, agent invocation)
+- The 5-hour reset as feature (forces planning, prevents spirals)
+- Persona MD files replace constant guardrailing
+- Web vs CLI vs Plugin comparison
+- OpenRouter + OpenCode free tier strategy
+- GLM comparable to Claude at fraction of price
+- Kilocode plugin: similar to CLI but GUI overhead
+
+**Section 6: Approaches Spectrum - Finding the Right Structure**
+- Manual PM workflow: DeepSeek research → OneNote tracking → Replit execution (exhausting)
+- The breakthrough: 3-step + Claude CLI
+- Guardrailing shift: 50% → 1-2% with agent-driven planning
+- When vibecoding works vs fails (single file vs multi-file)
+- Three approaches: Vibecoding, 3-Step, BMAD Hybrid
+- BMAD compaction (22 tasks → 13 subagents optimized)
+- Why Replit failed (can't invoke agents, no repo control, hidden context)
+- Real cost shift: $50/day → sustainable monthly
+- The real win: agent planning, not manual PM work
+- Tool + framework together (framework on bad tool still fails)
+
+**Section 7: Context Windows - The Invisible Constraint**
+- Wrong mental model: "preserve memory" by staying in same chat
+- What actually happened (Week 4-5: AI starts lying, hallucinating)
+- Hallucination symptoms (claimed work done, wrong file, breaks things, forgets, slow, over-apologetic)
+- The backwards logic: staying in same window CAUSES hallucinations
+- Web hides it, CLI shows it (`/context` command)
+- The 75% rule (proactive reset prevents hallucinations)
+- Fresh context protocol (continuation doc, 2-3% cost, prevents 20-30% waste)
+- Context fill rates (UI changes 1-2%, complex features 3-5%, bug fixes 0.5-1%)
+- Precision effect (vague prompts fill context faster)
+- Cost comparison (with resets vs without)
+- Why tools don't explain this (longer chats = more tokens = more profit)
+
+### 🚧 In Development (8-12)
+
+**Section 8: Pricing Reality** (Ready for elicitation)
+- The $1,000 Replit story (timeline, breakdown, what burned budget)
+- Subscription vs pay-as-you-go economics
+- $20/month club and what the reset limit does
+- API pricing: Western vs Chinese models
+- Output tokens 2-5x more expensive than input
+- Pay-as-you-go psychology (daily charges = sunk cost trap)
+- Free tier viability and when to upgrade
+- Budget recommendations by skill level
+- Economic sustainability strategies
+
+**Section 9: Technical Essentials**
+- GitHub workflow in practice
+- Dev/staging/prod environments
+- Localhost vs cloud preferences
+- Database choices and vendor lock-in
+
+**Section 10: MVP Priorities**
+- UI trap personal experience
+- Defining "done"
+- Feature creep examples
+- When to polish UI
+- Validation strategies
+
+**Section 11: Comparison Tables**
+- Tool comparisons
+- Framework comparisons
+- Model comparisons
+- Cost comparisons
+
+**Section 12: FAQ & Common Questions**
+- Top questions from 82-question research
+- Quick answers and references
+- Troubleshooting guide
+
+**Glossary**
+- Domain-specific terms
+- Technical concepts simplified
+- Acronyms and abbreviations
 
 ## Preview Available
 

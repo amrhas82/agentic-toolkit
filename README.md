@@ -283,6 +283,7 @@ cp ai/AGENT_RULES.md your-project/CLAUDE.md
 ### Getting Started
 - [This README](#-quick-start) - Start here
 - [Vibecoding 101](docs/vibecoding-101.md) - Comprehensive beginner's guide (in development)
+- [FAQ](docs/FAQ.md) - Frequently asked questions
 - [Subagent Manual](ai/subagents/subagentic-manual.md) - Complete agent guide
 - [Tools Guide](tools/tools_guide.md) - Development tools documentation
 
@@ -297,6 +298,10 @@ cp ai/AGENT_RULES.md your-project/CLAUDE.md
 - [Development Tools](tools/tools_guide.md)
 - [Environment Setup](env/)
 - [MCP Integrations](integrations/awesome_mcp_servers.md)
+
+### Contributing
+- [Contributing Guide](docs/CONTRIBUTING.md)
+- [FAQ](docs/FAQ.md)
 
 ---
 

@@ -110,44 +110,60 @@ A comprehensive guide for non-coders and vibecoders on building software with AI
 ### 🚧 In Development (8-12)
 
 **Section 8: Pricing Reality** (Ready for elicitation)
-- The $1,000 Replit story (timeline, breakdown, what burned budget)
-- Subscription vs pay-as-you-go economics
-- $20/month club and what the reset limit does
-- API pricing: Western vs Chinese models
-- Output tokens 2-5x more expensive than input
+- What context windows cost (hallucinations = wasted tokens)
+- Subscription vs API/pay-as-you-go model breakdown
+- $20/month club (Claude Code, Cursor, ChatGPT Plus) and what the reset limit actually does
+- API pricing: Western ($1-3 input / $10-15 output) vs Chinese ($0.02-0.6 input / $0.28-2.2 output)
+- Output tokens 2-5x more expensive than input (model verbosity matters)
+- The $1,000 Replit story (timeline, breakdown, what actually burned the budget)
 - Pay-as-you-go psychology (daily charges = sunk cost trap)
-- Free tier viability and when to upgrade
-- Budget recommendations by skill level
-- Economic sustainability strategies
+- Free tier viability (real limits, when to upgrade)
+- Cost tracking strategies (track weekly? monthly? per-project?)
+- Budget recommendations by skill level (beginner, intermediate, advanced)
+- Economic sustainability (what costs can't be sustained, what can)
+- The 5-hour reset as economic feature (forces proactivity, prevents spirals)
+- When to pay vs when to stay free
+- How much of Replit $1,000 was context mismanagement vs actual building
 
-**Section 9: Technical Essentials**
-- GitHub workflow in practice
-- Dev/staging/prod environments
-- Localhost vs cloud preferences
-- Database choices and vendor lock-in
+**Section 9: Technical Essentials** (Ready for elicitation)
+Topics to cover:
+- GitHub workflow - how does he actually use it?
+- Dev/staging/prod - does he use this locally?
+- Localhost vs cloud preference?
+- Database choices in practice?
+- Any vendor lock-in experiences?
+- Technical setup that prevents common failures
+- Tools and environment configuration
+- Version control best practices
+- Deployment strategies for vibecoders
 
-**Section 10: MVP Priorities**
-- UI trap personal experience
-- Defining "done"
-- Feature creep examples
-- When to polish UI
-- Validation strategies
+**Section 10: MVP Priorities** (Ready for elicitation)
+Topics to cover:
+- UI trap personal experience - what was his MVP?
+- How does he define "done" now?
+- Feature creep examples?
+- When does he polish UI?
+- Validation strategy?
+- Core-first, UI-last methodology
+- What belongs in MVP vs what doesn't
+- How to recognize scope creep
+- Testing strategies for MVP validation
 
-**Section 11: Comparison Tables**
-- Tool comparisons
-- Framework comparisons
-- Model comparisons
-- Cost comparisons
+**Section 11: Comparison Tables & Quick Reference**
+- Tool comparison matrix (Web vs CLI vs IDE)
+- Framework comparison (Simple vs 3-Step vs BMAD)
+- Model comparison (Western vs Chinese, by use case)
+- Cost comparison (Free vs Subscription vs Pay-as-you-go)
+- When-to-use decision trees
+- Quick reference cards
+- Troubleshooting matrix
 
-**Section 12: FAQ & Common Questions**
+**Section 12: FAQ & Glossary**
 - Top questions from 82-question research
+- Common beginner mistakes
 - Quick answers and references
 - Troubleshooting guide
-
-**Glossary**
-- Domain-specific terms
-- Technical concepts simplified
-- Acronyms and abbreviations
+- **Glossary**: guardrailing, persona MD, config.json, context window, temperature, hallucination, spec engineering, UI trap, sunk cost trap, token, API, CLI, IDE, MCP, subagent, workflow agent, BMAD, 3-step method, vibecoding
 
 ## Preview Available
 

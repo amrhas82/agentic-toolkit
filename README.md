@@ -350,20 +350,15 @@ A: No, it's optional. The subagents work independently of the environment tools.
 
 ## 🤝 Contributing
 
-We welcome contributions!
+We welcome contributions! See **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** for detailed guidelines.
 
-### What to Contribute
-- **Subagent improvements**: Better prompts, new agents, optimizations
-- **Tool scripts**: New automation, installation improvements
-- **Documentation**: Clarity, examples, tutorials
-- **Bug fixes**: Issues with scripts or agents
-
-### How to Contribute
+### Quick Guide
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-improvement`)
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+3. Make your changes and test thoroughly
+4. Submit a pull request
+
+**What to contribute**: Subagent improvements, tool scripts, documentation, bug fixes
 
 ---
 

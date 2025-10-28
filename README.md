@@ -7,8 +7,35 @@ Complete Ubuntu/Debian development environment setup with AI-assisted workflows 
 
 ### For Development Environment Setup:
 ```bash
+<<<<<<< HEAD
+git clone https://github.com/amrhas82/agentic-toolkit.git
+cd agentic-toolkit
+cp -r ai/subagents/claude/* ~/.claude/
+```
+
+**For OpenCode:**
+```bash
+cp -r ai/subagents/opencode/* ~/.config/opencode/
+```
+
+**For Amp:**
+```bash
+cp -r ai/subagents/ampcode/* ~/.amp/
+```
+
+📖 **[See full agent list & usage guide](ai/subagents/subagentic-manual.md)**
+
+### Path 2: Explore Referenced Frameworks
+- **Simple 3-Step**: Manual workflow in `ai/simple/`
+- **BMAD Method**: Enterprise framework in `ai/bmad/`
+
+### Path 3: Set Up Development Environment
+```bash
+cd tools
+=======
 git clone https://github.com/your-repo/agentic-toolkit.git
 cd agentic-toolkit/tools
+>>>>>>> parent of c8d280e (cleanup and reorganizing subagents + added ampcode subagents and updated README.md)
 chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 ```
 - ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** to get notified of updates
@@ -31,12 +58,20 @@ Four comprehensive approaches to AI-assisted development:
 - Perfect for features, small projects, and quick iterations
 - Streamlined agent guidance for rapid development
 
+<<<<<<< HEAD
+| Kit | Agents | Deploy To | Status |
+|-----|--------|-----------|--------|
+| **claude** | 13 specialists + 22 tasks | Claude Code (`~/.claude/`) | ✅ Production |
+| **opencode** | 13 specialists + 22 tasks | OpenCode (`~/.config/opencode/`) | ✅ Production |
+| **ampcode** | 16 specialists | Amp (`~/.amp/`) | ✅ Production |
+=======
 #### Claude Subagents (`ai/claude-subagents/`)
 - **BMAD + Simple hybrid**: Claude-generated mix of BMAD and Simple workflows adapted for Claude
 - **Context-optimized**: Compacted to save context while maintaining full functionality
 - **Tested and proven**: Production-ready agents with validated workflows
 - **Direct deployment**: Entire folder contents can be copied to `~/.claude` and invoked via `/agent_name`
 - **Complete ecosystem**: All agents, teams, workflows, and dependencies included
+>>>>>>> parent of c8d280e (cleanup and reorganizing subagents + added ampcode subagents and updated README.md)
 
 #### OpenCode Subagents (`ai/opencode-subagents/`)
 - **BMAD + Simple hybrid**: Same powerful agents as Claude subagents optimized for OpenCode
@@ -132,6 +167,35 @@ This suite is designed for developers who want to:
 - [Installation Instructions](tools/README.md)
 - [Environment Configuration](env/)
 
+<<<<<<< HEAD
+```
+agentic-toolkit/
+├── ai/                          # AI workflows and agents
+│   ├── subagents/               # ⭐ YOUR SUBAGENT KITS
+│   │   ├── claude/    # 13 agents + 22 tasks for Claude Code
+│   │   ├── opencode/  # 13 agents + 22 tasks for OpenCode
+│   │   ├── ampcode/   # 16 agents for Amp
+│   │   └── subagentic-manual.md # Complete agent documentation
+│   ├── simple/                  # 📖 Referenced: 3-step workflow
+│   ├── bmad/                    # 📖 Referenced: BMAD framework
+│   │   ├── bmad-claude/         # Ready BMAD agents for Claude
+│   │   ├── bmad-opencode/       # Ready BMAD agents for OpenCode
+│   │   ├── bmad-core/           # Shared BMAD resources
+│   │   └── bmb/                 # BMAD Builder module
+│   ├── README-task-master.md    # 📖 Task Master guide
+│   └── awesome-llm-SKILLS.md    # 📖 Curated LLM resources
+├── tools/                       # ⭐ Development utilities & scripts
+│   ├── dev_tools_menu.sh        # Interactive installer
+│   ├── master_tmux_setup.sh     # Tmux automation
+│   ├── master_neovim_setup.sh   # Neovim automation
+│   └── tools_guide.md           # Complete tools documentation
+├── env/                         # ⭐ Environment configuration
+│   ├── setup/                   # System setup & recovery
+│   └── tools/                   # Window managers & productivity tools
+├── integrations/                # 📖 External integrations
+│   └── awesome_mcp_servers.md   # 200+ MCP server list
+└── README.md                    # This file
+=======
 ### AI Guided Development
 - [Simple Workflow Guide](ai/simple/ai_dev_tasks.md)
 - [Claude Subagents](ai/claude-subagents/) - BMAD+Simple hybrid tested and optimized for Claude
@@ -142,6 +206,7 @@ This suite is designed for developers who want to:
   - [BMAD-Core Framework](ai/bmad/bmad-core/) - Shared framework files
   - [BMB Agent Builder](ai/bmad/bmb/) - Create custom agents
 - [Task Master](ai/README-task-master.md)
+>>>>>>> parent of c8d280e (cleanup and reorganizing subagents + added ampcode subagents and updated README.md)
 
 ### Tools & Environment
 - [Development Tools Guide](tools/guides/)
@@ -165,6 +230,13 @@ This suite is designed for developers who want to:
 ### Agentic Directory - Invoke 13 Specialized subagents + 22 detailed tasks. [README](ai/subagentic-manual.md) 
 
 ```bash
+<<<<<<< HEAD
+# From clone to usage in 30 seconds
+git clone https://github.com/amrhas82/agentic-toolkit.git
+cd agentic-toolkit
+cp -r ai/subagents/claude/* ~/.claude/
+# Done! Start using agents in Claude Code
+=======
 # Those agents are the best of two worlds, simple+bmad readily tested, adapated and compacted for for context
 # Agents below can be copy paste and used right away with Claude Code or Opencode
 # clone repo
@@ -175,6 +247,7 @@ cp -rv ~/agentic-toolkit/ai/claude-subagents/* ~/.claude
 
 # copy to Opencode 
 cp -rv ~/agentic-toolkit/ai/opencode-subagents/* ~/.config/opencode 
+>>>>>>> parent of c8d280e (cleanup and reorganizing subagents + added ampcode subagents and updated README.md)
 ```
 
 
@@ -241,10 +314,15 @@ cd ai/bmad/bmb
 ./README.md
 ```
 
+<<<<<<< HEAD
+**Q: Which subagent kit should I use?**  
+A: Use the one for your AI coding tool: Claude Code → claude, OpenCode → opencode, Amp → ampcode
+=======
 ### Task Master
 ```bash
 # Install globally
 npm install -g task-master-ai
+>>>>>>> parent of c8d280e (cleanup and reorganizing subagents + added ampcode subagents and updated README.md)
 
 # Initialize in your project
 task-master init

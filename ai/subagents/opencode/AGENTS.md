@@ -8,7 +8,7 @@ OpenCode reads AGENTS.md during initialization and uses it as part of its system
 
 ## How To Use With OpenCode
 
-- Copy/paste `opencode-subagents` subfolders in this project to ~/.config/opencode. OpenCode will read `AGENTS.md` and your OpenCode config (opencode.json[c]). Opencode will access agents from ~/.config/opencode/agent, and tasks from ~/.config/opencode/tasks,
+- Copy/paste `opencode` subfolders in this project to ~/.config/opencode. OpenCode will read `AGENTS.md` and your OpenCode config (opencode.json[c]). Opencode will access agents from ~/.config/opencode/agent, and tasks from ~/.config/opencode/tasks,
 - Reference a role naturally, e.g., "As dev, implement ..." or use commands defined in your tasks.
 
 Note

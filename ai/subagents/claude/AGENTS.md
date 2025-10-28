@@ -8,7 +8,7 @@ OpenCode reads AGENTS.md during initialization and uses it as part of its system
 
 ## How To Use With Claude
 
-- Copy/paste `claude-subagents` subfolders in this project to ~/.claude and Claude will read and access agents from ~/.claude/agents and tasks from ~/.claude/tasks,
+- Copy/paste `claude` subfolders in this project to ~/.claude and Claude will read and access agents from ~/.claude/agents and tasks from ~/.claude/tasks,
 - You can access agents using "@ux-expert", or you can reference a role naturally, e.g., "As ux-expert, implement ..." or use commands defined in your tasks.
 
 Note

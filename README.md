@@ -172,7 +172,9 @@ agentic-toolkit/
 │   │   └── bmb/                 # BMAD Builder module
 │   ├── AGENT_RULES.md           # Generic AI collaboration guardrails
 │   ├── README-task-master.md    # 📖 Task Master guide
+│   ├── awesome_claude_tools     # 📖 Curated Claude Tools
 │   └── awesome-llm-SKILLS.md    # 📖 Curated LLM resources
+
 ├── tools/                       # ⭐ Development utilities & scripts
 │   ├── dev_tools_menu.sh        # Interactive installer
 │   ├── master_tmux_setup.sh     # Tmux automation

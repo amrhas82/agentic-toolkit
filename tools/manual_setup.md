@@ -146,7 +146,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 - Context-aware assistance
 - Multiple language support
 
-### Cursor AI CLI
+### Cursor CLI
 AI-powered code editor with advanced features.
 
 ```bash
@@ -159,7 +159,7 @@ curl https://cursor.com/install -fsS | bash
 - Multi-file context understanding
 - Integrated terminal and debugging
 
-### AmpCode
+### AmpCode CLI
 AI-powered development environment with JetBrains integration.
 
 ```bash
@@ -174,11 +174,14 @@ amp --jetbrains
 - Team collaboration features
 
 
-### Opencode
+### Opencode CLI
 Open-source AI-powered CLI development environment.
 
 ```bash
 curl -fsSL https://opencode.ai/install | bash
+opencode
+# add new key BYOK
+opencode auth login
 ```
 
 **Features:**
@@ -187,6 +190,35 @@ curl -fsSL https://opencode.ai/install | bash
 - Works with BYOK 70+ models
 - Team collaboration features
 ---
+
+### Factory - Droid CLI
+Open-source AI-powered CLI development environment.
+
+```bash
+curl -fsSL https://app.factory.ai/cli | sh
+droid
+```
+**Features:**
+- Monthly plan $20 generous 20M token then usage based
+- Free plan BYOK - can work with Syntheic.new key
+- Supports subagents/droids
+- Extremely customizable (caches, mcp, autonomy, reasoning, CI/CD, integrations with Slack, Linear, Jira)
+---
+
+
+### Synthetic Web
+Open-source AI-powered CLI development environment.
+
+```bash
+https://synthetic.new
+```
+
+**Features:**
+- Monthly plan $20 with 5 hours reset windows 3x regular
+- You can use API key with BYOK CLI (Opencode, Droid) or BYOK Plugin (Kilocode, Clime)
+- Multi-models including Z.ai, GLM, MiniMax, Qwen, DeepSeek , Llama, Moonshoot
+---
+
 
 ## Version Control Tools
 

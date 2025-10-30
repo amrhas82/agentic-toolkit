@@ -1,8 +1,8 @@
 # Vibecoding 101 Guide
 
-**Status**: 🔄 Being Rebuilt - Sections 0-7
+**Status**: 🔄 In Progress - 5 of 12 Sections Complete (Sections 0-4)
 
-A comprehensive guide for non-coders and vibecoders on building software with AI agents.
+A comprehensive guide for non-coders and vibecoders on building software with AI agents. Updated section names reflect merged Sections (4+5 → Section 4: Access Methods & Tools).
 
 ---
 
@@ -937,4 +937,1053 @@ If you've never built before, add 2-3 days for learning and unexpected context r
 This section covered your first 48 hours and the 3-step workflow. Next, we dive into the AI models themselves: Western vs Chinese, pricing differences, and building a multi-model strategy that never locks you in.
 
 
+
+
+---
+
+## Section 3: Model Landscape - Understanding the 50/50 Framework
+
+**Status**: Complete - Built from Collaborative Elicitation
+
+I thought templates and structured approaches would solve everything. They don't. They solve about 50%. The other 50%? That's choosing the right mix of models, tools, and economics.
+
+This is the 50/50 framework.
+
+---
+
+### The Realization: Same LLM, Different Experiences
+
+Here's when it clicked: I switched from Replit (web) to Claude Code (CLI), and even though they could use the same underlying LLMs, the experience was completely different.
+
+Replit had one persona: "show off and make beautiful UI." It went off track constantly.
+
+But the real problem? **Replit intentionally hides your context window.** No warning when AI memory fills up. No visibility. You just spiral into hallucinations without knowing why.
+
+CLI tools show you everything: `/context` command, token counts, what's actually happening.
+
+That difference—hidden vs visible—changes everything.
+
+---
+
+### My Journey: Three Phases
+
+| Phase | Tools | Workflow | Guardrailing | Cost | Result |
+|---|---|---|---|---|---|
+| **Manual PM** | DeepSeek → OneNote → Replit | Research on DeepSeek, plan in OneNote, spoon-feed Replit | 50% of my time | $50/day typical | Exhausting, incomplete projects |
+| **Discovery** | Found 3-step method on YouTube | Create PRD → Generate tasks → Process | Curious but skeptical | - | Watched video, thought "this is a dream" |
+| **Breakthrough** | 3-step + Claude CLI | Agent-driven planning, localhost, VPS access | 1-2% course correction | $20/month | Actually shipping |
+
+**What changed with Claude CLI:**
+
+- First time CLI (instead of web hiding everything)
+- First time localhost (instead of Replit cloud)
+- First time my agent could access VPS quickly and diagnose problems
+- Could see the whole app, understand it, plan fixes, write MD files after every step
+
+It was **much, much easier, faster, and more effective.**
+
+---
+
+### The Addiction Pattern
+
+I was hooked on Replit. Addicted. Here's how it happened:
+
+**The hook:** I thought I was 1 prompt away from finishing. Classic software engineering optimistic extrapolation: "At this rate, I'll finish in a week!"
+
+**The dopamine:** UI appearing instantly. Every 30 seconds, something new, something beautiful.
+
+**The progression:** Started at $200 limit. "Just one more prompt." Bumped to $300. Then $400. Then $1000 in $100 increments. Four weeks.
+
+**The realization:** I realized my addiction and started placing limits: time limits, weekends off, forcing myself to stop. I realized this BEFORE switching to Claude. When Claude's 5-hour reset kicked in, I appreciated it even more—it was a natural limit.
+
+---
+
+### Access Methods Comparison
+
+| Access Method | My Experience | What You See | What You Control | Guardrailing |
+|---|---|---|---|---|
+| **Web** (Replit) | CPU-hungry, annoying, limiting, stupid | Beautiful UI (10%) | Almost nothing | 50%+ |
+| **CLI** (Claude, OpenCode) | Clean, light, fast, focused | Everything (90%) | Temperature, context, commands, agents | 1-2% |
+| **Plugin** (Kilocode) | Nice, inline suggestions | Code + some context | Medium | 1-2% |
+
+**What CLI shows that web hides:**
+
+| Feature | CLI | Web |
+|---|---|---|
+| Context window | `/context` shows tokens & % | Hidden, no warning |
+| Reset | `/reset` command | Can't or unclear |
+| Commands running | Visible, scrollable | Hidden behind UI |
+| Stop execution | Ctrl+C, instant | Refresh, unclear |
+| Temperature | Config file, per-agent | Hidden or locked |
+| Agent invocation | `@subagent_name` instant | Can't, one persona |
+| Speed | Instant (text only) | Slow (rendering) |
+| CPU usage | Minimal (TUI) | High (web interface) |
+
+---
+
+### The "UI Will Have Scaffolding" Delusion
+
+I barely talked about backend on Replit. I thought **UI will naturally have scaffolding supporting it.**
+
+I was so wrong.
+
+When did I realize? **When I deployed to production and everything broke.**
+
+| What I Thought I Knew | What I Actually Learned (For $1,000) |
+|---|---|
+| Move repo, run index.html, done | Docker images, containerization |
+| UI appears = backend works | Frontend/backend are separate |
+| Replit handles deployment | CI/CD pipelines, different modes |
+| Code just runs | Cron jobs, backups, workflows |
+| - | GitHub workflows, MD files, YAML configs |
+
+**The production nightmare:**
+
+Replit gave me scripts to place a **placeholder instead of the actual page.** Bugs kept creeping in. The agent would say "Oh, I added this, then that, then fixed this, then that."
+
+I was determined not to be locked into Replit cloud. I've hated vendor lock-in since my first app 14 years ago when AWS ripped me off for an MVP that wasn't even working.
+
+---
+
+### The Localhost Win
+
+I got my Replit project running on localhost with Claude CLI in **less than 10 minutes.**
+
+Replit had failed to do this **maybe 10+ times.** It would fix something, break another. Ask for secrets it already had. Inefficient. Amnesia. Stupid.
+
+---
+
+### Western vs Chinese: The Truth-Telling Moment
+
+Week 3, everything was breaking.
+
+| Model | My Question | Response |
+|---|---|---|
+| **ChatGPT** | "Is this approach good?" | "Yes, this looks great!" |
+| **Copilot** | "Should I restart?" | "You can keep going, just fix X, Y, Z..." |
+| **DeepSeek** | Same questions | "Your architecture is masturbation. You have feature creep. You're focusing only on UI using dopamine to invite more spending on the 10%. You have very beautiful UI with no database working properly. You've overcomplicated things." |
+
+**My reaction:** Disappointed but happy. DeepSeek told me the truth straight to my face.
+
+I tried it many times with idea validation. Consistently straight: pros and cons, what was good or bad.
+
+I liked its candidacy. **I restarted immediately.** Used the UI as a guide since I liked it, but rebuilt the backend properly.
+
+**The lesson:**
+
+| Model Type | Training Goal | When to Use |
+|---|---|---|
+| **Western** (ChatGPT, Claude, Gemini, Copilot) | User engagement - agreeable, verbose, supportive | Learning, morale boost, exploring ideas |
+| **Chinese** (DeepSeek, GLM, Qwen) | Task completion - direct, critical, concise | Validation, reality checks, "tell me the truth" |
+
+---
+
+### The Persona Discovery
+
+I discovered `@subagent_name` invocation when exploring the BMAD method on VS Code. They were invoking agents with `@`, `/`, or `*`.
+
+I looked at Claude Code CLI options and found **subagents.** Then I adapted simple 3-step + BMAD to Claude and OpenCode. Added them to my open-source repo. Compacted and adapted them since I use them often.
+
+**What personas changed:**
+
+| Before (Replit) | After (CLI with Personas) |
+|---|---|
+| 50%+ time guardrailing | 1-2% course correction |
+| "Don't do this" every prompt | Persona MD file defines role once |
+| "Stick to plan" constantly | Agent knows its job |
+| "No extra features" repeated | Constraints built into persona |
+| One useless persona (show off UI) | 10+ specialized agents |
+
+**Personas are game-changers** because they carve out agent attention and hone/invoke its skills for a certain amount of time.
+
+---
+
+### My BMAD Adaptation
+
+| Component | Count | Purpose |
+|---|---|---|
+| **BMAD personas** | 10 | Complex, role-based, thorough planning |
+| **3-step method** | 3 templates | Create PRD → Generate tasks → Process tasks |
+| **Tasks library** | 22 | Templates that personas invoke as needed |
+
+**Why I compacted BMAD:**
+
+BMAD is verbose by nature with poor documentation. I asked Claude to compact it without losing context (to save on context when invoked). Kept detailed tasks as they are since they're templates.
+
+**When I use which:**
+
+| Approach | When | Why |
+|---|---|---|
+| **Vibecoding** | UI color changes, quick questions, one-off scripts | Fast, isolated, no planning needed |
+| **3-step method** | Feature, small app, small fix | Elicitation convo, like a dev picking your brain |
+| **BMAD personas** | Complex projects, thorough planning | Specialty agents for deep work |
+
+**The rule:** If it touches more than one file, use 3-step. Create a branch. Plan first.
+
+---
+
+### Tools I've Actually Tried
+
+| Tool | Ease | Cost | Effectiveness | Stability | My Notes |
+|---|---|---|---|---|---|
+| **Kilocode** | Easy | Average | Average | Stable | Plugin for PyCharm, inline suggestions |
+| **Claude Code CLI** | Easy | Great ($20/mo) | Very effective | Stable* | Main tool, subagents/hooks/skills, *few bugs in unused features |
+| **OpenCode** | Easy | Great (free+BYOK) | Less capable sometimes | Stable | Chinese LLMs, open-source, best of all worlds |
+| **AmpCode** | Easy | Expensive | Effective | Stable | Organized, todo list, better recourse |
+| **Droid** | Easy | Expensive ($20/20M tokens) | Effective | Stable | SWE focused, no personas, BYOK limited |
+
+**"Less capable sometimes" (OpenCode):**
+
+I've been lightly using it next to Claude (my main). It understands, but I don't fully trust it yet. Using it for research.
+
+Not as holistic and opinionated as AmpCode when I asked it to reorganize my toolkit repo. Some LLMs are inefficient: Grok was bad, GLM was better. Some mistakes.
+
+**Amp/Droid are "more SWE grade":**
+
+More focused. Get their mistakes amazingly fast. Recourse is much easier than Replit's 15+ prompts to fix one thing.
+
+**Why OpenCode won despite limitations:**
+
+Open-source. Freedom over corporate lock-in. Great cost. Supports Chinese LLMs with comparable quality at fraction of price.
+
+I'm leaning towards AmpCode or Droid replacing OpenCode for stability, but I appreciate open-source freedom.
+
+---
+
+### My Current Setup: $40/Month (Down from $1,000)
+
+| Tool | Cost | Purpose | Why |
+|---|---|---|---|
+| **Claude Code CLI** | $20/month | Main tool, primary execution | Subagents, 5-hour reset (feature), structured |
+| **OpenCode** | ~$20/mo equiv | Backup, research, free models | BYOK, Chinese LLMs, open-source |
+
+**Hit Claude limit often?** Yes, but I'm not bothered. Long-term issues were being solved. All the frustrations I had with Replit were being solved with Claude even before I started using frameworks.
+
+When I hit the limit, I turned to do other things or used OpenCode for other projects.
+
+---
+
+### The 5-Hour Reset: From Annoying to Lifesaver
+
+| Timeline | My Perception |
+|---|---|
+| **First reaction** | "This is annoying. I want unlimited access." |
+| **After a week** | "Wait, I haven't hit the limit yet. I've explored more, done research for 2 other projects, got more done with structure and elicitation." |
+| **After a month** | "This is a lifesaver. It forces small wins instead of chasing 'one more prompt.'" |
+
+**The sleep-on-it moment:**
+
+One time I hit the mental limit on Replit. Decided to stop. In the morning, I had a completely new idea. Literally slept on it. Merged two features that were closely related and shared a lot of details.
+
+The 5-hour reset forces this.
+
+**Why it works:**
+
+I get faster to what I want with structure and elicitation. Not jerking around with unstructured prompts (which providers love because they consume tokens and make profit but don't bring value).
+
+---
+
+### The Honeymoon Phase
+
+I still think onboarding experiences are engineered: providers give you free credit and unmatched experience that doesn't repeat.
+
+**Which tools did this:** Replit, AmpCode, Kilocode, Droid
+
+I don't mind as long as quality doesn't degrade much.
+
+---
+
+### Free Tier Strategy
+
+**Can beginners stay free for Month 1-2?** Yes, especially if:
+- They don't know what they want yet
+- Trying very small scripts
+- Just researching
+
+| Tool | Free Tier | Good For |
+|---|---|---|
+| **AmpCode CLI** | Good free tier | Exploration, smaller context |
+| **Droid CLI** | Good free tier | Testing workflows |
+| **Gemini CLI** | Good free tier | Learning, research |
+| **OpenCode** | Free models built-in | Execution with Chinese LLMs |
+
+Free tiers run out fast but give you a sense. Context window is smaller, but with subagents or structured personas, you can get a feel for it.
+
+**My experience:** Started with Replit free. Once I saw UI coming up, I switched to paid immediately. Once I understood pay-as-you-go, I kept going (mostly seeing UI, barely talked about backend).
+
+---
+
+### The Key Takeaway
+
+| Insight | What It Means |
+|---|---|
+| **50/50 framework** | Structure solves 50%, right tool mix solves other 50% |
+| **Visibility matters** | CLI shows what web hides (context, tokens, temp) |
+| **Personas eliminate guardrailing** | 50% overhead → 1-2% with MD files |
+| **Western vs Chinese** | Both needed. Western for learning, Chinese for truth |
+| **Free tier is viable** | Beginners can stay free Month 1-2 if strategic |
+| **Natural limits prevent spirals** | 5-hour reset is a feature, not limitation |
+| **Tool + framework together** | Good framework on bad tool still fails |
+| **Open-source freedom** | Appreciate freedom over corporate lock-in |
+
+The breakthrough wasn't finding a better framework. It was having the right tool (Claude CLI) with agent-driven planning (3-step method) instead of manual PM work.
+
+**From → To:**
+- $1,000/month → $40/month
+- 50% guardrailing → 1-2% course correction
+- Exhausted → Energized
+- 0 shipped → Actually shipping
+
+---
+
+## The Hard Truth: AI Needs More Handholding Than You Think
+
+This is where experience from real-world usage breaks through the marketing. Here are 4 critical takeaways from six months of pushing Claude Code to its limits on a 300k+ LOC project:
+
+### The 4 Critical Takeaways
+
+| # | The Reality | Why It Matters | The Remedy |
+|---|---|---|---|
+| **1** | **Models won't auto-use best practices** ("I'd literally use the exact keywords from skill descriptions. Nothing.") | AI doesn't read and retain documentation like humans. It won't follow guidelines without constant, explicit reminders. | Use personas and Skills with auto-activation hooks. Guardrailing drops from 50%+ to 1-2%. |
+| **2** | **All models have amnesia** ("Claude is like an extremely confident junior dev with extreme amnesia, losing track easily.") | Across 30+ prompts, Claude forgets context, wanders off tangents, forgets decisions. You can't rely on memory. | Track progress externally (task files, context files, plan files). External docs preserve intent; chat history doesn't. |
+| **3** | **Output quality depends on prompt quality** ("Results really show when I'm lazy with prompts at the end of the day.") | Bad prompt input = bad output. It's not the model failing; it's insufficient direction from you. | Be precise, avoid ambiguity, spend time crafting clear prompts. Re-prompt with feedback. Specificity = better output. |
+| **4** | **Lead questions get biased answers** (Ask "Is this good?" → Claude says yes. Ask neutral → get honest feedback.) | Models are trained for agreement. They tell you what they think you want to hear. | Phrase questions neutrally: "What are potential issues?" instead of "Is this good?" Ask for alternatives, not confirmation. |
+
+---
+
+### How to Use This: Design Around These Realities
+
+| Reality | Don't Do | Do This Instead |
+|---|---|---|
+| Won't auto-use practices | Write BEST_PRACTICES.md and expect compliance | Use personas/MD files + Skills with hooks |
+| Has amnesia | Keep same chat open forever | Track externally, reset at 75%, use continuation docs |
+| Output = input quality | Be lazy with prompts | Invest time in clarity and precision |
+| Biased toward agreement | Ask leading questions for validation | Ask neutral questions for truth |
+
+---
+
+### Mini-Glossary: Section 3
+
+**50/50 Framework:** Structured approaches solve ~50%, right tools/models/economics solve other 50%. Both necessary.
+
+**Persona MD File:** Text file defining agent's role, expertise, constraints. Invoked with `@agent_name`. Drops guardrailing from 50%+ to 1-2%.
+
+**5-Hour Reset:** Claude Code feature that pauses usage after 5 hours. Forces breaks, prevents spirals, enables fresh thinking. Feature, not limitation.
+
+**Western Models:** ChatGPT, Claude, Gemini, Copilot. Trained for engagement. Agreeable, won't tell you to restart.
+
+**Chinese Models:** DeepSeek, GLM, Qwen. Trained for task completion. Direct, tells you truth straight.
+
+**SWE Grade:** Tools focused on engineering workflows (better recourse, faster mistake recovery). Examples: AmpCode, Droid.
+
+**TUI (Text User Interface):** Terminal-based. Clean, light, fast. Focuses on 90% (backend) not 10% (UI).
+
+**Vendor Lock-In:** Dependency on single provider. Can't switch easily. Learned from AWS. Solution: multi-tool strategy, open-source.
+
+**BYOK (Bring Your Own Key):** Manage your own API keys via aggregators. Flexibility, prevents lock-in.
+
+**Context Window Visibility:** CLI shows token usage (`/context`). Web hides it. Knowing when to reset prevents hallucinations.
+
+---
+
+## Section 4: Access Methods & Tools - Why Tool Choice Matters More Than You Think
+
+**Status**: Complete - Built from Real Testing Across 6 Tools
+
+You've chosen your model (Western, Chinese, or multi-model). Now the real question: **where are you actually going to work?**
+
+This section covers the access methods (Web, CLI, Plugin), the tools available, and why **tool choice determines your trajectory more than model choice.**
+
+---
+
+## The Tool Landscape: What I Actually Tested
+
+I tested 6 tools seriously. Here's the ranking from best to worst for sustainable building:
+
+| Rank | Tool | Best For | Fatal Flaw | Price Model |
+|---|---|---|---|---|
+| **1** | **Claude Code CLI** | Serious builders | Rare rendering bugs on agent editing | $20/month subscription |
+| **2** | **OpenCode** | Free-tier sustainable work | Persona less effective than CC, feels primitive | BYOK (usage-based) |
+| **3** | **Ampcode** | SWE-focused work | Expensive, no BYOK | Usage-based (markup) |
+| **4** | **Droid** | SWE personality focused | Expensive, no subagents | Usage-based (BYOK available) |
+| **5** | **Kilocode (PyCharm Plugin)** | Already using IDE | Clunky interface, doesn't render naturally in IDE, feels weird | Usage-based |
+| **6** | **Replit** | Learning UI design | Everything: high temp, careless, no verification, expensive, shows off UI over delivery | Usage-based ($50+/day) |
+
+**Key insight:** It's not about the model (Sonnet in Replit vs Sonnet in Claude Code are completely different experiences). It's about:
+- **What capabilities the tool gives you** (subagents, hooks, skills)
+- **What it optimizes for** (delivery vs dopamine)
+- **What it makes visible** (context usage, file changes, execution logs)
+
+---
+
+## What Actually Matters in a Tool: The 3+2 Framework
+
+When choosing a tool, these matter most:
+
+**Critical (decide if viable):**
+1. **Price** - Subscription predictable, pay-as-you-go is dangerous
+2. **Subagents/Personas** - Guardrailing drops from 50%+ to 1-2%
+3. **Solid SWE Personality** - Not optimized for show-off, optimized for delivery
+
+**Nice-to-Have (decide between tools):**
+4. **To-do lists and clear actions** - Helps track progress
+5. **Auto safeguards and rendering clarity** - Verifies changes before applying
+
+**Temperature doesn't make the list.** Why? Because persona almost entirely replaces temperature. You've already defined bounds and limits in the persona. Temperature becomes irrelevant when the agent knows exactly what role it's playing.
+
+---
+
+## The Fatal Flaw of Replit: Persona Design, Not Model
+
+Here's the uncomfortable truth: Replit used Sonnet (solid model). The problem wasn't the model. It was:
+
+- **Persona design:** Optimized for "show off" not "delivery"
+- **Prioritization:** UI visible instantly = dopamine. Infrastructure invisible = ignored.
+- **Agent optimization:** Everything leans toward engagement (keep you prompting, keep you paying)
+- **Trust erosion:** Doesn't verify changes. Does work without asking. Over-apologetic. Careless.
+
+Even if Replit used Claude instead of Sonnet, the platform is still broken because **the tool itself is architected for the wrong goal.**
+
+This is why **tool choice matters more than model choice.** A good tool with a mediocre model beats a bad tool with a great model.
+
+---
+
+## Access Methods: Web vs CLI vs Plugin
+
+### Web (Replit, Google AI Studio, Claude Code web)
+
+**What you see:**
+- Beautiful UI rendering instantly
+- Conversation interface
+- Easy entry, minimal setup
+
+**What you DON'T see:**
+- Context window status (no `/context` equivalent)
+- Temperature settings (hidden or locked)
+- File changes in repo (if any)
+- Token usage or costs
+- Execution logs (if backend exists)
+- Rendering of what agent actually does
+
+**Guardrailing overhead:** 50%+ (you're constantly prompting to stay on track)
+
+**Best for:** Learning concepts, UI-focused projects, first week exploration
+
+**Worst for:** Understanding what's actually happening, serious multi-file projects, backend work
+
+---
+
+### CLI (Claude Code CLI, OpenCode, Ampcode, Droid)
+
+**What you see:**
+- `/context` shows token usage and percentage
+- Subagent invocation with `@agent_name`
+- File changes highlighted (color-coded)
+- Execution logs in real-time
+- Hooks and skills you can observe
+- Full control over temperature and config
+- Faster rendering (text-only, no UI overhead)
+
+**Guardrailing overhead:** 1-2% (subagents handle most discipline)
+
+**Best for:** Real projects, multi-file work, backend, VPS debugging, understanding what's happening
+
+**Worst for:** Learning concepts (you need more context), initial setup friction
+
+---
+
+### Plugin (Kilocode, Cline)
+
+**What you see:**
+- Code suggestions inline in your IDE
+- Local repo integration
+- IDE tools (file explorer, git status)
+
+**What you DON'T see (compared to CLI):**
+- Rendering looks weird in IDE (not natural)
+- Interface is heavier/clunkier
+- Context visibility is limited
+- Less transparent about what agent is doing
+
+**Guardrailing overhead:** 1-2% (but interface friction is higher)
+
+**Best for:** People already comfortable in PyCharm/VS Code who want inline help
+
+**Worst for:** Clarity, learning, understanding what the agent is actually doing
+
+---
+
+## The Visibility Principle
+
+Here's what separates tools: **visibility of what's actually happening.**
+
+| Feature | Replit (Hides) | Claude Code CLI (Shows) | Outcome |
+|---|---|---|---|
+| **Context window** | Hidden (no warning) | `/context` shows % used | Web: you spiral unaware. CLI: you reset at 75% proactively |
+| **File changes** | Not visible | Highlighted by repo (color-coded) | Web: don't know what touched. CLI: understand impact |
+| **Execution logs** | Manual copy-paste needed | Real-time in terminal | Web: painful debugging. CLI: autonomous debugging |
+| **Temperature** | Hidden or locked | In config.json | Web: can't control. CLI: can adjust if needed |
+| **Cost tracking** | Hidden (burn money unaware) | Visible per session | Web: surprise bills. CLI: see spending |
+| **Overall impact** | 50%+ guardrailing | 1-2% guardrailing | Web: constant prompting to stay on track. CLI: agent knows its role |
+
+**Result:** This visibility alone solves most of the "AI amnesia" problem. You can't hallucinate invisibly. When you see what changed, what context is used, and what errors occurred, you immediately catch problems.
+
+---
+
+## The Infrastructure Visibility Problem (Takeaway #2 Integration)
+
+From hooks.txt: "Claude is like an extremely confident junior dev with extreme amnesia."
+
+**But here's the thing:** The amnesia isn't invisible in CLI tools. You can see it happening via `/context`.
+
+| Scenario | Web Tool | CLI Tool |
+|---|---|---|
+| **What happens** | AI loses the plot mid-project | AI approaches 75% context |
+| **When you notice** | 20 prompts later (too late) | Right away via `/context` |
+| **What you do** | Spiral into hallucinations | Reset proactively |
+| **Result** | Cascading errors, expensive recovery | Catch problem early |
+
+**The key difference:** Visibility doesn't eliminate amnesia (that's a model limitation). But it prevents you from cascading into hallucinations. You catch the problem early.
+
+---
+
+## The 90% Infrastructure Reality
+
+| Aspect | Web Tool (Replit) | CLI Tool (Claude Code) | Impact |
+|---|---|---|---|
+| **UI Visibility** | Beautiful, instant, dopamine-friendly | Boring, after core is done | Web seduces you, CLI forces truth |
+| **Database State** | Hidden, hope-and-pray | Visible in config, tested locally | Web: break in production. CLI: catch locally |
+| **Authentication** | Built but untested | Designed + tested + documented | Web: security theater. CLI: actually secure |
+| **Error Handling** | Nonexistent (wasn't visible) | Must be planned before UI | Web: crash in prod. CLI: prevent crashes |
+| **API Endpoints** | "Supposed to work" | Actually tested via localhost | Web: faith-based. CLI: verified |
+| **File Structure** | Vague (saw UI, not code) | Clear (used 3-step, designed from database up) | Web: lost. CLI: architect |
+| **Production Readiness** | Surprise disaster at 75% | Known-working at 75% | Web: $1,000 hole. CLI: shipping |
+
+**The result:** When you use 3-step method in CLI, the PRD generation and task breakdown force you to talk about infrastructure. UI barely gets mentioned because you're designing from the database up, not from the button down.
+
+If you start with web (UI focus), you're already in the trap. If you start with CLI, you're forced to think architecture first.
+
+---
+
+## Your Minimum Viable Setup
+
+| Phase | What You Need | Why | When to Skip |
+|---|---|---|---|
+| **Starting Out** | Claude Code CLI OR OpenCode | Visibility + guardrailing built-in | None—start here |
+| **Day 1** | 3-step method (PRD → Tasks → Execute) | Structured prevents spirals | Only if idea is trivial |
+| **Foundation** | Subagents/personas (MD files) | 50% guardrailing → 1-2% | Never skip this |
+| **Month 1-2** | Hooks and skills | Automate error checks | You'll add these when you see patterns |
+
+**Translation:**
+- Start with CLI + 3-step + personas. That's your whole setup.
+- Don't add hooks/skills until Month 2 when you've built 2-3 projects.
+- Only then automate the checks you find yourself repeating.
+
+---
+
+## The Upgrade Path: When to Switch
+
+| Condition | Start With Web | Decision at 1-2 Weeks | Long-Term Strategy |
+|---|---|---|---|
+| **Never built before** | Yes (1 week max) | Switch to CLI after validation | CLI + structure for real projects |
+| **Want fast UI results** | Yes (dopamine loop) | Switch to CLI once addiction fades | CLI prevents endless tinkering |
+| **Testing if you like coding** | Yes (explore) | Switch if you do (you will) | CLI when serious |
+| **Building real applications** | No (start CLI) | Stay CLI (better from Day 1) | Never leave |
+| **Serious multi-file projects** | No (start CLI) | Stay CLI (web is limiting) | CLI + subagents permanent |
+| **Need to understand what's happening** | No (start CLI) | Stay CLI (transparency is critical) | CLI forever |
+
+**The honest take:** Never go back to web for serious work once you've used CLI with subagents. The 48% guardrailing difference is your life back.
+
+---
+
+## Temperature: The Footnote (Not The Main Event)
+
+You asked about temperature. Here's the honest take:
+
+**Temperature is a randomness parameter (0.0-2.0), not personality.** I confused it with model training for a long time. They're completely different things.
+
+Web interfaces hide temperature entirely. CLI tools expose it in config.json. But here's the real insight: **if you've defined a clear persona, temperature becomes noise.** The persona MD file already controls what the agent will and won't do. Temperature tuning is overthinking it once you have a solid persona.
+
+Here's when temperature actually matters:
+
+| Scenario | Temperature Matters? | Why/Why Not | Better Solution |
+|---|---|---|---|
+| **Unstructured vibecoding** | Yes (sometimes) | Need randomness for creative exploration | Just use vibecoding—it's exploratory by nature |
+| **Using structured prompts** | No (basically never) | 3-step method + persona defines bounds → temperature is noise | Define persona first (drops guessing from 50% to 1-2%) |
+| **Persona-driven agents** | No (almost never) | Agent knows its role, limits, constraints via MD file → temp becomes irrelevant | Deploy persona MD file once, never tune temp again |
+| **Trying to fix "lazy" outputs** | No (wrong solution) | Bad output = bad prompt, not temperature | Rewrite prompt with precision, ask for specifics |
+| **Creative roles** (copywriting, brainstorming) | Maybe (rarely) | If you want surprising results, use 1.2-1.5 | Build persona that defines "creative" constraints |
+| **Deterministic roles** (code, documentation) | No (bad idea) | Code changes should be predictable | Use 0.3-0.5 AND define persona |
+
+**The verdict:** If you've defined a clear persona and you're using structured prompts (3-step method), temperature tuning is overthinking it. You're already controlling randomness via persona definition.
+
+If someone asks "should I use temperature 0.5 or 0.7?", the real answer is: **"Define your persona better first. Then temperature won't matter."**
+
+---
+
+## How Section 4 Addresses Key Experience Takeaways
+
+This section reinforces critical insights from real-world usage:
+
+| Takeaway | The Problem | How Section 4 Solves It |
+|---|---|---|
+| **#2: All models have amnesia** | Claude forgets context, wanders off, makes contradictory suggestions | CLI's `/context` shows when memory fills → you reset proactively instead of spiraling invisibly |
+| **#5: Sometimes you fix it yourself** | You need to step in when agent goes wrong | CLI highlights file changes (color-coded) → you understand impact → search repo → ask agent to fix precisely |
+| **#9: Claude doesn't catch mistakes** | AI doesn't verify its own work | CLI + hooks automate error checking (build, Prettier, linting, reminders) → failures caught immediately |
+| **#6: Outputs are stochastic** | Same prompt gives different results | Persona (defined via MD file) replaces temperature tuning → consistent, reproducible outputs |
+
+**Key insight:** Tool visibility and automation prevent cascading failures. Web tools hide everything. CLI tools show everything, letting you intervene early.
+
+---
+
+## The Tool Choice Paradox
+
+**You can build with any tool.** Replit works. Web works. OpenCode works.
+
+**But you'll spend:**
+- 50%+ guardrailing in web tools (constantly telling it to stay on track)
+- 1-2% course correction in CLI tools (agent knows its role)
+
+**That 48% difference is your life back.**
+
+It's not about the model. It's about the tool giving you visibility, control, and automation.
+
+---
+
+## Mini-Glossary: Section 5
+
+**CLI (Command Line Interface):** Text-based terminal tool. Faster rendering, full control, shows everything. Steeper learning curve but more powerful.
+
+**Web Interface:** Browser-based. Easy entry, beautiful rendering, hides complexity. Less control, more distraction.
+
+**Plugin/IDE Integration:** Agent runs inside your code editor (PyCharm, VS Code). Local repo access but rendering is clunky.
+
+**Subagent:** AI assistant with defined role (Business Analyst, Code Executor, etc.). Invoked with `@agent_name`. Guardrails behavior.
+
+**Persona MD File:** Text file defining agent's role, expertise, constraints, output format. Replaces need for constant guardrailing.
+
+**BYOK (Bring Your Own Key):** You provide your own API keys via aggregator. Flexibility, prevents vendor lock-in.
+
+**Guardrailing Overhead:** Time spent repeating instructions to keep AI on track. 50%+ in web tools, 1-2% in CLI with subagents.
+
+**Visibility:** Information you can see (context usage, file changes, costs, logs). CLI shows everything. Web hides most.
+
+---
+
+---
+
+## Section 5: Approaches Spectrum - Vibecoding vs 3-Step vs BMAD
+
+**Status**: Complete - Built from Collaborative Elicitation with Real Project Data
+
+---
+
+### The Core Reality
+
+You have three fundamentally different approaches to building with AI agents. They're not better or worse—they're tools for different problems.
+
+The mistake most beginners make: thinking **all three are equally viable for all projects.** They're not.
+
+This section is about understanding when each works, when it fails, and the actual costs (in time, money, and sanity) of picking the wrong one.
+
+---
+
+### Three Approaches: At a Glance
+
+| Approach | Best For | Worst For | Time to "Working" | Guardrailing Overhead | Real Token Usage | Mental Model |
+|---|---|---|---|---|---|---|
+| **Vibecoding** | UI changes, 1-off fixes, learning, things describable in <3 bullet points | Backend logic, multi-file coordination, architecture decisions | 30 min - 2 hours (or spiral) | 50%+ (constant course correction) | Unknown (tools hide it), spirals waste 50% | "I'll ask and they'll build it" |
+| **3-Step (Structured)** | Real features, anything touching 2+ files, architecture-heavy work, production systems | Quick one-line UI tweaks, pure exploratory work | 1-3 hours total (including planning) | 1-2% (persona + clarity does the work) | 2-5M per feature (visible, predictable) | "We plan together, then execute systematically" |
+| **BMAD (Full Agentic)** | Complex projects, teams, thorough pre-planning, post-MVP roadmaps | Quick fixes, simple features, when you already know exactly what you want | 4-6 hours initial, then 2-3 per feature | <1% (multiple specialized agents) | 5-10M per feature (thorough) | "I have different agents for different roles" |
+
+---
+
+### The Vibecoding Reality: When It Works, When It Fails
+
+#### What Vibecoding Actually Is
+
+Vibecoding is unstructured prompting. You have an idea. You describe it loosely. The AI builds it. You see results in seconds. You refine. You repeat.
+
+It looks like: **"Build me a button that changes color" → sees button → "make it blue" → sees blue button → done.**
+
+It feels productive because results are visible and immediate.
+
+#### When Vibecoding Works
+
+**Vibecoding works for:**
+- **UI changes** (button colors, spacing, layouts, icon swaps)
+- **Ready-made components** (adding existing UI libraries, styling frameworks)
+- **One-off fixes** (a specific bug you understand and can describe clearly)
+- **Learning** (exploring what code does, understanding concepts)
+- **Anything you can describe in fewer than 3 bullet points**
+
+**Real example:** URL shortener for maps (Amr's project). Simple, 1-pager, one table. Vibecoding worked fine for the UI. Problem was: spent 3x time fixing bugs that should have been caught upfront (testing, database connection validation, error handling).
+
+**Minimum viable vibecoding:** Code doesn't have to be perfect. Just testable. You can see it runs, data flows, errors surface. "Good enough to validate the idea."
+
+#### When Vibecoding Fails
+
+Vibecoding fails the moment you can't SEE the problem.
+
+**When vibecoding fails:**
+- **Backend logic** - You can't see database connections, API calls, authentication flow. Problem is invisible.
+- **Multi-file coordination** - Feature requires changes in 3+ files. Vibecoding tells agent "add this," agent changes file A, breaks file B, you don't see it.
+- **Architecture decisions** - "Should we use Redis or in-memory caching?" Vibecoding can't handle this—it needs thinking, not coding.
+- **Testing & validation** - "Is this secure?" "Will this scale?" Vibecoding can't validate what's invisible.
+
+**The failure pattern:** Vibecoding creates beautiful UIs on broken foundations. You deploy. Production breaks. You discover the infrastructure doesn't exist, was built wrong, or was never tested.
+
+**Real example:** Unified API project (Amr's second attempt). Started with vibecoding. UI got beautiful. Deployment broke everything. Why? No scaffolding—database wasn't connected to frontend, APIs didn't exist, Docker images didn't work. All invisible while building UI.
+
+#### The Spiral Detection Point
+
+**How do you know vibecoding is failing?**
+
+When prompts go from describing features to explaining what you've already asked.
+
+| Prompt # | Type | What You're Saying |
+|---|---|---|
+| **1** | Feature | "Add authentication" |
+| **2** | Feature | "Add a login button" |
+| **3** | Explanation | "The database isn't connected, fix that" |
+| **4** | Explanation | "Why isn't the token persisting? Check this..." |
+| **5** | Clarification | "I said token, not cookie..." |
+| **6+** | Spiral | Re-explaining what you've already asked |
+
+You've moved from building to explaining. That's the signal: vibecoding is done. Time to stop, restart with structure.
+
+---
+
+### The 3-Step Method: The Breakthrough
+
+#### What 3-Step Is
+
+3-step is structured planning + execution:
+
+1. **Create PRD** (30-45 min) - Interview yourself about what you're building, why, who it's for, what MVP means
+2. **Generate Tasks** (10 min) - Break PRD into actionable subtasks in logical order
+3. **Process Task List** (30-60 min per feature) - Execute one task, test it, commit it, move to next
+
+The agent sees the WHOLE picture before writing code. Not: "build this." But: "here's the problem, here's the user journey, here's what success looks like, here's what's in MVP vs backlog."
+
+#### Real Numbers: Vibecoding vs 3-Step
+
+| Metric | Vibecoding (Replit) | 3-Step (Droid) |
+|---|---|---|
+| **Scope** | Arabic TTS project | Same Arabic TTS project |
+| **Approach** | Unstructured prompting | Research + 3-step |
+| **Time** | 1 week sporadic | 7 hours focused (5-hour window) |
+| **Tokens** | Unknown (tool hides) | 30M tokens (visible) |
+| **Cost** | $50 every other day = $300/week | $50/week (fixed) |
+| **Cost breakdown** | ~50% spirals, rework, correction | <5% deviation from plan |
+| **Outcome** | Stalled, hated it | Organized, efficient, "beyond awe" |
+| **Authentication alone** | 10+ hours (spirals) | 1 hour (planned) |
+| **Tokens for auth alone** | ~15M wasted (estimated) | 1-2M (actual) |
+
+**Key insight:** Same scope, 7x faster, 6x cheaper, token-efficient, actually works.
+
+#### Why 3-Step Works
+
+**The structure handles the guardrailing:**
+
+| What Vibecoding Requires | What 3-Step Provides |
+|---|---|
+| You explain what you want | PRD defines it once, clearly |
+| Agent deviates (5 out of 10) | Persona + task list keeps agent on track |
+| You catch deviations mid-code | Acceptance criteria define "done" upfront |
+| You re-explain constantly | Plan eliminates need for re-explanation |
+| Testing is afterthought | Testing is part of each task |
+| You remember context | Documented in PRD/tasks/acceptance criteria |
+| Agent forgets decisions | External documentation (not chat history) |
+
+**Result:** Guardrailing drops from 50% to 1-2%.
+
+#### The Mental Shift
+
+Before 3-step (Manual PM): You researched (DeepSeek), planned (OneNote), executed (Replit). But the agent couldn't see the research or plan. You had to copy-paste relevant bits into each prompt. The agent would suggest things that contradicted your notes. Validation was hard. You spiraled.
+
+After 3-step: One agent sees everything—the repo, the deployment, the documentation, the full picture. It makes a research-based plan. You approve. It breaks work into clear tasks with acceptance criteria. You execute systematically. No spirals because you're not rediscovering the same problems.
+
+**What changed in communication:**
+- Less prompting (not more)
+- More specificity (not fewer details)
+- Structured guardrails (not constant course correction)
+- Thinking together (not explaining alone)
+
+#### Critical Feature: Testing is Built-In
+
+The reason 3-step's guardrailing drops to 1-2% is that **testing is part of every task.**
+
+Not: "build this feature"
+But: "build this feature, test it locally, commit it, describe what works/doesn't, get approval to continue"
+
+Agent can't just claim it's done. It has to PROVE it's done. That's the guardrail.
+
+#### Vibecoding Included in 3-Step
+
+**Important:** 3-step includes vibecoding for the UI layer.
+
+- Core features: 3-step (design, test, validate)
+- UI polish: vibecoding (colors, spacing, library integration)
+- Critical logic: 3-step (auth, database, APIs)
+
+You don't do 3-step for everything. You do 3-step for things that matter architecturally. You vibecode the rest.
+
+---
+
+### The Decision Tree: Vibecoding or 3-Step?
+
+Here's the actual decision criteria Amr uses:
+
+| Question | Answer | Decision |
+|---|---|---|
+| **Can you describe it in <3 bullet points?** | Yes | Maybe vibecoding (if UI only) |
+| **Does it touch database, APIs, auth, or multiple files?** | Yes | 3-Step mandatory |
+| **Is testing built-in to your description?** | No | 3-Step mandatory |
+| **Are you trying to validate an idea?** | Yes | Vibecoding OK (then 3-step for real build) |
+| **Is this critical infrastructure?** | Yes | 3-Step mandatory |
+
+**Real examples:**
+
+| Feature | Bullet Points | Touches Infrastructure | Decision | Why |
+|---|---|---|---|---|
+| Change button color | 1 | No | Vibecoding | UI only, no architecture |
+| Add dropdown menu | 1-2 | No | Vibecoding | UI only |
+| Add authentication | 5+ | Yes (tokens, database, validation) | 3-Step | Needs design upfront |
+| Add dark mode toggle | 2 | Yes (multiple files) | 3-Step | Multi-file coordination |
+| Add error handling | 3+ | Yes | 3-Step | Architecture decision |
+| Fix styling bug | 1 | No | Vibecoding | Isolated, visible |
+
+**Features ALWAYS worth 3-step (even if "simple"):**
+- Authentication
+- Database schema changes
+- API endpoints
+- Data validation
+- Error handling
+- Anything touching multiple files
+
+---
+
+### BMAD: When Full Agentic Workflows Make Sense
+
+#### What BMAD Is (And Isn't Needed For)
+
+BMAD (Business Analyst → PM → Architect → Developer) is multiple specialized agents, each with a role.
+
+**Important distinction:** Droid doesn't have subagents, but it has **built-in SWE full-stack team personality.** Amr doesn't need BMAD for Droid because:
+- Droid already thinks like a full-stack engineer
+- 3-step method covers all gaps
+- No need to invoke Business Analyst, PM, QA, PO separately
+
+Amr uses:
+- Business Analyst persona: When researching ideas or validating assumptions (before PRD)
+- 3-Step method: For all actual execution
+- Droid's built-in SWE team: Handles the "thinking" that would normally be BMAD agents
+
+#### When to Use Full BMAD
+
+**Use BMAD when:**
+- Project is 20+ features with complex dependencies
+- Team-based work (multiple humans + AI agents)
+- Need pre-MVP roadmap planning
+- Tool doesn't have built-in SWE persona (like Replit)
+
+**Don't use BMAD when:**
+- Feature is small (<5 files)
+- You already know exactly what you want
+- Rapid iteration (BMAD adds overhead)
+- Tool has strong built-in persona (like Droid)
+- You're still learning
+
+#### The Droid Advantage: SWE Team Built-In
+
+| Tool | Subagents? | Built-in Personality | BMAD Needed? |
+|---|---|---|---|
+| **Droid** | No, but invocable via prompts | Full SWE full-stack team | No (3-step covers it) |
+| **Claude Code** | Yes, customizable personas | Medium (depends on setup) | Yes (if you want it) |
+| **Replit** | No | Show-off UI focus | Yes (to compensate) |
+| **OpenCode** | Yes | Generic | Maybe |
+
+Droid's personality eliminates the need for multiple agents. 3-step + Droid's built-in thinking = BMAD equivalent.
+
+---
+
+### Framework + Tool Fit: Why Tool Matters MORE Than Model
+
+#### The Critical Truth: Same Model, Different Results
+
+**Both Replit and Droid use Sonnet. Results are day and night different.**
+
+| Aspect | Replit | Droid | Difference |
+|---|---|---|---|
+| **Model** | Sonnet | Sonnet | Same |
+| **Persona** | Show-off, UI-focused | SWE full-stack team | Different philosophy |
+| **Localhost access** | No - can't run locally | Yes - runs on same machine | Droid can debug independently |
+| **VPS access** | No - scripts go back and forth | Yes - direct access | Droid solves problems autonomously |
+| **Token visibility** | Hidden (only see cost) | Visible (30M per session) | Droid: traceable spending |
+| **3-Step effectiveness** | Broken by tool limitations | Exceptional | Tool enables framework |
+| **Guardrailing overhead** | 50%+ (tool fights you) | 1-2% (tool helps you) | Tool choice determines outcome |
+
+**The real lesson:** Tool choice matters more than model choice.
+
+#### Why Localhost + VPS Access Matters
+
+This is the game-changer.
+
+**Replit approach:**
+- You: Write feature request
+- Replit: Builds in Replit cloud
+- You: Test on Replit (not real environment)
+- You: Deploy to VPS manually
+- VPS: Things break
+- You: Copy errors to Replit
+- Replit: Guesses at fix without seeing real problem
+- Repeat: 15-20 cycles per issue
+
+**Droid/Claude Code approach:**
+- You: Write feature request
+- Agent: Runs localhost on same machine
+- You: Test locally (real environment)
+- Agent: Can access VPS directly (same machine has access)
+- VPS: Problem appears
+- Agent: Debugs with full visibility
+- Agent: Fixes and tests
+- Done: 1-2 cycles per issue
+
+**Real story from Amr:**
+- Unified API on Replit: Broken at deployment, exhausting copy-paste cycles
+- Same project logic on Claude Code with 3-step: "Magic"—agent saw everything, understood architecture, planned fixes holistically
+
+---
+
+### Guardrailing Overhead: Why 1-2% vs 50%
+
+#### What Guardrailing Actually Is
+
+Guardrailing = comparing agent output to what you asked, catching deviations, course-correcting.
+
+| Scenario | Replit Vibecoding | 3-Step with Persona |
+|---|---|---|
+| **Agent goes off-task** | 5 out of 10 times | 0-1 times per feature |
+| **How you fix it** | "No, not that, this" | Check task list, give feedback once |
+| **Time spent correcting** | 50% of session | 1-2% of session |
+| **Why it works better** | Agent has clear constraints | Persona + task list define role |
+
+#### Why Personas Drop Guardrailing to 1-2%
+
+A persona MD file says: "You are a full-stack SWE. Your job is: read the repo, understand the architecture, implement tasks from the list, test locally, commit, then ask for approval."
+
+That one file handles 95% of guardrailing.
+
+Without it (vibecoding): "Build this. No wait, not that. Do this instead. Remember what I said before? Don't change that. Test it. Did you test it? Show me the test. What about error handling? Add error handling..."
+
+---
+
+### Real Projects: What Succeeds, What Fails
+
+#### Project 1: URL Shortener for Maps (Vibecoding)
+
+| Aspect | Details |
+|---|---|
+| **Idea** | Simple: paste URL, get shortened link, show geolocation on 15 map apps |
+| **Structure** | 1-pager, one table, straightforward |
+| **Approach** | Vibecoding |
+| **What worked** | UI appeared quickly, basic functionality visible |
+| **What failed** | Spent 3x time fixing infrastructure bugs that should have been caught upfront |
+| **Lesson** | Even "simple" projects benefit from thinking about testing and database upfront |
+
+#### Project 2: Unified API (Three Attempts)
+
+**Attempt 1 - Vibecoding (Replit):**
+| Metric | Value |
+|---|---|
+| **Time** | 3+ weeks |
+| **Cost** | $1,000+ |
+| **Outcome** | Beautiful UI, completely broken infrastructure, not shipped |
+| **Problem** | No scaffolding—database wasn't connected, endpoints didn't exist, Docker images failed |
+| **Root cause** | Vibecoding focused on visible UI, ignored invisible infrastructure |
+
+**Attempt 2 - Manual PM (DeepSeek → OneNote → Replit):**
+| Metric | Value |
+|---|---|
+| **Time** | Several weeks |
+| **Cost** | Several hundred dollars |
+| **Outcome** | 60% stable, still incomplete |
+| **Problem** | DeepSeek couldn't see the repo, had to copy-paste between tools, too many manual fixes |
+| **Root cause** | Tool limitation—agent didn't have full context, couldn't access VPS |
+
+**Attempt 3 - 3-Step (Claude Code or Droid - planned):**
+| Metric | Expected |
+|---|---|
+| **Time** | 10-15 hours focused work |
+| **Cost** | $50-100 |
+| **Outcome** | Working, tested, documented |
+| **Advantage** | Agent sees repo, runs localhost, accesses VPS, understands architecture |
+| **Difference** | Tool enables framework |
+
+#### The Pattern
+
+**What succeeds:**
+- Thoroughly planned with clear goals and acceptance criteria
+- One thing at a time (not jumping around)
+- Testing embedded, not afterthought
+- Infrastructure and UI designed together, not UI-first
+- Agent has full visibility (localhost, VPS, repo, documentation)
+
+**What fails:**
+- Vibecoding complex features
+- Thinking UI equals progress
+- Skipping architecture decisions
+- Tool that hides visibility (can't run localhost, can't access VPS)
+- Believing "AI will figure it out"
+
+---
+
+### The Decision Framework: Approach + Tool Fit
+
+| Scenario | Best Approach | Best Tool | Why |
+|---|---|---|---|
+| **Learning / exploring ideas** | Vibecoding | Web (Claude.ai, DeepSeek) | Fast, visible, no setup |
+| **Simple UI change** | Vibecoding | CLI or Web | Either works |
+| **Real feature** | 3-Step | CLI (Claude Code, Droid) | Visibility + infrastructure access |
+| **Complex project** | 3-Step + BMAD research | CLI (Claude Code, Droid) | Full planning + full visibility |
+| **Team-based work** | BMAD + 3-Step | Claude Code | Subagents + customizable personas |
+
+**The rule:** Don't use web tools for serious multi-file work. Don't vibecode architecture. Don't expect tool limitations to disappear with better prompting.
+
+---
+
+### Mini-Glossary: Section 5
+
+**Vibecoding:** Unstructured, prompt-based building without upfront planning. Fast initially for visible work (UI), scales poorly for invisible work (backend).
+
+**3-Step Method:** Structured approach - Create PRD (interview, goals, scope), Generate Tasks (break down into ordered subtasks), Process Task List (execute, test, commit, approve).
+
+**PRD (Product Requirements Document):** Formal specification of what you're building, why, who it's for, what's MVP vs backlog, success criteria.
+
+**Acceptance Criteria:** Specific, testable conditions defining when a task is actually done. "User can send message" is done when: input works, message sends, persists in database, shows on screen.
+
+**Task/Subtask:** Concrete piece of work from PRD. Task: "Implement authentication." Subtask: "Create user schema," "Build login endpoint," "Test token flow."
+
+**Persona MD File:** Text file defining agent's role, constraints, output format. Replaces need for constant guardrailing.
+
+**BMAD (Business Analyst → PM → Architect → Developer):** Full agentic workflow with multiple specialized roles. Comprehensive planning before execution. Often unnecessary if tool has built-in SWE personality.
+
+**Guardrailing Overhead:** Time spent repeating instructions, course-correcting, explaining what you already asked. 50%+ with vibecoding on limited tools, 1-2% with 3-step + personas on capable tools.
+
+**Spiral Detection:** Moment when prompts shift from building features to explaining what you've already asked. Signal to stop vibecoding and restart with structure.
+
+**Manual PM:** Planning outside AI (notes, research, documentation), then executing via AI. Works but creates friction if tool can't see the plan and repo.
+
+**Context Reset:** Starting fresh chat with summary doc when context window fills. Costs 2-3% of tokens but prevents 20-30% hallucination waste.
+
+**Localhost:** Running app on your local machine during development (http://localhost:3000). Enables testing before VPS deployment.
+
+**VPS Direct Access:** Agent can connect to and debug on your actual production server. Tool advantage: eliminates copy-paste cycles, enables autonomous debugging.
+
+---
+
+**Next: Section 6 - Context Windows**
+
+You now understand how to approach building (vibecoding vs 3-step vs BMAD). Next section: the invisible constraint that stops most builders—context windows, how they fill, when they break, and how to manage them proactively.
 

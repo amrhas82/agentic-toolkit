@@ -199,12 +199,38 @@ curl -fsSL https://app.factory.ai/cli | sh
 droid
 ```
 **Features:**
-- Monthly plan $20 generous 20M token then usage based
+- Monthly plan $20 with generous 20M token then usage based $2.70/1M Tokens
 - Free plan BYOK - can work with Syntheic.new key
 - Supports subagents/droids
 - Extremely customizable (caches, mcp, autonomy, reasoning, CI/CD, integrations with Slack, Linear, Jira)
 ---
 
+```bash
+
+# ~/.factory/config.json
+sudo nano ~/.factory/config.json
+{
+  "custom_models": [
+    {
+      "model_display_name": "GLM 4.6",
+      "model": "glm-4.6",
+      "base_url": "https://api.z.ai/api/anthropic",
+      "api_key": "YOUR_API_KEY",
+      "provider": "zai",
+      "max_tokens": 16384
+    },
+    {
+      "model_display_name": "Kilocode Sonnet",
+      "model": "anthropic/claude-sonnet4.5",
+      "base_url": "https://kilocode.ai/api/openrouter",
+      "api_key": "YOUR_API_KEY",
+      "provider": "kilocode",
+      "max_tokens": 20480
+    }
+  ]
+}
+
+```
 
 ### Synthetic Web
 Open-source AI-powered CLI development environment.

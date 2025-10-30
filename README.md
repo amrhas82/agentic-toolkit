@@ -40,6 +40,7 @@ cp -r ai/subagents/ampcode/* ~/.amp/
 ```
 
 📖 **[See full agent list & usage guide](ai/subagents/subagentic-manual.md)**
+🤖 **[Explore 90+ specialized Droids](ai/droids/droid-comprehensive-table.md)** - Advanced AI orchestration system
 
 - ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** to get notified of updates
 - 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** to get help with your vibecoding struggles
@@ -101,6 +102,33 @@ Location: `ai/subagents/`
 - **ampcode/** - 16 agents for Amp
 
 📖 **[Tools guide](tools/tools_guide.md)**
+
+#### **Droid Factory CLI** - Intelligent Orchestration System
+**Source**: [Droid-CLI-Orchestrator](https://github.com/aeitroc/Droid-CLI-Orchestrator) by aeitroc
+
+Complete orchestration system with 90+ specialized AI droids for intelligent project coordination and execution:
+
+Location: `ai/droids/`
+- **90+ Specialized Droids**: Domain-specific AI agents for every development task
+- **Smart Orchestrator**: Intelligent project planning and coordination
+- **Learning System**: Adaptive execution with memory-based improvements
+- **Proactive Usage**: Droids automatically engage when their expertise is needed
+
+**Key Droid Categories:**
+- **Orchestration**: Master coordinators for project analysis and planning
+- **AI & ML**: LLM applications, RAG systems, prompt engineering
+- **Backend**: 21 language-specific droids (Python, Go, Rust, Java, etc.)
+- **Frontend**: React, Next.js, Flutter, mobile development
+- **Security**: Backend, frontend, mobile security specialists
+- **Database**: Architecture, optimization, administration
+- **DevOps**: Infrastructure, CI/CD, cloud, Kubernetes
+- **Documentation**: Technical writing, API docs, user guides
+- **SEO & Marketing**: 10 specialized digital marketing droids
+- **Testing**: Quality assurance, automation, debugging
+
+📖 **[Complete Droid Documentation](ai/droids/comprehensive-droid-documentation.md)**
+📊 **[Droid Reference Table](ai/droids/droid-comprehensive-table.md)**
+⚙️ **[Droid CLI Setup Guide](ai/droids/README-Droid-CLI.md)**
 
 #### **Development Tools** - Automation Scripts
 - Automated installation for Tmux, Neovim, Lite XL
@@ -385,6 +413,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 ### Referenced External Projects
 - **Simple Workflow** - Community-contributed 3-step methodology
 - **BMAD Method** - [bmad-code-org](https://github.com/bmad-code-org/BMAD-METHOD) - BMad-CORE framework
+- **Droid Factory CLI** - [aeitroc](https://github.com/aeitroc/Droid-CLI-Orchestrator) - 90+ specialized AI droids orchestration system
 - **Awesome MCP Servers** - Curated MCP server collection
 - **Awesome LLM Skills** - [Prat011](https://github.com/Prat011/awesome-llm-skills)
 - **Task Master** - AI task management system

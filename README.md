@@ -198,6 +198,7 @@ agentic-toolkit/
 │   │   ├── bmad-opencode/       # Ready BMAD agents for OpenCode
 │   │   ├── bmad-core/           # Shared BMAD resources
 │   │   └── bmb/                 # BMAD Builder module
+│   ├── droids/                  # 90+ droids from droid CLI (Factory.ai)
 │   ├── AGENT_RULES.md           # Generic AI collaboration guardrails
 │   ├── README-task-master.md    # 📖 Task Master guide
 │   ├── awesome_claude_tools     # 📖 Curated Claude Tools

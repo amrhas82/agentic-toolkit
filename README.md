@@ -40,7 +40,7 @@ cp -r ai/subagents/ampcode/* ~/.amp/
 ```
 
 📖 **[See full agent list & usage guide](ai/subagents/subagentic-manual.md)**
-🤖 **[Explore 90+ specialized Droids](ai/droids/droid-comprehensive-table.md)** - Advanced AI orchestration system
+🤖 **[Explore 90+ specialized Droids](ai/droids/1-README-Droids.md)** - Advanced AI orchestration system
 
 - ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** to get notified of updates
 - 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** to get help with your vibecoding struggles
@@ -127,8 +127,8 @@ Location: `ai/droids/`
 - **Testing**: Quality assurance, automation, debugging
 
 📖 **[Complete Droid Documentation](ai/droids/comprehensive-droid-documentation.md)**
-📊 **[Droid Reference Table](ai/droids/droid-comprehensive-table.md)**
-⚙️ **[Droid CLI Setup Guide](ai/droids/README-Droid-CLI.md)**
+📊 **[Droid Reference Table](ai/droids/1-README-Droids.md)**
+⚙️ **[Droid CLI Setup Guide](ai/droids/2-README-Droid-CLI.md)**
 
 #### **Development Tools** - Automation Scripts
 - Automated installation for Tmux, Neovim, Lite XL

@@ -1,9 +1,7 @@
 # Comprehensive Droids Reference Table
 
-> **Original Repository:** [https://github.com/aeitroc/Droid-CLI-Orchestrator](https://github.com/aeitroc/Droid-CLI-Orchestrator)
-
-## Overview
-
+> **[Droid CLI](https://github.com/aeitroc/Droid-CLI-Orchestrator)**
+> 
 This comprehensive table catalogs all 90 specialized droids from the Droid-CLI-Orchestrator project, each designed with specific expertise and tools for particular domains in software development, from AI engineering to security, database architecture, and beyond.
 
 ## Droid Categories and Capabilities

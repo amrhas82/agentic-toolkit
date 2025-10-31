@@ -139,7 +139,7 @@ npm install -g @anthropic-ai/claude-code
 # Install stable version (recommended)
 curl -fsSL https://claude.ai/install.sh | bash
 ```
-### Factory - Droid CLI
+### Factory - Droid CLI 
 Open-source AI-powered CLI development environment.
 
 ```bash
@@ -148,7 +148,7 @@ droid
 ```
 **Features:**
 - Monthly plan $20 with generous 20M token then usage based $2.70/1M Tokens
-- Free plan BYOK - can work with Syntheic.new key
+- Free plan BYOK - can work with Syntheic.new key [BYOK doc](https://docs.factory.ai/cli/byok/overview)
 - Supports subagents/droids
 - Extremely customizable (caches, mcp, autonomy, reasoning, CI/CD, integrations with Slack, Linear, Jira)
 
@@ -156,6 +156,7 @@ droid
 ```bash
 
 # ~/.factory/config.json
+# provider one of: anthropic, openai, or generic-chat-completion-api
 sudo nano ~/.factory/config.json
 {
   "custom_models": [
@@ -164,7 +165,7 @@ sudo nano ~/.factory/config.json
       "model": "glm-4.6",
       "base_url": "https://api.z.ai/api/anthropic",
       "api_key": "YOUR_API_KEY",
-      "provider": "zai",
+      "provider": "anthropic",
       "max_tokens": 16384
     },
     {

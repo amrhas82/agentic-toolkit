@@ -117,7 +117,7 @@ Location: `ai/subagents/`
 
 Complete orchestration system with 90+ specialized AI droids for intelligent project coordination and execution:
 
-Location: `ai/droids/`
+Location: `ai/marketplace/droids/`
 - **90+ Specialized Droids**: Domain-specific AI agents for every development task
 - **Smart Orchestrator**: Intelligent project planning and coordination
 - **Learning System**: Adaptive execution with memory-based improvements

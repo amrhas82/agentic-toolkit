@@ -40,7 +40,7 @@ cp -r ai/subagents/ampcode/* ~/.amp/
 ```
 
 📖 **[See full agent list & usage guide](ai/subagents/subagentic-manual.md)**
-🤖 **[Explore 90+ specialized Droids](ai/droids/1-README-Droids.md)** - Advanced AI orchestration system
+🤖 **[Explore 90+ specialized Droids](ai/marketplace/droids/1-README-Droids.md)** - Advanced AI orchestration system
 
 - ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** to get notified of updates
 - 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** to get help with your vibecoding struggles
@@ -55,11 +55,20 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 
 ## 🤖 Subagent Kits Overview
 
-| Kit | Agents | AI Tool | Deploy To | Status |
-|-----|--------|---------|-----------|--------|
-| **claude** | 13 specialists + 22 tasks | Claude Code | `~/.claude/` | ✅ Production |
-| **opencode** | 13 specialists + 22 tasks | OpenCode | `~/.config/opencode/` | ✅ Production |
-| **ampcode** | 16 specialists | Amp | `~/.amp/` | ✅ Production |
+| Kit | Agents | AI Tool | Description | Status |
+|-----|--------|---------|-------------|--------|
+| **claude** | 13 specialists + 22 tasks | Claude Code | Ready-to-use BMAD+Simple agents optimized for Claude Code | ✅ Production |
+| **opencode** | 13 specialists + 22 tasks | OpenCode | Ready-to-use BMAD+Simple agents optimized for OpenCode | ✅ Production |
+| **ampcode** | 16 specialists | Amp | Ready-to-use BMAD+Simple agents optimized for Amp | ✅ Production |
+
+## 🤖 Marketplace Overview
+
+| Kit/Collection | Type | Description | Status |
+|----------------|------|-------------|--------|
+| **Claude Skills** | Skills | Official and community skills from Anthropic for extending Claude Code functionality | ✅ Production |
+| **Claude Plugins** | Plugins | Cross-referenced plugins for extending Claude Code functionality | ✅ Production |
+| **MCP Servers** | Integration | 200+ Model Context Protocol servers for various tools and services | ✅ Production |
+| **Droid Factory** | Agent Framework | 90+ specialized AI droids for intelligent project coordination and execution | ✅ Production |
 
 **What You Get:**
 - **3-Phase Workflow Agents**: PRD Creator → Task Generator → Task Processor
@@ -126,9 +135,9 @@ Location: `ai/droids/`
 - **SEO & Marketing**: 10 specialized digital marketing droids
 - **Testing**: Quality assurance, automation, debugging
 
-📖 **[Complete Droid Documentation](ai/droids/comprehensive-droid-documentation.md)**
-📊 **[Droid Reference Table](ai/droids/1-README-Droids.md)**
-⚙️ **[Droid CLI Setup Guide](ai/droids/2-README-Droid-CLI.md)**
+📖 **[Complete Droid Documentation](ai/marketplace/droids/comprehensive-droid-documentation.md)**
+📊 **[Droid Reference Table](ai/marketplace/droids/1-README-Droids.md)**
+⚙️ **[Droid CLI Setup Guide](ai/marketplace/droids/2-README-Droid-CLI.md)**
 
 #### **Development Tools** - Automation Scripts
 - Automated installation for Tmux, Neovim, Lite XL
@@ -167,7 +176,7 @@ These are curated references to external projects - this repo provides links and
 
 **Available in this repo:**
 - Core framework (`ai/bmad/core/`) - Foundation for all modules
-- Agent builder module (`ai/bmad/bmb/`) - Create and customize agents
+- Agent builder module (`ai/bmad/bmb/`) - Create your own agents with specialized workflows for agent creation and customization
 - Creative Intelligence Suite (`ai/bmad/cis/`) - Unlock creative thinking and innovation with brainstorming workflows that power other modules while standing alone as a complete creative toolkit
 - Configuration files (`ai/bmad/_cfg/`) - Customization options
 - Documentation (`ai/bmad/docs/`) - Complete guides and references

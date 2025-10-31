@@ -166,10 +166,16 @@ These are curated references to external projects - this repo provides links and
 - Four-phase methodology: Analysis → Planning → Solutioning → Implementation
 
 **Available in this repo:**
-- Ready-to-deploy BMAD agents for Claude (`ai/bmad/bmad-claude/`)
-- Ready-to-deploy BMAD agents for OpenCode (`ai/bmad/bmad-opencode/`)
-- Shared core resources (`ai/bmad/bmad-core/`)
-- Agent builder module (`ai/bmad/bmb/`)
+- Core framework (`ai/bmad/core/`) - Foundation for all modules
+- Agent builder module (`ai/bmad/bmb/`) - Create and customize agents
+- Creative Intelligence Suite (`ai/bmad/cis/`) - Unlock creative thinking and innovation with brainstorming workflows that power other modules while standing alone as a complete creative toolkit
+- Configuration files (`ai/bmad/_cfg/`) - Customization options
+- Documentation (`ai/bmad/docs/`) - Complete guides and references
+
+**Module Documentation:**
+- [BMad Method (BMM) README](ai/bmad/README.md) - Complete guide to the software development module
+- [BMad Builder (BMB) README](ai/bmad/bmb/README.md) - Guide to creating custom agents and workflows
+- [Creative Intelligence Suite (CIS) README](ai/bmad/cis/README.md) - Guide to the creative thinking and innovation module
 
 #### **Task Master** (`ai/README-task-master.md`)
 AI-powered task management system for structured workflows
@@ -177,8 +183,10 @@ AI-powered task management system for structured workflows
 - MCP integration for Cursor, Windsurf, VS Code, Claude Code
 
 #### **Curated Resources**
-- **[Awesome MCP Servers](integrations/awesome_mcp_servers.md)** - 200+ Model Context Protocol servers
-- **[Awesome LLM Skills](ai/awesome-llm-SKILLS.md)** - [Source](https://github.com/Prat011/awesome-llm-skills)
+- **[Awesome MCP Servers](ai/marketplace/awesome_mcp_servers.md)** - 200+ Model Context Protocol servers
+- **[Awesome LLM Skills](ai/marketplace/skills/awesome-SKILLS.md)** - [Source](https://github.com/Prat011/awesome-llm-skills)
+- **[Claude Skills Marketplace](ai/marketplace/skills/Anthropic-SKILLS.md)** - Official and community skills from Anthropic
+- **[Claude Plugins Directory](ai/marketplace/plugins/PLUGINS_DIRECTORY.md)** - Cross-referenced plugins for extending Claude Code functionality
 
 ---
 
@@ -194,16 +202,17 @@ agentic-toolkit/
 │   │   └── subagentic-manual.md # Complete agent documentation
 │   ├── simple/                  # 📖 Referenced: 3-step workflow
 │   ├── bmad/                    # 📖 Referenced: BMAD framework
-│   │   ├── bmad-claude/         # Ready BMAD agents for Claude
-│   │   ├── bmad-opencode/       # Ready BMAD agents for OpenCode
-│   │   ├── bmad-core/           # Shared BMAD resources
-│   │   └── bmb/                 # BMAD Builder module
+│   │   ├── docs/                # Documentation - Complete guides and references
+│   │   ├── bmb/                 # BMAD Builder module - Create and customize agents
+│   │   └── cis/                 # Creative Intelligence Suite - Unlock creative thinking and innovation with brainstorming workflows
 │   ├── droids/                  # 90+ droids from droid CLI (Factory.ai)
+│   ├── marketplace/             # Claude Code skills and plugins
+│   │   ├── skills/              # Official and community skills from Anthropic
+│   │   ├── plugins/             # Cross-referenced plugins for extending Claude Code functionality
+│   │   └── awesome_mcp_servers  # 200+ MCP server list
 │   ├── AGENT_RULES.md           # Generic AI collaboration guardrails
 │   ├── README-task-master.md    # 📖 Task Master guide
-│   ├── awesome_claude_tools     # 📖 Curated Claude Tools
 │   └── awesome-llm-SKILLS.md    # 📖 Curated LLM resources
-
 ├── tools/                       # ⭐ Development utilities & scripts
 │   ├── dev_tools_menu.sh        # Interactive installer
 │   ├── master_tmux_setup.sh     # Tmux automation
@@ -212,8 +221,6 @@ agentic-toolkit/
 ├── env/                         # ⭐ Environment configuration
 │   ├── setup/                   # System setup & recovery
 │   └── tools/                   # Window managers & productivity tools
-├── integrations/                # 📖 External integrations
-│   └── awesome_mcp_servers.md   # 200+ MCP server list
 ├── docs/                        # Documentation
 │   └── vibecoding-101.md        # Vibecoding beginner's guide
 └── README.md                    # This file
@@ -328,7 +335,7 @@ cp ai/AGENT_RULES.md your-project/CLAUDE.md
 ### Tools & Environment
 - [Development Tools](tools/tools_guide.md)
 - [Environment Setup](env/)
-- [MCP Integrations](integrations/awesome_mcp_servers.md)
+- [MCP Integrations](ai/marketplace/awesome_mcp_servers.md)
 
 ### Contributing
 - [Contributing Guide](docs/CONTRIBUTING.md)

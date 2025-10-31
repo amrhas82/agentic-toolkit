@@ -171,14 +171,29 @@ sudo nano ~/.factory/config.json
     {
       "model_display_name": "Openrouter",
       "model": "anthropic/claude-sonnet-4.5",
+      "base_url": "https://openrouter.ai/api/v1",
       "api_key": "YOUR_API_KEY",
       "provider": "generic-chat-completion-api",
       "max_tokens": 20480
-      "base_url": "https://openrouter.ai/api/v1",
+    },
+    {
+      "model_display_name": "DeepSeek [Fireworks]",
+      "model": "accounts/fireworks/models/deepseek-v3p1-terminus",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "api_key": "YOUR_API_KEY",
+      "provider": "generic-chat-completion-api",
+      "max_tokens": 20480
+    },
+   {
+      "model_display_name": "Qwen [Synthetic]",
+      "model": "hf:Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "base_url": "https://api.synthetic.new/anthropic",
+      "api_key": "YOUR_API_KEY",
+      "provider": "anthropic",
+      "max_tokens": 20480
     }
   ]
 }
-
 ```
 **Features:**
 - CLI AI-powered code suggestions
@@ -226,7 +241,7 @@ opencode auth login
 
 **Features:**
 - Preloaded with free tiers through openrouter
-- Supports subagents
+- Supports droids
 - Works with BYOK 70+ models
 - Team collaboration features
 ---

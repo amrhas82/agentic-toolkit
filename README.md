@@ -213,9 +213,9 @@ agentic-toolkit/
 │   ├── bmad/                    # 📖 Referenced: BMAD framework
 │   │   ├── docs/                # Documentation - Complete guides and references
 │   │   ├── bmb/                 # BMAD Builder module - Create and customize agents
-│   │   └── cis/                 # Creative Intelligence Suite - Unlock creative thinking and innovation with brainstorming workflows
-│   ├── droids/                  # 90+ droids from droid CLI (Factory.ai)
+│   │   └── cis/                 # Creative Intelligence Suite - Unlock creative thinking
 │   ├── marketplace/             # Claude Code skills and plugins
+│   │   ├── droids/              # 90+ droids from droid CLI (Factory.ai)
 │   │   ├── skills/              # Official and community skills from Anthropic
 │   │   ├── plugins/             # Cross-referenced plugins for extending Claude Code functionality
 │   │   └── awesome_mcp_servers  # 200+ MCP server list

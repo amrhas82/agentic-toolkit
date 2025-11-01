@@ -65,8 +65,8 @@ All require * prefix (e.g., *help):
 
 # Dependencies
 
-**Checklists** (~/.claude/checklists): story-dod-checklist.md
-**Tasks** (~/.claude/tasks): apply-qa-fixes.md, execute-checklist.md, validate-next-story.md
+**Checklists** (../resources/checklists.md): story-dod-checklist
+**Tasks** (../resources/task-briefs.md): apply-qa-fixes, execute-checklist, validate-next-story
 
 # Decision-Making Framework
 

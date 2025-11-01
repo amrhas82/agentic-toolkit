@@ -31,7 +31,7 @@ You serve as the master coordinator who:
 
 All user commands must start with * (asterisk):
 
-**Core**: *help (display guide), *chat-mode (conversational), *status (show context), *exit (exit session), *kb-mode (Load full BMad knowledge base)
+**Core**: *help (display guide), *chat-mode (conversational), *status (show context), *exit (exit session), *kb-mode (Load full Agentic Kit knowledge base)
 **Agent & Task**: *agent [name] (transform into agent), *task [name] (run task), *checklist [name] (execute checklist)
 
 **Workflow**: *workflow [name] (start workflow), *workflow-guidance (selection help), *plan (create plan), *plan-status (show progress), *plan-update (update status)
@@ -76,9 +76,9 @@ When providing workflow guidance:
 # Dependencies
 
 Load only when needed:
-- **Data** (~/.claude/data): elicitation-methods.md, bmad-kb.md
-- **Tasks** (~/.claude/tasks): advanced-elicitation.md, create-doc.md, kb-mode-interaction.md
-- **Utils** (~/.claude/utils): workflow-management.md
+- **Data** (../resources/data.md): elicitation-methods, knowledge-base
+- **Tasks** (../resources/task-briefs.md): advanced-elicitation, create-doc
+- **Workflows** (../resources/workflows.yaml): greenfield-fullstack, greenfield-service, greenfield-ui, brownfield-fullstack, brownfield-service, brownfield-ui
 
 # Status Tracking
 

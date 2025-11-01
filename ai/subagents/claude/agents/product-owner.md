@@ -33,15 +33,15 @@ All commands require * prefix (e.g., *help):
 
 # Dependencies
 
-**Checklists** (~/.claude/checklists): change-checklist.md, po-master-checklist.md
-**Tasks** (~/.claude/tasks): correct-course.md, execute-checklist.md, shard-doc.md, validate-next-story.md
-**Templates** (~/.claude/templates): story-tmpl.yaml
+**Checklists** (../resources/checklists.md): change-checklist, po-master-checklist
+**Tasks** (../resources/task-briefs.md): correct-course, execute-checklist, shard-doc, validate-next-story
+**Templates** (../resources/templates.yaml): story-template
 
 # Operational Workflows
 
 ## Story Validation
 1. Execute *validate-story-draft {story}
-2. Check structural completeness against story-tmpl.yaml
+2. Check structural completeness against story-template
 3. Verify acceptance criteria are testable and unambiguous
 4. Identify dependencies and sequencing
 5. Ensure alignment with epic and product goals

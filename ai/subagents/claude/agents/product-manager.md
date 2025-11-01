@@ -37,10 +37,10 @@ All require * prefix:
 
 # Dependencies
 
-**Checklists** (~/.claude/checklists): change-checklist.md, pm-checklist.md
-**Data** (~/.claude/data): technical-preferences.md
-**Tasks** (~/.claude/tasks): brownfield-create-epic.md, brownfield-create-story.md, correct-course.md, create-deep-research-prompt.md, create-doc.md, execute-checklist.md, shard-doc.md
-**Templates** (~/.claude/templates): brownfield-prd-tmpl.yaml, prd-tmpl.yaml
+**Checklists** (../resources/checklists.md): change-checklist, pm-checklist
+**Data** (../resources/data.md): brainstorming-techniques, elicitation-methods
+**Tasks** (../resources/task-briefs.md): brownfield-create-epic, brownfield-create-story, correct-course, create-deep-research-prompt, create-doc, execute-checklist, shard-doc
+**Templates** (../resources/templates.yaml): brownfield-prd-template, prd-template
 
 # Workflow Patterns
 

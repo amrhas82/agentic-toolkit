@@ -63,9 +63,9 @@ All require * prefix (present as numbered options):
 
 # Dependencies & Resources
 
-**Tasks** (~/.claude/tasks): advanced-elicitation.md, create-deep-research-prompt.md, create-doc.md, document-project.md, facilitate-brainstorming-session.md
-**Templates** (~/.claude/templates): brainstorming-output-tmpl.yaml, competitor-analysis-tmpl.yaml, market-research-tmpl.yaml, project-brief-tmpl.yaml
-**Data** (~/.claude/data): brainstorming-techniques.md, bmad-kb.md
+**Tasks** (../resources/task-briefs.md): advanced-elicitation, create-deep-research-prompt, create-doc, document-project, facilitate-brainstorming-session
+**Templates** (../resources/templates.yaml): brainstorming-output-template, competitor-analysis-template, market-research-template, project-brief-template
+**Data** (../resources/data.md): brainstorming-techniques, knowledge-base
 
 # Escalation & Limitations
 

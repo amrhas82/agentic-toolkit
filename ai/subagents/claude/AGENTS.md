@@ -37,91 +37,91 @@ Note
 
 
 ### 1-Create PRD (id: 1-create-prd) 
-Source: [.agents/ux-expert.md](.agent/1-create-prd.md)
+Source: [.agents/ux-expert.md](.agents/1-create-prd.md)
 
 - When to use: Define Scope: use to clearly outlining what needs to be built with a Product Requirement Document (PRD)  optimization
 - How to activate: Mention "create prd, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### 2-Generate Tasks (id: 2-generate-tasks) 
-Source: [.agents/ux-expert.md](.agent/2-generate-tasks.md)
+Source: [.agents/ux-expert.md](.agents/2-generate-tasks.md)
 
 - When to use: 2. Detailed Planning: use to break down the PRD into a granular, actionable task list
 - How to activate: Mention "generate tasks, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### 3-Process Task List (id: 3-process-task-list)
-Source: [.agents/ux-expert.md](.agent/3-process-task-list.md)
+Source: [.agents/ux-expert.md](.agents/3-process-task-list.md)
 
 - When to use: 3. Iterative Implementation: use to guide the AI to tackle one task at a time, allowing you to review and approve each change
 - How to activate: Mention "process task list, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### UX Expert (id: ux-expert)
-Source: [.agents/ux-expert.md](.agent/ux-expert.md)
+Source: [.agents/ux-expert.md](.agents/ux-expert.md)
 
 - When to use: Use for UI/UX design, wireframes, prototypes, front-end specifications, and user experience optimization
 - How to activate: Mention "As ux-expert, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Scrum Master (id: scrum-master)
-Source: [.agents/scrum-master.md](.agent/scrum-master.md)
+Source: [.agents/scrum-master.md](.agents/scrum-master.md)
 
 - When to use: Use for story creation, epic management, retrospectives in party-mode, and agile process guidance
 - How to activate: Mention "As scrum-master, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Test Architect & Quality Advisor (id: qa-test-architect)
-Source: [.agents/qa-test-architect.md](.agent/qa-test-architect.md)
+Source: [.agents/qa-test-architect.md](.agents/qa-test-architect.md)
 
 - When to use: Use for comprehensive test architecture review, quality gate decisions, and code improvement. Provides thorough analysis including requirements traceability, risk assessment, and test strategy. Advisory only - teams choose their quality bar.
 - How to activate: Mention "As qa, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Product Owner (id: product-owner)
-Source: [.agents/product-owner.md](.agent/product-owner.md)
+Source: [.agents/product-owner.md](.agents/product-owner.md)
 
 - When to use: Use for backlog management, story refinement, acceptance criteria, sprint planning, and prioritization decisions
 - How to activate: Mention "As product-owner, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Product Manager (id: product-manager)
-Source: [.agents/product-manager.md](.agent/product-manager.md)
+Source: [.agents/product-manager.md](.agents/product-manager.md)
 
 - When to use: Use for creating PRDs, product strategy, feature prioritization, roadmap planning, and stakeholder communication
 - How to activate: Mention "As product-manager, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Full Stack Developer (id: full-stack-dev)
-Source: [.agents/full-stack-dev.md](.agent/full-stack-dev.md)
+Source: [.agents/full-stack-dev.md](.agents/full-stack-dev.md)
 
 - When to use: Use for code implementation, debugging, refactoring, and development best practices
 - How to activate: Mention "As full-stack-dev, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Master Orchestrator (id: orchestrator)
-Source: [.agents/orchestrator.md](.agent/orchestrator.md)
+Source: [.agents/orchestrator.md](.agents/orchestrator.md)
 
 - When to use: Use for workflow coordination, multi-agent tasks, role switching guidance, and when unsure which specialist to consult
 - How to activate: Mention "As orchestrator, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Master Task Executor (id: master)
-Source: [.agents/master.md](.agent/master.md)
+Source: [.agents/master.md](.agents/master.md)
 
 - When to use: Use when you need comprehensive expertise across all domains, running 1 off tasks that do not require a persona, or just wanting to use the same agent for many things.
 - How to activate: Mention "As master, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Architect (id: holistic-architect)
-Source: [.agents/holistic-architect.md](.agent/holistic-architect.md)
+Source: [.agents/holistic-architect.md](.agents/holistic-architect.md)
 
 - When to use: Use for system design, architecture documents, technology selection, API design, and infrastructure planning
 - How to activate: Mention "As architect, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Business Analyst (id: business-analyst)
-Source: [.agents/business-analyst.md](.agent/business-analyst.md)
+Source: [.agents/business-analyst.md](.agents/business-analyst.md)
 
 - When to use: Use for market research, brainstorming, competitive analysis, creating project briefs, initial project discovery, and documenting existing projects (brownfield)
 - How to activate: Mention "As analyst, ..." to get role-aligned behavior
@@ -132,112 +132,112 @@ Source: [.agents/business-analyst.md](.agent/business-analyst.md)
 These are reusable task briefs; use the paths to open them as needed.
 
 ### Task: validate-next-story
-Source: [.tasks/validate-next-story.md](.tasks/validate-next-story.md)
+Source: [../resources/task-briefs.md#validate-next-story](../resources/task-briefs.md#validate-next-story)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: trace-requirements
-Source: [.tasks/trace-requirements.md](.tasks/trace-requirements.md)
+Source: [../resources/task-briefs.md#trace-requirements](../resources/task-briefs.md#trace-requirements)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: test-design
-Source: [.tasks/test-design.md](.tasks/test-design.md)
+Source: [../resources/task-briefs.md#test-design](../resources/task-briefs.md#test-design)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: shard-doc
-Source: [.tasks/shard-doc.md](.tasks/shard-doc.md)
+Source: [../resources/task-briefs.md#shard-doc](../resources/task-briefs.md#shard-doc)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: risk-profile
-Source: [.tasks/risk-profile.md](.tasks/risk-profile.md)
+Source: [../resources/task-briefs.md#risk-profile](../resources/task-briefs.md#risk-profile)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: review-story
-Source: [.tasks/review-story.md](.tasks/review-story.md)
+Source: [../resources/task-briefs.md#review-story](../resources/task-briefs.md#review-story)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: qa-test-architect-gate
-Source: [.tasks/qa-gate.md](.tasks/qa-gate.md)
+Source: [../resources/task-briefs.md#qa-gate](../resources/task-briefs.md#qa-gate)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: nfr-assess
-Source: [.tasks/nfr-assess.md](.tasks/nfr-assess.md)
+Source: [../resources/task-briefs.md#nfr-assess](../resources/task-briefs.md#nfr-assess)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: index-docs
-Source: [.tasks/index-docs.md](.tasks/index-docs.md)
+Source: [../resources/task-briefs.md#index-docs](../resources/task-briefs.md#index-docs)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: generate-ai-frontend-prompt
-Source: [.tasks/generate-ai-frontend-prompt.md](.tasks/generate-ai-frontend-prompt.md)
+Source: [../resources/task-briefs.md#generate-ai-frontend-prompt](../resources/task-briefs.md#generate-ai-frontend-prompt)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: facilitate-brainstorming-session
-Source: [.tasks/facilitate-brainstorming-session.md](.tasks/facilitate-brainstorming-session.md)
+Source: [../resources/task-briefs.md#facilitate-brainstorming-session](../resources/task-briefs.md#facilitate-brainstorming-session)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: execute-checklist
-Source: [.tasks/execute-checklist.md](.tasks/execute-checklist.md)
+Source: [../resources/task-briefs.md#execute-checklist](../resources/task-briefs.md#execute-checklist)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: document-project
-Source: [.tasks/document-project.md](.tasks/document-project.md)
+Source: [../resources/task-briefs.md#document-project](../resources/task-briefs.md#document-project)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: create-next-story
-Source: [.tasks/create-next-story.md](.tasks/create-next-story.md)
+Source: [../resources/task-briefs.md#create-next-story](../resources/task-briefs.md#create-next-story)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: create-doc
-Source: [.tasks/create-doc.md](.tasks/create-doc.md)
+Source: [../resources/task-briefs.md#create-doc](../resources/task-briefs.md#create-doc)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: create-deep-research-prompt
-Source: [.tasks/create-deep-research-prompt.md](.tasks/create-deep-research-prompt.md)
+Source: [../resources/task-briefs.md#create-deep-research-prompt](../resources/task-briefs.md#create-deep-research-prompt)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: create-brownfield-story
-Source: [.tasks/create-brownfield-story.md](.tasks/create-brownfield-story.md)
+Source: [../resources/task-briefs.md#create-brownfield-story](../resources/task-briefs.md#create-brownfield-story)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: correct-course
-Source: [.tasks/correct-course.md](.tasks/correct-course.md)
+Source: [../resources/task-briefs.md#correct-course](../resources/task-briefs.md#correct-course)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: brownfield-create-story
-Source: [.tasks/brownfield-create-story.md](.tasks/brownfield-create-story.md)
+Source: [../resources/task-briefs.md#brownfield-create-story](../resources/task-briefs.md#brownfield-create-story)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: brownfield-create-epic
-Source: [.tasks/brownfield-create-epic.md](.tasks/brownfield-create-epic.md)
+Source: [../resources/task-briefs.md#brownfield-create-epic](../resources/task-briefs.md#brownfield-create-epic)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: apply-qa-fixes
-Source: [.tasks/apply-qa-fixes.md](.tasks/apply-qa-fixes.md)
+Source: [../resources/task-briefs.md#apply-qa-fixes](../resources/task-briefs.md#apply-qa-fixes)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 
 ### Task: advanced-elicitation
-Source: [.tasks/advanced-elicitation.md](.tasks/advanced-elicitation.md)
+Source: [../resources/task-briefs.md#advanced-elicitation](../resources/task-briefs.md#advanced-elicitation)
 - How to use: Reference the task in your prompt or execute via your configured commands.
 - Full brief: open the source file above (content not embedded)
 

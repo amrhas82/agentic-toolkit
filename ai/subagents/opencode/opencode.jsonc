@@ -51,7 +51,7 @@
       },
       "description": "Use for story creation, epic management, retrospectives in party-mode, and agile process guidance"
     },
-    "qa-test": {
+    "qa-test-architecht": {
       "prompt": "{file:./agent/qa-test-architect.md}",
       "mode": "all",
       "tools": {

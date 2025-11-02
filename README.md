@@ -31,13 +31,16 @@ cd agentic-toolkit
 # 2. Copy YOUR kit (pick one)
 
 # For Claude Code:
-cp -r ai/subagents/claude/* ~/.claude/
+cp -rv ai/subagents/claude/* ~/.claude/
+
+# For Droid:
+cp -rv ai/subagents/claude/* ~/.factory/
 
 # For OpenCode:
-cp -r ai/subagents/opencode/* ~/.config/opencode/
+cp -rv ai/subagents/opencode/* ~/.config/opencode/
 
 # For Amp:
-cp -r ai/subagents/ampcode/* ~/.amp/
+cp -rv ai/subagents/ampcode/* ~/.config/amp/
 ```
 
 📖 **[See full agent list & usage guide](ai/subagents/subagentic-manual.md)**

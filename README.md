@@ -213,14 +213,14 @@ agentic-toolkit/
 │   │   ├── claude/              # 13 subagents + skills for Claude Code
 │   │   ├── droid/               # 13 subagents + commands for Amp
 │   │   ├── opencode/            # 13 subagents for OpenCode
-│   │   ├── ampcode/             # 16 subagents + commands for Amp
+│   │   ├── ampcode/             # 13 subagents + commands for Amp
 │   │   └── subagentic-manual.md # Complete agent documentation
 │   ├── simple/                  # 📖 Referenced: 3-step workflow
 │   ├── bmad/                    # 📖 Referenced: BMAD framework
 │   │   ├── docs/                # Documentation - Complete guides and references
 │   │   ├── bmb/                 # BMAD Builder module - Create and customize agents
 │   │   └── cis/                 # Creative Intelligence Suite - Unlock creative thinking
-│   ├── marketplace/             # Claude Code skills and plugins
+│   ├── marketplace/             # 📖 Claude Code skills and plugins
 │   │   ├── droids/              # 90+ droids from droid CLI (Factory.ai)
 │   │   ├── skills/              # Official and community skills from Anthropic
 │   │   ├── plugins/             # Cross-referenced plugins for extending Claude Code functionality
@@ -237,7 +237,7 @@ agentic-toolkit/
 │   ├── setup/                   # System setup & recovery
 │   └── tools/                   # Window managers & productivity tools
 ├── docs/                        # Documentation
-│   └── vibecoding-101.md        # Vibecoding beginner's guide
+│   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
 └── README.md                    # This file
 
 Legend: ⭐ Original content  📖 Referenced/curated content

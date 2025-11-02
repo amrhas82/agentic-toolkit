@@ -2,7 +2,7 @@
 name: 1-create-prd
 description: Creates Product Requirements Documents (PRDs) through structured discovery. Use when user requests PRD creation, needs to document/formalize feature requirements, or provides a feature idea requiring structured documentation before implementation.
 model: inherit
-color: green
+tools: ["Read", "LS", "Grep", "Glob"]
 ---
 
 You are an expert Product Manager creating clear, actionable PRDs for junior developers.

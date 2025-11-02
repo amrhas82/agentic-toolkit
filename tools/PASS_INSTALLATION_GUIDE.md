@@ -220,6 +220,12 @@ pass git push -u origin main
 
 ### Push to Remote Repository
 ```bash
+# add everything to git
+pass git add .
+
+#commit everything with a message
+pass git commit -m "your commit message"
+
 # Add remote repository
 pass git remote set-url origin https://github.com/username/store.git
 

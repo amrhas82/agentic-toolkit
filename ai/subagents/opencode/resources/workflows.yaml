@@ -16,13 +16,13 @@ workflows:
       - step: enhancement_classification
         agent: business-analyst
         action: classify enhancement scope
-        notes: "Determine enhancement complexity to route to appropriate path:\n-\
-          \ Single story (< 4 hours) \u2192 Use brownfield-create-story task\n- Small\
-          \ feature (1-3 stories) \u2192 Use brownfield-create-epic task  \n- Major\
-          \ enhancement (multiple epics) \u2192 Continue with full workflow\n\nAsk\
-          \ user: \"Can you describe the enhancement scope? Is this a small fix, a\
-          \ feature addition, or a major enhancement requiring architectural changes?\"\
-          \n"
+        notes: |
+  Determine enhancement complexity to route to appropriate path:
+  - Single story (< 4 hours) \u2192 Use brownfield-create-story task
+  - Small feature (1-3 stories) \u2192 Use brownfield-create-epic task  
+  - Major enhancement (multiple epics) \u2192 Continue with full workflow
+  
+  Ask user: "Can you describe the enhancement scope? Is this a small fix, a feature addition, or a major enhancement requiring architectural changes?"
       - step: routing_decision
         condition: based_on_classification
         routes:
@@ -77,11 +77,13 @@ workflows:
         agent: product-manager/architect
         action: determine if architecture document needed
         condition: after_prd_creation
-        notes: "Review PRD to determine if architectural planning is needed:\n- New\
-          \ architectural patterns \u2192 Create architecture doc\n- New libraries/frameworks\
-          \ \u2192 Create architecture doc\n- Platform/infrastructure changes \u2192\
-          \ Create architecture doc\n- Following existing patterns \u2192 Skip to\
-          \ story creation\n"
+        notes: |
+  Review PRD to determine if architectural planning is needed:
+  - New architectural patterns \u2192 Create architecture doc
+  - New libraries/frameworks \u2192 Create architecture doc
+  - Platform/infrastructure changes \u2192 Create architecture doc
+  - Following existing patterns \u2192 Skip to story creation
+  
       - agent: architect
         creates: architecture.md
         uses: brownfield-architecture-template
@@ -118,20 +120,26 @@ workflows:
         creates: story.md
         requires: sharded_docs_or_brownfield_docs
         repeats: for_each_epic_or_enhancement
-        notes: "Story creation cycle:\n- For sharded PRD: @scrum-master \u2192 *create\
-          \ (uses create-next-story)\n- For brownfield docs: @scrum-master \u2192\
-          \ use create-brownfield-story task\n- Creates story from available documentation\n\
-          - Story starts in \"Draft\" status\n- May require additional context gathering\
-          \ for brownfield\n"
+        notes: |
+  Story creation cycle:
+  - For sharded PRD: @scrum-master \u2192 *create (uses create-next-story)
+  - For brownfield docs: @scrum-master \u2192 use create-brownfield-story task
+  - Creates story from available documentation
+  - Story starts in "Draft" status
+  - May require additional context gathering for brownfield
+  
       - agent: business-analyst/product-manager
         action: review_draft_story
         updates: story.md
         requires: story.md
         optional: true
         condition: user_wants_story_review
-        notes: "OPTIONAL: Review and approve draft story\n- NOTE: story-review task\
-          \ coming soon\n- Review story completeness and alignment\n- Update story\
-          \ status: Draft \u2192 Approved\n"
+        notes: |
+  OPTIONAL: Review and approve draft story
+  - NOTE: story-review task coming soon
+  - Review story completeness and alignment
+  - Update story status: Draft \u2192 Approved
+  
       - agent: dev
         action: implement_story
         creates: implementation_files
@@ -150,10 +158,13 @@ workflows:
         updates: implementation_files
         requires: implementation_files
         optional: true
-        notes: "OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story\n- Senior dev\
-          \ review with refactoring ability\n- Fixes small issues directly\n- Leaves\
-          \ checklist for remaining items\n- Updates story status (Review \u2192 Done\
-          \ or stays Review)\n"
+        notes: |
+  OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story
+  - Senior dev review with refactoring ability
+  - Fixes small issues directly
+  - Leaves checklist for remaining items
+  - Updates story status (Review \u2192 Done or stays Review)
+  
       - agent: dev
         action: address_qa_feedback
         updates: implementation_files
@@ -167,8 +178,10 @@ workflows:
           '
       - step: repeat_development_cycle
         action: continue_for_all_stories
-        notes: "Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic\
-          \ stories\nContinue until all stories in PRD are complete\n"
+        notes: |
+  Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic stories
+  Continue until all stories in PRD are complete
+  
       - agent: product-owner
         action: epic_retrospective
         creates: epic-retrospective.md
@@ -193,31 +206,71 @@ workflows:
           Reference: ../resources/data.md#IDE Development Workflow
 
           '
-      flow_diagram: "```mermaid\ngraph TD\n    A[Start: Brownfield Enhancement] -->\
-        \ B[business-analyst: classify enhancement scope]\n    B --> C{Enhancement\
-        \ Size?}\n    \n    C -->|Single Story| D[product-manager: brownfield-create-story]\n\
-        \    C -->|1-3 Stories| E[product-manager: brownfield-create-epic]\n    C\
-        \ -->|Major Enhancement| F[business-analyst: check documentation]\n    \n\
-        \    D --> END1[To Dev Implementation]\n    E --> END2[To Story Creation]\n\
-        \    \n    F --> G{Docs Adequate?}\n    G -->|No| H[architect: document-project]\n\
-        \    G -->|Yes| I[product-manager: brownfield PRD]\n    H --> I\n    \n  \
-        \  I --> J{Architecture Needed?}\n    J -->|Yes| K[architect: architecture.md]\n\
-        \    J -->|No| L[product-owner: validate artifacts]\n    K --> L\n    \n \
-        \   L --> M{product-owner finds issues?}\n    M -->|Yes| N[Fix issues]\n \
-        \   M -->|No| O[product-owner: shard documents]\n    N --> L\n    \n    O\
-        \ --> P[scrum-master: create story]\n    P --> Q{Story Type?}\n    Q -->|Sharded\
-        \ PRD| R[create-next-story]\n    Q -->|Brownfield Docs| S[create-brownfield-story]\n\
-        \    \n    R --> T{Review draft?}\n    S --> T\n    T -->|Yes| U[review &\
-        \ approve]\n    T -->|No| V[dev: implement]\n    U --> V\n    \n    V -->\
-        \ W{QA review?}\n    W -->|Yes| X[qa: review]\n    W -->|No| Y{More stories?}\n\
-        \    X --> Z{Issues?}\n    Z -->|Yes| AA[dev: fix]\n    Z -->|No| Y\n    AA\
-        \ --> X\n    Y -->|Yes| P\n    Y -->|No| AB{Retrospective?}\n    AB -->|Yes|\
-        \ AC[product-owner: retrospective]\n    AB -->|No| AD[Complete]\n    AC -->\
-        \ AD\n\n    style AD fill:#90EE90\n    style END1 fill:#90EE90\n    style\
-        \ END2 fill:#90EE90\n    style D fill:#87CEEB\n    style E fill:#87CEEB\n\
-        \    style I fill:#FFE4B5\n    style K fill:#FFE4B5\n    style O fill:#ADD8E6\n\
-        \    style P fill:#ADD8E6\n    style V fill:#ADD8E6\n    style U fill:#F0E68C\n\
-        \    style X fill:#F0E68C\n    style AC fill:#F0E68C\n```\n"
+      flow_diagram: |
+  ```mermaid
+  graph TD
+      A[Start: Brownfield Enhancement] --> B[business-analyst: classify enhancement scope]
+      B --> C{Enhancement Size?}
+      
+      C -->|Single Story| D[product-manager: brownfield-create-story]
+      C -->|1-3 Stories| E[product-manager: brownfield-create-epic]
+      C -->|Major Enhancement| F[business-analyst: check documentation]
+      
+      D --> END1[To Dev Implementation]
+      E --> END2[To Story Creation]
+  F --> G{Docs Adequate?}
+      G -->|No| H[architect: document-project]
+      G -->|Yes| I[product-manager: brownfield PRD]
+      H --> I
+      
+      I --> J{Architecture Needed?}
+      J -->|Yes| K[architect: architecture.md]
+      J -->|No| L[product-owner: validate artifacts]
+      K --> L
+      
+      L --> M{product-owner finds issues?}
+      M -->|Yes| N[Fix issues]
+      M -->|No| O[product-owner: shard documents]
+      N --> L
+      
+      O --> P[scrum-master: create story]
+      P --> Q{Story Type?}
+      Q -->|Sharded PRD| R[create-next-story]
+      Q -->|Brownfield Docs| S[create-brownfield-story]
+  R --> T{Review draft?}
+      S --> T
+      T -->|Yes| U[review & approve]
+      T -->|No| V[dev: implement]
+      U --> V
+      
+      V --> W{QA review?}
+      W -->|Yes| X[qa: review]
+      W -->|No| Y{More stories?}
+      X --> Z{Issues?}
+      Z -->|Yes| AA[dev: fix]
+      Z -->|No| Y
+      AA --> X
+      Y -->|Yes| P
+      Y -->|No| AB{Retrospective?}
+      AB -->|Yes| AC[product-owner: retrospective]
+      AB -->|No| AD[Complete]
+      AC --> AD
+  
+      style AD fill:#90EE90
+      style END1 fill:#90EE90
+      style END2 fill:#90EE90
+      style D fill:#87CEEB
+      style E fill:#87CEEB
+      style I fill:#FFE4B5
+      style K fill:#FFE4B5
+      style O fill:#ADD8E6
+      style P fill:#ADD8E6
+      style V fill:#ADD8E6
+      style U fill:#F0E68C
+      style X fill:#F0E68C
+      style AC fill:#F0E68C
+  ```
+  
       decision_guidance:
         when_to_use:
         - Enhancement requires coordinated stories
@@ -255,16 +308,19 @@ workflows:
           aspects.
 
           '
-        product-manager_to_architect_decision: "PRD complete and saved as docs/prd.md.\
-          \ \nArchitectural changes identified: {{yes/no}}\n{{if yes}}: Proceeding\
-          \ to create architecture document for: {{specific_changes}}\n{{if no}}:\
-          \ No architectural changes needed. Proceeding to validation.\n"
+        product-manager_to_architect_decision: |
+  PRD complete and saved as docs/prd.md.Architectural changes identified: {{yes/no}}
+  {{if yes}}: Proceeding to create architecture document for: {{specific_changes}}
+  {{if no}}: No architectural changes needed. Proceeding to validation.
+  
         architect_to_po: Architecture complete. Save it as docs/architecture.md. Please
           validate all artifacts for integration safety.
-        product-owner_to_scrum-master: "All artifacts validated. \nDocumentation type\
-          \ available: {{sharded_prd / brownfield_docs}}\n{{if sharded}}: Use standard\
-          \ create-next-story task.\n{{if brownfield}}: Use create-brownfield-story\
-          \ task to handle varied documentation formats.\n"
+        product-owner_to_scrum-master: |
+  All artifacts validated. 
+  Documentation type available: {{sharded_prd / brownfield_docs}}
+  {{if sharded}}: Use standard create-next-story task.
+  {{if brownfield}}: Use create-brownfield-story task to handle varied documentation formats.
+  
         scrum-master_story_creation: 'Creating story from {{documentation_type}}.
 
           {{if missing_context}}: May need to gather additional context from user
@@ -337,18 +393,24 @@ workflows:
         creates: story.md
         requires: sharded_docs
         repeats: for_each_epic
-        notes: "Story creation cycle:\n- scrum-master Agent (New Chat): @scrum-master\
-          \ \u2192 *create\n- Creates next story from sharded docs\n- Story starts\
-          \ in \"Draft\" status\n"
+        notes: |
+  Story creation cycle:
+  - scrum-master Agent (New Chat): @scrum-master \u2192 *create
+  - Creates next story from sharded docs
+  - Story starts in "Draft" status
+  
       - agent: business-analyst/product-manager
         action: review_draft_story
         updates: story.md
         requires: story.md
         optional: true
         condition: user_wants_story_review
-        notes: "OPTIONAL: Review and approve draft story\n- NOTE: story-review task\
-          \ coming soon\n- Review story completeness and alignment\n- Update story\
-          \ status: Draft \u2192 Approved\n"
+        notes: |
+  OPTIONAL: Review and approve draft story
+  - NOTE: story-review task coming soon
+  - Review story completeness and alignment
+  - Update story status: Draft \u2192 Approved
+  
       - agent: dev
         action: implement_story
         creates: implementation_files
@@ -367,10 +429,13 @@ workflows:
         updates: implementation_files
         requires: implementation_files
         optional: true
-        notes: "OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story\n- Senior dev\
-          \ review with refactoring ability\n- Fixes small issues directly\n- Leaves\
-          \ checklist for remaining items\n- Updates story status (Review \u2192 Done\
-          \ or stays Review)\n"
+        notes: |
+  OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story
+  - Senior dev review with refactoring ability
+  - Fixes small issues directly
+  - Leaves checklist for remaining items
+  - Updates story status (Review \u2192 Done or stays Review)
+  
       - agent: dev
         action: address_qa_feedback
         updates: implementation_files
@@ -384,8 +449,10 @@ workflows:
           '
       - step: repeat_development_cycle
         action: continue_for_all_stories
-        notes: "Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic\
-          \ stories\nContinue until all stories in PRD are complete\n"
+        notes: |
+  Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic stories
+  Continue until all stories in PRD are complete
+  
       - agent: product-owner
         action: epic_retrospective
         creates: epic-retrospective.md
@@ -409,23 +476,47 @@ workflows:
           Reference: ../resources/data.md#IDE Development Workflow
 
           '
-      flow_diagram: "```mermaid\ngraph TD\n    A[Start: Service Enhancement] --> B[business-analyst:\
-        \ analyze existing service]\n    B --> C[product-manager: prd.md]\n    C -->\
-        \ D[architect: architecture.md]\n    D --> E[product-owner: validate with\
-        \ po-master-checklist]\n    E --> F{product-owner finds issues?}\n    F -->|Yes|\
-        \ G[Return to relevant agent for fixes]\n    F -->|No| H[product-owner: shard\
-        \ documents]\n    G --> E\n    \n    H --> I[scrum-master: create story]\n\
-        \    I --> J{Review draft story?}\n    J -->|Yes| K[business-analyst/product-manager:\
-        \ review & approve story]\n    J -->|No| L[dev: implement story]\n    K -->\
-        \ L\n    L --> M{QA review?}\n    M -->|Yes| N[qa: review implementation]\n\
-        \    M -->|No| O{More stories?}\n    N --> P{QA found issues?}\n    P -->|Yes|\
-        \ Q[dev: address QA feedback]\n    P -->|No| O\n    Q --> N\n    O -->|Yes|\
-        \ I\n    O -->|No| R{Epic retrospective?}\n    R -->|Yes| S[product-owner:\
-        \ epic retrospective]\n    R -->|No| T[Project Complete]\n    S --> T\n\n\
-        \    style T fill:#90EE90\n    style H fill:#ADD8E6\n    style I fill:#ADD8E6\n\
-        \    style L fill:#ADD8E6\n    style C fill:#FFE4B5\n    style D fill:#FFE4B5\n\
-        \    style K fill:#F0E68C\n    style N fill:#F0E68C\n    style S fill:#F0E68C\n\
-        ```\n"
+      flow_diagram: |
+  ```mermaid
+  graph TD
+      A[Start: Service Enhancement] --> B[business-analyst: analyze existing service]
+      B --> C[product-manager: prd.md]
+      C --> D[architect: architecture.md]
+      D --> E[product-owner: validate with po-master-checklist]
+      E --> F{product-owner finds issues?}
+      F -->|Yes| G[Return to relevant agent for fixes]
+      F -->|No| H[product-owner: shard documents]
+      G --> E
+      
+      H --> I[scrum-master: create story]
+      I --> J{Review draft story?}
+      J -->|Yes| K[business-analyst/product-manager: review & approve story]
+      J -->|No| L[dev: implement story]
+      K --> L
+      L --> M{QA review?}
+      M -->|Yes| N[qa: review implementation]
+      M -->|No| O{More stories?}
+      N --> P{QA found issues?}
+      P -->|Yes| Q[dev: address QA feedback]
+      P -->|No| O
+      Q --> N
+      O -->|Yes| I
+      O -->|No| R{Epic retrospective?}
+      R -->|Yes| S[product-owner: epic retrospective]
+      R -->|No| T[Project Complete]
+      S --> T
+  
+      style T fill:#90EE90
+      style H fill:#ADD8E6
+      style I fill:#ADD8E6
+      style L fill:#ADD8E6
+      style C fill:#FFE4B5
+      style D fill:#FFE4B5
+      style K fill:#F0E68C
+      style N fill:#F0E68C
+      style S fill:#F0E68C
+  ```
+  
       decision_guidance:
         when_to_use:
         - Service enhancement requires coordinated stories
@@ -515,18 +606,24 @@ workflows:
         creates: story.md
         requires: sharded_docs
         repeats: for_each_epic
-        notes: "Story creation cycle:\n- scrum-master Agent (New Chat): @scrum-master\
-          \ \u2192 *create\n- Creates next story from sharded docs\n- Story starts\
-          \ in \"Draft\" status\n"
+        notes: |
+  Story creation cycle:
+  - scrum-master Agent (New Chat): @scrum-master \u2192 *create
+  - Creates next story from sharded docs
+  - Story starts in "Draft" status
+  
       - agent: business-analyst/product-manager
         action: review_draft_story
         updates: story.md
         requires: story.md
         optional: true
         condition: user_wants_story_review
-        notes: "OPTIONAL: Review and approve draft story\n- NOTE: story-review task\
-          \ coming soon\n- Review story completeness and alignment\n- Update story\
-          \ status: Draft \u2192 Approved\n"
+        notes: |
+  OPTIONAL: Review and approve draft story
+  - NOTE: story-review task coming soon
+  - Review story completeness and alignment
+  - Update story status: Draft \u2192 Approved
+  
       - agent: dev
         action: implement_story
         creates: implementation_files
@@ -545,10 +642,13 @@ workflows:
         updates: implementation_files
         requires: implementation_files
         optional: true
-        notes: "OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story\n- Senior dev\
-          \ review with refactoring ability\n- Fixes small issues directly\n- Leaves\
-          \ checklist for remaining items\n- Updates story status (Review \u2192 Done\
-          \ or stays Review)\n"
+        notes: |
+  OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story
+  - Senior dev review with refactoring ability
+  - Fixes small issues directly
+  - Leaves checklist for remaining items
+  - Updates story status (Review \u2192 Done or stays Review)
+  
       - agent: dev
         action: address_qa_feedback
         updates: implementation_files
@@ -562,8 +662,10 @@ workflows:
           '
       - step: repeat_development_cycle
         action: continue_for_all_stories
-        notes: "Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic\
-          \ stories\nContinue until all stories in PRD are complete\n"
+        notes: |
+  Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic stories
+  Continue until all stories in PRD are complete
+  
       - agent: po
         action: epic_retrospective
         creates: epic-retrospective.md
@@ -588,23 +690,49 @@ workflows:
           Reference: ../resources/data.md#IDE Development Workflow
 
           '
-      flow_diagram: "```mermaid\ngraph TD\n    A[Start: UI Enhancement] --> B[business-analyst:\
-        \ analyze existing UI]\n    B --> C[product-manager: prd.md]\n    C --> D[ux-expert:\
-        \ front-end-spec.md]\n    D --> E[architect: architecture.md]\n    E --> F[po:\
-        \ validate with po-master-checklist]\n    F --> G{PO finds issues?}\n    G\
-        \ -->|Yes| H[Return to relevant agent for fixes]\n    G -->|No| I[po: shard\
-        \ documents]\n    H --> F\n    \n    I --> J[scrum-master: create story]\n\
-        \    J --> K{Review draft story?}\n    K -->|Yes| L[business-analyst/product-manager:\
-        \ review & approve story]\n    K -->|No| M[dev: implement story]\n    L -->\
-        \ M\n    M --> N{QA review?}\n    N -->|Yes| O[qa: review implementation]\n\
-        \    N -->|No| P{More stories?}\n    O --> Q{QA found issues?}\n    Q -->|Yes|\
-        \ R[dev: address QA feedback]\n    Q -->|No| P\n    R --> O\n    P -->|Yes|\
-        \ J\n    P -->|No| S{Epic retrospective?}\n    S -->|Yes| T[po: epic retrospective]\n\
-        \    S -->|No| U[Project Complete]\n    T --> U\n\n    style U fill:#90EE90\n\
-        \    style I fill:#ADD8E6\n    style J fill:#ADD8E6\n    style M fill:#ADD8E6\n\
-        \    style C fill:#FFE4B5\n    style D fill:#FFE4B5\n    style E fill:#FFE4B5\n\
-        \    style L fill:#F0E68C\n    style O fill:#F0E68C\n    style T fill:#F0E68C\n\
-        ```\n"
+      flow_diagram: |
+  ```mermaid
+  graph TD
+      A[Start: UI Enhancement] --> B[business-analyst: analyze existing UI]
+      B --> C[product-manager: prd.md]
+      C --> D[ux-expert: front-end-spec.md]
+      D --> E[architect: architecture.md]
+      E --> F[po: validate with po-master-checklist]
+      F --> G{PO finds issues?}
+      G -->|Yes| H[Return to relevant agent for fixes]
+      G -->|No| I[po: shard documents]
+      H --> F
+      
+      I --> J[scrum-master: create story]
+      J --> K{Review draft story?}
+      K -->|Yes| L[business-analyst/product-manager: review & approve story]
+      K -->|No| M[dev: implement story]
+      L --> M
+      M --> N{QA review?}
+      N -->|Yes| O[qa: review implementation]
+      N -->|No| P{More stories?}
+      O --> Q{QA found issues?}
+      Q -->|Yes| R[dev: address QA feedback]
+      Q -->|No| P
+      R --> O
+      P -->|Yes| J
+      P -->|No| S{Epic retrospective?}
+      S -->|Yes| T[po: epic retrospective]
+      S -->|No| U[Project Complete]
+      T --> U
+  
+      style U fill:#90EE90
+      style I fill:#ADD8E6
+      style J fill:#ADD8E6
+      style M fill:#ADD8E6
+      style C fill:#FFE4B5
+      style D fill:#FFE4B5
+      style E fill:#FFE4B5
+      style L fill:#F0E68C
+      style O fill:#F0E68C
+      style T fill:#F0E68C
+  ```
+  
       decision_guidance:
         when_to_use:
         - UI enhancement requires coordinated stories
@@ -726,18 +854,24 @@ workflows:
         creates: story.md
         requires: sharded_docs
         repeats: for_each_epic
-        notes: "Story creation cycle:\n- scrum-master Agent (New Chat): @scrum-master\
-          \ \u2192 *create\n- Creates next story from sharded docs\n- Story starts\
-          \ in \"Draft\" status\n"
+        notes: |
+  Story creation cycle:
+  - scrum-master Agent (New Chat): @scrum-master \u2192 *create
+  - Creates next story from sharded docs
+  - Story starts in "Draft" status
+  
       - agent: business-analyst/product-manager
         action: review_draft_story
         updates: story.md
         requires: story.md
         optional: true
         condition: user_wants_story_review
-        notes: "OPTIONAL: Review and approve draft story\n- NOTE: story-review task\
-          \ coming soon\n- Review story completeness and alignment\n- Update story\
-          \ status: Draft \u2192 Approved\n"
+        notes: |
+  OPTIONAL: Review and approve draft story
+  - NOTE: story-review task coming soon
+  - Review story completeness and alignment
+  - Update story status: Draft \u2192 Approved
+  
       - agent: dev
         action: implement_story
         creates: implementation_files
@@ -756,10 +890,13 @@ workflows:
         updates: implementation_files
         requires: implementation_files
         optional: true
-        notes: "OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story\n- Senior dev\
-          \ review with refactoring ability\n- Fixes small issues directly\n- Leaves\
-          \ checklist for remaining items\n- Updates story status (Review \u2192 Done\
-          \ or stays Review)\n"
+        notes: |
+  OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story
+  - Senior dev review with refactoring ability
+  - Fixes small issues directly
+  - Leaves checklist for remaining items
+  - Updates story status (Review \u2192 Done or stays Review)
+  
       - agent: dev
         action: address_qa_feedback
         updates: implementation_files
@@ -773,8 +910,10 @@ workflows:
           '
       - step: repeat_development_cycle
         action: continue_for_all_stories
-        notes: "Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic\
-          \ stories\nContinue until all stories in PRD are complete\n"
+        notes: |
+  Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic stories
+  Continue until all stories in PRD are complete
+  
       - agent: po
         action: epic_retrospective
         creates: epic-retrospective.md
@@ -799,29 +938,64 @@ workflows:
           Reference: ../resources/data.md#IDE Development Workflow
 
           '
-      flow_diagram: "```mermaid\ngraph TD\n    A[Start: Greenfield Project] --> B[business-analyst:\
-        \ project-brief.md]\n    B --> C[product-manager: prd.md]\n    C --> D[ux-expert:\
-        \ front-end-spec.md]\n    D --> D2{Generate v0 prompt?}\n    D2 -->|Yes| D3[ux-expert:\
-        \ create v0 prompt]\n    D2 -->|No| E[architect: fullstack-architecture.md]\n\
-        \    D3 --> D4[User: generate UI in v0/Lovable]\n    D4 --> E\n    E --> F{Architecture\
-        \ suggests PRD changes?}\n    F -->|Yes| G[product-manager: update prd.md]\n\
-        \    F -->|No| H[po: validate all artifacts]\n    G --> H\n    H --> I{PO\
-        \ finds issues?}\n    I -->|Yes| J[Return to relevant agent for fixes]\n \
-        \   I -->|No| K[po: shard documents]\n    J --> H\n    \n    K --> L[scrum-master:\
-        \ create story]\n    L --> M{Review draft story?}\n    M -->|Yes| N[business-analyst/product-manager:\
-        \ review & approve story]\n    M -->|No| O[dev: implement story]\n    N -->\
-        \ O\n    O --> P{QA review?}\n    P -->|Yes| Q[qa: review implementation]\n\
-        \    P -->|No| R{More stories?}\n    Q --> S{QA found issues?}\n    S -->|Yes|\
-        \ T[dev: address QA feedback]\n    S -->|No| R\n    T --> Q\n    R -->|Yes|\
-        \ L\n    R -->|No| U{Epic retrospective?}\n    U -->|Yes| V[po: epic retrospective]\n\
-        \    U -->|No| W[Project Complete]\n    V --> W\n\n    B -.-> B1[Optional:\
-        \ brainstorming]\n    B -.-> B2[Optional: market research]\n    D -.-> D1[Optional:\
-        \ user research]\n    E -.-> E1[Optional: technical research]\n\n    style\
-        \ W fill:#90EE90\n    style K fill:#ADD8E6\n    style L fill:#ADD8E6\n   \
-        \ style O fill:#ADD8E6\n    style D3 fill:#E6E6FA\n    style D4 fill:#E6E6FA\n\
-        \    style B fill:#FFE4B5\n    style C fill:#FFE4B5\n    style D fill:#FFE4B5\n\
-        \    style E fill:#FFE4B5\n    style N fill:#F0E68C\n    style Q fill:#F0E68C\n\
-        \    style V fill:#F0E68C\n```\n"
+      flow_diagram: |
+  ```mermaid
+  graph TD
+      A[Start: Greenfield Project] --> B[business-analyst: project-brief.md]
+      B --> C[product-manager: prd.md]
+      C --> D[ux-expert: front-end-spec.md]
+      D --> D2{Generate v0 prompt?}
+      D2 -->|Yes| D3[ux-expert: create v0 prompt]
+      D2 -->|No| E[architect: fullstack-architecture.md]
+      D3 --> D4[User: generate UI in v0/Lovable]
+      D4 --> E
+      E --> F{Architecture suggests PRD changes?}
+      F -->|Yes| G[product-manager: update prd.md]
+      F -->|No| H[po: validate all artifacts]
+      G --> H
+      H --> I{PO finds issues?}
+      I -->|Yes| J[Return to relevant agent for fixes]
+      I -->|No| K[po: shard documents]
+      J --> H
+      
+      K --> L[scrum-master: create story]
+      L --> M{Review draft story?}
+      M -->|Yes| N[business-analyst/product-manager: review & approve story]
+      M -->|No| O[dev: implement story]
+      N --> O
+      O --> P{QA review?}
+      P -->|Yes| Q[qa: review implementation]
+      P -->|No| R{More stories?}
+      Q --> S{QA found issues?}
+      S -->|Yes| T[dev: address QA feedback]
+      S -->|No| R
+      T --> Q
+      R -->|Yes| L
+      R -->|No| U{Epic retrospective?}
+      U -->|Yes| V[po: epic retrospective]
+      U -->|No| W[Project Complete]
+      V --> W
+  
+      B -.-> B1[Optional: brainstorming]
+      B -.-> B2[Optional: market research]
+      D -.-> D1[Optional: user research]
+      E -.-> E1[Optional: technical research]
+  
+      style W fill:#90EE90
+      style K fill:#ADD8E6
+      style L fill:#ADD8E6
+      style O fill:#ADD8E6
+      style D3 fill:#E6E6FA
+      style D4 fill:#E6E6FA
+      style B fill:#FFE4B5
+      style C fill:#FFE4B5
+      style D fill:#FFE4B5
+      style E fill:#FFE4B5
+      style N fill:#F0E68C
+      style Q fill:#F0E68C
+      style V fill:#F0E68C
+  ```
+  
       decision_guidance:
         when_to_use:
         - Building production-ready applications
@@ -919,18 +1093,24 @@ workflows:
         creates: story.md
         requires: sharded_docs
         repeats: for_each_epic
-        notes: "Story creation cycle:\n- scrum-master Agent (New Chat): @scrum-master\
-          \ \u2192 *create\n- Creates next story from sharded docs\n- Story starts\
-          \ in \"Draft\" status\n"
+        notes: |
+  Story creation cycle:
+  - scrum-master Agent (New Chat): @scrum-master \u2192 *create
+  - Creates next story from sharded docs
+  - Story starts in "Draft" status
+  
       - agent: business-analyst/product-manager
         action: review_draft_story
         updates: story.md
         requires: story.md
         optional: true
         condition: user_wants_story_review
-        notes: "OPTIONAL: Review and approve draft story\n- NOTE: story-review task\
-          \ coming soon\n- Review story completeness and alignment\n- Update story\
-          \ status: Draft \u2192 Approved\n"
+        notes: |
+  OPTIONAL: Review and approve draft story
+  - NOTE: story-review task coming soon
+  - Review story completeness and alignment
+  - Update story status: Draft \u2192 Approved
+  
       - agent: dev
         action: implement_story
         creates: implementation_files
@@ -949,10 +1129,13 @@ workflows:
         updates: implementation_files
         requires: implementation_files
         optional: true
-        notes: "OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story\n- Senior dev\
-          \ review with refactoring ability\n- Fixes small issues directly\n- Leaves\
-          \ checklist for remaining items\n- Updates story status (Review \u2192 Done\
-          \ or stays Review)\n"
+        notes: |
+  OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story
+  - Senior dev review with refactoring ability
+  - Fixes small issues directly
+  - Leaves checklist for remaining items
+  - Updates story status (Review \u2192 Done or stays Review)
+  
       - agent: dev
         action: address_qa_feedback
         updates: implementation_files
@@ -966,8 +1149,10 @@ workflows:
           '
       - step: repeat_development_cycle
         action: continue_for_all_stories
-        notes: "Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic\
-          \ stories\nContinue until all stories in PRD are complete\n"
+        notes: |
+  Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic stories
+  Continue until all stories in PRD are complete
+  
       - agent: product-owner
         action: epic_retrospective
         creates: epic-retrospective.md
@@ -992,26 +1177,55 @@ workflows:
           Reference: ../resources/data.md#IDE Development Workflow
 
           '
-      flow_diagram: "```mermaid\ngraph TD\n    A[Start: Service Development] --> B[business-analyst:\
-        \ project-brief.md]\n    B --> C[product-manager: prd.md]\n    C --> D[architect:\
-        \ architecture.md]\n    D --> E{Architecture suggests PRD changes?}\n    E\
-        \ -->|Yes| F[product-manager: update prd.md]\n    E -->|No| G[product-owner:\
-        \ validate all artifacts]\n    F --> G\n    G --> H{product-owner finds issues?}\n\
-        \    H -->|Yes| I[Return to relevant agent for fixes]\n    H -->|No| J[product-owner:\
-        \ shard documents]\n    I --> G\n    \n    J --> K[scrum-master: create story]\n\
-        \    K --> L{Review draft story?}\n    L -->|Yes| M[business-analyst/product-manager:\
-        \ review & approve story]\n    L -->|No| N[dev: implement story]\n    M -->\
-        \ N\n    N --> O{QA review?}\n    O -->|Yes| P[qa: review implementation]\n\
-        \    O -->|No| Q{More stories?}\n    P --> R{QA found issues?}\n    R -->|Yes|\
-        \ S[dev: address QA feedback]\n    R -->|No| Q\n    S --> P\n    Q -->|Yes|\
-        \ K\n    Q -->|No| T{Epic retrospective?}\n    T -->|Yes| U[product-owner:\
-        \ epic retrospective]\n    T -->|No| V[Project Complete]\n    U --> V\n\n\
-        \    B -.-> B1[Optional: brainstorming]\n    B -.-> B2[Optional: market research]\n\
-        \    D -.-> D1[Optional: technical research]\n\n    style V fill:#90EE90\n\
-        \    style J fill:#ADD8E6\n    style K fill:#ADD8E6\n    style N fill:#ADD8E6\n\
-        \    style B fill:#FFE4B5\n    style C fill:#FFE4B5\n    style D fill:#FFE4B5\n\
-        \    style M fill:#F0E68C\n    style P fill:#F0E68C\n    style U fill:#F0E68C\n\
-        ```\n"
+      flow_diagram: |
+  ```mermaid
+  graph TD
+      A[Start: Service Development] --> B[business-analyst: project-brief.md]
+      B --> C[product-manager: prd.md]
+      C --> D[architect: architecture.md]
+      D --> E{Architecture suggests PRD changes?}
+      E -->|Yes| F[product-manager: update prd.md]
+      E -->|No| G[product-owner: validate all artifacts]
+      F --> G
+      G --> H{product-owner finds issues?}
+      H -->|Yes| I[Return to relevant agent for fixes]
+      H -->|No| J[product-owner: shard documents]
+      I --> G
+      
+      J --> K[scrum-master: create story]
+      K --> L{Review draft story?}
+      L -->|Yes| M[business-analyst/product-manager: review & approve story]
+      L -->|No| N[dev: implement story]
+      M --> N
+      N --> O{QA review?}
+      O -->|Yes| P[qa: review implementation]
+      O -->|No| Q{More stories?}
+      P --> R{QA found issues?}
+      R -->|Yes| S[dev: address QA feedback]
+      R -->|No| Q
+      S --> P
+      Q -->|Yes| K
+      Q -->|No| T{Epic retrospective?}
+      T -->|Yes| U[product-owner: epic retrospective]
+      T -->|No| V[Project Complete]
+      U --> V
+  
+      B -.-> B1[Optional: brainstorming]
+      B -.-> B2[Optional: market research]
+      D -.-> D1[Optional: technical research]
+  
+      style V fill:#90EE90
+      style J fill:#ADD8E6
+      style K fill:#ADD8E6
+      style N fill:#ADD8E6
+      style B fill:#FFE4B5
+      style C fill:#FFE4B5
+      style D fill:#FFE4B5
+      style M fill:#F0E68C
+      style P fill:#F0E68C
+      style U fill:#F0E68C
+  ```
+  
       decision_guidance:
         when_to_use:
         - Building production APIs or microservices
@@ -1128,18 +1342,24 @@ workflows:
         creates: story.md
         requires: sharded_docs
         repeats: for_each_epic
-        notes: "Story creation cycle:\n- scrum-master Agent (New Chat): @scrum-master\
-          \ \u2192 *create\n- Creates next story from sharded docs\n- Story starts\
-          \ in \"Draft\" status\n"
+        notes: |
+  Story creation cycle:
+  - scrum-master Agent (New Chat): @scrum-master \u2192 *create
+  - Creates next story from sharded docs
+  - Story starts in "Draft" status
+  
       - agent: business-analyst/product-manager
         action: review_draft_story
         updates: story.md
         requires: story.md
         optional: true
         condition: user_wants_story_review
-        notes: "OPTIONAL: Review and approve draft story\n- NOTE: story-review task\
-          \ coming soon\n- Review story completeness and alignment\n- Update story\
-          \ status: Draft \u2192 Approved\n"
+        notes: |
+  OPTIONAL: Review and approve draft story
+  - NOTE: story-review task coming soon
+  - Review story completeness and alignment
+  - Update story status: Draft \u2192 Approved
+  
       - agent: dev
         action: implement_story
         creates: implementation_files
@@ -1158,10 +1378,13 @@ workflows:
         updates: implementation_files
         requires: implementation_files
         optional: true
-        notes: "OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story\n- Senior dev\
-          \ review with refactoring ability\n- Fixes small issues directly\n- Leaves\
-          \ checklist for remaining items\n- Updates story status (Review \u2192 Done\
-          \ or stays Review)\n"
+        notes: |
+  OPTIONAL: QA Agent (New Chat): @qa \u2192 review-story
+  - Senior dev review with refactoring ability
+  - Fixes small issues directly
+  - Leaves checklist for remaining items
+  - Updates story status (Review \u2192 Done or stays Review)
+  
       - agent: dev
         action: address_qa_feedback
         updates: implementation_files
@@ -1175,8 +1398,10 @@ workflows:
           '
       - step: repeat_development_cycle
         action: continue_for_all_stories
-        notes: "Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic\
-          \ stories\nContinue until all stories in PRD are complete\n"
+        notes: |
+  Repeat story cycle (scrum-master \u2192 Dev \u2192 QA) for all epic stories
+  Continue until all stories in PRD are complete
+  
       - agent: po
         action: epic_retrospective
         creates: epic-retrospective.md
@@ -1201,29 +1426,64 @@ workflows:
           Reference: ../resources/data.md#IDE Development Workflow
 
           '
-      flow_diagram: "```mermaid\ngraph TD\n    A[Start: UI Development] --> B[business-analyst:\
-        \ project-brief.md]\n    B --> C[product-manager: prd.md]\n    C --> D[ux-expert:\
-        \ front-end-spec.md]\n    D --> D2{Generate v0 prompt?}\n    D2 -->|Yes| D3[ux-expert:\
-        \ create v0 prompt]\n    D2 -->|No| E[architect: front-end-architecture.md]\n\
-        \    D3 --> D4[User: generate UI in v0/Lovable]\n    D4 --> E\n    E --> F{Architecture\
-        \ suggests PRD changes?}\n    F -->|Yes| G[product-manager: update prd.md]\n\
-        \    F -->|No| H[po: validate all artifacts]\n    G --> H\n    H --> I{PO\
-        \ finds issues?}\n    I -->|Yes| J[Return to relevant agent for fixes]\n \
-        \   I -->|No| K[po: shard documents]\n    J --> H\n    \n    K --> L[scrum-master:\
-        \ create story]\n    L --> M{Review draft story?}\n    M -->|Yes| N[business-analyst/product-manager:\
-        \ review & approve story]\n    M -->|No| O[dev: implement story]\n    N -->\
-        \ O\n    O --> P{QA review?}\n    P -->|Yes| Q[qa: review implementation]\n\
-        \    P -->|No| R{More stories?}\n    Q --> S{QA found issues?}\n    S -->|Yes|\
-        \ T[dev: address QA feedback]\n    S -->|No| R\n    T --> Q\n    R -->|Yes|\
-        \ L\n    R -->|No| U{Epic retrospective?}\n    U -->|Yes| V[po: epic retrospective]\n\
-        \    U -->|No| W[Project Complete]\n    V --> W\n\n    B -.-> B1[Optional:\
-        \ brainstorming]\n    B -.-> B2[Optional: market research]\n    D -.-> D1[Optional:\
-        \ user research]\n    E -.-> E1[Optional: technical research]\n\n    style\
-        \ W fill:#90EE90\n    style K fill:#ADD8E6\n    style L fill:#ADD8E6\n   \
-        \ style O fill:#ADD8E6\n    style D3 fill:#E6E6FA\n    style D4 fill:#E6E6FA\n\
-        \    style B fill:#FFE4B5\n    style C fill:#FFE4B5\n    style D fill:#FFE4B5\n\
-        \    style E fill:#FFE4B5\n    style N fill:#F0E68C\n    style Q fill:#F0E68C\n\
-        \    style V fill:#F0E68C\n```\n"
+      flow_diagram: |
+  ```mermaid
+  graph TD
+      A[Start: UI Development] --> B[business-analyst: project-brief.md]
+      B --> C[product-manager: prd.md]
+      C --> D[ux-expert: front-end-spec.md]
+      D --> D2{Generate v0 prompt?}
+      D2 -->|Yes| D3[ux-expert: create v0 prompt]
+      D2 -->|No| E[architect: front-end-architecture.md]
+      D3 --> D4[User: generate UI in v0/Lovable]
+      D4 --> E
+      E --> F{Architecture suggests PRD changes?}
+      F -->|Yes| G[product-manager: update prd.md]
+      F -->|No| H[po: validate all artifacts]
+      G --> H
+      H --> I{PO finds issues?}
+      I -->|Yes| J[Return to relevant agent for fixes]
+      I -->|No| K[po: shard documents]
+      J --> H
+      
+      K --> L[scrum-master: create story]
+      L --> M{Review draft story?}
+      M -->|Yes| N[business-analyst/product-manager: review & approve story]
+      M -->|No| O[dev: implement story]
+      N --> O
+      O --> P{QA review?}
+      P -->|Yes| Q[qa: review implementation]
+      P -->|No| R{More stories?}
+      Q --> S{QA found issues?}
+      S -->|Yes| T[dev: address QA feedback]
+      S -->|No| R
+      T --> Q
+      R -->|Yes| L
+      R -->|No| U{Epic retrospective?}
+      U -->|Yes| V[po: epic retrospective]
+      U -->|No| W[Project Complete]
+      V --> W
+  
+      B -.-> B1[Optional: brainstorming]
+      B -.-> B2[Optional: market research]
+      D -.-> D1[Optional: user research]
+      E -.-> E1[Optional: technical research]
+  
+      style W fill:#90EE90
+      style K fill:#ADD8E6
+      style L fill:#ADD8E6
+      style O fill:#ADD8E6
+      style D3 fill:#E6E6FA
+      style D4 fill:#E6E6FA
+      style B fill:#FFE4B5
+      style C fill:#FFE4B5
+      style D fill:#FFE4B5
+      style E fill:#FFE4B5
+      style N fill:#F0E68C
+      style Q fill:#F0E68C
+      style V fill:#F0E68C
+  ```
+  
       decision_guidance:
         when_to_use:
         - Building production frontend applications

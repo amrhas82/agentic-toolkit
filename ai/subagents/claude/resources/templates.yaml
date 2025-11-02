@@ -39,29 +39,38 @@ templates:
           '
       - id: starter-template
         title: Starter Template or Existing Project
-        instruction: "Before proceeding further with architecture design, check if\
-          \ the project is based on a starter template or existing codebase:\n\n1.\
-          \ Review the PRD and brainstorming brief for any mentions of:\n- Starter\
-          \ templates (e.g., Create React App, Next.js, Vue CLI, Angular CLI, etc.)\n\
-          - Existing projects or codebases being used as a foundation\n- Boilerplate\
-          \ projects or scaffolding tools\n- Previous projects to be cloned or adapted\n\
-          \n2. If a starter template or existing project is mentioned:\n- Ask the\
-          \ user to provide access via one of these methods:\n  - Link to the starter\
-          \ template documentation\n  - Upload/attach the project files (for small\
-          \ projects)\n  - Share a link to the project repository (GitHub, GitLab,\
-          \ etc.)\n- Analyze the starter/existing project to understand:\n  - Pre-configured\
-          \ technology stack and versions\n  - Project structure and organization\
-          \ patterns\n  - Built-in scripts and tooling\n  - Existing architectural\
-          \ patterns and conventions\n  - Any limitations or constraints imposed by\
-          \ the starter\n- Use this analysis to inform and align your architecture\
-          \ decisions\n\n3. If no starter template is mentioned but this is a greenfield\
-          \ project:\n- Suggest appropriate starter templates based on the tech stack\
-          \ preferences\n- Explain the benefits (faster setup, best practices, community\
-          \ support)\n- Let the user decide whether to use one\n\n4. If the user confirms\
-          \ no starter template will be used:\n- Proceed with architecture design\
-          \ from scratch\n- Note that manual setup will be required for all tooling\
-          \ and configuration\n\nDocument the decision here before proceeding with\
-          \ the architecture design. If none, just say N/A\n"
+        instruction: |
+  Before proceeding further with architecture design, check if the project is based on a starter template or existing codebase:
+  
+  1. Review the PRD and brainstorming brief for any mentions of:
+  - Starter templates (e.g., Create React App, Next.js, Vue CLI, Angular CLI, etc.)
+  - Existing projects or codebases being used as a foundation
+  - Boilerplate projects or scaffolding tools
+  - Previous projects to be cloned or adapted
+  2. If a starter template or existing project is mentioned:
+  - Ask the user to provide access via one of these methods:
+    - Link to the starter template documentation
+    - Upload/attach the project files (for small projects)
+    - Share a link to the project repository (GitHub, GitLab, etc.)
+  - Analyze the starter/existing project to understand:
+    - Pre-configured technology stack and versions
+    - Project structure and organization patterns
+    - Built-in scripts and tooling
+    - Existing architectural patterns and conventions
+    - Any limitations or constraints imposed by the starter
+  - Use this analysis to inform and align your architecture decisions
+  
+  3. If no starter template is mentioned but this is a greenfield project:
+  - Suggest appropriate starter templates based on the tech stack preferences
+  - Explain the benefits (faster setup, best practices, community support)
+  - Let the user decide whether to use one
+  
+  4. If the user confirms no starter template will be used:
+  - Proceed with architecture design from scratch
+  - Note that manual setup will be required for all tooling and configuration
+  
+  Document the decision here before proceeding with the architecture design. If none, just say N/A
+  
         elicit: true
       - id: changelog
         title: Change Log
@@ -435,9 +444,16 @@ templates:
 
         '
       elicit: true
-      template: "openapi: 3.0.0\ninfo:\n  title: {{api_title}}\n  version: {{api_version}}\n\
-        \  description: {{api_description}}\nservers:\n  - url: {{server_url}}\n \
-        \   description: {{server_description}}\n"
+      template: |
+  openapi: 3.0.0
+  info:
+    title: {{api_title}}
+    version: {{api_version}}
+    description: {{api_description}}
+  servers:
+    - url: {{server_url}}
+      description: {{server_description}}
+  
     - id: database-schema
       title: Database Schema
       instruction: 'Transform the conceptual data models into concrete database schemas:
@@ -485,13 +501,16 @@ templates:
         '
       elicit: true
       examples:
-      - "project-root/\n\u251C\u2500\u2500 packages/\n\u2502   \u251C\u2500\u2500\
-        \ api/                    # Backend API service\n\u2502   \u251C\u2500\u2500\
-        \ web/                    # Frontend application\n\u2502   \u251C\u2500\u2500\
-        \ shared/                 # Shared utilities/types\n\u2502   \u2514\u2500\u2500\
-        \ infrastructure/         # IaC definitions\n\u251C\u2500\u2500 scripts/ \
-        \                   # Monorepo management scripts\n\u2514\u2500\u2500 package.json\
-        \                # Root package.json with workspaces\n"
+      - |
+  project-root/
+  \u251C\u2500\u2500 packages/
+  \u2502   \u251C\u2500\u2500 api/                    # Backend API service
+  \u2502   \u251C\u2500\u2500 web/                    # Frontend application
+  \u2502   \u251C\u2500\u2500 shared/                 # Shared utilities/types
+  \u2502   \u2514\u2500\u2500 infrastructure/         # IaC definitions
+  \u251C\u2500\u2500 scripts/                    # Monorepo management scripts
+  \u2514\u2500\u2500 package.json                # Root package.json with workspaces
+  
     - id: infrastructure-deployment
       title: Infrastructure and Deployment
       instruction: 'Define the deployment architecture and practices:
@@ -581,10 +600,15 @@ templates:
           '
       - id: logging-standards
         title: Logging Standards
-        template: "- **Library:** {{logging_library}} {{version}}\n- **Format:** {{log_format}}\n\
-          - **Levels:** {{log_levels_definition}}\n- **Required Context:**\n  - Correlation\
-          \ ID: {{correlation_id_format}}\n  - Service Context: {{service_context}}\n\
-          \  - User Context: {{user_context_rules}}\n"
+        template: |
+  - **Library:** {{logging_library}} {{version}}
+  - **Format:** {{log_format}}
+  - **Levels:** {{log_levels_definition}}
+  - **Required Context:**
+    - Correlation ID: {{correlation_id_format}}
+    - Service Context: {{service_context}}
+    - User Context: {{user_context_rules}}
+  
       - id: error-patterns
         title: Error Handling Patterns
         sections:
@@ -742,14 +766,17 @@ templates:
 
             - Mock all external dependencies
 
-            '
-        - id: integration-tests
-          title: Integration Tests
-          template: "- **Scope:** {{integration_scope}}\n- **Location:** {{integration_test_location}}\n\
-            - **Test Infrastructure:**\n  - **{{dependency_name}}:** {{test_approach}}\
-            \ ({{test_tool}})\n"
-          examples:
-          - '**Database:** In-memory H2 for unit tests, Testcontainers PostgreSQL
+            |
+  
+          - id: integration-tests
+            title: Integration Tests
+            template: "- **Scope:** {{integration_scope}}
+  - **Location:** {{integration_test_location}}
+  - **Test Infrastructure:**
+    - **{{dependency_name}}:** {{test_approach}} ({{test_tool}})
+  "
+            examples:
+            - **Database:** In-memory H2 for unit tests, Testcontainers PostgreSQL
             for integration'
           - '**Message Queue:** Embedded Kafka for tests'
           - '**External APIs:** WireMock for stubbing'
@@ -799,29 +826,39 @@ templates:
 
         5. Work with user to ensure completeness without redundancy
 
-        '
-      elicit: true
-      sections:
-      - id: input-validation
-        title: Input Validation
-        template: "- **Validation Library:** {{validation_library}}\n- **Validation\
-          \ Location:** {{where_to_validate}}\n- **Required Rules:**\n  - All external\
-          \ inputs MUST be validated\n  - Validation at API boundary before processing\n\
-          \  - Whitelist approach preferred over blacklist\n"
-      - id: auth-authorization
-        title: Authentication & Authorization
-        template: "- **Auth Method:** {{auth_implementation}}\n- **Session Management:**\
-          \ {{session_approach}}\n- **Required Patterns:**\n  - {{auth_pattern_1}}\n\
-          \  - {{auth_pattern_2}}\n"
-      - id: secrets-management
-        title: Secrets Management
-        template: "- **Development:** {{dev_secrets_approach}}\n- **Production:**\
-          \ {{prod_secrets_service}}\n- **Code Requirements:**\n  - NEVER hardcode\
-          \ secrets\n  - Access via configuration service only\n  - No secrets in\
-          \ logs or error messages\n"
-      - id: api-security
-        title: API Security
-        template: '- **Rate Limiting:** {{rate_limit_implementation}}
+        |
+  
+        elicit: true
+        sections:
+        - id: input-validation
+          title: Input Validation
+          template: "- **Validation Library:** {{validation_library}}
+  - **Validation Location:** {{where_to_validate}}
+  - **Required Rules:**
+    - All external inputs MUST be validated
+    - Validation at API boundary before processing
+    - Whitelist approach preferred over blacklist
+  "
+        - id: auth-authorization
+          title: Authentication & Authorization
+          template: "- **Auth Method:** {{auth_implementation}}
+  - **Session Management:** {{session_approach}}
+  - **Required Patterns:**
+    - {{auth_pattern_1}}
+    - {{auth_pattern_2}}
+  "
+        - id: secrets-management
+          title: Secrets Management
+          template: "- **Development:** {{dev_secrets_approach}}
+  - **Production:** {{prod_secrets_service}}
+  - **Code Requirements:**
+    - NEVER hardcode secrets
+    - Access via configuration service only
+    - No secrets in logs or error messages
+  "
+        - id: api-security
+          title: API Security
+          template: - **Rate Limiting:** {{rate_limit_implementation}}
 
           - **CORS Policy:** {{cors_configuration}}
 
@@ -1097,31 +1134,34 @@ templates:
       output:
         format: markdown
         filename: docs/architecture.md
-        title: '{{project_name}} Brownfield Enhancement Architecture'
-    workflow:
-      mode: interactive
-      elicitation: advanced-elicitation
-    sections:
-    - id: introduction
-      title: Introduction
-      instruction: "IMPORTANT - SCOPE AND ASSESSMENT REQUIRED:\n\nThis architecture\
-        \ document is for SIGNIFICANT enhancements to existing projects that require\
-        \ comprehensive architectural planning. Before proceeding:\n\n1. **Verify\
-        \ Complexity**: Confirm this enhancement requires architectural planning.\
-        \ For simple additions, recommend: \"For simpler changes that don't require\
-        \ architectural planning, consider using the brownfield-create-epic or brownfield-create-story\
-        \ task with the Product Owner instead.\"\n\n2. **REQUIRED INPUTS**:\n   -\
-        \ Completed prd.md\n   - Existing project technical documentation (from docs\
-        \ folder or user-provided)\n   - Access to existing project structure (IDE\
-        \ or uploaded files)\n\n3. **DEEP ANALYSIS MANDATE**: You MUST conduct thorough\
-        \ analysis of the existing codebase, architecture patterns, and technical\
-        \ constraints before making ANY architectural recommendations. Every suggestion\
-        \ must be based on actual project analysis, not assumptions.\n\n4. **CONTINUOUS\
-        \ VALIDATION**: Throughout this process, explicitly validate your understanding\
-        \ with the user. For every architectural decision, confirm: \"Based on my\
-        \ analysis of your existing system, I recommend [decision] because [evidence\
-        \ from actual project]. Does this align with your system's reality?\"\n\n\
-        If any required inputs are missing, request them before proceeding.\n"
+        title: '{{project_name}} Brownfield Enhancement Architecture|
+  
+      workflow:
+        mode: interactive
+        elicitation: advanced-elicitation
+      sections:
+      - id: introduction
+        title: Introduction
+        instruction: "IMPORTANT - SCOPE AND ASSESSMENT REQUIRED:
+  
+  This architecture document is for SIGNIFICANT enhancements to existing projects that require comprehensive architectural planning. Before proceeding:
+  
+  1. **Verify Complexity**: Confirm this enhancement requires architectural planning. For simple additions, recommend: "For simpler changes that dont require
+         architectural planning, consider using the brownfield-create-epic or brownfield-create-story
+         task with the Product Owner instead.\|
+  
+  
+  2. **REQUIRED INPUTS**:
+     - Completed prd.md
+     - Existing project technical documentation (from docs folder or user-provided)
+     - Access to existing project structure (IDE or uploaded files)
+  
+  3. **DEEP ANALYSIS MANDATE**: You MUST conduct thorough analysis of the existing codebase, architecture patterns, and technical constraints before making ANY architectural recommendations. Every suggestion must be based on actual project analysis, not assumptions.
+  
+  4. **CONTINUOUS VALIDATION**: Throughout this process, explicitly validate your understanding with the user. For every architectural decision, confirm: "Based on my analysis of your existing system, I recommend [decision] because [evidence from actual project]. Does this align with your system's reality?"
+  
+  If any required inputs are missing, request them before proceeding.
+  
       elicit: true
       sections:
       - id: intro-content
@@ -1508,14 +1548,17 @@ templates:
         type: code
         language: plaintext
         instruction: Show only new additions to existing structure
-        template: "{{project-root}}/\n\u251C\u2500\u2500 {{existing_structure_context}}\n\
-          \u2502   \u251C\u2500\u2500 {{new_folder_1}}/           # {{purpose_1}}\n\
-          \u2502   \u2502   \u251C\u2500\u2500 {{new_file_1}}\n\u2502   \u2502   \u2514\
-          \u2500\u2500 {{new_file_2}}\n\u2502   \u251C\u2500\u2500 {{existing_folder}}/\
-          \        # Existing folder with additions\n\u2502   \u2502   \u251C\u2500\
-          \u2500 {{existing_file}}       # Existing file\n\u2502   \u2502   \u2514\
-          \u2500\u2500 {{new_file_3}}          # New addition\n\u2502   \u2514\u2500\
-          \u2500 {{new_folder_2}}/           # {{purpose_2}}\n"
+        template: |
+  {{project-root}}/
+  \u251C\u2500\u2500 {{existing_structure_context}}
+  \u2502   \u251C\u2500\u2500 {{new_folder_1}}/           # {{purpose_1}}
+  \u2502   \u2502   \u251C\u2500\u2500 {{new_file_1}}
+  \u2502   \u2502   \u2514\u2500\u2500 {{new_file_2}}
+  \u2502   \u251C\u2500\u2500 {{existing_folder}}/        # Existing folder with additions
+  \u2502   \u2502   \u251C\u2500\u2500 {{existing_file}}       # Existing file
+  \u2502   \u2502   \u2514\u2500\u2500 {{new_file_3}}          # New addition
+  \u2502   \u2514\u2500\u2500 {{new_folder_2}}/           # {{purpose_2}}
+  
       - id: integration-guidelines
         title: Integration Guidelines
         template: '- **File Naming:** {{file_naming_consistency}}
@@ -1868,16 +1911,16 @@ templates:
           title: Available Documentation
           type: checklist
           items:
-          - Tech Stack Documentation [[LLM: "If from document-project, check \u2713\
+          - Tech Stack Documentation [[LLM: "If from document-project, check \u2713
               ]]"
-          - Source Tree/Architecture [[LLM: "If from document-project, check \u2713\
+          - Source Tree/Architecture [[LLM: "If from document-project, check \u2713
               ]]"
           - Coding Standards [[LLM: If from document-project, may be partial]]
           - API Documentation [[LLM: "If from document-project, check \u2713]]"
-          - External API Documentation [[LLM: "If from document-project, check \u2713\
+          - External API Documentation [[LLM: "If from document-project, check \u2713
               ]]"
           - UX/UI Guidelines [[LLM: May not be in document-project]]
-          - Technical Debt Documentation [[LLM: "If from document-project, check \u2713\
+          - Technical Debt Documentation [[LLM: "If from document-project, check \u2713
               ]]"
           - 'Other: {{other_docs}}'
           instruction: '- If document-project was already run: "Using existing project
@@ -2620,44 +2663,62 @@ templates:
       output:
         format: markdown
         filename: docs/ui-architecture.md
-        title: '{{project_name}} Frontend Architecture Document'
-    workflow:
-      mode: interactive
-      elicitation: advanced-elicitation
-    sections:
-    - id: template-framework-selection
-      title: Template and Framework Selection
-      instruction: "Review provided documents including PRD, UX-UI Specification,\
-        \ and main Architecture Document. Focus on extracting technical implementation\
-        \ details needed for AI frontend tools and developer agents. Ask the user\
-        \ for any of these documents if you are unable to locate and were not provided.\n\
-        \nBefore proceeding with frontend architecture design, check if the project\
-        \ is using a frontend starter template or existing codebase:\n\n1. Review\
-        \ the PRD, main architecture document, and brainstorming brief for mentions\
-        \ of:\n   - Frontend starter templates (e.g., Create React App, Next.js, Vite,\
-        \ Vue CLI, Angular CLI, etc.)\n   - UI kit or component library starters\n\
-        \   - Existing frontend projects being used as a foundation\n   - Admin dashboard\
-        \ templates or other specialized starters\n   - Design system implementations\n\
-        \n2. If a frontend starter template or existing project is mentioned:\n  \
-        \ - Ask the user to provide access via one of these methods:\n     - Link\
-        \ to the starter template documentation\n     - Upload/attach the project\
-        \ files (for small projects)\n     - Share a link to the project repository\n\
-        \   - Analyze the starter/existing project to understand:\n     - Pre-installed\
-        \ dependencies and versions\n     - Folder structure and file organization\n\
-        \     - Built-in components and utilities\n     - Styling approach (CSS modules,\
-        \ styled-components, Tailwind, etc.)\n     - State management setup (if any)\n\
-        \     - Routing configuration\n     - Testing setup and patterns\n     - Build\
-        \ and development scripts\n   - Use this analysis to ensure your frontend\
-        \ architecture aligns with the starter's patterns\n\n3. If no frontend starter\
-        \ is mentioned but this is a new UI, ensure we know what the ui language and\
-        \ framework is:\n   - Based on the framework choice, suggest appropriate starters:\n\
-        \     - React: Create React App, Next.js, Vite + React\n     - Vue: Vue CLI,\
-        \ Nuxt.js, Vite + Vue\n     - Angular: Angular CLI\n     - Or suggest popular\
-        \ UI templates if applicable\n   - Explain benefits specific to frontend development\n\
-        \n4. If the user confirms no starter template will be used:\n   - Note that\
-        \ all tooling, bundling, and configuration will need manual setup\n   - Proceed\
-        \ with frontend architecture from scratch\n\nDocument the starter template\
-        \ decision and any constraints it imposes before proceeding.\n"
+        title: '{{project_name}} Frontend Architecture Document|
+  
+      workflow:
+        mode: interactive
+        elicitation: advanced-elicitation
+      sections:
+      - id: template-framework-selection
+        title: Template and Framework Selection
+        instruction: "Review provided documents including PRD, UX-UI Specification, and main Architecture Document. Focus on extracting technical implementation details needed for AI frontend tools and developer agents. Ask the user for any of these documents if you are unable to locate and were not provided.
+  Before proceeding with frontend architecture design, check if the project is using a frontend starter template or existing codebase:
+  
+  1. Review the PRD, main architecture document, and brainstorming brief for mentions of:
+     - Frontend starter templates (e.g., Create React App, Next.js, Vite, Vue CLI, Angular CLI, etc.)
+     - UI kit or component library starters
+     - Existing frontend projects being used as a foundation
+     - Admin dashboard templates or other specialized starters
+     - Design system implementations
+  2. If a frontend starter template or existing project is mentioned:
+     - Ask the user to provide access via one of these methods:
+       - Link to the starter template documentation
+       - Upload/attach the project files (for small projects)
+       - Share a link to the project repository
+     - Analyze the starter/existing project to understand:
+       - Pre-installed dependencies and versions
+       - Folder structure and file organization
+       - Built-in components and utilities
+       - Styling approach (CSS modules, styled-components, Tailwind, etc.)
+       - State management setup (if any)
+       - Routing configuration
+       - Testing setup and patterns
+       - Build and development scripts
+     - Use this analysis to ensure your frontend architecture aligns with the starters patterns
+
+3. If no frontend starter
+         is mentioned but this is a new UI, ensure we know what the ui language and
+         framework is:
+   - Based on the framework choice, suggest appropriate starters:
+
+             - React: Create React App, Next.js, Vite + React
+     - Vue: Vue CLI,
+         Nuxt.js, Vite + Vue
+     - Angular: Angular CLI
+     - Or suggest popular
+         UI templates if applicable
+   - Explain benefits specific to frontend development
+
+        
+4. If the user confirms no starter template will be used:
+   - Note that
+         all tooling, bundling, and configuration will need manual setup
+   - Proceed
+         with frontend architecture from scratch
+
+Document the starter template
+         decision and any constraints it imposes before proceeding.
+"
       sections:
       - id: changelog
         title: Change Log
@@ -2986,10 +3047,19 @@ templates:
         mermaid_type: graph
         template: '{{sitemap_diagram}}'
         examples:
-        - "graph TD\n    A[Homepage] --> B[Dashboard]\n    A --> C[Products]\n   \
-          \ A --> D[Account]\n    B --> B1[Analytics]\n    B --> B2[Recent Activity]\n\
-          \    C --> C1[Browse]\n    C --> C2[Search]\n    C --> C3[Product Details]\n\
-          \    D --> D1[Profile]\n    D --> D2[Settings]\n    D --> D3[Billing]\n"
+        - |
+          graph TD
+              A[Homepage] --> B[Dashboard]
+              A --> C[Products]
+              A --> D[Account]
+              B --> B1[Analytics]
+              B --> B2[Recent Activity]
+              C --> C1[Browse]
+              C --> C2[Search]
+              C --> C3[Product Details]
+              D --> D1[Profile]
+              D --> D2[Settings]
+              D --> D3[Billing]
       - id: navigation-structure
         title: Navigation Structure
         template: '**Primary Navigation:** {{primary_nav_description}}
@@ -3798,9 +3868,15 @@ templates:
         condition: API style is REST
         type: code
         language: yaml
-        template: "openapi: 3.0.0\ninfo:\n  title: {{api_title}}\n  version: {{api_version}}\n\
-          \  description: {{api_description}}\nservers:\n  - url: {{server_url}}\n\
-          \    description: {{server_description}}\n"
+        template: |
+          openapi: 3.0.0
+          info:
+            title: {{api_title}}
+            version: {{api_version}}
+            description: {{api_description}}
+          servers:
+            - url: {{server_url}}
+              description: {{server_description}}
       - id: graphql-api
         title: GraphQL Schema
         condition: API style is GraphQL
@@ -4097,50 +4173,103 @@ templates:
       type: code
       language: plaintext
       examples:
-      - "{{project-name}}/\n\u251C\u2500\u2500 .github/                    # CI/CD\
-        \ workflows\n\u2502   \u2514\u2500\u2500 workflows/\n\u2502       \u251C\u2500\
-        \u2500 ci.yaml\n\u2502       \u2514\u2500\u2500 deploy.yaml\n\u251C\u2500\u2500\
-        \ apps/                       # Application packages\n\u2502   \u251C\u2500\
-        \u2500 web/                    # Frontend application\n\u2502   \u2502   \u251C\
-        \u2500\u2500 src/\n\u2502   \u2502   \u2502   \u251C\u2500\u2500 components/\
-        \     # UI components\n\u2502   \u2502   \u2502   \u251C\u2500\u2500 pages/\
-        \          # Page components/routes\n\u2502   \u2502   \u2502   \u251C\u2500\
-        \u2500 hooks/          # Custom React hooks\n\u2502   \u2502   \u2502   \u251C\
-        \u2500\u2500 services/       # API client services\n\u2502   \u2502   \u2502\
-        \   \u251C\u2500\u2500 stores/         # State management\n\u2502   \u2502\
-        \   \u2502   \u251C\u2500\u2500 styles/         # Global styles/themes\n\u2502\
-        \   \u2502   \u2502   \u2514\u2500\u2500 utils/          # Frontend utilities\n\
-        \u2502   \u2502   \u251C\u2500\u2500 public/             # Static assets\n\
-        \u2502   \u2502   \u251C\u2500\u2500 tests/              # Frontend tests\n\
-        \u2502   \u2502   \u2514\u2500\u2500 package.json\n\u2502   \u2514\u2500\u2500\
-        \ api/                    # Backend application\n\u2502       \u251C\u2500\
-        \u2500 src/\n\u2502       \u2502   \u251C\u2500\u2500 routes/         # API\
-        \ routes/controllers\n\u2502       \u2502   \u251C\u2500\u2500 services/ \
-        \      # Business logic\n\u2502       \u2502   \u251C\u2500\u2500 models/\
-        \         # Data models\n\u2502       \u2502   \u251C\u2500\u2500 middleware/\
-        \     # Express/API middleware\n\u2502       \u2502   \u251C\u2500\u2500 utils/\
-        \          # Backend utilities\n\u2502       \u2502   \u2514\u2500\u2500 {{serverless_or_server_entry}}\n\
-        \u2502       \u251C\u2500\u2500 tests/              # Backend tests\n\u2502\
-        \       \u2514\u2500\u2500 package.json\n\u251C\u2500\u2500 packages/    \
-        \               # Shared packages\n\u2502   \u251C\u2500\u2500 shared/   \
-        \              # Shared types/utilities\n\u2502   \u2502   \u251C\u2500\u2500\
-        \ src/\n\u2502   \u2502   \u2502   \u251C\u2500\u2500 types/          # TypeScript\
-        \ interfaces\n\u2502   \u2502   \u2502   \u251C\u2500\u2500 constants/   \
-        \   # Shared constants\n\u2502   \u2502   \u2502   \u2514\u2500\u2500 utils/\
-        \          # Shared utilities\n\u2502   \u2502   \u2514\u2500\u2500 package.json\n\
-        \u2502   \u251C\u2500\u2500 ui/                     # Shared UI components\n\
-        \u2502   \u2502   \u251C\u2500\u2500 src/\n\u2502   \u2502   \u2514\u2500\u2500\
-        \ package.json\n\u2502   \u2514\u2500\u2500 config/                 # Shared\
-        \ configuration\n\u2502       \u251C\u2500\u2500 eslint/\n\u2502       \u251C\
-        \u2500\u2500 typescript/\n\u2502       \u2514\u2500\u2500 jest/\n\u251C\u2500\
-        \u2500 infrastructure/             # IaC definitions\n\u2502   \u2514\u2500\
-        \u2500 {{iac_structure}}\n\u251C\u2500\u2500 scripts/                    #\
-        \ Build/deploy scripts\n\u251C\u2500\u2500 docs/                       # Documentation\n\
-        \u2502   \u251C\u2500\u2500 prd.md\n\u2502   \u251C\u2500\u2500 front-end-spec.md\n\
-        \u2502   \u2514\u2500\u2500 fullstack-architecture.md\n\u251C\u2500\u2500\
-        \ .env.example                # Environment template\n\u251C\u2500\u2500 package.json\
-        \                # Root package.json\n\u251C\u2500\u2500 {{monorepo_config}}\
-        \         # Monorepo configuration\n\u2514\u2500\u2500 README.md\n"
+      - "{{project-name}}/
+\u251C\u2500\u2500 .github/                    # CI/CD
+         workflows
+\u2502   \u2514\u2500\u2500 workflows/
+\u2502       \u251C\u2500
+        \u2500 ci.yaml
+\u2502       \u2514\u2500\u2500 deploy.yaml
+\u251C\u2500\u2500
+         apps/                       # Application packages
+\u2502   \u251C\u2500
+        \u2500 web/                    # Frontend application
+\u2502   \u2502   \u251C
+        \u2500\u2500 src/
+\u2502   \u2502   \u2502   \u251C\u2500\u2500 components/
+             # UI components
+\u2502   \u2502   \u2502   \u251C\u2500\u2500 pages/
+                  # Page components/routes
+\u2502   \u2502   \u2502   \u251C\u2500
+        \u2500 hooks/          # Custom React hooks
+\u2502   \u2502   \u2502   \u251C
+        \u2500\u2500 services/       # API client services
+\u2502   \u2502   \u2502
+           \u251C\u2500\u2500 stores/         # State management
+\u2502   \u2502
+           \u2502   \u251C\u2500\u2500 styles/         # Global styles/themes
+\u2502
+           \u2502   \u2502   \u2514\u2500\u2500 utils/          # Frontend utilities
+
+        \u2502   \u2502   \u251C\u2500\u2500 public/             # Static assets
+
+        \u2502   \u2502   \u251C\u2500\u2500 tests/              # Frontend tests
+
+        \u2502   \u2502   \u2514\u2500\u2500 package.json
+\u2502   \u2514\u2500\u2500
+         api/                    # Backend application
+\u2502       \u251C\u2500
+        \u2500 src/
+\u2502       \u2502   \u251C\u2500\u2500 routes/         # API
+         routes/controllers
+\u2502       \u2502   \u251C\u2500\u2500 services/
+              # Business logic
+\u2502       \u2502   \u251C\u2500\u2500 models/
+                 # Data models
+\u2502       \u2502   \u251C\u2500\u2500 middleware/
+             # Express/API middleware
+\u2502       \u2502   \u251C\u2500\u2500 utils/
+                  # Backend utilities
+\u2502       \u2502   \u2514\u2500\u2500 {{serverless_or_server_entry}}
+
+        \u2502       \u251C\u2500\u2500 tests/              # Backend tests
+\u2502
+               \u2514\u2500\u2500 package.json
+\u251C\u2500\u2500 packages/
+                       # Shared packages
+\u2502   \u251C\u2500\u2500 shared/
+                      # Shared types/utilities
+\u2502   \u2502   \u251C\u2500\u2500
+         src/
+\u2502   \u2502   \u2502   \u251C\u2500\u2500 types/          # TypeScript
+         interfaces
+\u2502   \u2502   \u2502   \u251C\u2500\u2500 constants/
+           # Shared constants
+\u2502   \u2502   \u2502   \u2514\u2500\u2500 utils/
+                  # Shared utilities
+\u2502   \u2502   \u2514\u2500\u2500 package.json
+
+        \u2502   \u251C\u2500\u2500 ui/                     # Shared UI components
+
+        \u2502   \u2502   \u251C\u2500\u2500 src/
+\u2502   \u2502   \u2514\u2500\u2500
+         package.json
+\u2502   \u2514\u2500\u2500 config/                 # Shared
+         configuration
+\u2502       \u251C\u2500\u2500 eslint/
+\u2502       \u251C
+        \u2500\u2500 typescript/
+\u2502       \u2514\u2500\u2500 jest/
+\u251C\u2500
+        \u2500 infrastructure/             # IaC definitions
+\u2502   \u2514\u2500
+        \u2500 {{iac_structure}}
+\u251C\u2500\u2500 scripts/                    #
+         Build/deploy scripts
+\u251C\u2500\u2500 docs/                       # Documentation
+
+        \u2502   \u251C\u2500\u2500 prd.md
+\u2502   \u251C\u2500\u2500 front-end-spec.md
+
+        \u2502   \u2514\u2500\u2500 fullstack-architecture.md
+\u251C\u2500\u2500
+         .env.example                # Environment template
+\u251C\u2500\u2500 package.json
+                        # Root package.json
+\u251C\u2500\u2500 {{monorepo_config}}
+                 # Monorepo configuration
+\u2514\u2500\u2500 README.md
+"
     - id: development-workflow
       title: Development Workflow
       instruction: Define the development setup and workflow for the fullstack application.
@@ -4324,11 +4453,11 @@ templates:
         language: text
         template: 'E2E Tests
 
-          /        \
+          /
 
           Integration Tests
 
-          /            \
+          /
 
           Frontend Unit  Backend Unit
 
@@ -4428,9 +4557,16 @@ templates:
         title: Error Response Format
         type: code
         language: typescript
-        template: "interface ApiError {\n  error: {\n    code: string;\n    message:\
-          \ string;\n    details?: Record<string, any>;\n    timestamp: string;\n\
-          \    requestId: string;\n  };\n}\n"
+        template: |
+          interface ApiError {
+            error: {
+              code: string;
+              message: string;
+              details?: Record<string, any>;
+              timestamp: string;
+              requestId: string;
+            };
+          }
       - id: frontend-error-handling
         title: Frontend Error Handling
         type: code
@@ -5427,38 +5563,73 @@ templates:
         must_fix: []
         monitor: []
     examples:
-      with_issues: "top_issues:\n  - id: \"SEC-001\"\n    severity: high  # ONLY:\
-        \ low|medium|high\n    finding: \"No rate limiting on login endpoint\"\n \
-        \   suggested_action: \"Add rate limiting middleware before production\"\n\
-        \  - id: \"TEST-001\"  \n    severity: medium\n    finding: \"Missing integration\
-        \ tests for auth flow\"\n    suggested_action: \"Add test coverage for critical\
-        \ paths\"\n"
-      when_waived: "waiver:\n  active: true\n  reason: \"Accepted for MVP release\
-        \ - will address in next sprint\"\n  approved_by: \"Product Owner\"\n"
+      with_issues: "top_issues:
+  - id: \|
+  SEC-001"
+      severity: high  # ONLY: low|medium|high
+      finding: "No rate limiting on login endpoint"
+      suggested_action: "Add rate limiting middleware before production"
+    - id: "TEST-001"  
+      severity: medium
+      finding: "Missing integration tests for auth flow"
+      suggested_action: "Add test coverage for critical paths"
+  
+      when_waived: |
+  waiver:
+    active: true
+    reason: "Accepted for MVP release - will address in next sprint"
+    approved_by: "Product Owner"
+  
     optional_fields_examples:
       quality_and_expiry: 'quality_score: 75  # 0-100 (optional scoring)
 
         expires: "2025-01-26T00:00:00Z"  # Optional gate freshness window
 
         '
-      evidence: "evidence:\n  tests_reviewed: 15\n  risks_identified: 3\n  trace:\n\
-        \    ac_covered: [1, 2, 3]  # AC numbers with test coverage\n    ac_gaps:\
-        \ [4]  # AC numbers lacking coverage\n"
-      nfr_validation: "nfr_validation:\n  security: { status: CONCERNS, notes: \"\
-        Rate limiting missing\" }\n  performance: { status: PASS, notes: \"\" }\n\
-        \  reliability: { status: PASS, notes: \"\" }\n  maintainability: { status:\
-        \ PASS, notes: \"\" }\n"
-      history: "history:  # Append-only audit trail\n  - at: \"2025-01-12T10:00:00Z\"\
-        \n    gate: FAIL\n    note: \"Initial review - missing tests\"\n  - at: \"\
-        2025-01-12T15:00:00Z\"  \n    gate: CONCERNS\n    note: \"Tests added but\
-        \ rate limiting still missing\"\n"
-      risk_summary: "risk_summary:  # From risk-profile task\n  totals:\n    critical:\
-        \ 0\n    high: 0\n    medium: 0\n    low: 0\n  # 'highest' is emitted only\
-        \ when risks exist\n  recommendations:\n    must_fix: []\n    monitor: []\n"
-      recommendations: "recommendations:\n  immediate:  # Must fix before production\n\
-        \    - action: \"Add rate limiting to auth endpoints\"\n      refs: [\"api/auth/login.ts:42-68\"\
-        ]\n  future:  # Can be addressed later\n    - action: \"Consider caching for\
-        \ better performance\"\n      refs: [\"services/data.service.ts\"]\n"
+      evidence: |
+  evidence:
+    tests_reviewed: 15
+    risks_identified: 3
+    trace:
+      ac_covered: [1, 2, 3]  # AC numbers with test coverage
+      ac_gaps: [4]  # AC numbers lacking coverage
+  
+      nfr_validation: |
+  nfr_validation:
+    security: { status: CONCERNS, notes: "Rate limiting missing" }
+    performance: { status: PASS, notes: "" }
+    reliability: { status: PASS, notes: "" }
+    maintainability: { status: PASS, notes: "" }
+  
+      history: |
+  history:  # Append-only audit trail
+    - at: "2025-01-12T10:00:00Z"gate: FAIL
+      note: "Initial review - missing tests"
+    - at: "2025-01-12T15:00:00Z"  
+      gate: CONCERNS
+      note: "Tests added but rate limiting still missing"
+  
+      risk_summary: |
+  risk_summary:  # From risk-profile task
+    totals:
+      critical: 0
+      high: 0
+      medium: 0
+      low: 0
+    # 'highest' is emitted only when risks exist
+    recommendations:
+      must_fix: []
+      monitor: []
+  
+      recommendations: |
+  recommendations:
+    immediate:  # Must fix before production
+      - action: "Add rate limiting to auth endpoints"
+        refs: ["api/auth/login.ts:42-68"]
+    future:  # Can be addressed later
+      - action: "Consider caching for better performance"
+        refs: ["services/data.service.ts"]
+  
   story-tmpl:
     template:
       id: story-template-v2
@@ -5528,9 +5699,14 @@ templates:
         Reference applicable acceptance criteria numbers where relevant.
 
         '
-      template: "- [ ] Task 1 (AC: # if applicable)\n  - [ ] Subtask1.1...\n- [ ]\
-        \ Task 2 (AC: # if applicable)\n  - [ ] Subtask 2.1...\n- [ ] Task 3 (AC:\
-        \ # if applicable)\n  - [ ] Subtask 3.1...\n"
+      template: |
+  - [ ] Task 1 (AC: # if applicable)
+    - [ ] Subtask1.1...
+  - [ ] Task 2 (AC: # if applicable)
+    - [ ] Subtask 2.1...
+  - [ ] Task 3 (AC: # if applicable)
+    - [ ] Subtask 3.1...
+  
       elicit: true
       owner: scrum-master
       editors:

@@ -1,6 +1,6 @@
 # Vibecoding 101 Guide
 
-**Status**: 🔄 In Progress - 5 of 12 Sections Complete (Sections 0-4)
+**Status**: 🔄 In Progress - 6 of 12 Sections Complete (Sections 0-5)
 
 A comprehensive guide for non-coders and vibecoders on building software with AI agents. Updated section names reflect merged Sections (4+5 → Section 4: Access Methods & Tools).
 
@@ -2037,7 +2037,126 @@ Without it (vibecoding): "Build this. No wait, not that. Do this instead. Rememb
 
 ---
 
-**Next: Section 6 - Context Windows**
+
+
+## Section 6: Context Windows - The Invisible Constraint That Broke My Projects
+
+Context windows are the #1 killer of beginner projects that nobody explains upfront. I learned this through $1,000+ in wasted work and three projects that hit completion walls they couldn't overcome.
+
+**My Definition:** "Context is total words in/out—the LLM's ability to hold conversation and remember what you said earlier, as long as you don't exceed the limit. Average context windows: 200k - 1M tokens."
+
+### The Backwards Logic Trap I Fell Into
+
+When I first started using Replit, I thought staying in the same chat was the right thing to do. I thought the longer I kept the conversation going, the better the memory would be. It was the complete opposite.
+
+| What I Thought | Reality I Discovered |
+|---|---|
+| **Stay in same chat = better memory** | **Polluted context = hallucinations** |
+| **Long conversations = deeper understanding** | **Long conversations = degraded quality** |
+| **Web interfaces preserve context naturally** | **Web hides context warnings completely** |
+
+My breaking point came when I hit the usual 75% project completion but couldn't get to the finish line because of lack of structure and polluted context. The switch to Claude Code CLI with structured framework was night-and-day different.
+
+### Early Warning Signs I Learned to Recognize
+
+I now know the first signs that context is filling:
+- The AI starts forgetting rules (doing what I told them NOT to do)
+- Wrong answers, stuck in loops, poor output quality
+- Not following guidelines, mixing everything together
+- I realize I'm over-explaining, getting frustrated
+- Work gets progressively messed up more
+
+It doesn't happen gradually—it happens and gets worse. Replit is optimized for engagement (keeps conversation going, even if it breaks things).
+
+### How Different Models Handle Context Limits
+
+I've seen how different tools behave when context fills:
+- **Replit**: Hallucinates, breaks things, continues conversation 
+- **DeepSeek/Copilot**: Blocks with error, asks to start new chat
+- **Claude/Droid CLI**: Warns me upfront, offers auto-compact
+
+My critical insight: "Context is directly proportionate to quality of output—clean context (low %) + clear structured input = high quality output."
+
+### My Fresh Context Protocol
+
+Here's my actual step-by-step when I decide to reset:
+1. **Wrap up** if I'm in the middle of a task or task list
+2. **Ask the agent** to write a continuation MD (they decide what they need)
+3. **The continuation doc should include**: what we were doing, accomplished, what's next, any guardrails
+4. **Resume fresh chat**: invoke subagent, give original + continue doc, read and ask if unclear
+5. **No loss** if you make it a habit
+
+CLI tools like Claude and Droid are self-aware and warn me upfront, which makes this much easier.
+
+### My Journey from Web to CLI
+
+My progression was: Claude Code CLI → OpenCode → Ampcode → Droid
+Now I use Claude Code + Droid with GLM models
+
+What CLI offers that web hides:
+- Context visibility ( command)
+- Reset context capability
+- Invoke subagents ()
+- Change models on the fly
+- Drop file paths, access local files
+- Run localhost testing
+- Access VPS directly
+
+The web chaos I experienced: files on cloud, some local, some VPS, some GitHub—complete mess. Projects kept getting worse until I lost trust in Replit entirely. When I started looking at how other people use CLI, I realized how much I was missing and making work harder by using web.
+
+### Token vs Context - What Beginners Don't Understand
+
+Most starters like myself heard of tokens but didn't really know what it meant. Context didn't make sense to me until I switched to CLI.
+
+My simple explanation: 
+- Tokens = characters (~2.5 tokens per word practical estimate)
+- Context = agent memory (total sent/received words it can store and remember)
+
+Example: "Remember when I told you not to delete that file? I do." Context enables this memory. Token awareness comes with experience—you find more economical ways to do the same thing with fewer tokens.
+
+### The Cost I Paid Before Learning to Reset
+
+Three of my projects were affected (one I had to restart). I didn't lose them entirely, but most work was fixing, not building.
+
+The risk: reaching limits mid-work causes hallucinations. Fresh reset is always worth it—I even reset when the agent hallucinates BEFORE context is full (happens sometimes too).
+
+### My Real Project Usage Patterns
+
+Context windows vary by LLM: 200k - 1M tokens
+With heavy work on Droid/Claude: I reset 1-3 times per project
+Light work: maybe once a day
+It depends on the amount of work and continuous back-to-back sessions
+
+### The 75% Rule I Now Follow
+
+I reset at 75% context usage, not when things break. This prevents catastrophic failure and maintains output quality. CLI tools show me  percentage; web tools hide it completely.
+
+Real example from my experience: Arabic TTS project—Replit vibecoding took 1 week, cost $300, and was incomplete vs 3-step + CLI took 7 hours, cost $50, and actually worked.
+
+### Mini-Glossary: Section 6
+
+**Context Window**: LLM's memory limit for conversation (200k-1M tokens). When exceeded, quality degrades and hallucinations increase.
+
+**Token**: Unit of text processing (~2.5 tokens per word, ~4 characters per token). Costs money on usage-based plans.
+
+**Hallucination**: AI making up false information, contradicting itself, or claiming work is done when it's not. Increases as context window fills.
+
+**Auto-Compact**: CLI feature that compresses context to make more space. Band-aid solution, not permanent fix.
+
+**Continuation Document**: Summary written by agent to bridge fresh context windows. Contains current status, accomplishments, next steps.
+
+**Context Poisoning**: Staying in same chat too long, accumulating contradictory information that degrades AI performance.
+
+**Clean Context**: Low percentage usage (under 75%) with clear, structured input. Results in high quality output.
+
+**Web Chaos**: Files scattered across cloud, local, VPS, GitHub without unified access. CLI solves this with local file access.
+
+**Token Awareness**: Skill of finding economical ways to accomplish tasks using fewer tokens. Develops with experience.
+
+**Fresh Reset Protocol**: Systematic approach to starting new chat with continuation document. Prevents hallucinations and maintains progress.
+
+---
+
 
 You now understand how to approach building (vibecoding vs 3-step vs BMAD). Next section: the invisible constraint that stops most builders—context windows, how they fill, when they break, and how to manage them proactively.
 

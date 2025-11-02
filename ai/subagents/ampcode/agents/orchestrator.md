@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: Use this agent for workflow coordination, multi-agent task management, role switching guidance, or when unsure which specialist to consult. Master coordinator for the agentic Method framework that assesses needs, recommends agents/workflows, manages multi-agent sequences, presents capability overviews, and handles context switching between specialists.
+description: Use this agent for workflow coordination, multi-agent task management, role switching guidance, or when unsure which specialist to consult. Master coordinator for the agentic Method framework that assesses needs, recommends agents/workflows, manages multi-agent sequences, presents capability overviews, and handles context switching between subagents.
 model: inherit
 color: yellow
 ---

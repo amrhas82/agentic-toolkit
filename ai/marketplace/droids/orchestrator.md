@@ -110,7 +110,7 @@ You are SELF-SUFFICIENT and can implement features directly using your available
 - Highly specialized domains (security audits, advanced performance optimization)
 - Complex UI/UX design requirements
 - Advanced DevOps infrastructure setup
-- Parallel execution of independent specialists needed
+- Parallel execution of independent subagents needed
 - When user explicitly requests specific expertise
 
 **Task Tool Usage Example:**
@@ -128,7 +128,7 @@ Your tools allow you to:
 - **Execution**: Execute for running commands, tests, builds
 - **Planning**: TodoWrite for managing complex task lists
 - **Delegation**: Task tool for spawning specialist droids when beneficial
-- **Coordination**: Balance between direct work and delegating to specialists
+- **Coordination**: Balance between direct work and delegating to subagents
 
 ## Available Droids and Their Specializations
 
@@ -557,7 +557,7 @@ APPLY TO FUTURE PROJECTS:
 |----------------|------------|----------|----------------|
 | "Fix bug in [specific file/feature]" | Simple | Sequential | debugger → specialist |
 | "Add [feature] to [existing app]" | Medium | Hybrid | architect → developers → tester |
-| "Build [complete system] from scratch" | Complex | Hybrid + Iterative | multiple specialists |
+| "Build [complete system] from scratch" | Complex | Hybrid + Iterative | multiple subagents |
 | "Review/audit [system] for [concern]" | Medium | Sequential | auditor → fixers → validator |
 | "Optimize/improve [system]" | Medium | Parallel | specialist + reviewer |
 

@@ -14,11 +14,12 @@ A comprehensive toolkit for non-coders, semi-technical users, and developers who
 
 **Choose Your AI Tool:**
 
-| Your AI Tool | Use This Kit | Installation |
-|--------------|--------------|--------------|
-| **Claude Code** | `claude` | `cp -r ai/subagents/claude/* ~/.claude/` |
-| **OpenCode** | `opencode` | `cp -r ai/subagents/opencode/* ~/.config/opencode/` |
-| **Amp** | `ampcode` | `cp -r ai/subagents/ampcode/* ~/.amp/` |
+| Your AI Tool    | Use This Kit  | Installation                                         |
+|-----------------|---------------|------------------------------------------------------|
+| **Claude Code** | `claude`      | `cp -r ai/subagents/claude/* ~/.claude/`             |
+| **droid**       | `droid` | `cp -r ai/subagents/opencode/* ~/.factory/` |
+| **OpenCode**    | `opencode`    | `cp -r ai/subagents/opencode/* ~/.config/opencode/`  |
+| **Amp**         | `ampcode`     | `cp -r ai/subagents/ampcode/* ~/.config/amp/`        |
 
 ### Installation Steps
 
@@ -55,11 +56,12 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 
 ## 🤖 Subagent Kits Overview
 
-| Kit | Agents | AI Tool | Description | Status |
-|-----|--------|---------|-------------|--------|
-| **claude** | 13 specialists + 22 tasks | Claude Code | Ready-to-use BMAD+Simple agents optimized for Claude Code | ✅ Production |
-| **opencode** | 13 specialists + 22 tasks | OpenCode | Ready-to-use BMAD+Simple agents optimized for OpenCode | ✅ Production |
-| **ampcode** | 16 specialists | Amp | Ready-to-use BMAD+Simple agents optimized for Amp | ✅ Production |
+| Kit          | Agents                  | bash     | Description | Status |
+|--------------|-------------------------|----------|-------------|--------|
+| **claude**   | 13 subagents + skills   | claude   | Ready-to-use BMAD+Simple agents optimized for Claude Code | ✅ Production |
+| **droid**    | 13 subagents + commands | droid    | Ready-to-use BMAD+Simple agents optimized for Amp | ✅ Production |
+| **opencode** | 13 subagents            | opencode | Ready-to-use BMAD+Simple agents optimized for OpenCode | ✅ Production |
+| **ampcode**  | 16 subagents + commands | amp      | Ready-to-use BMAD+Simple agents optimized for Amp | ✅ Production |
 
 ## 🤖 Marketplace Overview
 
@@ -72,7 +74,7 @@ chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
 
 **What You Get:**
 - **3-Phase Workflow Agents**: PRD Creator → Task Generator → Task Processor
-- **Role-Based Specialists**: Orchestrator, Developer, Architect, QA, Product Manager, UX Designer, and more
+- **Role-Based subagents**: Orchestrator, Developer, Architect, QA, Product Manager, UX Designer, and more
 - **Reusable Tasks** (Claude/OpenCode only): 22 pre-built workflows for validation, testing, documentation
 - **Zero Configuration**: Copy-paste and start using immediately
 
@@ -128,7 +130,7 @@ Location: `ai/marketplace/droids/`
 - **AI & ML**: LLM applications, RAG systems, prompt engineering
 - **Backend**: 21 language-specific droids (Python, Go, Rust, Java, etc.)
 - **Frontend**: React, Next.js, Flutter, mobile development
-- **Security**: Backend, frontend, mobile security specialists
+- **Security**: Backend, frontend, mobile security subagents
 - **Database**: Architecture, optimization, administration
 - **DevOps**: Infrastructure, CI/CD, cloud, Kubernetes
 - **Documentation**: Technical writing, API docs, user guides
@@ -205,9 +207,10 @@ AI-powered task management system for structured workflows
 agentic-toolkit/
 ├── ai/                          # AI workflows and agents
 │   ├── subagents/               # ⭐ YOUR SUBAGENT KITS
-│   │   ├── claude/              # 13 agents + 22 tasks for Claude Code
-│   │   ├── opencode/            # 13 agents + 22 tasks for OpenCode
-│   │   ├── ampcode/             # 16 agents for Amp
+│   │   ├── claude/              # 13 subagents + skills for Claude Code
+│   │   ├── droid/               # 13 subagents + commands for Amp
+│   │   ├── opencode/            # 13 subagents for OpenCode
+│   │   ├── ampcode/             # 16 subagents + commands for Amp
 │   │   └── subagentic-manual.md # Complete agent documentation
 │   ├── simple/                  # 📖 Referenced: 3-step workflow
 │   ├── bmad/                    # 📖 Referenced: BMAD framework
@@ -265,7 +268,7 @@ Legend: ⭐ Original content  📖 Referenced/curated content
 |---------|--------|---------------|-------------|
 | **Automation Level** | Manual | Semi-automated | Fully automated |
 | **Setup** | Copy files | Copy folder | npm install |
-| **Agents** | 3 workflow steps | 13-16 specialists | 20+ specialists |
+| **Agents** | 3 workflow steps | 13-16 subagents | 20+ subagents |
 | **Best For** | Learning, small tasks | Production dev | Enterprise projects |
 | **Complexity** | Low | Medium | High |
 | **Context Usage** | High | Optimized | Variable |
@@ -357,7 +360,7 @@ cp ai/AGENT_RULES.md your-project/CLAUDE.md
 ### Adapted from Best Practices
 The subagent kits combine the best of two proven methodologies:
 - **Simple Method**: Clear 3-phase workflow (PRD → Tasks → Process)
-- **BMAD Framework**: Role-based specialists with deep expertise
+- **BMAD Framework**: Role-based subagents with deep expertise
 
 ### Optimized for Real Use
 - **Reduced context**: Compacted to minimize token usage

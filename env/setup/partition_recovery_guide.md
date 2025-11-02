@@ -739,7 +739,7 @@ sudo tune2fs -m 5 /dev/sdX1       # Reserve 5%
 
 - **Ontrack**: Enterprise-grade recovery
 - **DriveSavers**: High success rate
-- **Kroll Ontrack**: Forensic specialists
+- **Kroll Ontrack**: Forensic subagents
 - **Local data recovery labs**: Often cheaper
 
 **Cost range:** $300 - $3000+ depending on complexity

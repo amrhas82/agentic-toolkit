@@ -52,7 +52,7 @@ The orchestrator will:
 - Predicts potential issues before they occur
 
 ### **Smart Droid Selection**
-- Ranks specialists based on expertise and success history
+- Ranks subagents based on expertise and success history
 - Adapts selection based on project characteristics
 - Learns from previous projects to improve choices
 - Provides fallback strategies when needed
@@ -79,7 +79,7 @@ The orchestrator will:
 - Requests Factory parallel execution with smart prompt engineering
 - Provides comprehensive context and dependencies
 - Monitors progress and handles bottlenecks
-- Integrates results from all specialists
+- Integrates results from all subagents
 
 ### **Real-time Monitoring**
 - Progress tracking with milestone detection
@@ -103,7 +103,7 @@ The orchestrator will:
 - Predicts potential issues before they occur
 
 ### **Smart Droid Selection**
-- Ranks specialists based on expertise and success history
+- Ranks subagents based on expertise and success history
 - Adapts selection based on project characteristics
 - Learns from previous projects to improve choices
 - Provides fallback strategies when needed
@@ -141,7 +141,7 @@ your-project/
 │   ├── frontend-developer.md
 │   ├── database-admin.md
 │   ├── security-auditor.md
-│   └── ... (100+ more specialists)
+│   └── ... (100+ more subagents)
 └── orchestrator/                    # ✅ Copied from Factory
     ├── orchestrator-config.json      # Quality gates and governance
     ├── task-patterns.json            # Predefined execution templates
@@ -381,7 +381,7 @@ echo "## Results" > tasks/backend/$(date +%d-%m-%YYYY)/project-name/verification
    - Execute error recovery when needed
     ↓
 5. Integration & Learning
-   - Synthesize results from all specialists
+   - Synthesize results from all subagents
    - Apply quality gates and validation
    - Update knowledge base with learnings
    - Generate comprehensive documentation
@@ -524,7 +524,7 @@ cat orchestrator/orchestrator-config.json
 # Command help
 /orchestrator --help
 
-# Show available specialists
+# Show available subagents
 /orchestrator --list-droids
 
 # System verification

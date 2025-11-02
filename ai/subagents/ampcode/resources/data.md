@@ -973,9 +973,9 @@ Expansion packs extend Agentic Kit Method beyond traditional software developmen
 
 **Technical Packs**:
 
-- **Infrastructure/DevOps**: Cloud architects, SRE experts, security specialists
+- **Infrastructure/DevOps**: Cloud architects, SRE experts, security subagents
 - **Game Development**: Game designers, level designers, narrative writers
-- **Mobile Development**: iOS/Android specialists, mobile UX experts
+- **Mobile Development**: iOS/Android subagents, mobile UX experts
 - **Data Science**: ML engineers, data scientists, visualization experts
 
 **Non-Technical Packs**:
@@ -983,7 +983,7 @@ Expansion packs extend Agentic Kit Method beyond traditional software developmen
 - **Business Strategy**: Consultants, financial analysts, marketing strategists
 - **Creative Writing**: Plot architects, character developers, world builders
 - **Health & Wellness**: Fitness trainers, nutritionists, habit engineers
-- **Education**: Curriculum designers, assessment specialists
+- **Education**: Curriculum designers, assessment subagents
 - **Legal Support**: Contract analysts, compliance checkers
 
 **Specialty Packs**:

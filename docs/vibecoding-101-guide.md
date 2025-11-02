@@ -1003,7 +1003,7 @@ In Replit (Web driver), capabilities are hidden:
 - Limited or no access to plugins, skills, droids
 
 In Claude Code CLI (CLI driver), you have full control:
-- `@agent-name` lets you invoke specialists at the right moment
+- `@agent-name` lets you invoke subagents at the right moment
 - `/context` shows exactly what's in memory
 - `/reset` lets you refocus and recover
 - Full access to plugins, skills, subagents, and droids
@@ -1011,7 +1011,7 @@ In Claude Code CLI (CLI driver), you have full control:
 
 **Why 50/50 Matters**
 
-You can have the perfect navigator with crystal-clear instructions (50%), but without the right driver, you can't navigate complex terrain. The driver can't manage the engine's context. It can't invoke specialists. It can't recover from errors.
+You can have the perfect navigator with crystal-clear instructions (50%), but without the right driver, you can't navigate complex terrain. The driver can't manage the engine's context. It can't invoke subagents. It can't recover from errors.
 
 Conversely, a professional driver with confused navigator means spinning wheels. The best driver in the world can't execute on vague directions.
 

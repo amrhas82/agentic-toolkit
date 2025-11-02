@@ -26,7 +26,7 @@ Use the kit that matches your AI coding tool:
 
 ### What's the difference between the kits?
 - **claude** and **opencode**: 13 agents + 22 reusable tasks
-- **ampcode**: 16 agents (includes 6 additional technical specialists, no pre-built tasks)
+- **ampcode**: 16 agents (includes 6 additional technical subagents, no pre-built tasks)
 - All share the same 3-phase workflow agents
 
 ### Can I use multiple kits?

@@ -106,7 +106,7 @@ Available in: **Claude**, **OpenCode**, **Amp**
 | **UX Designer** | `ux-designer` / `ux-expert` | UI/UX design, wireframes, accessibility | Interface design, user flows, design systems |
 | **Business Analyst** | `business-analyst` | Market research, competitive analysis, project discovery | Market research, project briefs, brownfield documentation *(Claude/OpenCode only)* |
 
-#### Technical Specialists
+#### Technical subagents
 Available in: **Claude**, **OpenCode**, **Amp**
 
 | Agent | ID | Specialization | When To Use |
@@ -188,7 +188,7 @@ Available in: **Claude**, **OpenCode**
 | **Design & UX** | | | | |
 | ux-designer / ux-expert | ✅ | ✅ | ✅ | UI/UX design |
 | business-analyst | ✅ | ✅ | ❌ | Market research |
-| **Technical Specialists** | | | | |
+| **Technical subagents** | | | | |
 | devops-engineer | ❌ | ❌ | ✅ | CI/CD & infrastructure |
 | security-expert | ❌ | ❌ | ✅ | Security audits |
 | data-engineer | ❌ | ❌ | ✅ | Database & pipelines |
@@ -314,13 +314,13 @@ Use the existing agents as templates:
 
 **Use Amp Subagents if:**
 - You use Amp as your primary AI tool
-- You need the 6 additional technical specialists
+- You need the 6 additional technical subagents
 - You don't need the pre-built tasks
 
 ### Workflow Tips
 
 1. **Start with workflow agents** (1-2-3) for structured development
-2. **Use specialists** for specific technical needs
+2. **Use subagents** for specific technical needs
 3. **Leverage orchestrator** for complex multi-step tasks
 4. **Mix and match** - switch agents as needed during development
 

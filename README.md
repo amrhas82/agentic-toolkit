@@ -48,12 +48,13 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **Benefits of Package**: No cloning needed, always latest, easy updates
 - **Example**: Ask "As full-stack-dev, build a login page" - agents handle the workflow automatically
 
-| Bash     | Subagents (How to Invoke) | Commands/Skills (How to Invoke) | Available in Kit | Global Config |
-|----------|---------------------------|---------------------------------|------------------|---------------|
-| claude   | @product-manager          | /                               | Subagents       | ~/.claude     |
-| droid    | as product manager droid  | /                               | Droids          | ~/.factory    |
-| amp      | as product manager        | /command                        | Subagents       | ~/.config/amp |
-| opencode | @product-manager          | /commands                       | Subagents       | ~/.config/opencode |
+| Bash     | Subagents                | Commands/Skills | Available in Kit    | Global Config      |
+|----------|--------------------------|-----------------|---------------------|--------------------|
+| claude   | @product-manager         | /command        | subagents, skills   | ~/.claude          |
+| droid    | as product manager droid | /command        | droids, commands    | ~/.factory         |
+| amp      | as product manager       | /command        | subagents, commands | ~/.config/amp      |
+| opencode | @product-manager         | /command        | subagents, commands | ~/.config/opencode |
+_* commands are adapted, and compacted claude skills_ 
 
 *Both Agentic Kit and Subagent Kit provide identical content - choose based on your preferred installation method. Subagents are role-based BMAD+Simple agents, commands/skills provide additional functionality.*
 

@@ -219,7 +219,7 @@ AI-powered development environment with JetBrains integration.
 
 ```bash
 curl -fsSL https://ampcode.com/install.sh | bash
-amp --jetbrains
+amp
 ```
 
 **Features:**

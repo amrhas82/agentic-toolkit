@@ -1,87 +1,94 @@
 # Agentic Toolkit
 
-**Ready-to-use AI subagents, frameworks, and development environment for vibecoders**
+**Your Gateway to Vibecoding: AI-Powered Development Made Simple**
 
-A comprehensive toolkit for non-coders, semi-technical users, and developers who want to maximize AI-powered development through proven agentic workflows.
+Discover proven tools and structured frameworks to start vibecoding as a non-technical or semi-technical user. Get essential scripts for Linux environments, learn through Vibecoding 101, and deploy ready-made AI subagents to accelerate your development workflow.
 
-🎯 **Primary Value**: Copy-paste subagent kits adapted from best practices  
-🛠️ **Bonus**: Complete Ubuntu/Debian dev environment automation  
-📚 **Resources**: Curated frameworks, workflows, and integrations
+Featuring structured thinking frameworks, skills, and plugins that guide your AI collaboration for better results.
+
+👉 [Start Learning Vibecoding 101](docs/vibecoding101.md) - Essential guide for beginners
 
 ---
 
 ## 🚀 Quick Start
 
-**Choose Your AI Tool:**
+1. **Clone the Toolkit**: `git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit`
 
-| Your AI Tool    | Use This Kit  | Installation                                         |
-|-----------------|---------------|------------------------------------------------------|
-| **Claude Code** | `claude`      | `cp -r ai/subagents/claude/* ~/.claude/`             |
-| **droid**       | `droid` | `cp -r ai/subagents/opencode/* ~/.factory/` |
-| **OpenCode**    | `opencode`    | `cp -r ai/subagents/opencode/* ~/.config/opencode/`  |
-| **Amp**         | `ampcode`     | `cp -r ai/subagents/ampcode/* ~/.config/amp/`        |
+2. **Set Up Environment**: Run `/tools/dev_tools_menu.sh` for Linux tool installation scripts.
 
-### Installation Steps
+3. **Learn Basics**: Read `/docs/vibecoding101.md` to understand vibecoding.
 
-```bash
-# 1. Clone the toolkit
-git clone https://github.com/amrhas82/agentic-toolkit.git
-cd agentic-toolkit
+4. **Deploy Subagents**: Copy from `/ai/subagents` or install with `npx agentic-kit` for ready-to-use AI agents.
 
-# 2. Copy YOUR kit (pick one)
+5. **Start Vibecoding**: Use your AI tool with the deployed agents.
 
-# For Claude Code:
-cp -rv ai/subagents/claude/* ~/.claude/
-
-# For Droid:
-cp -rv ai/subagents/claude/* ~/.factory/
-
-# For OpenCode:
-cp -rv ai/subagents/opencode/* ~/.config/opencode/
-
-# For Amp:
-cp -rv ai/subagents/ampcode/* ~/.config/amp/
-```
-
-📖 **[See full agent list & usage guide](ai/subagents/subagentic-manual.md)**
-🤖 **[Explore 90+ specialized Droids](ai/marketplace/droids/1-README-Droids.md)** - Advanced AI orchestration system
-
-- ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** to get notified of updates
-- 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** to get help with your vibecoding struggles
-
-### Optional: Set Up Development Environment
-```bash
-cd tools
-chmod +x dev_tools_menu.sh && ./dev_tools_menu.sh
-```
+🚀 [Install Development Tools](tools/dev_tools_menu.sh) | 🤖 [Deploy Subagents](ai/subagents/) | 🤖 [Install via NPM](https://github.com/amrhas82/agentic-kit)
 
 ---
 
-## 🤖 Subagent Kits Overview
+## 📁 What's Included
 
-| Kit          | Agents                  | bash     | Description | Status |
-|--------------|-------------------------|----------|-------------|--------|
-| **claude**   | 13 subagents + skills   | claude   | Ready-to-use BMAD+Simple agents optimized for Claude Code | ✅ Production |
-| **droid**    | 13 subagents + commands | droid    | Ready-to-use BMAD+Simple agents optimized for Amp | ✅ Production |
-| **opencode** | 13 subagents            | opencode | Ready-to-use BMAD+Simple agents optimized for OpenCode | ✅ Production |
-| **ampcode**  | 16 subagents + commands | amp      | Ready-to-use BMAD+Simple agents optimized for Amp | ✅ Production |
+### ⭐ Development Tools - Essential Scripts
+- **Interactive Installer**: `/tools/dev_tools_menu.sh` - Choose and install Linux tools (Tmux, Neovim, etc.) with one command
+- **Automation Scripts**: Pre-configured setups for development environments
+- **Guides**: `/tools/tools_guide.md` - Complete documentation for all tools
 
-## 🤖 Marketplace Overview
+### ⭐ Vibecoding 101 Guide - Your Learning Path
+- **Beginner's Course**: `/docs/vibecoding101.md` - Step-by-step guide for non-technical users
+- **Core Concepts**: Tool selection, AI collaboration, avoiding common pitfalls
+- **Practical Examples**: Real-world vibecoding scenarios and best practices
 
-| Kit/Collection | Type | Description | Status |
-|----------------|------|-------------|--------|
-| **Claude Skills** | Skills | Official and community skills from Anthropic for extending Claude Code functionality | ✅ Production |
-| **Claude Plugins** | Plugins | Cross-referenced plugins for extending Claude Code functionality | ✅ Production |
-| **MCP Servers** | Integration | 200+ Model Context Protocol servers for various tools and services | ✅ Production |
-| **Droid Factory** | Agent Framework | 90+ specialized AI droids for intelligent project coordination and execution | ✅ Production |
+### ⭐ Subagent Kits & Agentic Package - Ready-to-Use AI Agents
+- **Author-Created Content**: Adapted and compacted BMAD+Simple subagents with skills/commands and detailed role-based flows to save context
+- **3-Phase Workflow**: 1-Create PRD, 2-Generate Tasks, 3-Process Task List
+- **Role-Based Agents**: PO, PM, QA, Dev, Architect, Master, Orchestrator
+- **Two Installation Options**:
+  - **Subagent Kits**: `/ai/subagents/` - Manual copy (e.g., `cp -r ai/subagents/claude/* ~/.claude/`)
+  - **Agentic Package**: `npx agentic-kit` - NPM installable version ([repo](https://github.com/amrhas82/agentic-kit))
+- **Benefits of Package**: No cloning needed, always latest, easy updates
+- **Example**: Ask "As full-stack-dev, build a login page" - agents handle the workflow automatically
 
-**What You Get:**
-- **3-Phase Workflow Agents**: PRD Creator → Task Generator → Task Processor
-- **Role-Based subagents**: Orchestrator, Developer, Architect, QA, Product Manager, UX Designer, and more
-- **Reusable Tasks** (Claude/OpenCode only): 22 pre-built workflows for validation, testing, documentation
-- **Zero Configuration**: Copy-paste and start using immediately
+| Bash     | Subagents (How to Invoke) | Commands/Skills (How to Invoke) | Available in Kit | Global Config |
+|----------|---------------------------|---------------------------------|------------------|---------------|
+| claude   | > @product-manager        | /                               | Subagents       | ~/.claude     |
+| droid    | as product manager droid  | /                               | Droids          | ~/.factory    |
+| amp      | >as product manager       | /command                        | Subagents       | ~/.config/amp |
+| opencode | @product-manager          | /commands                       | Subagents       | ~/.config/opencode |
 
-📖 **[Complete agent documentation](ai/subagents/subagentic-manual.md)**
+*Both Agentic Kit and Subagent Kit provide identical content - choose based on your preferred installation method. Subagents are role-based BMAD+Simple agents, commands/skills provide additional functionality.*
+
+### 📖 Curated Resources
+- **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers ([explore](https://claude-plugins.dev/))
+- **BMAD Framework** (`/ai/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
+- **Simple Framework** (`/ai/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
+- **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))
+
+---
+
+## 📂 Directory Structure
+
+```
+agentic-toolkit/
+├── ai/                          # AI workflows and agents
+│   ├── subagents/               # ⭐ YOUR SUBAGENT KITS
+│   │   ├── claude/              # Agents for Claude Code
+│   │   ├── opencode/            # Agents for OpenCode
+│   │   └── ampcode/             # Agents for Amp
+│   ├── marketplace/             # 📖 Curated subagents (droids), plugins, skills, MCP servers
+│   ├── bmad/                    # 📖 BMAD role-based framework
+│   ├── simple/                  # 📖 3-step workflow framework
+│   ├── AGENT_RULES.md           # AI collaboration guidelines
+│   └── README-task-master.md    # Task management guide
+├── tools/                       # ⭐ Development utilities & scripts
+│   ├── dev_tools_menu.sh        # Interactive installer
+│   ├── master_tmux_setup.sh     # Tmux automation
+│   ├── master_neovim_setup.sh   # Neovim automation
+│   └── tools_guide.md           # Complete tools documentation
+├── env/                         # Environment configuration
+├── docs/                        # Documentation
+│   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
+└── README.md                    # This file
+```
 
 ---
 
@@ -95,239 +102,7 @@ This toolkit is designed for anyone wanting to maximize AI-powered development:
 ✅ **Developers** - Wanting structured, proven AI workflows  
 ✅ **Teams** - Needing standardized AI collaboration patterns
 
-### 📚 New to Vibecoding?
-
-**[Vibecoding 101 Guide](docs/vibecoding-101.md)** - Comprehensive guide in development (7 of 12 sections complete)
-
-Learn how to build software with AI without being a traditional coder. Covers tool selection, context management, pricing models, and avoiding common pitfalls like the $1,000 UI trap.
-
----
-
-## 📁 What's Included
-
-### ⭐ Your Toolkit (Original Adaptations)
-
-#### **Subagent Kits** - Ready-to-Use AI Agents
-Production-ready agents adapted from Simple + BMAD methods, optimized for context and immediate deployment:
-
-Location: `ai/subagents/`
-- **claude/** - 13 agents + 22 tasks for Claude Code
-- **opencode/** - 13 agents + 22 tasks for OpenCode
-- **ampcode/** - 16 agents for Amp
-
-📖 **[Tools guide](tools/tools_guide.md)**
-
-#### **Droid Factory CLI** - Intelligent Orchestration System
-**Source**: [Droid-CLI-Orchestrator](https://github.com/aeitroc/Droid-CLI-Orchestrator) by aeitroc
-
-Complete orchestration system with 90+ specialized AI droids for intelligent project coordination and execution:
-
-Location: `ai/marketplace/droids/`
-- **90+ Specialized Droids**: Domain-specific AI agents for every development task
-- **Smart Orchestrator**: Intelligent project planning and coordination
-- **Learning System**: Adaptive execution with memory-based improvements
-- **Proactive Usage**: Droids automatically engage when their expertise is needed
-
-**Key Droid Categories:**
-- **Orchestration**: Master coordinators for project analysis and planning
-- **AI & ML**: LLM applications, RAG systems, prompt engineering
-- **Backend**: 21 language-specific droids (Python, Go, Rust, Java, etc.)
-- **Frontend**: React, Next.js, Flutter, mobile development
-- **Security**: Backend, frontend, mobile security subagents
-- **Database**: Architecture, optimization, administration
-- **DevOps**: Infrastructure, CI/CD, cloud, Kubernetes
-- **Documentation**: Technical writing, API docs, user guides
-- **SEO & Marketing**: 10 specialized digital marketing droids
-- **Testing**: Quality assurance, automation, debugging
-
-📖 **[Complete Droid Documentation](ai/marketplace/droids/comprehensive-droid-documentation.md)**
-📊 **[Droid Reference Table](ai/marketplace/droids/1-README-Droids.md)**
-⚙️ **[Droid CLI Setup Guide](ai/marketplace/droids/2-README-Droid-CLI.md)**
-
-#### **Development Tools** - Automation Scripts
-- Automated installation for Tmux, Neovim, Lite XL
-- Interactive dev tools menu for easy setup
-- Configuration files and comprehensive guides
-
-#### **Environment Setup** - Ubuntu/Debian Configuration
-- **System Setup**: Backup, recovery, partition management
-- **Development Environments**: Window managers (BSPWM, DWM, Openbox)
-- **Productivity Tools**: ButterBash, ButterNotes, ButterScripts
-
----
-
-### 📖 Referenced Frameworks (External Resources)
-
-These are curated references to external projects - this repo provides links and guidance:
-
-#### **Simple Workflow** (`ai/simple/`)
-**Source**: Community-contributed 3-step methodology
-
-**What it is**: Manual workflow without automation
-- Step 1: Create PRD
-- Step 2: Generate Tasks  
-- Step 3: Process Task List
-
-**Best for**: Learning the methodology, understanding the foundations
-
-#### **BMAD Method** (`ai/bmad/`)
-**Source**: [BMad-CORE by bmad-code-org](https://github.com/bmad-code-org/BMAD-METHOD)
-
-**What it is**: Enterprise-grade Human-AI Collaboration Platform
-- npm installable package
-- Scale Adaptive Workflows (Levels 0-4)
-- Multiple modules: BMM (software dev), BMB (agent builder), CIS (creative intelligence)
-- Four-phase methodology: Analysis → Planning → Solutioning → Implementation
-
-**Available in this repo:**
-- Core framework (`ai/bmad/core/`) - Foundation for all modules
-- Agent builder module (`ai/bmad/bmb/`) - Create your own agents with specialized workflows for agent creation and customization
-- Creative Intelligence Suite (`ai/bmad/cis/`) - Unlock creative thinking and innovation with brainstorming workflows that power other modules while standing alone as a complete creative toolkit
-- Configuration files (`ai/bmad/_cfg/`) - Customization options
-- Documentation (`ai/bmad/docs/`) - Complete guides and references
-
-**Module Documentation:**
-- [BMad Method (BMM) README](ai/bmad/README.md) - Complete guide to the software development module
-- [BMad Builder (BMB) README](ai/bmad/bmb/README.md) - Guide to creating custom agents and workflows
-- [Creative Intelligence Suite (CIS) README](ai/bmad/cis/README.md) - Guide to the creative thinking and innovation module
-
-#### **Task Master** (`ai/README-task-master.md`)
-AI-powered task management system for structured workflows
-- PRD-to-tasks automation with dependency awareness
-- MCP integration for Cursor, Windsurf, VS Code, Claude Code
-
-#### **Curated Resources**
-- **[Awesome MCP Servers](ai/marketplace/awesome_mcp_servers.md)** - 200+ Model Context Protocol servers
-- **[Awesome LLM Skills](ai/marketplace/skills/awesome-SKILLS.md)** - [Source](https://github.com/Prat011/awesome-llm-skills)
-- **[Claude Skills Marketplace](ai/marketplace/skills/Anthropic-SKILLS.md)** - Official and community skills from Anthropic
-- **[Claude Plugins Directory](ai/marketplace/plugins/PLUGINS_DIRECTORY.md)** - Cross-referenced plugins for extending Claude Code functionality
-
----
-
-## 📂 Directory Structure
-
-```
-agentic-toolkit/
-├── ai/                          # AI workflows and agents
-│   ├── subagents/               # ⭐ YOUR SUBAGENT KITS
-│   │   ├── claude/              # 13 subagents + skills for Claude Code
-│   │   ├── droid/               # 13 subagents + commands for Amp
-│   │   ├── opencode/            # 13 subagents for OpenCode
-│   │   ├── ampcode/             # 13 subagents + commands for Amp
-│   │   └── subagentic-manual.md # Complete agent documentation
-│   ├── simple/                  # 📖 Referenced: 3-step workflow
-│   ├── bmad/                    # 📖 Referenced: BMAD framework
-│   │   ├── docs/                # Documentation - Complete guides and references
-│   │   ├── bmb/                 # BMAD Builder module - Create and customize agents
-│   │   └── cis/                 # Creative Intelligence Suite - Unlock creative thinking
-│   ├── marketplace/             # 📖 Claude Code skills and plugins
-│   │   ├── droids/              # 90+ droids from droid CLI (Factory.ai)
-│   │   ├── skills/              # Official and community skills from Anthropic
-│   │   ├── plugins/             # Cross-referenced plugins for extending Claude Code functionality
-│   │   └── awesome_mcp_servers  # 200+ MCP server list
-│   ├── AGENT_RULES.md           # Generic AI collaboration guardrails
-│   ├── README-task-master.md    # 📖 Task Master guide
-│   └── awesome-llm-SKILLS.md    # 📖 Curated LLM resources
-├── tools/                       # ⭐ Development utilities & scripts
-│   ├── dev_tools_menu.sh        # Interactive installer
-│   ├── master_tmux_setup.sh     # Tmux automation
-│   ├── master_neovim_setup.sh   # Neovim automation
-│   └── tools_guide.md           # Complete tools documentation
-├── env/                         # ⭐ Environment configuration
-│   ├── setup/                   # System setup & recovery
-│   └── tools/                   # Window managers & productivity tools
-├── docs/                        # Documentation
-│   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
-└── README.md                    # This file
-
-Legend: ⭐ Original content  📖 Referenced/curated content
-```
-
----
-
-## 💡 How to Use This Repo
-
-### For Quick Setup (Most Users)
-1. **Clone the repo**
-2. **Copy the subagent kit** for your AI tool (Claude/OpenCode/Amp)
-3. **Start using agents** - they're pre-configured and ready
-4. **Optional**: Set up dev environment with `tools/dev_tools_menu.sh`
-
-### For Learning
-1. **Start with Simple workflow** (`ai/simple/`) to understand the 3-step method
-2. **Explore subagent kits** to see how they implement the patterns
-3. **Try BMAD** if you need enterprise-scale workflows
-
-### For Deep Customization
-1. **Use BMB (BMAD Builder)** to create custom agents
-2. **Fork and modify** the subagent kits for your needs
-3. **Contribute back** your improvements
-
----
-
-## 🔄 Workflow Comparison
-
-| Feature | Simple | Subagent Kits | BMAD Method |
-|---------|--------|---------------|-------------|
-| **Automation Level** | Manual | Semi-automated | Fully automated |
-| **Setup** | Copy files | Copy folder | npm install |
-| **Agents** | 3 workflow steps | 13-16 subagents | 20+ subagents |
-| **Best For** | Learning, small tasks | Production dev | Enterprise projects |
-| **Complexity** | Low | Medium | High |
-| **Context Usage** | High | Optimized | Variable |
-| **Installation Time** | 1 min | 2 min | 10-15 min |
-
----
-
-## 📋 AI Agent Guidelines
-
-This toolkit includes standardized guardrails for AI collaboration across any AI coding tool:
-
-**[AGENT_RULES.md](ai/AGENT_RULES.md)** - Generic AI agent collaboration guidelines
-- **Communication Protocols**: How AI agents should interact and clarify requirements
-- **Tech Stack Preferences**: Node.js, TypeScript, React, PostgreSQL, Drizzle ORM
-- **Testing Strategies**: Unit, Integration, E2E, Performance, Security testing frameworks
-- **Development Principles**: Safety guardrails, simplicity advocacy, fact-based responses
-- **Workflow Standards**: File impact analysis, change documentation, authentication protection
-
-### How to Use
-
-**Copy to your project** to establish AI collaboration standards:
-```bash
-cp ai/AGENT_RULES.md your-project/.claude/
-# or
-cp ai/AGENT_RULES.md your-project/.cursorrules
-# or
-cp ai/AGENT_RULES.md your-project/CLAUDE.md
-```
-
-**What it provides:**
-- ✅ Sets expectations for AI agent behavior
-- ✅ Defines preferred tech stack and tools
-- ✅ Establishes comprehensive testing requirements
-- ✅ Provides safety guardrails for critical operations
-- ✅ Ensures consistent communication style
-
-**Customizable**: Edit the file to match your project's specific stack and preferences.
-
----
-
-## 🛡️ System Requirements
-
-### For AI Subagents
-- **AI Coding Tool**: Claude Code, OpenCode, or Amp
-- **Storage**: 50MB for subagent files
-- **No dependencies**: Copy-paste ready
-
-### For Development Environment Setup
-- **OS**: Ubuntu 20.04+ or Debian 11+
-- **Prerequisites**: `git`, `curl`, `sudo` access
-- **Memory**: 4GB+ RAM recommended
-- **Storage**: 10GB+ free space
-
-### For BMAD Method
-- **Node.js**: v20+ required
-- **Git**: For cloning repository
+**[Vibecoding 101 Guide](docs/vibecoding-101.md)** - Learn how to build software with AI without being a traditional coder.
 
 ---
 
@@ -335,50 +110,13 @@ cp ai/AGENT_RULES.md your-project/CLAUDE.md
 
 ### Getting Started
 - [This README](#-quick-start) - Start here
-- [Vibecoding 101](docs/vibecoding-101.md) - Comprehensive beginner's guide (in development)
-- [FAQ](docs/FAQ.md) - Frequently asked questions
-- [Subagent Manual](ai/subagents/subagentic-manual.md) - Complete agent guide
+- [Vibecoding 101](docs/vibecoding-101.md) - Comprehensive beginner's guide
 - [Tools Guide](tools/tools_guide.md) - Development tools documentation
+- [Subagent Manual](ai/subagents/subagentic-manual.md) - Complete agent guide
 
 ### AI Workflows
-- [Subagent Kits](ai/subagents/subagentic-manual.md) - Your adapted agents
-- [Simple Workflow](ai/simple/) - 3-step methodology
-- [BMAD Method](ai/bmad/README.md) - Enterprise framework
-- [Task Master](ai/README-task-master.md) - Task management system
-- [Agent Guidelines](ai/AGENT_RULES.md) - Generic AI collaboration guardrails
-
-### Tools & Environment
-- [Development Tools](tools/tools_guide.md)
-- [Environment Setup](env/)
-- [MCP Integrations](ai/marketplace/awesome_mcp_servers.md)
-
-### Contributing
-- [Contributing Guide](docs/CONTRIBUTING.md)
-- [FAQ](docs/FAQ.md)
-
----
-
-## 🎉 What Makes the Subagent Kits Special?
-
-### Adapted from Best Practices
-The subagent kits combine the best of two proven methodologies:
-- **Simple Method**: Clear 3-phase workflow (PRD → Tasks → Process)
-- **BMAD Framework**: Role-based subagents with deep expertise
-
-### Optimized for Real Use
-- **Reduced context**: Compacted to minimize token usage
-- **Tested**: Production-ready and validated
-- **Zero config**: No setup required, just copy and use
-- **Consistent**: Same agents across Claude, OpenCode, and Amp
-
-### Immediately Deployable
-```bash
-# From clone to usage in 30 seconds
-git clone https://github.com/amrhas82/agentic-toolkit.git
-cd agentic-toolkit
-cp -r ai/subagents/claude/* ~/.claude/
-# Done! Start using agents in Claude Code
-```
+- [Subagent Kits](ai/subagents/) - Your adapted agents
+- [Agent Guidelines](ai/AGENT_RULES.md) - AI collaboration guardrails
 
 ---
 
@@ -386,7 +124,7 @@ cp -r ai/subagents/claude/* ~/.claude/
 
 ### Getting Help
 - ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** for updates
-- 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** for vibecoding support and community
+- 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** for vibecoding support
 - 🐛 **[GitHub Issues](https://github.com/amrhas82/agentic-toolkit/issues)** for bug reports
 - 💡 **[GitHub Discussions](https://github.com/amrhas82/agentic-toolkit/discussions)** for questions
 
@@ -396,27 +134,24 @@ cp -r ai/subagents/claude/* ~/.claude/
 A: Use the one for your AI coding tool: Claude Code → claude, OpenCode → opencode, Amp → ampcode
 
 **Q: What's the difference between the subagent kits and BMAD?**  
-A: Subagent kits are ready-to-use, copy-paste agents. BMAD is a full framework with installer and more features. Start with subagents for simplicity.
+A: Subagent kits are ready-to-use, copy-paste agents. BMAD is a full framework - start with subagents for simplicity.
 
 **Q: Can I use multiple agent kits?**  
 A: Yes! Each deploys to a different location and works with different AI tools.
-
-**Q: Do I need the development environment setup?**  
-A: No, it's optional. The subagents work independently of the environment tools.
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! See **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** for detailed guidelines.
+We welcome contributions! See **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** for guidelines.
 
 ### Quick Guide
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-improvement`)
-3. Make your changes and test thoroughly
+2. Create a feature branch
+3. Make your changes
 4. Submit a pull request
 
-**What to contribute**: Subagent improvements, tool scripts, documentation, bug fixes
+**What to contribute**: Subagent improvements, tool scripts, documentation
 
 ---
 
@@ -426,45 +161,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ---
 
-## 🙏 Attribution & Credits
+**Built with ❤️ for the vibecoding community** | [LinkedIn](https://linkedin.com/in/hamr)
 
-### Original Content (This Repository)
-- ⭐ Subagent kit adaptations for Claude, OpenCode, and Amp
-- ⭐ Development tools and automation scripts
-- ⭐ Environment setup configurations
-
-### Referenced External Projects
-- **Simple Workflow** - Community-contributed 3-step methodology
-- **BMAD Method** - [bmad-code-org](https://github.com/bmad-code-org/BMAD-METHOD) - BMad-CORE framework
-- **Droid Factory CLI** - [aeitroc](https://github.com/aeitroc/Droid-CLI-Orchestrator) - 90+ specialized AI droids orchestration system
-- **Awesome MCP Servers** - Curated MCP server collection
-- **Awesome LLM Skills** - [Prat011](https://github.com/Prat011/awesome-llm-skills)
-- **Task Master** - AI task management system
-
-Special thanks to the vibecoding community and all contributors!
-
----
-
-## 🔗 Related Resources
-
-- [BMAD Framework](https://github.com/bmad-code-org/BMAD-METHOD) - Enterprise AI collaboration platform
-- [Model Context Protocol](https://modelcontextprotocol.io) - MCP specifications
-- [Claude Code](https://claude.ai/code) - Anthropic's coding assistant
-- [Amp](https://ampcode.com) - AI coding assistant
-
----
-
-## 📊 Project Status
-
-- ✅ **Subagent Kits**: Production-ready for Claude, OpenCode, and Amp
-- ✅ **Development Tools**: Complete with automated scripts
-- ✅ **Environment Setup**: Full Ubuntu/Debian automation
-- ✅ **BMAD Integration**: Ready-to-deploy agents included
-- ✅ **Documentation**: Comprehensive guides and examples
-- 🔄 **Continuous Improvement**: Actively maintained and updated
-
----
-
-**Built with ❤️ for the vibecoding community**
-
-Transform your AI-powered development workflow with proven, ready-to-use tools and agents.
+Ready to vibecode? Follow the Quick Start above!

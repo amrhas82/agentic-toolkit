@@ -34,6 +34,10 @@ sudo smartctl -a /dev/sdX
 lsblk -f
 sudo fdisk -l /dev/sdX
 sudo parted /dev/sdX print
+
+# 4. If unknown error mounting drive
+sudo ntfsfix /dev/sda1
+
 ```
 
 **RED FLAGS - Stop if you see:**

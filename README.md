@@ -50,9 +50,9 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 | Bash     | Subagents (How to Invoke) | Commands/Skills (How to Invoke) | Available in Kit | Global Config |
 |----------|---------------------------|---------------------------------|------------------|---------------|
-| claude   | > @product-manager        | /                               | Subagents       | ~/.claude     |
+| claude   | @product-manager          | /                               | Subagents       | ~/.claude     |
 | droid    | as product manager droid  | /                               | Droids          | ~/.factory    |
-| amp      | >as product manager       | /command                        | Subagents       | ~/.config/amp |
+| amp      | as product manager        | /command                        | Subagents       | ~/.config/amp |
 | opencode | @product-manager          | /commands                       | Subagents       | ~/.config/opencode |
 
 *Both Agentic Kit and Subagent Kit provide identical content - choose based on your preferred installation method. Subagents are role-based BMAD+Simple agents, commands/skills provide additional functionality.*

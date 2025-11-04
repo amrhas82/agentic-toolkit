@@ -55,8 +55,6 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 | amp      | as product manager       | /command        | subagents, commands | ~/.config/amp      |
 | opencode | @product-manager         | /command        | subagents, commands | ~/.config/opencode |
 
-_* commands are adapted, and compacted claude skills_ 
-
 *Both Agentic Kit and Subagent Kit provide identical content - choose based on your preferred installation method. Subagents are role-based BMAD+Simple agents, commands/skills provide additional functionality.*
 
 ### 📖 Curated Resources

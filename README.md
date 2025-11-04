@@ -71,10 +71,11 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 ```
 agentic-toolkit/
 ├── ai/                          # AI workflows and agents
-│   ├── subagents/               # ⭐ YOUR SUBAGENT KITS
-│   │   ├── claude/              # Agents for Claude Code
-│   │   ├── opencode/            # Agents for OpenCode
-│   │   └── ampcode/             # Agents for Amp
+│   ├── subagents/               # ⭐ SUBAGENT KITS
+│   │   ├── claude/              # subagents + skills for Claude Code
+│   │   ├── droid/              # subagents + commands for Droid
+│   │   ├── ampcode/             # subagents + commands for Ampcode
+│   │   └── opencode/            # subagents + commands for OpenCode
 │   ├── marketplace/             # 📖 Curated subagents (droids), plugins, skills, MCP servers
 │   ├── bmad/                    # 📖 BMAD role-based framework
 │   ├── simple/                  # 📖 3-step workflow framework

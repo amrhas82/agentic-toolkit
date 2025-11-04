@@ -47,6 +47,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
   - **Agentic Package**: `npx agentic-kit` - NPM installable version ([repo](https://github.com/amrhas82/agentic-kit))
 - **Benefits of Package**: No cloning needed, always latest, easy updates
 - **Example**: Ask "As full-stack-dev, build a login page" - agents handle the workflow automatically
+- **[Full Agents and Skills Reference](docs/agents-and-skills.md)** - Complete list of available agents and commands
 
 | Bash     | Subagents                | Commands/Skills | Available in Kit    | Global Config      |
 |----------|--------------------------|-----------------|---------------------|--------------------|

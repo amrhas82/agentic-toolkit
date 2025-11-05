@@ -63,6 +63,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **BMAD Framework** (`/ai/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
 - **Simple Framework** (`/ai/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))
+- **BYOK/Local LLM**: Droid(BYOK/local) + Opencode(local) setup using ollama ([get started](/ai/marketplace/ollama))
 
 ---
 

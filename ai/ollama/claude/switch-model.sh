@@ -67,12 +67,17 @@ EOF
 # Switch functions
 switch_to_claude_native() {
     print_info "Switching to Claude Native models..."
-    update_settings \
-        "https://api.anthropic.com" \
-        "claude-sonnet-4-5-20250929" \
-        "claude-haiku-3-5-20241022" \
-        "claude-opus-3-5-20241022"
-    print_current "Sonnet: claude-sonnet-4-5-20250929, Haiku: claude-haiku-3-5-20241022"
+
+    # Backup existing settings before deleting
+    backup_settings
+
+    # Delete settings.json to use Claude's native configuration
+    if [ -f "$SETTINGS_FILE" ]; then
+        rm "$SETTINGS_FILE"
+        print_success "Removed settings.json - using Claude native configuration"
+    fi
+
+    print_current "Using Claude native models (no custom configuration)"
 }
 
 switch_to_glm_override() {
@@ -129,7 +134,7 @@ show_status() {
             if [[ "$sonnet" == *"claude-haiku"* ]]; then
                 print_current "Profile: Claude Fast Mode"
             else
-                print_current "Profile: Claude Native"
+                print_current "Profile: Claude Native (custom config)"
             fi
         elif [[ "$base_url" == *"api.z.ai"* ]]; then
             if [[ "$sonnet" == *"claude-sonnet"* ]]; then
@@ -141,7 +146,10 @@ show_status() {
             fi
         fi
     else
-        print_error "Settings file not found"
+        print_current "Profile: Claude Native (no custom configuration)"
+        echo "🔗 URL: Default Anthropic API"
+        echo "🤖 Sonnet: Default Claude Sonnet"
+        echo "⚡ Haiku: Default Claude Haiku"
     fi
 }
 

@@ -1,324 +1,339 @@
-# Ollama Docker Setup for Local LLMs
+# Ollama Ubuntu Setup Tool
 
-A complete setup for running Ollama with Docker to use local LLMs with OpenCode or Droid CLI.
-
-## Quick Start
-
-### Option 1: Interactive Setup (Recommended)
-Run the interactive setup script for a guided experience:
-```bash
-./ollama-setup.sh
-```
-
-### Option 2: Ubuntu Quick Start
-For Ubuntu users who want automated setup:
-```bash
-./start-ollama.sh
-```
-
-### Option 3: Manual Setup
-1. **Start the container**:
-```bash
-docker compose up -d
-```
-
-2. **Pull a model**:
-```bash
-docker compose exec ollama ollama pull mistral:7b
-```
-
-3. **Configure context window (recommended)**:
-```bash
-docker compose exec ollama ollama run mistral:7b
->>> /set parameter num_ctx 8192
->>> /save mistral:7b-8k
->>> /bye
-```
-
-## Available Scripts
-
-- `ollama-setup.sh` - Interactive menu-driven setup with all features
-- `start-ollama.sh` - Automated Ubuntu quick start
-- `docker-compose.yml` - Docker configuration with GPU support
+An automated installation and configuration tool for Ollama on Ubuntu systems with Docker support. This tool provides a seamless setup experience with GPU/CPU detection, error handling, and integration with OpenCode and Droid CLI.
 
 ## Features
 
-### ✅ Docker Installation & Management
-- Automatic Docker installation for Ubuntu/Debian systems
-- Docker daemon status checking
-- User permission handling
-- Service management
+- 🚀 **Automated Installation**: One-command setup of Ollama with Docker
+- 🎯 **GPU/CPU Detection**: Automatic hardware detection with fallback support
+- 🛡️ **Error Handling**: Comprehensive error recovery and troubleshooting
+- 📊 **Health Monitoring**: Built-in health checks and status monitoring
+- 🔧 **Configuration Management**: Flexible configuration with templates
+- 🎨 **User-Friendly Interface**: Progress indicators and clear messaging
+- 🔗 **Integration Ready**: Pre-configured templates for OpenCode and Droid CLI
+- ✅ **Thoroughly Tested**: Comprehensive unit and integration tests
 
-### ✅ Ollama Container Management
-- Start/stop Ollama containers
-- GPU/CPU mode selection
-- Port conflict resolution
-- Health checks
+## Quick Start
 
-### ✅ Model Management
-- Install models from Ollama library
-- Configure context windows for better tool support
-- List installed models
-- Remove unwanted models
-- Model information display
+### Prerequisites
 
-### ✅ OpenCode & Droid CLI Integration
-- Automatic configuration generation
-- Tool support verification
-- Context window optimization
+- Ubuntu 18.04+ or derivative (Linux Mint, Pop!_OS, etc.)
+- Minimum 4GB RAM
+- 10GB available disk space
+- Internet connection
+- Sudo access (for Docker installation)
 
-## Requirements
+### Installation
 
-### System Requirements
-- **OS**: Ubuntu, Debian, macOS, or other Linux distributions
-- **RAM**: Minimum 4GB (8GB+ recommended for larger models)
-- **Storage**: 10GB+ for models and Docker
-- **Docker**: Latest version (auto-installed on Ubuntu)
+```bash
+# Clone the repository
+git clone https://github.com/your-org/ollama-ubuntu-setup.git
+cd ollama-ubuntu-setup
 
-### Optional Requirements
-- **NVIDIA GPU**: For GPU acceleration
-- **NVIDIA Docker Runtime**: For GPU support
+# Run the setup tool
+./setup-ollama.sh
+```
+
+### Usage Examples
+
+```bash
+# Default installation with auto GPU detection
+./setup-ollama.sh
+
+# Verbose output with detailed logs
+./setup-ollama.sh --verbose
+
+# Force GPU mode
+./setup-ollama.sh --gpu enabled
+
+# Force CPU mode
+./setup-ollama.sh --gpu disabled
+
+# Custom installation directory
+./setup-ollama.sh --dir /opt/ollama
+
+# Custom port
+./setup-ollama.sh --port 8080
+
+# Dry run (preview installation steps)
+./setup-ollama.sh --dry-run
+
+# Show help
+./setup-ollama.sh --help
+```
+
+## Development
+
+This project uses a robust development workflow with automated testing, linting, and formatting.
+
+### Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/ollama-ubuntu-setup.git
+cd ollama-ubuntu-setup
+
+# Set up development environment
+make setup
+
+# Or run the setup script manually
+./scripts/install-dev.sh
+
+# Install pre-commit hooks
+make install-pre-commit
+```
+
+### Development Tools
+
+- **ShellCheck**: Bash linting and static analysis
+- **shfmt**: Bash code formatting
+- **BATS**: Bash Automated Testing System
+- **pre-commit**: Git hooks for code quality
+- **Make**: Development task automation
+
+### Development Commands
+
+```bash
+# Show all available commands
+make help
+
+# Run linting checks
+make lint
+
+# Format code
+make format
+
+# Run tests
+make test
+
+# Run tests with coverage
+make test-coverage
+
+# Run all checks (lint + test)
+make check
+
+# Validate project structure
+make validate
+
+# Clean temporary files
+make clean
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+./tests/run-tests.sh
+
+# Run specific test file
+./tests/run-tests.sh --file test-error-handler.sh
+
+# Run with verbose output
+./tests/run-tests.sh --verbose
+
+# Run with coverage analysis
+./tests/run-tests.sh --coverage
+
+# Clean up old test results
+./tests/run-tests.sh --clean
+```
+
+### Code Quality
+
+This project enforces high code quality standards:
+
+- **Linting**: All shell scripts must pass ShellCheck
+- **Formatting**: Code must be formatted with shfmt (4-space indentation)
+- **Testing**: All components must have unit tests
+- **Documentation**: All functions must be documented
+- **Error Handling**: All functions must handle errors appropriately
+
+### Project Structure
+
+```
+ollama-ubuntu-setup/
+├── setup-ollama.sh              # Main installation script
+├── lib/                         # Core libraries
+│   ├── error-handler.sh         # Error handling and logging
+│   ├── config-manager.sh        # Configuration management
+│   ├── ui-helper.sh             # User interface components
+│   ├── system-checks.sh         # System validation
+│   ├── docker-manager.sh        # Docker installation/management
+│   ├── ollama-installer.sh      # Ollama container setup
+│   └── health-checker.sh        # Health monitoring
+├── config/                      # Configuration templates
+│   ├── docker-compose.yml       # Docker Compose template
+│   └── docker-compose-cpu.yml   # CPU-only template
+├── templates/                   # Integration templates
+│   ├── opencode-config.json     # OpenCode integration
+│   └── droid-config.env         # Droid CLI integration
+├── tests/                       # Test suite
+│   ├── test-*.sh               # Unit tests
+│   ├── test-integration.sh      # Integration tests
+│   └── run-tests.sh            # Test runner
+├── scripts/                     # Utility scripts
+│   └── install-dev.sh          # Development setup
+├── docs/                       # Documentation
+│   ├── README.md               # This file
+│   └── TROUBLESHOOTING.md      # Troubleshooting guide
+├── .pre-commit-config.yaml     # Pre-commit hooks
+├── .editorconfig               # Editor configuration
+├── Makefile                    # Development tasks
+└── .github/workflows/          # CI/CD workflows
+    └── ci.yml                  # GitHub Actions
+```
 
 ## Configuration
 
+The tool uses a comprehensive configuration system that can be customized:
+
+### Default Configuration
+
+- **Port**: 11434
+- **Host**: 0.0.0.0
+- **GPU Mode**: Auto-detection
+- **Installation Directory**: `~/.ollama`
+- **Log Level**: INFO
+- **Max Loaded Models**: 3
+- **Parallel Requests**: 2
+
+### Configuration Files
+
+- Main config: `~/.ollama/config/ollama.conf`
+- Docker Compose: `~/.ollama/config/docker-compose.yml`
+- Environment: `~/.ollama/config/ollama.env`
+
 ### Environment Variables
-Copy `.env.example` to `.env` and modify as needed:
+
+You can override configuration with environment variables:
 
 ```bash
-# Ollama data directory (persists models and configuration)
-# OLLAMA_DATA=./ollama-data
-
-# Model context window size (adjust based on available RAM)
-# CONTEXT_WINDOW=8192
+export OLLAMA_PORT=8080
+export OLLAMA_HOST=127.0.0.1
+export GPU_MODE=disabled
+./setup-ollama.sh
 ```
 
-### GPU Support
-The default `docker-compose.yml` includes GPU support. If you have an NVIDIA GPU and have installed the NVIDIA Container Toolkit, the container will automatically use GPU acceleration.
+## Integration
 
-For CPU-only systems, the setup scripts will automatically create a CPU-only configuration.
+### OpenCode Integration
 
-## Model Management
-
-### Browse Models
-Find models at: [Ollama Library](https://ollama.com/library)
-
-### Install Models
-```bash
-# Interactive script
-./ollama-setup.sh
-# Select option 6: Install model
-
-# Manual installation
-docker compose exec ollama ollama pull <model_name>
-```
-
-### Configure Models for Tool Support
-Many models need increased context windows for proper tool usage:
+After installation, use the generated OpenCode configuration:
 
 ```bash
-# Create model with 8192 token context
-docker compose exec ollama ollama create <model_name>-8k -f <(echo "FROM <model_name>
-PARAMETER num_ctx 8192")
+# Copy configuration to OpenCode
+cp ~/.ollama/templates/opencode-config.json ~/.opencode/config/
 ```
 
-### List Installed Models
+### Droid CLI Integration
+
+Use the generated Droid CLI configuration:
+
 ```bash
-docker compose exec ollama ollama list
-```
+# Source the configuration
+source ~/.ollama/templates/droid-config.env
 
-### Remove Models
-```bash
-docker compose exec ollama ollama rm <model_name>
-```
-
-## OpenCode Configuration
-
-Create or update `~/.config/opencode/config.json`:
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
-      "models": {
-        "mistral:7b-8k": {
-          "tools": true
-        }
-      }
-    }
-  }
-}
-```
-
-### Tool-Compatible Models
-Models that support tools (agentic capabilities):
-- `qwen2.5:7b` - Good tool support
-- `llama3.2:3b` - Lightweight with tools
-- `deepseek-coder:6.7b` - Code-focused with tools
-
-## Droid CLI Configuration
-
-Add to your Droid Factory configuration:
-
-```json
-{
-  "custom_models": [
-    {
-      "model_display_name": "Mistral 7B [Local]",
-      "model": "mistral:7b-8k",
-      "base_url": "http://localhost:11434/v1",
-      "api_key": "not-needed",
-      "provider": "generic-chat-completion-api",
-      "max_tokens": 4000
-    }
-  ]
-}
+# Or copy to your project
+cp ~/.ollama/templates/droid-config.env .env
 ```
 
 ## Troubleshooting
 
 ### Common Issues
 
-#### Docker Permission Issues
-```bash
-# Add user to docker group
-sudo usermod -aG docker $USER
-# Log out and log back in for changes to take effect
-```
+1. **Docker Permission Denied**
+   ```bash
+   sudo usermod -aG docker $USER
+   # Log out and back in
+   ```
 
-#### Port 11434 Already in Use
-```bash
-# Check what's using the port
-sudo lsof -i :11434
-# Kill the process
-sudo kill -9 <PID>
-```
+2. **Port Already in Use**
+   ```bash
+   # Check what's using the port
+   sudo netstat -tlnp | grep 11434
 
-#### Container Won't Start
-```bash
-# Check container logs
-docker logs ollama
-# Restart container
-docker compose restart
-```
+   # Use a different port
+   ./setup-ollama.sh --port 8080
+   ```
 
-#### Model Not Responding
-```bash
-# Test API directly
-curl http://localhost:11434/api/generate -d '{
-  "model": "mistral:7b",
-  "prompt": "Hello",
-  "stream": false
-}'
-```
+3. **GPU Not Detected**
+   ```bash
+   # Check NVIDIA drivers
+   nvidia-smi
 
-#### Tool Support Not Working
-1. Ensure model supports tools: `docker compose exec ollama ollama show <model>`
-2. Increase context window to 8192+ tokens
-3. Check OpenCode configuration includes `"tools": true`
-
-#### Performance Issues
-1. **CPU Mode**: Use smaller models (quantized versions)
-2. **Memory**: Increase system RAM or use smaller models
-3. **GPU**: Install NVIDIA Container Toolkit for GPU acceleration
+   # Force CPU mode
+   ./setup-ollama.sh --gpu disabled
+   ```
 
 ### Health Checks
 
 ```bash
-# Check if Ollama is running
+# Check Ollama status
 curl http://localhost:11434/api/tags
 
-# Check container status
+# Check Docker container
 docker ps | grep ollama
 
-# Check GPU usage (if applicable)
-nvidia-smi
+# Check logs
+docker logs ollama
 ```
 
-## Advanced Usage
+### Log Files
 
-### Custom Docker Compose
-Create `docker-compose.custom.yml`:
-
-```yaml
-services:
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
-    restart: unless-stopped
-    volumes:
-      - ./custom_data:/root/.ollama
-    ports:
-      - "11434:11434"
-    environment:
-      - OLLAMA_MAX_LOADED_MODELS=3
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-
-volumes:
-  custom_data:
-```
-
-### Model Fine-tuning Context Windows
-```bash
-# Test different context sizes
-for ctx in 4096 8192 16384 32768; do
-  docker compose exec ollama ollama create "model-${ctx}" -f <(echo "FROM base:model
-PARAMETER num_ctx $ctx")
-done
-```
-
-### Batch Model Installation
-```bash
-# Install multiple models
-models=("mistral:7b" "llama3.2:3b" "qwen2.5:7b")
-for model in "${models[@]}"; do
-  docker compose exec ollama ollama pull "$model"
-done
-```
-
-## Uninstallation
-
-### Complete Removal
-```bash
-# Stop and remove container
-docker compose down
-docker rm ollama
-
-# Remove Docker volume
-docker volume rm ollama_data
-
-# Remove all Ollama images
-docker rmi ollama/ollama:latest
-```
-
-### Interactive Uninstallation
-```bash
-./ollama-setup.sh
-# Select option 11: Uninstall Ollama
-```
-
-## Support and Resources
-
-- **Ollama Documentation**: [https://ollama.com/documentation](https://ollama.com/documentation)
-- **Ollama Models**: [https://ollama.com/library](https://ollama.com/library)
-- **OpenCode**: [https://opencode.ai](https://opencode.ai)
-- **Docker Documentation**: [https://docs.docker.com](https://docs.docker.com)
-- **NVIDIA Container Toolkit**: [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit)
+- Installation log: `/tmp/ollama-setup-*.log`
+- Ollama container logs: `docker logs ollama`
+- Configuration: `~/.ollama/config/`
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+We welcome contributions! Please follow our development guidelines:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass
+6. Submit a pull request
+
+### Development Guidelines
+
+- Follow the existing code style (4-space indentation)
+- Add comprehensive tests for new features
+- Update documentation as needed
+- Ensure all code passes ShellCheck
+- Format code with shfmt before committing
+
+### Testing
+
+```bash
+# Run all tests
+make test
+
+# Run with coverage
+make test-coverage
+
+# Run specific tests
+./tests/run-tests.sh --file test-your-feature.sh
+```
 
 ## License
 
-This project is provided as-is for educational and development purposes.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/your-org/ollama-ubuntu-setup/issues)
+- **Documentation**: [Wiki](https://github.com/your-org/ollama-ubuntu-setup/wiki)
+- **Discussions**: [GitHub Discussions](https://github.com/your-org/ollama-ubuntu-setup/discussions)
+
+## Acknowledgments
+
+- [Ollama](https://github.com/ollama/ollama) - The amazing LLM runner
+- [Docker](https://www.docker.com/) - Container platform
+- [ShellCheck](https://www.shellcheck.net/) - Shell script analysis
+- [BATS](https://bats-core.readthedocs.io/) - Bash testing framework
+- [shfmt](https://github.com/mvdan/sh) - Shell formatter
+
+---
+
+**Note**: This tool is designed for Ubuntu and its derivatives. It may work on other Linux distributions with modifications.

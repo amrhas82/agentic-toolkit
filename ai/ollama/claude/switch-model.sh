@@ -71,13 +71,13 @@ switch_to_claude_native() {
     # Backup existing settings before deleting
     backup_settings
 
-    # Delete settings.json to use Claude's native configuration
+    # Delete settings.json to use Claude's native configuration (web auth)
     if [ -f "$SETTINGS_FILE" ]; then
         rm "$SETTINGS_FILE"
-        print_success "Removed settings.json - using Claude native configuration"
+        print_success "Removed settings.json - using Claude native web authentication"
     fi
 
-    print_current "Using Claude native models (no custom configuration)"
+    print_current "Using Claude native models with web authentication (run /login if needed)"
 }
 
 switch_to_glm_override() {

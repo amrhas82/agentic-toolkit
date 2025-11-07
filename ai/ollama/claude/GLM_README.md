@@ -55,7 +55,7 @@ claude mcp add -s user -t http web-search-prime https://api.z.ai/api/mcp/web_sea
 
 ### Manual Configuration
 
-Edit Claude Desktop's configuration file `.claude.json` mcpServers content (replace `your_api_key` with your API Key):
+Edit Claude Desktop's configuration file `~/.claude.json` mcpServers content (replace `your_api_key` with your API Key):
 
 ```json
 {
@@ -100,7 +100,7 @@ claude mcp remove zai-mcp-server
 
 ### Manual Configuration
 
-Edit Claude Desktop's configuration file `.claude.json` mcpServers content (replace `your_api_key` with your API Key):
+Edit Claude Desktop's configuration file `~/.claude.json` mcpServers content (replace `your_api_key` with your API Key):
 
 ```json
 {

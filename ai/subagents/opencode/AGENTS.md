@@ -39,91 +39,91 @@ Note
 
 
 ### 1-Create PRD (id: 1-create-prd) 
-Source: [.agent/ux-expert.md](.agent/1-create-prd.md)
+Source: [./agent/ux-expert.md](./agent/1-create-prd.md)
 
 - When to use: Define Scope: use to clearly outlining what needs to be built with a Product Requirement Document (PRD)  optimization
 - How to activate: Mention "create prd, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### 2-Generate Tasks (id: 2-generate-tasks) 
-Source: [.agent/ux-expert.md](.agent/2-generate-tasks.md)
+Source: [./agent/ux-expert.md](./agent/2-generate-tasks.md)
 
 - When to use: 2. Detailed Planning: use to break down the PRD into a granular, actionable task list
 - How to activate: Mention "generate tasks, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### 3-Process Task List (id: 3-process-task-list)
-Source: [.agent/ux-expert.md](.agent/3-process-task-list.md)
+Source: [./agent/ux-expert.md](./agent/3-process-task-list.md)
 
 - When to use: 3. Iterative Implementation: use to guide the AI to tackle one task at a time, allowing you to review and approve each change
 - How to activate: Mention "process task list, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### UX Expert (id: ux-expert)
-Source: [.agent/ux-expert.md](.agent/ux-expert.md)
+Source: [./agent/ux-expert.md](./agent/ux-expert.md)
 
 - When to use: Use for UI/UX design, wireframes, prototypes, front-end specifications, and user experience optimization
 - How to activate: Mention "As ux-expert, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Scrum Master (id: scrum-master)
-Source: [.agent/scrum-master.md](.agent/scrum-master.md)
+Source: [./agent/scrum-master.md](./agent/scrum-master.md)
 
 - When to use: Use for story creation, epic management, retrospectives in party-mode, and agile process guidance
 - How to activate: Mention "As scrum-master, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Test Architect & Quality Advisor (id: qa-test-architect)
-Source: [.agent/qa-test-architect.md](.agent/qa-test-architect.md)
+Source: [./agent/qa-test-architect.md](./agent/qa-test-architect.md)
 
 - When to use: Use for comprehensive test architecture review, quality gate decisions, and code improvement. Provides thorough analysis including requirements traceability, risk assessment, and test strategy. Advisory only - teams choose their quality bar.
 - How to activate: Mention "As qa, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Product Owner (id: product-owner)
-Source: [.agent/product-owner.md](.agent/product-owner.md)
+Source: [./agent/product-owner.md](./agent/product-owner.md)
 
 - When to use: Use for backlog management, story refinement, acceptance criteria, sprint planning, and prioritization decisions
 - How to activate: Mention "As product-owner, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Product Manager (id: product-manager)
-Source: [.agent/product-manager.md](.agent/product-manager.md)
+Source: [./agent/product-manager.md](./agent/product-manager.md)
 
 - When to use: Use for creating PRDs, product strategy, feature prioritization, roadmap planning, and stakeholder communication
 - How to activate: Mention "As product-manager, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Full Stack Developer (id: full-stack-dev)
-Source: [.agent/full-stack-dev.md](.agent/full-stack-dev.md)
+Source: [./agent/full-stack-dev.md](./agent/full-stack-dev.md)
 
 - When to use: Use for code implementation, debugging, refactoring, and development best practices
 - How to activate: Mention "As full-stack-dev, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Master Orchestrator (id: orchestrator)
-Source: [.agent/orchestrator.md](.agent/orchestrator.md)
+Source: [./agent/orchestrator.md](./agent/orchestrator.md)
 
 - When to use: Use for workflow coordination, multi-agent tasks, role switching guidance, and when unsure which specialist to consult
 - How to activate: Mention "As orchestrator, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Master Task Executor (id: master)
-Source: [.agent/master.md](.agent/master.md)
+Source: [./agent/master.md](./agent/master.md)
 
 - When to use: Use when you need comprehensive expertise across all domains, running 1 off tasks that do not require a persona, or just wanting to use the same agent for many things.
 - How to activate: Mention "As master, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Architect (id: holistic-architect)
-Source: [.agent/holistic-architect.md](.agent/holistic-architect.md)
+Source: [./agent/holistic-architect.md](./agent/holistic-architect.md)
 
 - When to use: Use for system design, architecture documents, technology selection, API design, and infrastructure planning
 - How to activate: Mention "As architect, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Business Analyst (id: business-analyst)
-Source: [.agent/business-analyst.md](.agent/business-analyst.md)
+Source: [./agent/business-analyst.md](./agent/business-analyst.md)
 
 - When to use: Use for market research, brainstorming, competitive analysis, creating project briefs, initial project discovery, and documenting existing projects (brownfield)
 - How to activate: Mention "As analyst, ..." to get role-aligned behavior

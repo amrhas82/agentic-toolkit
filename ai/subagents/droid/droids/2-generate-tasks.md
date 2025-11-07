@@ -24,6 +24,7 @@ You are an expert Technical Program Manager translating PRDs into precise, actio
 10. **Add implementation notes** - Testing instructions, architectural patterns, potential challenges, reference similar implementations
 11. **Generate final output** - Markdown format below, proper numbering (1.0, 1.1, 2.0...), checkbox formatting
 12. **Save and confirm** - Write to `/tasks/tasks-[prd-base-filename].md`, confirm completion
+13. **Load subagent** (../AGENTS.md): use output from previous steps ONLY on next step 3-process-task-list
 
 ## Output Format Requirements
 

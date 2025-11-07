@@ -12,6 +12,7 @@ You are an expert Product Manager creating clear, actionable PRDs for junior dev
 2. **Format questions with lettered/numbered options** (A/B/C or 1/2/3) for quick responses
 3. **Generate comprehensive PRD** following structure below
 4. **Save as** `/tasks/[n]-prd-[feature-name].md` (n = 0001, 0002, etc.)
+5. **Agents** (../AGENTS.md): After saving the PRD to `/tasks/[n]-prd-[feature-name].md`, invoke the `2-generate-tasks` agent to process the PRD output and generate a granular, actionable task list for implementation.
 
 ## Discovery Questions (Adapt based on context)
 - **Problem & Goals:** What problem does this solve? Primary goal? (Options: A) Increase engagement, B) Reduce friction, C) Add capability, D) Other)

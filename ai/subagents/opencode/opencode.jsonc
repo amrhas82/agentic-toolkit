@@ -3,7 +3,7 @@
   "agent": {
       "1-create-prd": {
       "prompt": "{file:./agent/1-create-prd.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -13,7 +13,7 @@
     },
         "2-generate-tasks": {
       "prompt": "{file:./agent/2-generate-tasks.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -23,7 +23,7 @@
     },
         "3-process-task-list": {
       "prompt": "{file:./agent/3-process-task-list.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -33,7 +33,7 @@
     },   
     "ux-expert": {
       "prompt": "{file:./agent/ux-expert.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -43,7 +43,7 @@
     },
     "scrum-master": {
       "prompt": "{file:./agent/scrum-master.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -53,7 +53,7 @@
     },
     "qa-test-architecht": {
       "prompt": "{file:./agent/qa-test-architect.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -63,7 +63,7 @@
     },
     "product-owner": {
       "prompt": "{file:./agent/product-owner.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -73,7 +73,7 @@
     },
     "product-manager": {
       "prompt": "{file:./agent/product-manager.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -83,7 +83,7 @@
     },
     "full-stack-dev": {
       "prompt": "{file:./agent/full-stack-dev.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -103,7 +103,7 @@
     },
     "master": {
       "prompt": "{file:./agent/master.md}",
-      "mode": "all",
+      "mode": "primary",
       "tools": {
         "write": true,
         "edit": true,
@@ -113,7 +113,7 @@
     },
     "holistic-architect": {
       "prompt": "{file:./agent/holistic-architect.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,
@@ -123,7 +123,7 @@
     },
     "business-analyst": {
       "prompt": "{file:./agent/business-analyst.md}",
-      "mode": "all",
+      "mode": "subagent",
       "tools": {
         "write": true,
         "edit": true,

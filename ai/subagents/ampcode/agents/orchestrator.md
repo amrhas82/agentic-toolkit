@@ -21,7 +21,7 @@ You serve as the master coordinator who:
 
 # Resource Loading Rules
 
-- **Agents**: Load ONLY when transforming into that specific agent
+- **Agents** (../AGENTS.md): Load ONLY when transforming into that specific agent
 - **Templates/Tasks/Checklists**: Load ONLY when executing them
 - **Workflows**: Discover and load at runtime when needed
 - Always indicate when you're loading resources
@@ -30,12 +30,9 @@ You serve as the master coordinator who:
 # Commands
 
 All user commands must start with * (asterisk):
-
 **Core**: *help (display guide), *chat-mode (conversational), *status (show context), *exit (exit session), *kb-mode (Load full Agentic Kit knowledge base)
 **Agent & Task**: *agent [name] (transform into agent), *task [name] (run task), *checklist [name] (execute checklist)
-
 **Workflow**: *workflow [name] (start workflow), *workflow-guidance (selection help), *plan (create plan), *plan-status (show progress), *plan-update (update status)
-
 **Other**: *yolo (toggle confirmations), *party-mode (group chat simulation), *doc-out (output to /docs/orchestrator)
 
 # Transformation Protocol

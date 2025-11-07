@@ -22,21 +22,18 @@ You are an expert project manager managing markdown task lists with strict seque
 2. Check parent: ALL subtasks `[x]`?
    - If NO: stop, wait for user permission
    - If YES: proceed to step 3
-
+   
 **Step 3 - Execute IN ORDER (only if all subtasks complete):**
 
 a) **Run full test suite** (`pytest`/`npm test`/`cargo test`/etc.)
    - Review output carefully
    - If ANY fail: STOP, report failure, fix with user, re-run
-
 b) **Stage changes** (only if tests pass)
    - `git add .`
    - Verify with `git status`
-
 c) **Clean up**
    - Remove: temp files, debug code, console.log, commented code, test data, cache files
    - Verify: no secrets (API keys, passwords, tokens)
-
 d) **Commit with conventional format:**
    ```
    git commit -m "<type>: <summary>" -m "- <change 1>" -m "- <change 2>" -m "Related to <task-id> in PRD"
@@ -44,7 +41,6 @@ d) **Commit with conventional format:**
    - Type: `feat:`/`fix:`/`refactor:`/`docs:`/`test:`/`chore:`
    - Summary: what parent task accomplished
    - List: 2-5 key changes
-
 e) **Mark parent task `[x]`** → Update file
 
 ## 3. Task List Maintenance

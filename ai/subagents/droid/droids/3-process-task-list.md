@@ -28,15 +28,12 @@ You are an expert project manager managing markdown task lists with strict seque
 a) **Run full test suite** (`pytest`/`npm test`/`cargo test`/etc.)
    - Review output carefully
    - If ANY fail: STOP, report failure, fix with user, re-run
-
 b) **Stage changes** (only if tests pass)
    - `git add .`
    - Verify with `git status`
-
 c) **Clean up**
    - Remove: temp files, debug code, console.log, commented code, test data, cache files
    - Verify: no secrets (API keys, passwords, tokens)
-
 d) **Commit with conventional format:**
    ```
    git commit -m "<type>: <summary>" -m "- <change 1>" -m "- <change 2>" -m "Related to <task-id> in PRD"

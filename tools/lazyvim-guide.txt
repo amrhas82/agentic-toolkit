@@ -1,0 +1,48 @@
+how to use lazyvim https://www.youtube.com/watch?v=N93cTbtLCIM
+
+Make a backup of your current Neovim files:
+
+prerequistes
+sudo apt update
+
+#install latest lua
+sudo apt install lua5.1
+
+#install luatocks
+sudo apt install luarocks
+
+#install tree-sitter
+sudo npm install -g tree-sitter-cli
+
+# Install mermaid-cli globally
+npm install -g @mermaid-js/mermaid-cli
+
+# Install basic LaTeX
+sudo apt install texlive-latex-base texlive-latex-extra
+
+#instal neovim
+npm install -g neovim
+
+# Verify installation
+mmdc --version
+
+
+# required backup nvim config
+mv ~/.config/nvim{,.bak}
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+
+Clone the starter
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+Remove the .git folder, so you can add it to your own repo later
+
+rm -rf ~/.config/nvim/.git
+
+all fine tuning can be achieved from main menu Lazy, press letter and scroll down to desired plugin and press x to enable/add or disable/remove
+
+add main naivigation buttons here

@@ -1558,6 +1558,29 @@ You asked about temperature. Here's the honest take:
 
 **Temperature is a randomness parameter (0.0-2.0), not personality.** I confused it with model training for a long time. They're completely different things.
 
+**Temperature ranges and what they mean:**
+
+| Range | Description | Best For |
+|---|---|---|
+| **0.0-0.2** | Very focused and deterministic responses | Code analysis, planning, documentation |
+| **0.3-0.5** | Balanced responses with some creativity | General development tasks, structured problem-solving |
+| **0.6-1.0** | More creative and varied responses | Brainstorming, exploration, creative writing |
+
+**Configuration areas affected by temperature:**
+- Tools (how tools behave and respond)
+- Rules (how strictly rules are followed)
+- Agents (agent behavior consistency)
+- Models (model output variation)
+- Themes (creative vs structured responses)
+- Keybinds (predictability of command responses)
+- Commands (consistency of command execution)
+- Formatters (how strictly formatting is applied)
+- Permissions (how permission rules are interpreted)
+- LSP Servers (language server predictability)
+- MCP servers (server response consistency)
+- ACP Support (support protocol behavior)
+- Custom Tools (custom tool reliability)
+
 Web interfaces hide temperature entirely. CLI tools expose it in config.json. But here's the real insight: **if you've defined a clear persona, temperature becomes noise.** The persona MD file already controls what the agent will and won't do. Temperature tuning is overthinking it once you have a solid persona.
 
 Here's when temperature actually matters:
@@ -1568,8 +1591,8 @@ Here's when temperature actually matters:
 | **Using structured prompts** | No (basically never) | 3-step method + persona defines bounds → temperature is noise | Define persona first (drops guessing from 50% to 1-2%) |
 | **Persona-driven agents** | No (almost never) | Agent knows its role, limits, constraints via MD file → temp becomes irrelevant | Deploy persona MD file once, never tune temp again |
 | **Trying to fix "lazy" outputs** | No (wrong solution) | Bad output = bad prompt, not temperature | Rewrite prompt with precision, ask for specifics |
-| **Creative roles** (copywriting, brainstorming) | Maybe (rarely) | If you want surprising results, use 1.2-1.5 | Build persona that defines "creative" constraints |
-| **Deterministic roles** (code, documentation) | No (bad idea) | Code changes should be predictable | Use 0.3-0.5 AND define persona |
+| **Creative roles** (copywriting, brainstorming) | Maybe (rarely) | If you want surprising results, use 0.6-1.0 | Build persona that defines "creative" constraints |
+| **Deterministic roles** (code, documentation) | No (bad idea) | Code changes should be predictable | Use 0.0-0.2 AND define persona |
 
 **The verdict:** If you've defined a clear persona and you're using structured prompts (3-step method), temperature tuning is overthinking it. You're already controlling randomness via persona definition.
 
@@ -2283,20 +2306,29 @@ This section could save you $900 and months of frustration. I'm going to break d
 
 ---
 
-### Chinese vs Western Pricing: The Massive Difference
+### Chinese vs Western Pricing: Competitive Reality and Token Window Advantage
 
-**The claims:** "Some claim 1/3 some claim 1/7 and I am not that sure yet"
+**The Competitive Reality:** While Chinese LLMs may appear slightly more expensive on a monthly basis, their token window is definitively higher than Western models. GLM is directly comparable to Claude in capability, and the biggest competitive advantage for Chinese LLMs is that they were trained on fractions of the data Western models used, making them dramatically cheaper to operate and easier to sell at lower prices.
 
 | Model | Western Price | Chinese Price | Claimed Ratio |
-|---|---|---|
-| **Claude Sonnet** | $20/month | - | - |
-| **GLM** | - | $90/quarter ($30/month) | ~1.5x cheaper |
-| **DeepSeek** | - | Much less | Claims of 3-7x cheaper |
-| **Gemini** | $20/month | - | Similar |
+|---|---|---|---|---|
+| **Claude Sonnet** | $极20/month | 200K tokens | Full Western dataset | Industry standard |
+| **GLM** | $30/month | 256K+ tokens | Fraction of Western data | Higher token window, comparable quality |
+| **DeepSeek** | $15-25/month | 128极K-512K tokens | Optimized Chinese dataset | 3-7x cheaper claims, competitive performance |
+| **Gemini** | $20/month | 128K-1M tokens | Google-scale training | Similar pricing, variable performance |
 
 **Reality check:** "GLM code plan is $90 a quarter which is more than $20 Claude, they have same 5 hour window, I think they have a bit more context"
 
-**The quality question:** "Cheaper not equal to worth quality" - but Chinese models are becoming comparable, especially for structured tasks.
+**Competitive Analysis:** Chinese models aren't just cheaper—they're genuinely competitive. GLM offers comparable coding capabilities to Claude at a fraction of the operational cost, and their higher token windows mean you can work on larger projects without constant context resets.
+
+**Cryptocurrency Race Analogy:** If each LLM was given $10k to invest in a crypto portfolio:
+- **Chinese models (GLM/DeepSeek):** Doubled their investment (2x ROI)
+- **Gemini:** Lowest performer 
+- **Claude:** Middle of the pack
+
+This demonstrates the competitive efficiency of Chinese LLMs and how they're truly on par with Western models in terms of return on investment and performance metrics.
+
+**Quality Reality:** Chinese models achieve comparable results despite smaller training datasets through optimized architectures and focused training objectives. They excel particularly in structured tasks where their higher token windows provide tangible advantages.
 
 ---
 

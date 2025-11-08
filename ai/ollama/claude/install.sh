@@ -61,17 +61,46 @@ create_directories() {
 # Prompt for API key
 prompt_api_key() {
     echo ""
-    print_prompt "Enter your Anthropic API key:"
-    echo "(Press Enter to keep existing key or use default)"
+    print_header "API Key Configuration"
+    echo ""
+
+    # Check if auth token file exists
+    local auth_token_file="$CLAUDE_DIR/.auth-token"
+    local existing_token=""
+
+    if [ -f "$auth_token_file" ]; then
+        existing_token=$(cat "$auth_token_file" 2>/dev/null)
+        if [ -n "$existing_token" ]; then
+            print_info "Existing API key found (stored securely)"
+            echo "First 8 characters: ${existing_token:0:8}..."
+            echo ""
+        fi
+    fi
+
+    print_prompt "Enter your ANTHROPIC_AUTH_TOKEN:"
+    echo "This is your API key from https://console.anthropic.com"
+    echo "(Press Enter to keep existing key or skip)"
+    echo ""
     read -s -p "API Key: " api_key
     echo ""
 
     if [ -z "$api_key" ]; then
-        print_info "Using default API key"
-        API_KEY="3d21c6037f2c49a4bd6aa74b0083596b.gp7y0fabEpuBbsXX"
+        if [ -n "$existing_token" ]; then
+            print_info "Keeping existing API key"
+            API_KEY="$existing_token"
+        else
+            print_warning "No API key provided - using placeholder"
+            print_warning "You can update it later by re-running the installer"
+            API_KEY="your-api-key-here"
+        fi
     else
-        print_success "API key provided"
+        print_success "API key provided and will be stored securely"
         API_KEY="$api_key"
+
+        # Store in auth token file with secure permissions
+        echo "$API_KEY" > "$auth_token_file"
+        chmod 600 "$auth_token_file"
+        print_success "API key saved to $auth_token_file (600 permissions)"
     fi
 }
 
@@ -107,10 +136,22 @@ EOF
 copy_scripts() {
     print_info "Installing scripts..."
 
-    cp "$SCRIPT_DIR/switch-model.sh" "$CLAUDE_DIR/"
-    cp "$SCRIPT_DIR/aliases.sh" "$CLAUDE_DIR/"
+    # Copy the enhanced script
+    if [ -f "$SCRIPT_DIR/switch-model-enhanced.sh" ]; then
+        cp "$SCRIPT_DIR/switch-model-enhanced.sh" "$CLAUDE_DIR/"
+        chmod +x "$CLAUDE_DIR/switch-model-enhanced.sh"
+        print_success "Enhanced model switcher installed"
+    fi
 
-    chmod +x "$CLAUDE_DIR/switch-model.sh"
+    # Copy legacy script if it exists
+    if [ -f "$SCRIPT_DIR/switch-model.sh" ]; then
+        cp "$SCRIPT_DIR/switch-model.sh" "$CLAUDE_DIR/"
+        chmod +x "$CLAUDE_DIR/switch-model.sh"
+        print_success "Legacy model switcher installed"
+    fi
+
+    # Copy aliases
+    cp "$SCRIPT_DIR/aliases.sh" "$CLAUDE_DIR/"
 
     print_success "Scripts installed and made executable"
 }
@@ -121,6 +162,7 @@ setup_shell_aliases() {
     print_info "Setting up shell aliases for global availability..."
 
     local configs_added=()
+    local alias_source_line="[ -f ~/.claude/aliases.sh ] && source ~/.claude/aliases.sh"
 
     # Function to add aliases to a config file
     add_to_config() {
@@ -128,34 +170,59 @@ setup_shell_aliases() {
         local config_name="$2"
 
         if [ -f "$config_file" ]; then
-            if grep -q "source ~/.claude/aliases.sh" "$config_file" 2>/dev/null; then
+            # Check if aliases are already configured
+            if grep -q "source ~/.claude/aliases.sh" "$config_file" 2>/dev/null || \
+               grep -q "source \$HOME/.claude/aliases.sh" "$config_file" 2>/dev/null; then
                 print_warning "Aliases already configured in $config_name"
+                return 0
             else
-                # Add to shell config
+                # Add to shell config with conditional check
                 echo "" >> "$config_file"
-                echo "# Claude Model Switcher - Added by installer" >> "$config_file"
-                echo "source ~/.claude/aliases.sh" >> "$config_file"
+                echo "# Claude Model Switcher - Added by installer $(date +%Y-%m-%d)" >> "$config_file"
+                echo "$alias_source_line" >> "$config_file"
                 print_success "Aliases added to $config_name"
                 configs_added+=("$config_name")
             fi
         else
             # Create config file if it doesn't exist
-            echo "# Claude Model Switcher - Added by installer" > "$config_file"
-            echo "source ~/.claude/aliases.sh" >> "$config_file"
-            print_success "Aliases added to $config_name (file created)"
+            echo "# Claude Model Switcher - Added by installer $(date +%Y-%m-%d)" > "$config_file"
+            echo "$alias_source_line" >> "$config_file"
+            print_success "Created $config_name with aliases"
             configs_added+=("$config_name")
         fi
     }
 
-    # Add to both bashrc and bash_profile for global availability
+    # Add to bashrc (interactive shells)
     add_to_config "$HOME/.bashrc" "~/.bashrc"
-    add_to_config "$HOME/.bash_profile" "~/.bash_profile"
+
+    # Add to bash_profile if it exists or user uses it (login shells)
+    if [ -f "$HOME/.bash_profile" ] || [ -f "$HOME/.profile" ]; then
+        # If bash_profile exists, add there
+        if [ -f "$HOME/.bash_profile" ]; then
+            # Check if bash_profile sources bashrc
+            if ! grep -q "source.*bashrc" "$HOME/.bash_profile" 2>/dev/null && \
+               ! grep -q "\..*bashrc" "$HOME/.bash_profile" 2>/dev/null; then
+                # Add sourcing of bashrc to bash_profile
+                echo "" >> "$HOME/.bash_profile"
+                echo "# Source bashrc for interactive shell features" >> "$HOME/.bash_profile"
+                echo "[ -f ~/.bashrc ] && source ~/.bashrc" >> "$HOME/.bash_profile"
+                print_info "Added bashrc sourcing to ~/.bash_profile"
+            fi
+        fi
+        add_to_config "$HOME/.bash_profile" "~/.bash_profile"
+    fi
+
+    # Also check for bash_aliases (common on Ubuntu/Debian)
+    if [ -f "$HOME/.bash_aliases" ]; then
+        add_to_config "$HOME/.bash_aliases" "~/.bash_aliases"
+    fi
 
     if [ ${#configs_added[@]} -eq 0 ]; then
         print_warning "No config files were modified (aliases already exist)"
     else
         print_success "Aliases configured in: ${configs_added[*]}"
-        print_info "This ensures commands work in ALL terminal windows"
+        print_info "Commands will work in ALL new terminal sessions"
+        print_info "For current session: source ~/.bashrc"
     fi
 }
 
@@ -177,25 +244,35 @@ test_installation() {
     echo ""
     print_info "Testing installation..."
 
-    if command -v claude-native >/dev/null 2>&1; then
-        print_success "Aliases are working!"
+    # Test new command names
+    if command -v cc-native >/dev/null 2>&1; then
+        print_success "New aliases (cc-*) are working in current session!"
     else
-        print_warning "Aliases not found in current session"
-        print_info "They will be available in new terminal sessions"
+        print_warning "Aliases not available in current session"
+        print_info "They will be available after running: source ~/.bashrc"
+        print_info "Or open a new terminal session"
     fi
 
-    if [ -f "$CLAUDE_DIR/switch-model.sh" ]; then
-        print_success "Scripts installed correctly"
+    # Check if enhanced script exists
+    if [ -f "$CLAUDE_DIR/switch-model-enhanced.sh" ]; then
+        print_success "Enhanced model switcher installed"
+
+        # Test the script directly
+        if bash "$CLAUDE_DIR/switch-model-enhanced.sh" cc-status >/dev/null 2>&1; then
+            print_success "Model switcher is working correctly"
+        else
+            print_warning "Model switcher test had issues (may be normal)"
+        fi
     else
-        print_error "Scripts not found"
+        print_error "Enhanced script not found"
         return 1
     fi
 
-    # Test the script
-    if bash "$CLAUDE_DIR/switch-model.sh" status >/dev/null 2>&1; then
-        print_success "Model switcher is working"
+    # Check for API key
+    if [ -f "$CLAUDE_DIR/.auth-token" ]; then
+        print_success "API key stored securely"
     else
-        print_warning "Model switcher test failed"
+        print_warning "No API key stored yet"
     fi
 }
 
@@ -204,27 +281,42 @@ show_next_steps() {
     echo ""
     print_success "🎉 Installation complete!"
     echo ""
-    echo -e "${BOLD}📋 Available Commands:${NC}"
-    echo "  claude-native      # Switch to Claude native models"
-    echo "  glm-override       # Switch to GLM models"
-    echo "  claude-mixed       # Switch to mixed mode"
-    echo "  claude-status      # Check current model"
+    echo -e "${BOLD}📋 Available Commands (New Naming Scheme):${NC}"
+    echo "  cc-native          # Switch to Claude native (web auth)"
+    echo "  cc-mixed           # Switch to mixed mode (Claude Sonnet + GLM Haiku)"
+    echo "  cc-glm             # Switch to GLM override"
+    echo "  cc-status          # Show current configuration"
+    echo "  fast-cc            # Switch to Claude fast mode (Haiku)"
+    echo "  fast-glm           # Switch to GLM fast mode"
     echo ""
-    echo -e "${BOLD}🔄 From Within Claude:${NC}"
-    echo "  Just say: \"Switch to Claude native models\""
-    echo "  Just say: \"Switch to GLM models\""
-    echo "  Just say: \"Check my current model status\""
+    echo -e "${BOLD}🔄 Legacy Commands (Still Work):${NC}"
+    echo "  claude-native, claude-mixed, glm-override, claude-status"
     echo ""
-    echo -e "${BOLD}💡 Notes:${NC}"
-    echo "  • Aliases work in new terminal sessions automatically"
-    echo "  • Current session: restart terminal or run 'source ~/.bashrc'"
-    echo "  • Backups are automatically created when switching models"
+    echo -e "${BOLD}💡 To Use Commands in Current Session:${NC}"
+    echo "  Run: ${CYAN}source ~/.bashrc${NC}"
+    echo "  Or: Open a new terminal window"
     echo ""
-    echo -e "${BOLD}🗂️  Files installed:${NC}"
-    echo "  • ~/.claude/settings.json      # Your configuration"
-    echo "  • ~/.claude/switch-model.sh    # Main switcher script"
-    echo "  • ~/.claude/aliases.sh         # Shell aliases"
-    echo "  • ~/.claude/backups/           # Auto-generated backups"
+    echo -e "${BOLD}🔑 API Key Management:${NC}"
+    if [ -f "$CLAUDE_DIR/.auth-token" ]; then
+        echo "  ✅ API key stored securely in ~/.claude/.auth-token (600 permissions)"
+        echo "  • The key persists across mode switches"
+        echo "  • Re-run installer to update the key"
+    else
+        echo "  ⚠️  No API key configured yet"
+        echo "  • Re-run installer to add your key"
+    fi
+    echo ""
+    echo -e "${BOLD}🗂️  Files Installed:${NC}"
+    echo "  • ~/.claude/settings.json              # Current configuration"
+    echo "  • ~/.claude/switch-model-enhanced.sh   # Enhanced switcher script"
+    echo "  • ~/.claude/aliases.sh                 # Shell aliases"
+    echo "  • ~/.claude/.auth-token                # API key (secure)"
+    echo "  • ~/.claude/backups/                   # Auto-generated backups"
+    echo ""
+    echo -e "${BOLD}🚀 Quick Start:${NC}"
+    echo "  1. Run: ${CYAN}source ~/.bashrc${NC}"
+    echo "  2. Try: ${CYAN}cc-status${NC} to see current configuration"
+    echo "  3. Switch: ${CYAN}cc-mixed${NC} for Claude Sonnet + GLM Haiku"
 }
 
 # Uninstall function
@@ -311,10 +403,23 @@ check_status() {
 
 # Quick install (no prompts)
 quick_install() {
-    print_info "Quick installation (no prompts)..."
+    print_header
+    print_warning "Quick installation mode (skipping API key prompt)"
+    echo ""
     detect_shell
     create_directories
-    API_KEY="3d21c6037f2c49a4bd6aa74b0083596b.gp7y0fabEpuBbsXX"
+
+    # Check for existing API key
+    local auth_token_file="$CLAUDE_DIR/.auth-token"
+    if [ -f "$auth_token_file" ]; then
+        API_KEY=$(cat "$auth_token_file" 2>/dev/null)
+        print_info "Using existing API key"
+    else
+        print_warning "No API key - using placeholder"
+        print_info "Run 'bash install.sh install' to configure your API key"
+        API_KEY="your-api-key-here"
+    fi
+
     create_settings
     copy_scripts
     setup_shell_aliases

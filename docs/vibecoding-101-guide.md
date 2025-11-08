@@ -1258,10 +1258,10 @@ I don't mind as long as quality doesn't degrade much.
 
 | Tool | Free Tier | Good For |
 |---|---|---|
-| **AmpCode CLI** | Good free tier but burns tokens faster | Exploration, smaller context |
-| **Droid CLI** | Better value for free tier or $20/month | Testing workflows, sustainable usage |
+| **AmpCode CLI** | Free tier with ads | Exploration, smaller context |
+| **Droid CLI** | 10M free tier on signup | Testing workflows, sustainable usage |
 | **Gemini CLI** | Good free tier | Learning, research |
-| **OpenCode** | Free models built-in | Execution with Chinese LLMs |
+| **OpenCode** | Free tier with Zen model | Execution with Chinese LLMs |
 
 Free tiers run out fast but give you a sense. Context window is smaller, but with subagents or structured personas, you can get a feel for it.
 

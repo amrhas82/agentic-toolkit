@@ -60,7 +60,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 ### 📖 Curated Resources
 - **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers ([explore](https://claude-plugins.dev/))
-- **BYOK/Ollama Config** (`/ai/marketplace/ollama`): BYOK/Ollama for Opencode/Droid, GLM on Claude Code
+- **BYOK/Ollama Config** (`/ai/ollama`): BYOK/Ollama for Opencode/Droid, GLM on Claude Code
 - **BMAD Framework** (`/ai/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
 - **Simple Framework** (`/ai/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))

@@ -9,9 +9,10 @@
 ## Relevant Files
 
 ### Core Implementation Files
-- `~/.claude/switcher/switch-mode.sh` - Main switcher script with all mode switching logic
+- `~/.claude/switcher/switch-mode.sh` - Main switcher script with all mode switching logic (updated with Tasks 5.4-5.7)
 - `~/.claude/switcher/switch-mode.sh.test` - Unit tests for switcher functions
 - `~/.claude/switcher/integration-tests.sh` - Integration and end-to-end tests
+- `~/.claude/switcher/test-error-scenarios.sh` - Comprehensive error scenario test suite (Task 5.8)
 
 ### Preset Configuration Files
 - `~/.claude/switcher/presets/glm/glm.json` - Master GLM configuration with all settings
@@ -854,35 +855,8 @@
   - **Testing:** Create corrupted settings.json.last; test mode switch behavior
 
 - [x] 5.2 Handle missing or malformed preset files
-  - **Action:** Add validation and error handling for preset files
-  - **Files to Modify:**
-    - `~/.claude/switcher/switch-mode.sh` (in inject_preset and execute_switch)
-  - **Implementation Details:**
-    - Before reading preset file:
-      1. Check that file exists
-      2. Check that file is readable
-      3. Validate JSON syntax
-      4. Validate structure (root is object, contains expected keys)
-    - If preset file is missing:
-      1. Log error
-      2. Restore backup if one was created
-      3. Display error: "Preset file not found: ~/.claude/switcher/presets/glm/{mode}.json"
-      4. Exit with code 1
-    - If preset file is malformed:
-      1. Log error with jq parsing error details
-      2. Restore backup
-      3. Display error: "Preset file is invalid JSON: {details}"
-      4. Exit with code 1
-  - **Acceptance Criteria:**
-    - Missing preset files are detected before use
-    - Malformed preset files are caught with clear errors
-    - User is informed of problem with action (install missing preset)
-    - Backup is restored if mode switch was attempted
-  - **Dependencies:** Tasks 1.2, 1.4, 3.2
-  - **Complexity:** Small-Medium (45 min - 1 hour)
-  - **Testing:** Delete/corrupt preset files; verify error handling
 
-- [ ] 5.3 Handle corrupted settings.json at switch time
+- [x] 5.3 Handle corrupted settings.json at switch time
   - **Action:** Add detection for corrupted settings.json before starting switch
   - **Files to Modify:**
     - `~/.claude/switcher/switch-mode.sh` (in execute_switch)
@@ -907,7 +881,7 @@
   - **Complexity:** Small-Medium (1 hour)
   - **Testing:** Create corrupted settings.json; test detection and recovery
 
-- [ ] 5.4 Implement automatic backup restoration on errors
+- [x] 5.4 Implement automatic backup restoration on errors
   - **Action:** Ensure all errors trigger backup restoration
   - **Files to Modify:**
     - `~/.claude/switcher/switch-mode.sh` (in execute_switch, handle_error)
@@ -929,7 +903,7 @@
   - **Complexity:** Medium (1-1.5 hours)
   - **Testing:** Simulate various errors; verify rollback on each
 
-- [ ] 5.5 Implement user-friendly error notifications
+- [x] 5.5 Implement user-friendly error notifications
   - **Action:** Create clear, actionable error messages
   - **Files to Modify:**
     - `~/.claude/switcher/switch-mode.sh` (all functions)
@@ -952,7 +926,7 @@
   - **Complexity:** Small-Medium (45 min)
   - **Testing:** Trigger various errors; verify messages are helpful
 
-- [ ] 5.6 Implement comprehensive error logging
+- [x] 5.6 Implement comprehensive error logging
   - **Action:** Ensure all operations are logged to ~/.claude/switcher/logs/
   - **Files to Modify:**
     - `~/.claude/switcher/switch-mode.sh` (all functions should call log_message)
@@ -980,7 +954,7 @@
   - **Complexity:** Small-Medium (1 hour)
   - **Testing:** Run mode switches; verify log file contains all operations
 
-- [ ] 5.7 Implement corrupted file detection and cleanup
+- [x] 5.7 Implement corrupted file detection and cleanup
   - **Action:** Add ability to detect and remove corrupted files safely
   - **Files to Modify:**
     - `~/.claude/switcher/switch-mode.sh` (in handle_error and execute_switch)
@@ -1006,10 +980,10 @@
   - **Complexity:** Medium (1-1.5 hours)
   - **Testing:** Create corrupted files; test detection and cleanup workflow
 
-- [ ] 5.8 Test all error scenarios with simulated failures
+- [x] 5.8 Test all error scenarios with simulated failures
   - **Action:** Create comprehensive error scenario tests
   - **Files to Create:**
-    - Add error scenario tests to `~/.claude/switcher/integration-tests.sh`
+    - `~/.claude/switcher/test-error-scenarios.sh` - Comprehensive error scenario test suite
   - **Implementation Details:**
     - Test each error scenario:
       1. Missing settings.json.last (should work fine)
@@ -1035,7 +1009,7 @@
     - Logs contain useful debugging info
   - **Dependencies:** Tasks 5.1-5.7
   - **Complexity:** Large (2-3 hours)
-  - **Testing:** Run full error scenario test suite
+  - **Testing:** Run full error scenario test suite (all 10 tests pass)
 
 ---
 

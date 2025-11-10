@@ -75,7 +75,7 @@ agentic-toolkit/
 │   │   ├── droid/               # subagents + commands for Droid
 │   │   ├── ampcode/             # subagents + commands for Ampcode
 │   │   └── opencode/            # subagents + commands for OpenCode
-│   ├── byok/                    # ⭐ BYOK/Ollama Config + GLM on Claude Code
+│   ├── byok/                    # ⭐ BYOK/Ollama Config for Droid, Ampcode
 │   │   └── claude/              # ⭐ Claude Code Switcher/GLM on Claude
 │   ├── marketplace/             # 📖 Curated subagents (droids), plugins, skills, MCP servers
 │   ├── bmad/                    # 📖 BMAD role-based framework

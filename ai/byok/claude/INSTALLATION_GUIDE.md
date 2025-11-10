@@ -15,7 +15,7 @@ Complete guide to install, configure, troubleshoot, and use the Claude Code Mode
 #### 1. Navigate to Project Directory
 
 ```bash
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
 ```
 
 #### 2. Run the Installer
@@ -87,7 +87,7 @@ This is your API key from https://console.anthropic.com
 To update your API key later:
 
 ```bash
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
 bash install.sh install
 ```
 
@@ -219,7 +219,7 @@ Current Configuration:
 
 1. **Reinstall and provide API key**:
    ```bash
-   cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+   cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
    bash install.sh install
    ```
 
@@ -439,7 +439,7 @@ rm ~/.claude/settings.json.last
 rm ~/.claude/.auth-token
 
 # Reinstall
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
 bash install.sh install
 ```
 

@@ -13,13 +13,9 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 ## 🚀 Quick Start
 
 1. **Clone the Toolkit**: `git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit`
-
 2. **Set Up Environment**: Run `/tools/dev_tools_menu.sh` for Linux tool installation scripts.
-
 3. **Learn Basics**: Read `/docs/vibecoding101.md` to understand vibecoding.
-
 4. **Deploy Subagents**: Copy from `/ai/subagents` or install with `npx agentic-kit` for ready-to-use AI agents.
-
 5. **Start Vibecoding**: Use your AI tool with the deployed agents.
 
 🚀 [Install Development Tools](tools/dev_tools_menu.sh) | 🤖 [Deploy Subagents](ai/subagents/) | 🤖 [Install via NPM](https://github.com/amrhas82/agentic-kit)
@@ -60,7 +56,8 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 ### 📖 Curated Resources
 - **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers ([explore](https://claude-plugins.dev/))
-- **BYOK/Ollama Config** (`/ai/ollama`): BYOK/Ollama for Opencode/Droid, GLM on Claude Code
+- **BYOK/Ollama Config** (`/ai/byok`): BYOK/Ollama for Opencode/Droid, GLM on Claude Code
+- **Claude Code Switcher** (`/ai/byok/claude`): Use GLM on Claude Code
 - **BMAD Framework** (`/ai/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
 - **Simple Framework** (`/ai/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))
@@ -78,7 +75,8 @@ agentic-toolkit/
 │   │   ├── droid/               # subagents + commands for Droid
 │   │   ├── ampcode/             # subagents + commands for Ampcode
 │   │   └── opencode/            # subagents + commands for OpenCode
-│   ├── ollama/                  # ⭐ BYOK/Ollama Config + GLM on Claude Code
+│   ├── byok/                    # ⭐ BYOK/Ollama Config + GLM on Claude Code
+│   │   └── claude/              # ⭐ Claude Code Switcher/GLM on Claude
 │   ├── marketplace/             # 📖 Curated subagents (droids), plugins, skills, MCP servers
 │   ├── bmad/                    # 📖 BMAD role-based framework
 │   ├── simple/                  # 📖 3-step workflow framework

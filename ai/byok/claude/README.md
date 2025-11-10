@@ -14,7 +14,7 @@ A clean, simple CLI tool to switch between different Claude Code configuration m
 
 ```bash
 # 1. Install (one-time setup)
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
 bash install.sh install
 
 # 2. Activate in current session
@@ -150,7 +150,7 @@ Switched to native! ✅
 # 2. Update ~/.claude/.auth-token
 # 3. Keep your settings and backups
 
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
 bash install.sh install
 ```
 
@@ -198,7 +198,7 @@ source ~/.bashrc
 ### API key issues?
 ```bash
 # Reinstall and update the key
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
 bash install.sh install
 ```
 

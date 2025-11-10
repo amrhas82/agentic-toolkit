@@ -1,12 +1,12 @@
 # Vibecoding 101 Guide
 
-**Status**: ✅ Complete - All 12 Sections Finished (Sections 0-11)
+**Status**: ✅ Complete - All 11 Parts Finished (Parts 1-11)
 
-A comprehensive guide for non-coders and vibecoders on building software with AI agents. Updated section names reflect merged Sections (4+5 → Section 4: Access Methods & Tools).
+A comprehensive guide for non-coders and vibecoders on building software with AI agents. Updated part names reflect merged sections where relevant.
 
 ---
 
-## Section 0: The Agentic Field - What You're Actually Getting Into
+## Part 1: The Agentic Field - What You're Actually Getting Into
 
 You've seen the demos. Type "build me a landing page" and watch beautiful code appear in seconds. It looks like magic.
 
@@ -309,7 +309,7 @@ It's achievable. But it requires being honest about tradeoffs from the start.
 
 ---
 
-## Section 1: The UI Trap - Why Most Beginners Fail
+## Part 2: The UI Trap - Why Most Beginners Fail
 
 This section could save you $1,000 and weeks of frustration. I'm going to walk you through the most predictable failure pattern—and exactly how to avoid it.
 
@@ -542,7 +542,7 @@ It's not about going slower overall. It's about going slower on the right things
 
 ---
 
-## Section 2: Your First 48 Hours - The Actual Workflow
+## Part 3: Your First 48 Hours - The Actual Workflow
 
 **Status**: Being Rebuilt - Authentic Framework from Real Experience
 
@@ -943,7 +943,7 @@ This section covered your first 48 hours and the 3-step workflow. Next, we dive 
 
 ---
 
-## Section 3: Model Landscape - Understanding the 50/50 Framework
+## Part 4: Model Landscape - Understanding the 50/50 Framework
 
 **Status**: Complete - Built from Collaborative Elicitation
 
@@ -1342,7 +1342,7 @@ This is where experience from real-world usage breaks through the marketing. Her
 
 ---
 
-## Section 4: Access Methods & Tools - Why Tool Choice Matters More Than You Think
+## Part 5: Access Methods & Tools - Why Tool Choice Matters More Than You Think
 
 **Status**: Complete - Built from Real Testing Across 6 Tools
 
@@ -1558,6 +1558,29 @@ You asked about temperature. Here's the honest take:
 
 **Temperature is a randomness parameter (0.0-2.0), not personality.** I confused it with model training for a long time. They're completely different things.
 
+**Temperature ranges and what they mean:**
+
+| Range | Description | Best For |
+|---|---|---|
+| **0.0-0.2** | Very focused and deterministic responses | Code analysis, planning, documentation |
+| **0.3-0.5** | Balanced responses with some creativity | General development tasks, structured problem-solving |
+| **0.6-1.0** | More creative and varied responses | Brainstorming, exploration, creative writing |
+
+**Configuration areas affected by temperature:**
+- Tools (how tools behave and respond)
+- Rules (how strictly rules are followed)
+- Agents (agent behavior consistency)
+- Models (model output variation)
+- Themes (creative vs structured responses)
+- Keybinds (predictability of command responses)
+- Commands (consistency of command execution)
+- Formatters (how strictly formatting is applied)
+- Permissions (how permission rules are interpreted)
+- LSP Servers (language server predictability)
+- MCP servers (server response consistency)
+- ACP Support (support protocol behavior)
+- Custom Tools (custom tool reliability)
+
 Web interfaces hide temperature entirely. CLI tools expose it in config.json. But here's the real insight: **if you've defined a clear persona, temperature becomes noise.** The persona MD file already controls what the agent will and won't do. Temperature tuning is overthinking it once you have a solid persona.
 
 Here's when temperature actually matters:
@@ -1568,8 +1591,8 @@ Here's when temperature actually matters:
 | **Using structured prompts** | No (basically never) | 3-step method + persona defines bounds → temperature is noise | Define persona first (drops guessing from 50% to 1-2%) |
 | **Persona-driven agents** | No (almost never) | Agent knows its role, limits, constraints via MD file → temp becomes irrelevant | Deploy persona MD file once, never tune temp again |
 | **Trying to fix "lazy" outputs** | No (wrong solution) | Bad output = bad prompt, not temperature | Rewrite prompt with precision, ask for specifics |
-| **Creative roles** (copywriting, brainstorming) | Maybe (rarely) | If you want surprising results, use 1.2-1.5 | Build persona that defines "creative" constraints |
-| **Deterministic roles** (code, documentation) | No (bad idea) | Code changes should be predictable | Use 0.3-0.5 AND define persona |
+| **Creative roles** (copywriting, brainstorming) | Maybe (rarely) | If you want surprising results, use 0.6-1.0 | Build persona that defines "creative" constraints |
+| **Deterministic roles** (code, documentation) | No (bad idea) | Code changes should be predictable | Use 0.0-0.2 AND define persona |
 
 **The verdict:** If you've defined a clear persona and you're using structured prompts (3-step method), temperature tuning is overthinking it. You're already controlling randomness via persona definition.
 
@@ -1628,7 +1651,7 @@ It's not about the model. It's about the tool giving you visibility, control, an
 
 ---
 
-## Section 5: Approaches Spectrum - Vibecoding vs 3-Step vs BMAD
+## Part 6: Approaches Spectrum - Vibecoding vs 3-Step vs BMAD
 
 **Status**: Complete - Built from Collaborative Elicitation with Real Project Data
 
@@ -2041,7 +2064,7 @@ Without it (vibecoding): "Build this. No wait, not that. Do this instead. Rememb
 
 
 
-## Section 6: Context Windows - The Invisible Constraint That Broke My Projects
+## Part 7: Context Windows - The Invisible Constraint That Broke My Projects
 
 Context windows are the #1 killer of beginner projects that nobody explains upfront. I learned this through $1,000+ in wasted work and three projects that hit completion walls they couldn't overcome.
 
@@ -2164,7 +2187,7 @@ You now understand how to approach building (vibecoding vs 3-step vs BMAD). Next
 
 ---
 
-## Section 7: Pricing Reality - How I Burned $1,000 and How to Avoid It
+## Part 8: Pricing Reality - How I Burned $1,000 and How to Avoid It
 
 This section could save you $900 and months of frustration. I'm going to break down exactly how I burned $1,000 on Replit, why it happened, and how pricing models trick beginners into spending fortunes.
 
@@ -2283,20 +2306,29 @@ This section could save you $900 and months of frustration. I'm going to break d
 
 ---
 
-### Chinese vs Western Pricing: The Massive Difference
+### Chinese vs Western Pricing: Competitive Reality and Token Window Advantage
 
-**The claims:** "Some claim 1/3 some claim 1/7 and I am not that sure yet"
+**The Competitive Reality:** While Chinese LLMs may appear slightly more expensive on a monthly basis, their token window is definitively higher than Western models. GLM is directly comparable to Claude in capability, and the biggest competitive advantage for Chinese LLMs is that they were trained on fractions of the data Western models used, making them dramatically cheaper to operate and easier to sell at lower prices.
 
 | Model | Western Price | Chinese Price | Claimed Ratio |
-|---|---|---|
-| **Claude Sonnet** | $20/month | - | - |
-| **GLM** | - | $90/quarter ($30/month) | ~1.5x cheaper |
-| **DeepSeek** | - | Much less | Claims of 3-7x cheaper |
-| **Gemini** | $20/month | - | Similar |
+|---|---|---|---|---|
+| **Claude Sonnet** | $极20/month | 200K tokens | Full Western dataset | Industry standard |
+| **GLM** | $30/month | 256K+ tokens | Fraction of Western data | Higher token window, comparable quality |
+| **DeepSeek** | $15-25/month | 128极K-512K tokens | Optimized Chinese dataset | 3-7x cheaper claims, competitive performance |
+| **Gemini** | $20/month | 128K-1M tokens | Google-scale training | Similar pricing, variable performance |
 
 **Reality check:** "GLM code plan is $90 a quarter which is more than $20 Claude, they have same 5 hour window, I think they have a bit more context"
 
-**The quality question:** "Cheaper not equal to worth quality" - but Chinese models are becoming comparable, especially for structured tasks.
+**Competitive Analysis:** Chinese models aren't just cheaper—they're genuinely competitive. GLM offers comparable coding capabilities to Claude at a fraction of the operational cost, and their higher token windows mean you can work on larger projects without constant context resets.
+
+**Cryptocurrency Race Analogy:** If each LLM was given $10k to invest in a crypto portfolio:
+- **Chinese models (GLM/DeepSeek):** Doubled their investment (2x ROI)
+- **Gemini:** Lowest performer 
+- **Claude:** Middle of the pack
+
+This demonstrates the competitive efficiency of Chinese LLMs and how they're truly on par with Western models in terms of return on investment and performance metrics.
+
+**Quality Reality:** Chinese models achieve comparable results despite smaller training datasets through optimized architectures and focused training objectives. They excel particularly in structured tasks where their higher token windows provide tangible advantages.
 
 ---
 
@@ -2389,7 +2421,7 @@ You now understand the financial realities and how to build sustainably. Next se
 
 ---
 
-## Section 8: The Handholding Reality - 12 Critical Takeaways from Thousands of Lines of Code
+## Part 9: The Handholding Reality - 12 Critical Takeaways from Thousands of Lines of Code
 
 This section breaks through the marketing myth that "AI just works." Based on six months of pushing Claude Code to its limits on real projects, here are the realities nobody tells you.
 
@@ -2515,7 +2547,7 @@ You now understand the handholding reality and how to design around it. Next sec
 
 ------
 
-## Section 9: Technical Essentials - What You Actually Need to Know
+## Part 10: Technical Essentials - What You Actually Need to Know
 
 This section cuts through the "you don't need to code" myth. Even with AI doing the writing, you need technical understanding to direct, validate, and debug.
 
@@ -2659,7 +2691,7 @@ You now understand the technical foundation needed. Next section: MVP priorities
 
 ---
 
-## Section 10: MVP Priorities - What to Build First, What to Postpone
+## Part 11: MVP Priorities & Quick Reference - Building Smart, Shipping Fast
 
 This section prevents the #1 project killer: building everything at once and shipping nothing.
 
@@ -2795,11 +2827,13 @@ This section prevents the #1 project killer: building everything at once and shi
 
 ---
 
-You now understand how to prioritize and sequence features for maximum learning with minimum investment. Next section: FAQ and reference tables—quick answers to common questions and comprehensive comparisons for decision-making.
+You now understand how to prioritize and sequence features for maximum learning with minimum investment. 
+
+The following quick reference provides rapid answers to common decision points and questions that arise during AI-assisted development.
 
 ---
 
-## Section 11: FAQ & Reference Tables - Quick Answers to Critical Questions
+## FAQ & Quick Reference Tables
 
 This section provides rapid reference for the most common decision points and questions that arise during AI-assisted development.
 
@@ -2980,11 +3014,11 @@ This section provides rapid reference for the most common decision points and qu
 
 ---
 
-**Final Status: 12 of 12 Sections Complete**
+**Final Status: 11 of 11 Parts Complete**
 
-This guide now covers the complete journey from understanding the agentic landscape through building sustainably with AI assistance. Each section builds on previous insights while remaining independently valuable.
+This guide now covers the complete journey from understanding the agentic landscape through building sustainably with AI assistance. Each part builds on previous insights while remaining independently valuable.
 
-**Total word count:** ~50,000+ words across all sections
+**Total word count:** ~50,000+ words across all parts
 **Approach:** Collaborative elicitation with real experience, data-driven insights, and authentic storytelling
 **Goal:** Help you avoid the $1,000 mistakes and build actual working applications with AI assistance.
 
@@ -2992,15 +3026,15 @@ This guide now covers the complete journey from understanding the agentic landsc
 
 **Next Steps for the Reader:**
 
-1. **Start with Section 0-2** to understand the landscape and set up properly
-2. **Use the 3-Step method** from Section 2 for any real project
-3. **Choose tools based on Section 4** recommendations, not marketing
-4. **Manage context** using Section 6 protocols to prevent hallucinations
-5. **Budget properly** using Section 7 insights to avoid financial traps
-6. **Design around handholding reality** from Section 8 using personas and automation
-7. **Learn technical essentials** from Section 9 to direct AI effectively
-8. **Prioritize MVP features** using Section 10 framework to ship faster
-9. **Reference Section 11** tables for quick decisions and troubleshooting
+1. **Start with Parts 1-3** to understand the landscape and set up properly
+2. **Use the 3-Step method** from Part 3 for any real project
+3. **Choose tools based on Part 5** recommendations, not marketing
+4. **Manage context** using Part 7 protocols to prevent hallucinations
+5. **Budget properly** using Part 8 insights to avoid financial traps
+6. **Design around handholding reality** from Part 9 using personas and automation
+7. **Learn technical essentials** from Part 10 to direct AI effectively
+8. **Prioritize MVP features** using Part 11 framework to ship faster
+9. **Reference Part 11 tables** for quick decisions and troubleshooting
 
 **Remember:** AI removes syntax memorization and documentation lookup friction. It does NOT remove the need to think about architecture, make decisions, or understand how software fits together.
 

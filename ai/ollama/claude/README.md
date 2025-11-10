@@ -1,192 +1,247 @@
-# Claude Model Switcher
+# Claude Code Mode Switcher
 
-A CLI tool to easily switch between Claude's native models and custom GLM model configurations.
+A clean, simple CLI tool to switch between different Claude Code configuration modes: native Claude, GLM models, mixed modes, and fast variants.
 
-## Quick Start
+## ✨ Key Features
+
+- **Simple**: One command to switch modes
+- **Safe**: Single backup file, automatic validation
+- **Transparent**: Clear logging and colors
+- **Fast**: Instant mode switching with preserved settings
+- **Secure**: API keys stored in protected file (600 permissions)
+
+## 🚀 Quick Start
 
 ```bash
-# Navigate to directory
+# 1. Install (one-time setup)
 cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
-
-# Run installer
 bash install.sh install
 
-# Activate in current session
+# 2. Activate in current session
 source ~/.bashrc
 
-# Test it out
-cc-status
+# 3. Use it
+cc-change              # Show interactive menu
+cc-change cc-glm       # Switch to GLM mode
+cc-change --status     # Show current mode
 ```
 
-## Available Commands
+## 📋 Available Modes
 
-### Primary Commands
+| Mode | Sonnet | Opus | Haiku | Use Case |
+|------|--------|------|-------|----------|
+| **cc-native** | Default | Default | Default | Official Claude Code experience |
+| **cc-glm** | GLM-4.6 | GLM-4.6 | GLM-4.5-air | Full GLM experience |
+| **cc-mixed** ⭐ | Claude Sonnet | Claude Opus | GLM-4.5-air | Best balance (recommended) |
+| **fast-glm** | GLM-4.5-air | GLM-4.6 | GLM-4.5-air | Maximum speed with GLM |
 
-| Command | Description |
-|---------|-------------|
-| `cc-native` | Switch to Claude native mode (web authentication) |
-| `cc-mixed` | Switch to mixed mode (Claude Sonnet + GLM Haiku) - Recommended |
-| `cc-glm` | Switch to GLM override (all GLM models) |
-| `cc-status` | Show current configuration and model setup |
-| `fast-cc` | Switch to Claude fast mode (all Haiku) |
-| `fast-glm` | Switch to GLM fast mode (all GLM-4.5-air) |
-
-### Legacy Commands (Still Supported)
-
-- `claude-native`, `claude-mixed`, `glm-override`, `claude-status`, `claude-fast`, `glm-fast`
-
-All legacy commands continue to work for backward compatibility.
-
-## Model Profiles Explained
-
-### cc-native (Claude Native)
-- **Authentication**: Web-based (no API key needed)
-- **Models**: Default Claude models from web interface
-- **Use case**: Using Claude's official web authentication
-
-### cc-mixed (Mixed Mode) - Recommended
-- **Sonnet**: claude-sonnet-4-5-20250929
-- **Haiku**: glm-4.5-air
-- **Opus**: glm-4.6
-- **Use case**: Premium quality on Sonnet, economy on Haiku
-
-### cc-glm (GLM Override)
-- **Sonnet**: glm-4.6
-- **Haiku**: glm-4.5-air
-- **Opus**: glm-4.6
-- **Use case**: Full GLM stack for cost optimization
-
-### fast-cc (Claude Fast)
-- **All models**: claude-haiku-3-5-20241022
-- **Use case**: Maximum speed with Claude
-
-### fast-glm (GLM Fast)
-- **All models**: glm-4.5-air
-- **Use case**: Maximum speed with GLM
-
-## How to Use
-
-### From Terminal (Global Commands)
-
-After installation, these commands work from anywhere:
+## 💻 Commands
 
 ```bash
-cc-native      # Switch to Claude native models
-cc-mixed       # Switch to mixed mode
-cc-status      # Check current model
-fast-glm       # GLM-4.5-air for everything
+# Interactive menu
+cc-change
+
+# Switch to specific mode
+cc-change cc-glm
+cc-change cc-mixed
+cc-change fast-glm
+
+# Show information
+cc-change --status         # Current mode and config
+cc-change --list           # List all available modes
+cc-change --help           # Show help
+
+# Restore from backup
+cc-change --help           # Menu has restore option (r)
 ```
 
-### From Within Claude (Conversational)
+## 🏗️ How It Works
 
-Simply ask:
-- "Switch to Claude native models"
-- "Switch to mixed mode"
-- "Check my current model status"
-
-### Direct Script Commands (Always Work)
-
-```bash
-bash ~/.claude/switch-model-enhanced.sh cc-native
-bash ~/.claude/switch-model-enhanced.sh status
+### Installation Flow
+```
+bash install.sh install
+  ↓
+1. Detect shell (bash/zsh)
+2. Prompt for API key → Save to ~/.claude/.auth-token (600 permissions)
+3. Create ~/.claude/ directory structure
+4. Copy scripts to ~/.claude/switcher/
+5. Setup aliases in ~/.bashrc
+6. Done!
 ```
 
-## Usage Examples
-
-### Basic Switching
-
-```bash
-cc-status      # Check current model
-cc-native      # Switch to official Claude
-cc-mixed       # Use mixed mode for best performance
+### Mode Switching Flow
+```
+cc-change cc-glm
+  ↓
+1. Read current settings.json (preserve statusLine, model, etc.)
+2. Delete old "env" key (if it exists from previous mode)
+3. Read real API key from ~/.claude/.auth-token
+4. Load cc-glm preset (model mappings)
+5. Create new "env" with API token + preset config
+6. Merge env into current settings
+7. Validate JSON
+8. Write to settings.json
+9. Record "cc-glm" in settings.json.last
+  ↓
+Success! ✅
 ```
 
-### Development Workflows
-
-```bash
-# Use fast GLM for quick tasks
-fast-glm
-
-# Switch to Claude for complex reasoning
-cc-native
-
-# Check what you're currently using
-cc-status
+### Switching FROM Native
+```
+cc-change cc-glm (from native state)
+  ↓
+1. Same as above...
+2. BUT: Also backup current settings → ~/.claude/settings.json.backup
+3. This backup is used when you switch back FROM another mode to native
+  ↓
+Backup updated! ✅
 ```
 
-## File Structure
+### Switching TO Native
+```
+cc-change cc-native
+  ↓
+1. Read current settings (with env from previous mode)
+2. BACKUP to ~/.claude/settings.json.backup (user's last non-native state)
+3. Delete "env" key
+4. Write settings WITHOUT env
+5. Record "cc-native" in settings.json.last
+  ↓
+Switched to native! ✅
+```
+
+## 📁 Directory Structure
 
 ```
-~/.claude/                              # Main directory
-├── settings.json                       # Your Claude configuration
-├── switch-model-enhanced.sh            # Main switcher script
-├── aliases.sh                          # Shell aliases
-├── .auth-token                         # Your API key (600 permissions)
-└── backups/                            # Auto-generated backups
-    └── settings_YYYYMMDD_HHMMSS.json
+~/.claude/
+├── settings.json                 # Current active config
+├── settings.json.backup          # Emergency backup (updated from native only)
+├── settings.json.last            # Current mode name (cc-glm, cc-native, etc.)
+├── .auth-token                   # API key (600 permissions, managed by install.sh)
+├── aliases.sh                    # Shell aliases
+└── switcher/
+    ├── switch-mode.sh            # Main switcher script (NEW, simplified)
+    ├── presets/glm/
+    │   ├── cc-native.json        # No preset needed (inherent)
+    │   ├── cc-glm.json           # GLM-4.6 for Sonnet/Opus, GLM-4.5-air for Haiku
+    │   ├── cc-mixed.json         # Claude Sonnet/Opus + GLM-4.5-air Haiku
+    │   └── fast-glm.json         # GLM-4.5-air for Sonnet/Haiku, GLM-4.6 for Opus
+    └── logs/
+        └── switch-YYYYMMDD-HHMMSS.log  # Operation logs
 
 ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude/
-├── README.md                           # This file
-├── INSTALLATION.md                     # Installation guide
-├── TROUBLESHOOTING.md                  # Troubleshooting guide
-├── GLM_README.md                       # GLM configuration guide
-├── install.sh                          # Installer script
-├── switch-model-enhanced.sh            # Switcher script
-├── aliases.sh                          # Shell aliases
-├── verify-install.sh                   # Installation verification
-└── settings.example.json               # Example configuration
+├── README.md                     # This file
+├── ARCHITECTURE.md               # Detailed design and flow
+├── GUIDE.md                      # Installation + Troubleshooting merged
+├── GLM_README.md                 # GLM-specific configuration
+├── install.sh                    # Main installer
+├── aliases.sh                    # Shell aliases template
+├── verify-install.sh             # Verification script
+├── settings.example.json         # Example config
+└── _archive/
+    └── switch-model-enhanced.sh  # Old script (deprecated)
 ```
 
-## Safety and Backups
-
-- **Automatic Backups**: Every switch creates a timestamped backup
-- **Token Preservation**: Your API token is preserved across all switches
-- **Config Validation**: Settings are validated before switching
-- **Easy Recovery**: Restore from `~/.claude/backups/` directory
-
-## Advanced Usage
-
-### Restore from Backup
+## 🔧 How to Reinstall / Update API Key
 
 ```bash
-# List backups
-bash ~/.claude/switch-model-enhanced.sh restore
+# Just run install again - it will:
+# 1. Ask for new API key (or keep existing if you press Enter)
+# 2. Update ~/.claude/.auth-token
+# 3. Keep your settings and backups
 
-# Restore specific backup
-bash ~/.claude/switch-model-enhanced.sh restore 20251108_14
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+bash install.sh install
 ```
 
-### Installation Commands
+## 🛟 Restore from Backup
+
+If something goes wrong:
 
 ```bash
-bash install.sh install    # Full interactive installation
-bash install.sh quick      # Quick installation (no prompts)
-bash install.sh status     # Check installation status
-bash install.sh uninstall  # Complete removal
+# Show interactive menu
+cc-change
+
+# In the menu, press 'r' to restore from backup
+# This restores ~/.claude/settings.json.backup to ~/.claude/settings.json
 ```
 
-## Next Steps
+## ✅ What's Safe
 
-1. Read [INSTALLATION.md](INSTALLATION.md) for detailed installation instructions
-2. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) if you encounter issues
-3. Check [GLM_README.md](GLM_README.md) for GLM-specific configuration
+- **statusLine**: Preserved across all switches (your custom prompt config)
+- **model**: Preserved (your default model preference)
+- **alwaysThinkingEnabled**: Preserved (your thinking settings)
+- **API Key**: Never overwritten, always from .auth-token
+- **Backups**: One stable backup file, updated intelligently
 
-## Integration with Other Tools
+## ❌ What Could Go Wrong (And How We Handle It)
 
-The switcher works alongside:
-- Claude Code CLI
-- OpenCode
-- Droid CLI
-- Any tool using Claude's API
+| Issue | Handling |
+|-------|----------|
+| Corrupted settings.json | Error message, no changes made |
+| Missing API key | Error message, prompts to run install.sh |
+| Missing preset file | Error message, switch cancelled |
+| Invalid JSON after merge | Error message, no file written |
 
-## Contributing
+All errors are logged to `~/.claude/switcher/logs/` for debugging.
 
-Feel free to modify the scripts to add:
-- New model profiles
-- Additional API endpoints
-- Custom configurations
-- Integration with other tools
+## 🔍 Troubleshooting
 
-## License
+### Commands not found after install?
+```bash
+# Reload shell in current session
+source ~/.bashrc
 
-This project is provided as-is for educational and development purposes.
+# Or open a new terminal
+```
+
+### API key issues?
+```bash
+# Reinstall and update the key
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
+bash install.sh install
+```
+
+### Need to see what's happening?
+```bash
+# Check current mode
+cc-change --status
+
+# View logs
+tail -f ~/.claude/switcher/logs/*
+
+# Check backup file
+cat ~/.claude/settings.json.backup
+```
+
+### Mode switch failed?
+```bash
+# Restore from backup using the menu
+cc-change
+# Press 'r' to restore
+```
+
+## 📖 More Information
+
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Deep dive into design, flow, and technical details
+- **[GLM_README.md](GLM_README.md)** - GLM-specific configuration and setup
+
+## 🎯 Next Steps
+
+1. Run `bash install.sh install` to get started
+2. Use `cc-change` to switch modes
+3. Read [ARCHITECTURE.md](ARCHITECTURE.md) if you want to understand the design
+4. Check logs in `~/.claude/switcher/logs/` if anything needs debugging
+
+## 📝 Notes
+
+- This tool manages `~/.claude/settings.json` for Claude Code
+- API key is stored securely in `~/.claude/.auth-token` (600 permissions)
+- All operations are logged for debugging
+- Backups are preserved for safety
+- No configuration is lost, only the "env" section is swapped per mode
+
+---
+
+**Version**: 2.0 (Simplified Architecture)
+**Last Updated**: November 9, 2025

@@ -96,40 +96,35 @@ prompt_api_key() {
     else
         print_success "API key provided and will be stored securely"
         API_KEY="$api_key"
-
-        # Store in auth token file with secure permissions
-        echo "$API_KEY" > "$auth_token_file"
-        chmod 600 "$auth_token_file"
-        print_success "API key saved to $auth_token_file (600 permissions)"
     fi
+
+    # ALWAYS update the auth token file (even with placeholder)
+    echo "$API_KEY" > "$auth_token_file"
+    chmod 600 "$auth_token_file"
+    print_success "API key saved to $auth_token_file (600 permissions)"
 }
 
-# Create settings.json with API key
+# Check/preserve settings.json
 create_settings() {
-    print_info "Creating settings configuration..."
+    print_info "Checking settings configuration..."
 
     if [ -f "$CLAUDE_DIR/settings.json" ]; then
-        print_warning "Settings file already exists"
-        read -p "Overwrite? (y/N): " overwrite
-        if [[ ! $overwrite =~ ^[Yy]$ ]]; then
-            print_info "Keeping existing settings"
-            return 0
-        fi
-    fi
-
-    cat > "$CLAUDE_DIR/settings.json" << EOF
+        # Settings file exists - DO NOT OVERWRITE
+        # The user's native Claude Code settings must be preserved
+        print_success "Existing settings.json preserved (native Claude settings kept)"
+        print_info "Use cc-change to switch modes and manage env configuration"
+        return 0
+    else
+        # No settings file - create minimal default
+        # This allows Claude Code to work, switch-mode.sh will handle env injection
+        cat > "$CLAUDE_DIR/settings.json" << 'EOF'
 {
-    "env": {
-        "ANTHROPIC_AUTH_TOKEN": "$API_KEY",
-        "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
-        "API_TIMEOUT_MS": "3000000",
-        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.6",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-4.6"
-    }
+  "model": "sonnet",
+  "alwaysThinkingEnabled": false
 }
 EOF
-    print_success "Settings configuration created"
+        print_success "Created default settings.json (use cc-change to configure)"
+    fi
 }
 
 # Copy scripts
@@ -281,19 +276,22 @@ show_next_steps() {
     echo ""
     print_success "🎉 Installation complete!"
     echo ""
-    echo -e "${BOLD}📋 Available Commands (New Naming Scheme):${NC}"
-    echo "  cc-native          # Switch to Claude native (web auth)"
-    echo "  cc-mixed           # Switch to mixed mode (Claude Sonnet + GLM Haiku)"
-    echo "  cc-glm             # Switch to GLM override"
-    echo "  cc-status          # Show current configuration"
-    echo "  fast-cc            # Switch to Claude fast mode (Haiku)"
-    echo "  fast-glm           # Switch to GLM fast mode"
+    echo -e "${BOLD}📋 Main Command:${NC}"
+    echo -e "  ${CYAN}cc-change${NC}          # Interactive menu (recommended)"
     echo ""
-    echo -e "${BOLD}🔄 Legacy Commands (Still Work):${NC}"
-    echo "  claude-native, claude-mixed, glm-override, claude-status"
+    echo -e "${BOLD}📋 Quick Mode Switching:${NC}"
+    echo "  cc-native          # Switch to Claude native (web auth)"
+    echo "  cc-glm             # Switch to GLM-4.6 mode"
+    echo "  cc-mixed           # Switch to mixed (Claude Sonnet + GLM Haiku)"
+    echo "  fast-glm           # Switch to fast GLM mode"
+    echo ""
+    echo -e "${BOLD}📋 Information Commands:${NC}"
+    echo "  cc-status          # Show current configuration"
+    echo "  cc-list            # List all modes with details"
+    echo "  cc-help            # Show help"
     echo ""
     echo -e "${BOLD}💡 To Use Commands in Current Session:${NC}"
-    echo "  Run: ${CYAN}source ~/.bashrc${NC}"
+    echo -e "  Run: ${CYAN}source ~/.bashrc${NC}"
     echo "  Or: Open a new terminal window"
     echo ""
     echo -e "${BOLD}🔑 API Key Management:${NC}"
@@ -308,15 +306,17 @@ show_next_steps() {
     echo ""
     echo -e "${BOLD}🗂️  Files Installed:${NC}"
     echo "  • ~/.claude/settings.json              # Current configuration"
-    echo "  • ~/.claude/switch-model-enhanced.sh   # Enhanced switcher script"
+    echo "  • ~/.claude/switcher/switch-mode.sh    # Mode switcher script"
+    echo "  • ~/.local/bin/cc-change               # Main command"
     echo "  • ~/.claude/aliases.sh                 # Shell aliases"
     echo "  • ~/.claude/.auth-token                # API key (secure)"
-    echo "  • ~/.claude/backups/                   # Auto-generated backups"
+    echo "  • ~/.claude/switcher/presets/          # Mode presets"
+    echo "  • ~/.claude/switcher/logs/             # Switch logs"
     echo ""
     echo -e "${BOLD}🚀 Quick Start:${NC}"
-    echo "  1. Run: ${CYAN}source ~/.bashrc${NC}"
-    echo "  2. Try: ${CYAN}cc-status${NC} to see current configuration"
-    echo "  3. Switch: ${CYAN}cc-mixed${NC} for Claude Sonnet + GLM Haiku"
+    echo -e "  1. Run: ${CYAN}source ~/.bashrc${NC}"
+    echo -e "  2. Try: ${CYAN}cc-change${NC} for interactive menu"
+    echo -e "  3. Or: ${CYAN}cc-status${NC} to see current configuration"
 }
 
 # Uninstall function

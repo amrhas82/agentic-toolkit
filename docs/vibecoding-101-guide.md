@@ -2856,7 +2856,7 @@ This section provides rapid reference for the most common decision points and qu
 ### The Decision Matrix: Which Tool for Which Situation? {#tool-comparison-tables}
 
 | Situation | Recommended Tool | Why | Alternative |
-|---|---|---|
+|---|---|---|---|
 | **First time building** | Claude Code CLI | Predictable costs, structured learning | Droid (if SWE focus preferred) |
 | **Pure UI exploration** | Replit (limited time) | Visual feedback, immediate results | Claude Code Web (if already subscribed) |
 | **Multi-model experimentation** | OpenCode | BYOK, Chinese model access | AmpCode (if organized UI needed) |
@@ -2868,15 +2868,15 @@ This section provides rapid reference for the most common decision points and qu
 
 ### The Cost Comparison Table: Updated Pricing Reality {#cost-analysis}
 
-| Tool | Monthly Cost | Token Limits | Context Window | Best For | Avoid When |
-|---|---|---|---|---|
-| **Claude Code CLI** | $20 | 5-hour limit | Serious building | Casual chatting |
-| **Droid** | $20 | Usage-based | SWE-focused work | Heavy UI work |
-| **OpenCode** | $0-40 (BYOK) | Varies by model | Budget flexibility | Need polished UI |
-| **AmpCode** | Usage-based | Generous | Organized projects | Budget constraints |
-| **Replit** | $50-100+/day | Hidden | Quick UI tests | Serious building |
-| **DeepSeek Web** | $0-10 | Generous | Learning, research | Production systems |
-| **GLM** | $30/quarter | Good | Chinese model quality | Western model preference |
+| Tool | Monthly Cost | Usage Limits | Context Window | Best For | Avoid When |
+|---|---|---|---|---|---|
+| **Claude Code CLI** | $20 | 5-hour limit per session | Large | Serious building, structured learning | Casual chatting |
+| **Droid** | $20 | Usage-based | SWE-focused | Complex enterprise projects | Heavy UI work |
+| **OpenCode** | $0-40 (BYOK) | Varies by model | Varies by model | Budget flexibility, multi-model experimentation | Need polished UI |
+| **AmpCode** | Usage-based | Generous | Organized UI | Budget-conscious learning | Budget constraints |
+| **Replit** | $50-100+/day | Hidden | Large | Pure UI exploration, quick tests | Serious building, production |
+| **DeepSeek Web** | $0-10 | Generous | Large | Learning, research, cost-sensitive work | Production systems |
+| **GLM** | $30/quarter | Good | Large | Chinese model quality, cost-effective | Western model preference |
 
 ---
 

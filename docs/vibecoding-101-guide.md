@@ -6,6 +6,32 @@ A comprehensive guide for non-coders and vibecoders on building software with AI
 
 ---
 
+## Table of Contents
+
+1. [**Part 1: The Agentic Field**](#part-1-the-agentic-field---what-youre-actually-getting-into) - Understanding the AI landscape
+2. [**Part 2: The UI Trap**](#part-2-the-ui-trap---why-most-beginners-fail) - Why beautiful interfaces fail
+3. [**Part 3: Your First 48 Hours**](#part-3-your-first-48-hours---the-actual-workflow) - The real getting started guide
+4. [**Part 4: Model Landscape**](#part-4-model-landscape---understanding-the-5050-framework) - Choosing the right models
+5. [**Part 5: Access Methods & Tools**](#part-5-access-methods--tools---why-tool-choice-matters-more-than-you-think) - Tool comparison and selection
+6. [**Part 6: Approaches Spectrum**](#part-6-approaches-spectrum---vibecoding-vs-3-step-vs-bmad) - Different building methodologies
+7. [**Part 7: Context Windows**](#part-7-context-windows---the-invisible-constraint-that-broke-my-projects) - Managing AI memory limits
+8. [**Part 8: Pricing Reality**](#part-8-pricing-reality---how-i-burned-1000-and-how-to-avoid-it) - Cost management and sustainability
+9. [**Part 9: The Handholding Reality**](#part-9-the-handholding-reality---12-critical-takeaways-from-thousands-of-lines-of-code) - What AI actually needs from you
+10. [**Part 10: Technical Essentials**](#part-10-technical-essentials---what-you-actually-need-to-know) - Non-coder technical knowledge
+11. [**Part 11: MVP Priorities & Quick Reference**](#part-11-mvp-priorities--quick-reference---building-smart-shipping-fast) - Feature prioritization and decision frameworks
+
+---
+
+## Quick Reference Index
+
+- [**Tool Comparison Tables**](#tool-comparison-tables) - All tools ranked and compared
+- [**Cost Analysis**](#cost-analysis) - Pricing models and budget planning
+- [**Context Management**](#context-management) - Memory handling strategies
+- [**Feature Decision Frameworks**](#feature-decision-frameworks) - MVP prioritization
+- [**Troubleshooting Guide**](#troubleshooting-guide) - Common problems and solutions
+
+---
+
 ## Part 1: The Agentic Field - What You're Actually Getting Into
 
 You've seen the demos. Type "build me a landing page" and watch beautiful code appear in seconds. It looks like magic.
@@ -80,12 +106,14 @@ I hit a wall I couldn't pass. About 75% completion. The UI was beautiful. The in
 
 Here's what was actually wrong:
 
-- Database was disconnected from the frontend
-- Docker images were failing
-- The app worked on my dev machine but wouldn't run in production
-- The frontend was making calls to non-existent endpoints
-- I'd exposed API keys in the code
-- Database passwords were easy to guess and accessible from the web
+| Problem Category | Specific Issues |
+|---|---|
+| **Database Connection** | Database was disconnected from the frontend |
+| **Infrastructure** | Docker images were failing |
+| **Deployment** | The app worked on my dev machine but wouldn't run in production |
+| **Frontend Integration** | The frontend was making calls to non-existent endpoints |
+| **Security** | I'd exposed API keys in the code |
+| **Authentication** | Database passwords were easy to guess and accessible from the web |
 
 I'd spent a month. I'd burned $1,000 across two web apps (one complex, one simple). The UIs looked great. Everything underneath was broken.
 
@@ -111,18 +139,14 @@ But it's the other 90% of your application.
 
 Web agents are optimized to show you the 10%. CLI tools and plugins avoid this trap initially, but they're also optimized to keep you engaged if you're not filling up your token budget—they'll generate more tasks to keep you building, whether you need them or not.
 
-**What AI actually removes:**
-- The need to memorize syntax
-- Documentation lookup friction
-- Boilerplate code writing
-
-**What AI does NOT remove:**
-- Understanding that software is modular (files that connect in specific ways)
-- Knowing what questions to ask ("How should authentication work?" not just "add login")
-- Recognizing when you're in over your head
-- Learning when to start fresh vs. keep fixing
-- Architecture thinking
-- Decision-making
+| What AI Actually Removes | What AI Does NOT Remove |
+|---|---|
+| The need to memorize syntax | Understanding that software is modular (files that connect in specific ways) |
+| Documentation lookup friction | Knowing what questions to ask ("How should authentication work?" not just "add login") |
+| Boilerplate code writing | Recognizing when you're in over your head |
+| | Learning when to start fresh vs. keep fixing |
+| | Architecture thinking |
+| | Decision-making |
 
 Here's the real skill you're learning: **spec engineering.** It's the ability to describe what you want clearly enough, understand what AI suggests well enough, and structure projects logically enough that AI can actually help you build them.
 
@@ -168,32 +192,12 @@ The 5-hour reset isn't a limitation. It's the feature that saved me.
 
 Here's my actual progression:
 
-**Month 1 (Post-Replit):**
-- Already on Linux, already familiar with CLI tools
-- Learned GitHub properly (not eventually, from Day 1)
-- Set up PyCharm as my IDE
-- Ran everything on localhost
-- Got familiar with proper structure and planning
-
-**Month 2:**
-- Built a simple one-page app (a URL shortener that stores geolocation data)
-- One thing it does: takes a long URL, shortens it, stores the geolocation where the link was created, and can open 15 different map apps
-- No complex infrastructure, no team features, no real-time sync
-- Just one clear function, done well
-- Used that 5-hour reset intentionally when I hit it
-
-**Month 3:**
-- Used specialized agents to create PRDs for new features
-- Had agents generate task lists and subtasks
-- Processed task lists systematically with proper execution
-- Introduced Docker, CI/CD, containerization—but in structured sequence, not all at once
-- Reset became a natural checkpoint, not a frustration
-
-**Month 4+:**
-- Multi-agent workflows for complex and simple tasks
-- Planned execution, distraction-free
-- Focus shifted from UI (all you can see on web) to the 90%: database design, authentication, security, backend architecture, how things fit together
-- The 5-hour reset became the guardrail that kept me sane
+| Month | Focus | Key Achievements |
+|---|---|---|
+| **Month 1 (Post-Replit)** | **Foundation Setup** | Already on Linux, familiar with CLI tools<br/>Learned GitHub properly (from Day 1)<br/>Set up PyCharm as IDE<br/>Ran everything on localhost<br/>Got familiar with proper structure and planning |
+| **Month 2** | **Simple MVP** | Built simple one-page app (URL shortener with geolocation)<br/>One clear function, done well<br/>No complex infrastructure, team features, or real-time sync<br/>Used 5-hour reset intentionally when hit it |
+| **Month 3** | **Structured Process** | Used specialized agents to create PRDs<br/>Had agents generate task lists and subtasks<br/>Processed task lists systematically<br/>Introduced Docker, CI/CD, containerization in structured sequence<br/>Reset became natural checkpoint, not frustration |
+| **Month 4+** | **Advanced Workflows** | Multi-agent workflows for complex and simple tasks<br/>Planned execution, distraction-free<br/>Focus shifted from UI to the 90%: database, auth, security, backend architecture<br/>5-hour reset became guardrail that kept me sane |
 
 The key insight: **planning upfront beats prompt engineering every time.**
 
@@ -201,17 +205,15 @@ The key insight: **planning upfront beats prompt engineering every time.**
 
 If you want to avoid the trap, here's what I'd tell you on Day 1:
 
-**Start with something stupidly simple.** Build a one-page app that does one thing. A calculator. A note-taking app. A URL shortener. Prove to yourself you can finish something. Don't optimize. Don't overthink. Finish.
+| Wisdom Category | Key Advice | Action Items |
+|---|---|---|
+| **Start Simple** | Start with something stupidly simple | Build a one-page app that does one thing<br/>Calculator, note-taking app, or URL shortener<br/>Prove you can finish something<br/>Don't optimize, don't overthink, just finish |
+| **Learn Tools Early** | Learn about tools early, not eventually | GitHub (version control)<br/>PyCharm or VS Code (your IDE)<br/>Linux or Mac (your OS)<br/>Avoid Windows or use Zorin OS/WSL<br/>Run projects on localhost from Day 1 |
+| **Use Scripts** | Use scripts to kill entry friction | Setup scripts for Zorin OS and Ubuntu/Debian<br/>Install CLI dev environment, Git, tmux<br/>All AI CLI tools, project templates<br/>One script = you're set up<br/>No "install this, then that, then Google this error" |
+| **Automation** | Entry level is low with right tools | Use scripts to automate setup<br/>Use frameworks to automate planning<br/>Use specialized agents to automate decision-making<br/>Don't try to learn everything at once |
+| **Community** | You don't have to figure this out alone | If you get stuck, reach out<br/>Discord: tinyurl.com/discochat |
 
-**Learn about tools early.** Not eventually. Early. GitHub (version control), PyCharm or VS Code (your IDE), Linux or Mac (your OS). Windows will make everything harder. If you're on Windows, use Zorin OS (Linux with a Windows-like interface) or WSL. Run your projects on localhost from Day 1, not in some cloud environment you'll never use in production.
-
-**Use scripts to kill entry friction.** I built setup scripts for Zorin OS and Ubuntu/Debian that install everything you need: CLI dev environment, Git, tmux, all AI CLI tools, project templates, everything. One script, you're set up. No "install this, then that, then Google this error" nightmare.
-
-You can find them here: https://github.com/amrhas82/agentic-toolkit
-
-**Entry level is low if you use the right tools.** The curve is only steep if you try to learn everything at once. Use scripts to automate setup. Use frameworks to automate planning. Use specialized agents to automate decision-making.
-
-**You don't have to figure this out alone.** If you get stuck, reach out. Discord: tinyurl.com/discochat
+You can find setup scripts here: https://github.com/amrhas82/agentic-toolkit
 
 ### The Decision Framework
 
@@ -232,28 +234,23 @@ You have three main paths. Each has tradeoffs. Here's how to decide.
 
 **Use this decision tree:**
 
-**Question 1: What's your operating system?**
-- Windows: Zorin OS or WSL recommended (Windows makes dev harder)
-- Mac: Ready to go
-- Linux: Ready to go
+### The Decision Framework
 
-**Question 2: Do you want to learn infrastructure (database, auth, security, deployment)?**
-- No, just UI: Web code agent might work for a while, but you'll hit the wall
-- Yes, or "I don't know yet": CLI or plugins are better long-term
-
-**Question 3: What's your budget?**
-- $0: Stay in free tiers (DeepSeek, GLM, Gemini, etc.)
-- $20/month: One subscription (Claude Code, Cursor, ChatGPT Plus)
-- $40/month: Multi-tool strategy (what I do)
-- $100+/month: Danger zone—you're paying for engagement, not building
-
-**Question 4: How much do you value control?**
-- Low (I just want it to work): Web agent is fine initially
-- High (I want to see what's happening): CLI or plugins
-
-**Question 5: Are you building solo or with a team?**
-- Solo: Structured approach (PRD → tasks) still helps, but flexibility is OK
-- With a team: Structured approach is critical
+| Question | Your Situation | Recommendation |
+|---|---|---|
+| **Operating System** | Windows | Zorin OS or WSL recommended (Windows makes dev harder) |
+| | Mac | Ready to go |
+| | Linux | Ready to go |
+| **Learning Infrastructure** | No, just UI | Web code agent might work for a while, but you'll hit the wall |
+| | Yes, or "I don't know yet" | CLI or plugins are better long-term |
+| **Budget** | $0 | Stay in free tiers (DeepSeek, GLM, Gemini, etc.) |
+| | $20/month | One subscription (Claude Code, Cursor, ChatGPT Plus) |
+| | $40/month | Multi-tool strategy (what I do) |
+| | $100+/month | Danger zone—you're paying for engagement, not building |
+| **Control Preference** | Low (I just want it to work) | Web agent is fine initially |
+| | High (I want to see what's happening) | CLI or plugins |
+| **Team Size** | Solo | Structured approach (PRD → tasks) still helps, but flexibility is OK |
+| | With a team | Structured approach is critical |
 
 **Recommendations by Profile:**
 
@@ -2064,7 +2061,7 @@ Without it (vibecoding): "Build this. No wait, not that. Do this instead. Rememb
 
 
 
-## Part 7: Context Windows - The Invisible Constraint That Broke My Projects
+## Part 7: Context Windows - The Invisible Constraint That Broke My Projects {#part-7-context-windows---the-invisible-constraint-that-broke-my-projects}
 
 Context windows are the #1 killer of beginner projects that nobody explains upfront. I learned this through $1,000+ in wasted work and three projects that hit completion walls they couldn't overcome.
 
@@ -2152,7 +2149,7 @@ With heavy work on Droid/Claude: I reset 1-3 times per project
 Light work: maybe once a day
 It depends on the amount of work and continuous back-to-back sessions
 
-### The 75% Rule I Now Follow
+### The 75% Rule I Now Follow {#context-management}
 
 I reset at 75% context usage, not when things break. This prevents catastrophic failure and maintains output quality. CLI tools show me  percentage; web tools hide it completely.
 
@@ -2691,139 +2688,156 @@ You now understand the technical foundation needed. Next section: MVP priorities
 
 ---
 
-## Part 11: MVP Priorities & Quick Reference - Building Smart, Shipping Fast
+## Part 11: MVP Priorities & Quick Reference - Building Smart, Shipping Fast {#part-11-mvp-priorities--quick-reference---building-smart-shipping-fast}
 
-This section prevents the #1 project killer: building everything at once and shipping nothing.
+This section prevents the #1 project killer: building everything at once and shipping nothing. Based on real experience with feature creep and learning the hard way.
 
 ---
 
-### The MVP Mindset Shift
+### The MVP Evolution: From UI Obsession to Core Focus
 
-| From Thinking | To Thinking |
+**My MVP definition changed completely:**
+
+| When I Started | My MVP Now |
 |---|---|
-| "I need all these features" | "What's the smallest version that solves the core problem?" |
-| "Users will expect X" | "Let me test if users actually need X" |
-| "This won't take long" | "This is all I have time for, everything else is backlog" |
-| "I can add this quickly" | "This adds complexity, I'll defer it" |
+| Feature creep when UI was the only thing I could see | Focused on 1 main driving feature that should work flawlessly |
+| Tempted by dopamine of beautiful interfaces | Clean and simple and error-free vs. eye-catching |
+| Polished design was the goal | Core functionality that first users can test without frustration |
+| Everything seemed essential | Secondary support feature next to main tops |
 
-**The hard truth:** Your first version should feel incomplete to you. If it feels complete, you built too much.
-
----
-
-### The MVP Decision Framework
-
-| Question | If Yes → Build | If No → Defer |
-|---|---|---|
-| **Does the app work without this?** | Defer | Build |
-| **Will users quit without this?** | Build | Defer |
-| **Can I test the core value without this?** | Defer | Build |
-| **Does this require major new infrastructure?** | Defer | Build |
-| **Can this be added later without breaking existing?** | Defer | Build |
-
-**The 20% rule:** If a feature represents more than 20% of total development effort, question if it belongs in MVP.
+**The transformation:** When I switched to Claude Code CLI and CLI experience in general, I had more to do on the backend and stopped being obsessed with UI. Now MVP is about delivering one solid core feature that works.
 
 ---
 
-### Real MVP Examples: What Actually Works
+### Real Feature Creep Example: The Unified API Platform
 
-#### Example 1: Task Manager
+**What actually happened:**
 
-| MVP Features | Why These | Deferred Features |
-|---|---|---|
-| Add task, mark complete, delete task | Core value loop | Due dates, priorities, sharing, notifications |
-| **Why it works:** Tests the fundamental hypothesis - can users manage tasks? | **Why deferred:** Add complexity without validating core need |
+| First Attempt | Second Attempt |
+|---|---|
+| 100% UI creep | 50% UI creep (less than first) |
+| Really complicated, looked nice | More solid but still has features that will be put aside |
+| Nothing worked in production | Better foundation but still learning |
+| Waste of Replit money | Better approach but still dealing with UI temptation |
 
-#### Example 2: URL Shortener
+**The lesson:** I had feature creep because Replit is good with UI and I liked the dopamine. It got too complicated that it looked really nice but nothing worked in production. I restarted it properly and focused more on foundations but still UI creep sort of got me again.
 
-| MVP Features | Why These | Deferred Features |
-|---|---|---|
-| Shorten URL, redirect to original | Core functionality | Analytics, custom URLs, QR codes, authentication |
-| **Why it works:** Validates the technical concept - can I redirect URLs? | **Why deferred:** Business features without proven technical foundation |
-
-#### Example 3: Chat Application
-
-| MVP Features | Why These | Deferred Features |
-|---|---|---|
-| Send message, see messages in real-time | Core communication | User profiles, message history search, file sharing |
-| **Why it works:** Tests real-time communication hypothesis | **Why deferred:** Social features without proven communication value |
+**The cost:** What a waste of time and money.
 
 ---
 
-### The Feature Creep Detection System
+### The 3-Question Feature Test {#feature-decision-frameworks}
 
-**Early warning signs you're building too much:**
+**Before adding any feature, I ask:**
 
-| Warning Sign | What It Means | Action |
+1. **Does it add value to MVP?** 
+2. **Is it well thought out?**
+3. **Will it affect early users' experience?**
+
+**The reality:** Most of the time (9 out of 10) it's just something I want to do that I think would be nice—like a surface thought feature. It's tempting because AI will do it, but it wastes your time and diverts your attention.
+
+**My process:** Often I discuss it with AI to see if that makes sense, like a soundboard. The discussion helps me realize when I'm building unnecessary features.
+
+---
+
+### The UI Tweak Trap
+
+**The pattern I fall into:**
+
+| What I Tell Myself | What Actually Happens |
+|---|---|
+| "Let me do this real quick change color here" | End up spending too much time on unnecessary cosmetics |
+| "Change color there, icon here, compact" | Lose track of improving/readying core product |
+| "Let me add extra step with registration just because it seems like a good idea" | Building for myself, not for MVP validation |
+| "Just because I feel that it would be nice to have" | This is when you lose track |
+
+**The insight:** When you're watching UI and keep saying these things, that's when you lose track and end up spending too much time on unnecessary cosmetic work instead of improving the core product to make it ready for MVP.
+
+---
+
+### The Shame Project: When MVP Goes Wrong
+
+**Current situation:** I got one project sitting next to me and I'm discouraged as it seems like a lot to look at but it's in the back of my mind that it's not right.
+
+**What I learned:** This is what happens when you don't follow the MVP process. You end up with something that looks impressive but you know it's not solid.
+
+---
+
+### Learning to Say No: The 5 Questions
+
+**When I first learned to say "no" to features:**
+
+I started having too many things coming at once and I had to ask myself every time:
+
+1. **Is it well thought?**
+2. **Is it important?** 
+3. **Is it needed for MVP?**
+4. **Will it affect early users experience?**
+5. **Is it going to add any value or just nice to have?**
+
+**The breakthrough:** These questions force you to think before adding anything. Most features fail these questions and get deferred.
+
+---
+
+### The MVP Definition That Actually Works
+
+**My MVP approach now:**
+
+- **Lean** - Minimal features that test core hypothesis
+- **Agile** - Quick to build and iterate
+- **Quick** - Ship fast to get real feedback
+- **KISS principle** - Keep it simple, stupid
+- **Use simplest possible clean methods** - Arrive at making a point without over-engineering
+
+**Early research:** I always try to be lean and simple to ship fast. Early research in scoping MVP also indicates what's out of scope and future.
+
+**The key:** You define MVP goal way upfront and you build the product based on it. You don't change it unless there is new evidence that what you have/had in mind is no longer relevant, would break, too complex for MVP efforts, or requires capital investment in tooling while you haven't shipped or validated if the product will be needed.
+
+---
+
+### The North Star Example: WhatsApp Core Functionality
+
+**If I'm building WhatsApp, what belongs in MVP:**
+
+| MVP Features | Why These | Out of Scope Features |
 |---|---|---|
-| "This would be cool to add" | Building for excitement, not need | Return to MVP definition |
-| "Users might want this" | Assuming without evidence | Add to research list, not current sprint |
-| "This is technically interesting" | Technology-driven, not user-driven | Document for future, not now |
-| "This won't take long" | Underestimating complexity | Break down, estimate honestly |
+| Send/receive text messages | Core communication value - bidirectional messaging | Settings, options, voice notes, replies, emojis |
+| Process to get to sending text should be working | Essential user journey | User profiles, message history, file sharing |
+| **The principle:** North star is send/receive text work flawlessly | **The insight:** Everything else would be out of scope for MVP |
 
-**The MVP checkpoint:** Every feature should answer "Does this help test my core hypothesis?"
-
----
-
-### The Backlog Management Strategy
-
-| Category | Examples | When to Consider |
-|---|---|---|
-| **Core MVP** | Essential features only | Current development |
-| **Version 2** | Obvious next steps | After MVP ships and gets feedback |
-| **Nice to Have** | Enhancement ideas | After proven product-market fit |
-| **Someday/Maybe** | Blue sky thinking | Never, unless pivot required |
-
-**The principle:** Clear categorization prevents scope creep by making deferral decisions explicit.
+**The lesson:** Focus on the core value proposition and make it bulletproof before adding anything else.
 
 ---
 
-### The User Feedback Integration
+### The Reality Check: Users Translate Apps Differently
 
-**MVP → Feedback → Iteration cycle:**
+**What actually happens after launch:**
 
-1. **Build minimal version** (2-4 weeks)
-2. **Get 5-10 users** (friends, beta testers)
-3. **Collect specific feedback** (not "do you like it?" but "what confused you?")
-4. **Identify pattern** (3+ users mention same issue)
-5. **Decide: pivot or persevere** (data-driven decision)
+You do your research, think you got the problem, and you ship your first iteration. Wow—the first feedback from early adopters is usually disappointing because you come across and discover the real intent of the user of what they thought when they first tried the app.
 
-**The critical insight:** MVP isn't about building less—it's about learning faster with less investment.
+**The insight:** Everyone translates the app differently, and this is where you start understanding what your app actually is. You will keep changing with every iteration, adding/removing features until you get to product-market fit.
+
+**Timeline reality:** This can vary from months to years depending on how complex your idea is.
 
 ---
 
-### The Technical Debt Reality
+### Mini-Glossary: Part 11
 
-| MVP Approach | Technical Debt | Long-term Impact |
-|---|---|---|
-| **Rapid but clean** | Low | Easy to extend, maintain |
-| **Rapid but messy** | High | Rewrite required, slows future development |
-| **Slow but perfect** | Medium | Opportunity cost, missed market timing |
+**UI Creep:** Adding visual features that look nice but don't contribute to core functionality. Primary distraction from MVP goals.
 
-**The sweet spot:** Rapid AND clean. AI helps achieve this by handling implementation while you focus on architecture.
+**Core Feature:** The single most important functionality that delivers the primary value proposition to users.
 
----
+**Dopamine Trap:** The instant gratification from seeing visual changes that makes feature creep addictive.
 
-### Mini-Glossary: Section 10
+**KISS Principle:** Keep It Simple, Stupid - using the simplest approach to solve problems without over-engineering.
 
-**MVP (Minimum Viable Product):** Smallest version that tests core hypothesis. Incomplete by design.
+**North Star:** The single most important metric or feature that defines your product's success.
 
-**Feature Creep:** Adding features beyond MVP without evidence of user need. Primary cause of failed projects.
+**Feature Creep:** Adding features beyond core MVP without evidence of user need. Primary cause of project failure.
 
-**Backlog:** Organized list of deferred features for future consideration. Categorized by priority.
+**MVP Validation:** Testing core assumptions with real users before building complex features.
 
-**Core Hypothesis:** The specific assumption your MVP is designed to test. "Users will manage tasks better with digital tool."
-
-**User Feedback Loop:** Process of building, measuring, learning, and iterating based on real user behavior.
-
-**Technical Debt:** Future development cost created by choosing quick but messy solutions now.
-
-**Scope Creep:** Gradual expansion of project scope beyond original boundaries without explicit decisions.
-
-**Version 2:** Planned enhancements after MVP validates core assumptions and gains user traction.
-
-**Pivot:** Major change in direction based on user feedback or market learning.
-
-**Opportunity Cost:** What you're not building by spending time on non-essential features.
+**Product-Market Fit:** The point where your product satisfies strong market demand, discovered through user feedback and iteration.
 
 ---
 
@@ -2839,7 +2853,7 @@ This section provides rapid reference for the most common decision points and qu
 
 ---
 
-### The Decision Matrix: Which Tool for Which Situation?
+### The Decision Matrix: Which Tool for Which Situation? {#tool-comparison-tables}
 
 | Situation | Recommended Tool | Why | Alternative |
 |---|---|---|
@@ -2852,7 +2866,7 @@ This section provides rapid reference for the most common decision points and qu
 
 ---
 
-### The Cost Comparison Table: Updated Pricing Reality
+### The Cost Comparison Table: Updated Pricing Reality {#cost-analysis}
 
 | Tool | Monthly Cost | Token Limits | Context Window | Best For | Avoid When |
 |---|---|---|---|---|
@@ -2878,7 +2892,7 @@ This section provides rapid reference for the most common decision points and qu
 
 ---
 
-### The Troubleshooting Quick Reference
+### The Troubleshooting Quick Reference {#troubleshooting-guide}
 
 | Problem | First Check | Then Try | Last Resort |
 |---|---|---|---|

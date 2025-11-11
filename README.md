@@ -6,7 +6,7 @@ Discover proven tools and structured frameworks to start vibecoding as a non-tec
 
 Featuring structured thinking frameworks, skills, and plugins that guide your AI collaboration for better results.
 
-👉 [Start Learning Vibecoding 101](docs/vibecoding101.md) - Essential guide for beginners
+👉 [Start Learning Vibecoding 101](docs/vibecoding-101-guide.md) - Essential guide for beginners
 
 ---
 

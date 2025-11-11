@@ -280,7 +280,7 @@ Your tool choice on Day 1 determines your trajectory for months. Pick based on w
 
 It's achievable. But it requires being honest about tradeoffs from the start.
 
-### Mini-Glossary: Section 0
+### Mini-Glossary: Part 1
 
 **Vibecoding:** Unstructured, prompt-based building without planning or architecture upfront. Fast initially, scales poorly, leads to hallucinations and context pollution.
 
@@ -515,7 +515,7 @@ The decisions feel slower. They take more thinking upfront. But they prevent the
 
 It's not about going slower overall. It's about going slower on the right things (planning, architecture, testing) so you can go faster on the right things (execution, deployment, iteration).
 
-### Mini-Glossary: Section 1
+### Mini-Glossary: Part 2
 
 **UI Trap:** Focusing on visible UI progress (10% of the work) while ignoring invisible infrastructure (90% of the work). Results in beautiful interfaces that don't actually work. Most common failure mode.
 
@@ -905,7 +905,7 @@ If you've never built before, add 2-3 days for learning and unexpected context r
 
 ---
 
-## Mini-Glossary: Section 2
+## Mini-Glossary: Part 3
 
 **MVP (Minimum Viable Product):** The smallest set of features that solves the core problem. Text in WhatsApp (not voice, groups, attachments). Create/read/delete in task manager (not search, priorities, subtasks).
 
@@ -931,7 +931,7 @@ If you've never built before, add 2-3 days for learning and unexpected context r
 
 ---
 
-**Next: Section 3 - Model Landscape**
+**Next: Part 4 - Model Landscape**
 
 This section covered your first 48 hours and the 3-step workflow. Next, we dive into the AI models themselves: Western vs Chinese, pricing differences, and building a multi-model strategy that never locks you in.
 
@@ -1315,7 +1315,7 @@ This is where experience from real-world usage breaks through the marketing. Her
 
 ---
 
-### Mini-Glossary: Section 3
+### Mini-Glossary: Part 4
 
 **50/50 Framework:** Structured approaches solve ~50%, right tools/models/economics solve other 50%. Both necessary.
 
@@ -1597,11 +1597,11 @@ If someone asks "should I use temperature 0.5 or 0.7?", the real answer is: **"D
 
 ---
 
-## How Section 4 Addresses Key Experience Takeaways
+## How Part 5 Addresses Key Experience Takeaways
 
 This section reinforces critical insights from real-world usage:
 
-| Takeaway | The Problem | How Section 4 Solves It |
+| Takeaway | The Problem | How Part 5 Solves It |
 |---|---|---|
 | **#2: All models have amnesia** | Claude forgets context, wanders off, makes contradictory suggestions | CLI's `/context` shows when memory fills → you reset proactively instead of spiraling invisibly |
 | **#5: Sometimes you fix it yourself** | You need to step in when agent goes wrong | CLI highlights file changes (color-coded) → you understand impact → search repo → ask agent to fix precisely |
@@ -1626,7 +1626,7 @@ It's not about the model. It's about the tool giving you visibility, control, an
 
 ---
 
-## Mini-Glossary: Section 5
+## Mini-Glossary: Part 5
 
 **CLI (Command Line Interface):** Text-based terminal tool. Faster rendering, full control, shows everything. Steeper learning curve but more powerful.
 
@@ -2029,7 +2029,7 @@ Without it (vibecoding): "Build this. No wait, not that. Do this instead. Rememb
 
 ---
 
-### Mini-Glossary: Section 5
+### Mini-Glossary: Part 6
 
 **Vibecoding:** Unstructured, prompt-based building without upfront planning. Fast initially for visible work (UI), scales poorly for invisible work (backend).
 
@@ -2155,7 +2155,7 @@ I reset at 75% context usage, not when things break. This prevents catastrophic 
 
 Real example from my experience: Arabic TTS project—Replit vibecoding took 1 week, cost $300, and was incomplete vs 3-step + CLI took 7 hours, cost $50, and actually worked.
 
-### Mini-Glossary: Section 6
+### Mini-Glossary: Part 7
 
 **Context Window**: LLM's memory limit for conversation (200k-1M tokens). When exceeded, quality degrades and hallucinations increase.
 
@@ -2390,7 +2390,7 @@ This demonstrates the competitive efficiency of Chinese LLMs and how they're tru
 
 ---
 
-### Mini-Glossary: Section 7
+### Mini-Glossary: Part 8
 
 **Pay-as-You-Go:** Usage-based pricing where you pay per token/prompt. Feels cheap initially, can lead to exponential spending.
 
@@ -2516,7 +2516,7 @@ When models won't catch mistakes → Don't trust agent to self-verify. Use CLI t
 
 ---
 
-### Mini-Glossary: Section 8
+### Mini-Glossary: Part 9
 
 **Handholding:** The guidance and correction you provide to keep AI on track. Varies from 80% (unstructured) to 1% (full BMAD).
 
@@ -2660,7 +2660,7 @@ This section cuts through the "you don't need to code" myth. Even with AI doing 
 
 ---
 
-### Mini-Glossary: Section 9
+### Mini-Glossary: Part 10
 
 **Git:** Version control system for tracking code changes. Essential for collaboration and rollback.
 
@@ -2948,7 +2948,7 @@ This section provides rapid reference for the most common decision points and qu
 
 ---
 
-### Mini-Glossary: Section 11
+### Mini-Glossary: Part 11
 
 **Decision Matrix:** Framework for mapping situations to optimal tool choices based on specific criteria.
 

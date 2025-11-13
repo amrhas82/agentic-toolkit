@@ -41,7 +41,7 @@ Yes! Each deploys to a different location:
 - **Amp**: `As agent-name, ...`
 
 ### What agents are available in each kit?
-See [subagentic-manual.md](../ai/subagents/subagentic-manual.md) for the complete agent availability matrix.
+See [subagentic-manual.md](../ai/subagentic/subagentic-manual.md) for the complete agent availability matrix.
 
 ---
 
@@ -98,7 +98,7 @@ Generic AI collaboration guidelines with:
 Copy it to your project to set AI agent behavior standards.
 
 ### What are the 22 tasks in Claude/OpenCode kits?
-Pre-built workflows for common development activities like validation, testing, documentation, story creation, and quality gates. See [subagentic-manual.md](../ai/subagents/subagentic-manual.md#-reusable-tasks-claude--opencode-only).
+Pre-built workflows for common development activities like validation, testing, documentation, story creation, and quality gates. See [subagentic-manual.md](../ai/subagentic/subagentic-manual.md#-reusable-tasks-claude--opencode-only).
 
 ### Why doesn't Amp have the 22 tasks?
 Amp has a different architecture and uses its built-in capabilities (Task, oracle, finder) instead of pre-built task files.

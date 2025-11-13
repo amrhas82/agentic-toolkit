@@ -1,33 +1,35 @@
-🎯 Business Analyst Consultation: Codebase Context Management
+# 🎯 Business Analyst Consultation: Codebase Context Management
 
-Based on official Anthropic recommendations and industry best practices, here's the strategic approach to lightweight, token-efficient codebase memory:
-1. CLAUDE.md Files (Primary Recommendation)
+Based on official Anthropic recommendations and industry best practices, here's the strategic approach to lightweight, token-efficient codebase memory.
 
-This is Anthropic's official approach - Claude automatically loads CLAUDE.md files at the start of each session:
+## 1. CLAUDE.md Files (Primary Recommendation)
 
-Best Practices:
+This is Anthropic's official approach - Claude automatically loads CLAUDE.md files at the start of each session.
 
-    Keep under 100 lines per file
-    Place at repository root (shared with team)
-    Use cascading structure for monorepos (parent/child directories)
-    Document:
-        Project structure & architecture decisions
-        Common commands and workflows
-        Code style & naming conventions
-        Non-obvious component relationships
-        Project-specific quirks and gotchas
-        Testing instructions
+### Best Practices
 
-What NOT to include:
+- Keep under 100 lines per file
+- Place at repository root (shared with team)
+- Use cascading structure for monorepos (parent/child directories)
+- Document:
+  - Project structure & architecture decisions
+  - Common commands and workflows
+  - Code style & naming conventions
+  - Non-obvious component relationships
+  - Project-specific quirks and gotchas
+  - Testing instructions
 
-    Generic advice ("write clean code")
-    Information needed only occasionally
-    Detailed documentation (put in /docs instead)
+### What NOT to include
 
-2. Token-Efficient Context Strategies
+- Generic advice ("write clean code")
+- Information needed only occasionally
+- Detailed documentation (put in /docs instead)
 
-Tiered Documentation Approach:
+## 2. Token-Efficient Context Strategies
 
+### Tiered Documentation Approach
+
+```
 CLAUDE.md (auto-loaded)
 ├─ Essential info needed every session
 └─ Under 100 lines
@@ -37,36 +39,41 @@ docs/ (reference with @)
 ├─ KNOWLEDGE_BASE.md (like your existing one!)
 ├─ API_REFERENCE.md
 └─ Reference only when needed
+```
 
 Use @ references to pull in docs on-demand:
 
-    @docs/KNOWLEDGE_BASE.md - loads only when relevant
-    Saves tokens by not loading unnecessary context every session
+- `@docs/KNOWLEDGE_BASE.md` - loads only when relevant
+- Saves tokens by not loading unnecessary context every session
 
-3. Slash Commands for Repeated Workflows
+## 3. Slash Commands for Repeated Workflows
 
-Store in .claude/commands/ directory:
+Store in `.claude/commands/` directory:
 
+```
 .claude/commands/
 ├─ explain-architecture.md
 ├─ run-tests.md
 └─ debug-workflow.md
+```
 
 Access via / menu - extremely token-efficient for common tasks.
-4. Session Start Hooks
 
-For this repository, you could create a .claude/hooks/session-start.sh that:
+## 4. Session Start Hooks
 
-    Displays current variant configuration
-    Shows available agents
-    Reminds about key documentation locations
+For this repository, you could create a `.claude/hooks/session-start.sh` that:
 
-5. Recommended Structure for Your Agentic Kit
+- Displays current variant configuration
+- Shows available agents
+- Reminds about key documentation locations
+
+## 5. Recommended Structure for Your Agentic Kit
 
 Based on your KNOWLEDGE_BASE.md (which is excellent!), I recommend:
 
-Create: CLAUDE.md at root:
+### Create: CLAUDE.md at root
 
+```markdown
 # Agentic Kit Context
 
 ## Architecture
@@ -89,58 +96,71 @@ Create: CLAUDE.md at root:
 - All agent files use YAML frontmatter
 - Dependencies defined in resources/ directory
 - See @docs/KNOWLEDGE_BASE.md for complete reference
+```
 
-Keep detailed docs in docs/KNOWLEDGE_BASE.md (already exists - perfect!)
-6. Advanced: MCP Servers
+Keep detailed docs in `docs/KNOWLEDGE_BASE.md` (already exists - perfect!)
+
+## 6. Advanced: MCP Servers
 
 For external knowledge bases or large codebases, consider MCP (Model Context Protocol) servers that provide context on-demand without token overhead.
-Strategic Recommendation
 
-Immediate Actions:
+## Strategic Recommendation
 
-    Create minimal CLAUDE.md at repository root (~50-80 lines)
-    Keep comprehensive docs in your existing docs/KNOWLEDGE_BASE.md
-    Add slash commands for common workflows (testing, building)
-    Use @docs/ references when deep diving into specific areas
+### Immediate Actions
+
+- Create minimal CLAUDE.md at repository root (~50-80 lines)
+- Keep comprehensive docs in your existing docs/KNOWLEDGE_BASE.md
+- Add slash commands for common workflows (testing, building)
+- Use @docs/ references when deep diving into specific areas
 
 This gives you:
 
-    ✅ Persistent lightweight memory (CLAUDE.md)
-    ✅ On-demand detailed context (@docs/)
-    ✅ Quick access to workflows (slash commands)
-    ✅ Minimal token waste
+- ✅ Persistent lightweight memory (CLAUDE.md)
+- ✅ On-demand detailed context (@docs/)
+- ✅ Quick access to workflows (slash commands)
+- ✅ Minimal token waste
 
-Token Impact:
+### Token Impact
 
-    CLAUDE.md: ~2,000 tokens per session (acceptable)
-    @docs references: 0 tokens until explicitly referenced
-    Slash commands: ~100 tokens when invoked
+- CLAUDE.md: ~2,000 tokens per session (acceptable)
+- @docs references: 0 tokens until explicitly referenced
+- Slash commands: ~100 tokens when invoked
 
-The key insight: Front-load only what's needed every time; make everything else pull-based rather than push-based.
+**The key insight:** Front-load only what's needed every time; make everything else pull-based rather than push-based.
 
+---
 
-How to initialize your CLAUDE.md using subagent @context-initializer
+## Context Initializer Subagent
 
-Location: packages/*/agents/context-initializer.md
+### How to initialize your CLAUDE.md using subagent @context-initializer
+
+**Location:** `packages/*/agents/context-initializer.md`
 
 A specialized agent that helps initialize Claude Code context for projects through intelligent elicitation. It:
 
-✅ Discovers existing documentation automatically ✅ Asks intelligent questions about your project (elicitation-driven) ✅ Organizes docs into /docs directory ✅ Creates CLAUDE.md (lightweight, <100 lines, auto-loaded every session) ✅ Creates KNOWLEDGE_BASE.md (comprehensive index, on-demand with @docs/) ✅ Optimizes tokens (~13K tokens saved per session!)
-2. Complete Usage Guide
+✅ Discovers existing documentation automatically  
+✅ Asks intelligent questions about your project (elicitation-driven)  
+✅ Organizes docs into /docs directory  
+✅ Creates CLAUDE.md (lightweight, <100 lines, auto-loaded every session)  
+✅ Creates KNOWLEDGE_BASE.md (comprehensive index, on-demand with @docs/)  
+✅ Optimizes tokens (~13K tokens saved per session!)
 
-Location: docs/CONTEXT_INITIALIZER_GUIDE.md
+### Complete Usage Guide
+
+**Location:** `docs/CONTEXT_INITIALIZER_GUIDE.md`
 
 Comprehensive documentation with:
 
-    Quick start examples
-    All commands explained
-    Token optimization strategies
-    Real-world usage examples
-    Best practices
-    Troubleshooting
+- Quick start examples
+- All commands explained
+- Token optimization strategies
+- Real-world usage examples
+- Best practices
+- Troubleshooting
 
-3. Agent Commands
+### Context-initializer Commands
 
+```
 @context-initializer *init              # New project setup
 @context-initializer *assess            # Existing project analysis
 @context-initializer *organize          # Organize scattered docs
@@ -148,36 +168,34 @@ Comprehensive documentation with:
 @context-initializer *create-kb         # Generate KNOWLEDGE_BASE.md
 @context-initializer *elicit            # Advanced elicitation
 @context-initializer *audit             # Optimize existing setup
+```
 
-How It Works (Elicitation Approach)
+### How It Works (Elicitation Approach)
 
 When you invoke the agent, it:
 
-    Scans your project structure
-    Asks questions like:
-        "Is this new or existing project?"
-        "What's your tech stack?"
-        "What do you reference most often?"
-        "What should Claude always know?"
-    Proposes organization strategy
-    Creates optimal CLAUDE.md and KNOWLEDGE_BASE.md
-    Teaches you the maintenance workflow
+1. Scans your project structure
+2. Asks questions like:
+   - "Is this new or existing project?"
+   - "What's your tech stack?"
+   - "What do you reference most often?"
+   - "What should Claude always know?"
+3. Proposes organization strategy
+4. Creates optimal CLAUDE.md and KNOWLEDGE_BASE.md
+5. Teaches you the maintenance workflow
 
-Token Efficiency Example
+### Token Efficiency Example
 
-Before:
+**Before:**
+- No context → Agent explores blindly every session (~10K tokens)
+- Scattered docs → Repeated searches (~5K tokens)
+- Total: ~15K tokens wasted per session
 
-    No context → Agent explores blindly every session (~10K tokens)
-    Scattered docs → Repeated searches (~5K tokens)
-    Total: ~15K tokens wasted per session
+**After:**
+- CLAUDE.md auto-loads essentials (~2K tokens once)
+- KNOWLEDGE_BASE.md referenced on-demand (~0K baseline)
+- Total: ~2K tokens per session
 
-After:
-
-    CLAUDE.md auto-loads essentials (~2K tokens once)
-    KNOWLEDGE_BASE.md referenced on-demand (~0K baseline)
-    Total: ~2K tokens per session
-
-Savings: ~13K tokens per session! 🚀
-Usage Example
+**Savings: ~13K tokens per session! 🚀**
 
 

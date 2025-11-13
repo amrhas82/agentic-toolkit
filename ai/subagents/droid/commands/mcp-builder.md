@@ -1,19 +1,32 @@
 ---
-description: Create high-quality MCP servers that enable LLMs to interact with external services through well-designed tools
-argument-hint: <service-to-integrate> <language-choice>
+name: mcp-builder
+description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
+license: Complete terms in LICENSE.txt
 ---
 
-Build high-quality MCP (Model Context Protocol) servers that enable LLMs to effectively interact with external services and APIs.
+# MCP Server Development Guide
 
-## MCP Development Workflow
+## Overview
 
-### Phase 1: Research and Planning
+To create high-quality MCP (Model Context Protocol) servers that enable LLMs to effectively interact with external services, use this skill. An MCP server provides tools that allow LLMs to access external services and APIs. The quality of an MCP server is measured by how well it enables LLMs to accomplish real-world tasks using the tools provided.
 
-#### 1.1 Agent-Centric Design Principles
+---
+
+# Process
+
+## 🚀 High-Level Workflow
+
+Creating a high-quality MCP server involves four main phases:
+
+### Phase 1: Deep Research and Planning
+
+#### 1.1 Understand Agent-Centric Design Principles
+
+Before diving into implementation, understand how to design tools for AI agents by reviewing these principles:
 
 **Build for Workflows, Not Just API Endpoints:**
 - Don't simply wrap existing API endpoints - build thoughtful, high-impact workflow tools
-- Consolidate related operations (e.g., `schedule_event` that checks availability AND creates event)
+- Consolidate related operations (e.g., `schedule_event` that both checks availability and creates event)
 - Focus on tools that enable complete tasks, not just individual API calls
 - Consider what workflows agents actually need to accomplish
 
@@ -35,25 +48,36 @@ Build high-quality MCP (Model Context Protocol) servers that enable LLMs to effe
 - Group related tools with consistent prefixes for discoverability
 - Design tools around natural workflows, not just API structure
 
-#### 1.2 Study MCP Protocol
-Fetch the latest MCP protocol documentation:
-```bash
-# Load comprehensive MCP specification
-https://modelcontextprotocol.io/llms-full.txt
-```
+**Use Evaluation-Driven Development:**
+- Create realistic evaluation scenarios early
+- Let agent feedback drive tool improvements
+- Prototype quickly and iterate based on actual agent performance
 
-#### 1.3 Framework Documentation
+#### 1.3 Study MCP Protocol Documentation
 
-**Python Implementation:**
-- Load: `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
-- Use FastMCP framework for Python servers
+**Fetch the latest MCP protocol documentation:**
 
-**Node/TypeScript Implementation:**
-- Load: `https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/README.md`
-- Use MCP SDK for Node/TypeScript servers
+Use WebFetch to load: `https://modelcontextprotocol.io/llms-full.txt`
 
-#### 1.4 API Documentation Study
-Exhaustively study the service API:
+This comprehensive document contains the complete MCP specification and guidelines.
+
+#### 1.4 Study Framework Documentation
+
+**Load and read the following reference files:**
+
+- **MCP Best Practices**: [📋 View Best Practices](./reference/mcp_best_practices.md) - Core guidelines for all MCP servers
+
+**For Python implementations, also load:**
+- **Python SDK Documentation**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
+- [🐍 Python Implementation Guide](./reference/python_mcp_server.md) - Python-specific best practices and examples
+
+**For Node/TypeScript implementations, also load:**
+- **TypeScript SDK Documentation**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/README.md`
+- [⚡ TypeScript Implementation Guide](./reference/node_mcp_server.md) - Node/TypeScript-specific best practices and examples
+
+#### 1.5 Exhaustively Study API Documentation
+
+To integrate a service, read through **ALL** available API documentation:
 - Official API reference documentation
 - Authentication and authorization requirements
 - Rate limiting and pagination patterns
@@ -61,222 +85,244 @@ Exhaustively study the service API:
 - Available endpoints and their parameters
 - Data models and schemas
 
-#### 1.5 Implementation Planning
-Create a comprehensive plan:
+**To gather comprehensive information, use web search and the WebFetch tool as needed.**
+
+#### 1.6 Create a Comprehensive Implementation Plan
+
+Based on your research, create a detailed plan that includes:
 
 **Tool Selection:**
 - List the most valuable endpoints/operations to implement
-- Prioritize tools that enable common and important use cases
-- Consider which tools work together for complex workflows
+- Prioritize tools that enable the most common and important use cases
+- Consider which tools work together to enable complex workflows
 
-**Shared Utilities:**
+**Shared Utilities and Helpers:**
 - Identify common API request patterns
-- Design authentication handling
-- Create pagination helpers
-- Build error handling utilities
+- Plan pagination helpers
+- Design filtering and formatting utilities
+- Plan error handling strategies
 
-### Phase 2: Development
+**Input/Output Design:**
+- Define input validation models (Pydantic for Python, Zod for TypeScript)
+- Design consistent response formats (e.g., JSON or Markdown), and configurable levels of detail (e.g., Detailed or Concise)
+- Plan for large-scale usage (thousands of users/resources)
+- Implement character limits and truncation strategies (e.g., 25,000 tokens)
 
-#### 2.1 Project Setup
-```bash
-# Python setup
-pip install fastmcp
-mkdir mcp-server
-cd mcp-server
+**Error Handling Strategy:**
+- Plan graceful failure modes
+- Design clear, actionable, LLM-friendly, natural language error messages which prompt further action
+- Consider rate limiting and timeout scenarios
+- Handle authentication and authorization errors
 
-# Node/TypeScript setup
-npm init -y
-npm install @modelcontextprotocol/sdk
-mkdir mcp-server
-cd mcp-server
+---
+
+### Phase 2: Implementation
+
+Now that you have a comprehensive plan, begin implementation following language-specific best practices.
+
+#### 2.1 Set Up Project Structure
+
+**For Python:**
+- Create a single `.py` file or organize into modules if complex (see [🐍 Python Guide](./reference/python_mcp_server.md))
+- Use the MCP Python SDK for tool registration
+- Define Pydantic models for input validation
+
+**For Node/TypeScript:**
+- Create proper project structure (see [⚡ TypeScript Guide](./reference/node_mcp_server.md))
+- Set up `package.json` and `tsconfig.json`
+- Use MCP TypeScript SDK
+- Define Zod schemas for input validation
+
+#### 2.2 Implement Core Infrastructure First
+
+**To begin implementation, create shared utilities before implementing tools:**
+- API request helper functions
+- Error handling utilities
+- Response formatting functions (JSON and Markdown)
+- Pagination helpers
+- Authentication/token management
+
+#### 2.3 Implement Tools Systematically
+
+For each tool in the plan:
+
+**Define Input Schema:**
+- Use Pydantic (Python) or Zod (TypeScript) for validation
+- Include proper constraints (min/max length, regex patterns, min/max values, ranges)
+- Provide clear, descriptive field descriptions
+- Include diverse examples in field descriptions
+
+**Write Comprehensive Docstrings/Descriptions:**
+- One-line summary of what the tool does
+- Detailed explanation of purpose and functionality
+- Explicit parameter types with examples
+- Complete return type schema
+- Usage examples (when to use, when not to use)
+- Error handling documentation, which outlines how to proceed given specific errors
+
+**Implement Tool Logic:**
+- Use shared utilities to avoid code duplication
+- Follow async/await patterns for all I/O
+- Implement proper error handling
+- Support multiple response formats (JSON and Markdown)
+- Respect pagination parameters
+- Check character limits and truncate appropriately
+
+**Add Tool Annotations:**
+- `readOnlyHint`: true (for read-only operations)
+- `destructiveHint`: false (for non-destructive operations)
+- `idempotentHint`: true (if repeated calls have same effect)
+- `openWorldHint`: true (if interacting with external systems)
+
+#### 2.4 Follow Language-Specific Best Practices
+
+**At this point, load the appropriate language guide:**
+
+**For Python: Load [🐍 Python Implementation Guide](./reference/python_mcp_server.md) and ensure the following:**
+- Using MCP Python SDK with proper tool registration
+- Pydantic v2 models with `model_config`
+- Type hints throughout
+- Async/await for all I/O operations
+- Proper imports organization
+- Module-level constants (CHARACTER_LIMIT, API_BASE_URL)
+
+**For Node/TypeScript: Load [⚡ TypeScript Implementation Guide](./reference/node_mcp_server.md) and ensure the following:**
+- Using `server.registerTool` properly
+- Zod schemas with `.strict()`
+- TypeScript strict mode enabled
+- No `any` types - use proper types
+- Explicit Promise<T> return types
+- Build process configured (`npm run build`)
+
+---
+
+### Phase 3: Review and Refine
+
+After initial implementation:
+
+#### 3.1 Code Quality Review
+
+To ensure quality, review the code for:
+- **DRY Principle**: No duplicated code between tools
+- **Composability**: Shared logic extracted into functions
+- **Consistency**: Similar operations return similar formats
+- **Error Handling**: All external calls have error handling
+- **Type Safety**: Full type coverage (Python type hints, TypeScript types)
+- **Documentation**: Every tool has comprehensive docstrings/descriptions
+
+#### 3.2 Test and Build
+
+**Important:** MCP servers are long-running processes that wait for requests over stdio/stdin or sse/http. Running them directly in your main process (e.g., `python server.py` or `node dist/index.js`) will cause your process to hang indefinitely.
+
+**Safe ways to test the server:**
+- Use the evaluation harness (see Phase 4) - recommended approach
+- Run the server in tmux to keep it outside your main process
+- Use a timeout when testing: `timeout 5s python server.py`
+
+**For Python:**
+- Verify Python syntax: `python -m py_compile your_server.py`
+- Check imports work correctly by reviewing the file
+- To manually test: Run server in tmux, then test with evaluation harness in main process
+- Or use the evaluation harness directly (it manages the server for stdio transport)
+
+**For Node/TypeScript:**
+- Run `npm run build` and ensure it completes without errors
+- Verify dist/index.js is created
+- To manually test: Run server in tmux, then test with evaluation harness in main process
+- Or use the evaluation harness directly (it manages the server for stdio transport)
+
+#### 3.3 Use Quality Checklist
+
+To verify implementation quality, load the appropriate checklist from the language-specific guide:
+- Python: see "Quality Checklist" in [🐍 Python Guide](./reference/python_mcp_server.md)
+- Node/TypeScript: see "Quality Checklist" in [⚡ TypeScript Guide](./reference/node_mcp_server.md)
+
+---
+
+### Phase 4: Create Evaluations
+
+After implementing your MCP server, create comprehensive evaluations to test its effectiveness.
+
+**Load [✅ Evaluation Guide](./reference/evaluation.md) for complete evaluation guidelines.**
+
+#### 4.1 Understand Evaluation Purpose
+
+Evaluations test whether LLMs can effectively use your MCP server to answer realistic, complex questions.
+
+#### 4.2 Create 10 Evaluation Questions
+
+To create effective evaluations, follow the process outlined in the evaluation guide:
+
+1. **Tool Inspection**: List available tools and understand their capabilities
+2. **Content Exploration**: Use READ-ONLY operations to explore available data
+3. **Question Generation**: Create 10 complex, realistic questions
+4. **Answer Verification**: Solve each question yourself to verify answers
+
+#### 4.3 Evaluation Requirements
+
+Each question must be:
+- **Independent**: Not dependent on other questions
+- **Read-only**: Only non-destructive operations required
+- **Complex**: Requiring multiple tool calls and deep exploration
+- **Realistic**: Based on real use cases humans would care about
+- **Verifiable**: Single, clear answer that can be verified by string comparison
+- **Stable**: Answer won't change over time
+
+#### 4.4 Output Format
+
+Create an XML file with this structure:
+
+```xml
+<evaluation>
+  <qa_pair>
+    <question>Find discussions about AI model launches with animal codenames. One model needed a specific safety designation that uses the format ASL-X. What number X was being determined for the model named after a spotted wild cat?</question>
+    <answer>3</answer>
+  </qa_pair>
+<!-- More qa_pairs... -->
+</evaluation>
 ```
 
-#### 2.2 Tool Design Patterns
+---
 
-**Workflow-Focused Tools:**
-```python
-# ❌ BAD: Simple API wrapper
-@tool
-def get_user(user_id: str) -> dict:
-    return api.get(f"/users/{user_id}")
+# Reference Files
 
-# ✅ GOOD: Complete workflow tool
-@tool
-def get_user_profile(user_id: str, include_recent_activity: bool = False) -> dict:
-    """
-    Get comprehensive user profile information.
-    
-    Args:
-        user_id: User identifier
-        include_recent_activity: Include last 30 days of activity
-        
-    Returns:
-        Complete user profile with optional activity data
-    """
-    user = api.get(f"/users/{user_id}")
-    if include_recent_activity:
-        activity = api.get(f"/users/{user_id}/activity", params={"days": 30})
-        user["recent_activity"] = activity
-    
-    return user
-```
+## 📚 Documentation Library
 
-**Context-Aware Responses:**
-```python
-@tool
-def search_items(query: str, max_results: int = 10) -> dict:
-    """
-    Search for items with intelligent result formatting.
-    
-    Args:
-        query: Search query
-        max_results: Maximum number of results (default: 10, max: 50)
-        
-    Returns:
-        Concise search results with key identifiers and summaries
-    """
-    results = api.get("/search", params={"q": query, "limit": max_results})
-    
-    # Return concise, actionable format
-    return {
-        "query": query,
-        "total_found": len(results),
-        "items": [
-            {
-                "id": item["id"],
-                "name": item["name"], 
-                "summary": item["description"][:100] + "...",
-                "relevance_score": item["score"]
-            }
-            for item in results
-        ]
-    }
-```
+Load these resources as needed during development:
 
-#### 2.3 Error Handling
-```python
-@tool
-def create_event(event_data: dict) -> dict:
-    """
-    Create a calendar event with validation.
-    
-    Args:
-        event_data: Event details including title, start, end, attendees
-        
-    Returns:
-        Created event information
-        
-    Raises:
-        ValidationError: If event data is invalid (missing required fields, 
-                        scheduling conflicts, or invalid time format)
-    """
-    try:
-        # Validate event data
-        if not event_data.get("title"):
-            raise ValueError("Event title is required")
-            
-        # Check for conflicts
-        conflicts = check_schedule_conflicts(event_data)
-        if conflicts:
-            return {
-                "success": False,
-                "error": "Schedule conflict detected",
-                "conflicting_events": conflicts,
-                "suggestion": "Try adjusting the time or use check_availability tool first"
-            }
-            
-        # Create event
-        result = api.post("/events", json=event_data)
-        return {"success": True, "event": result}
-        
-    except ValidationError as e:
-        return {
-            "success": False, 
-            "error": str(e),
-            "suggestion": "Ensure all required fields are provided and times are in ISO format"
-        }
-```
+### Core MCP Documentation (Load First)
+- **MCP Protocol**: Fetch from `https://modelcontextprotocol.io/llms-full.txt` - Complete MCP specification
+- [📋 MCP Best Practices](./reference/mcp_best_practices.md) - Universal MCP guidelines including:
+  - Server and tool naming conventions
+  - Response format guidelines (JSON vs Markdown)
+  - Pagination best practices
+  - Character limits and truncation strategies
+  - Tool development guidelines
+  - Security and error handling standards
 
-### Phase 3: Testing and Evaluation
+### SDK Documentation (Load During Phase 1/2)
+- **Python SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
+- **TypeScript SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/README.md`
 
-#### 3.1 Create Evaluation Scenarios
-```python
-# Test realistic agent workflows
-test_scenarios = [
-    {
-        "name": "Complete user onboarding workflow",
-        "steps": [
-            "create_user",
-            "send_welcome_email", 
-            "schedule_kickoff_call",
-            "add_to_team"
-        ]
-    },
-    {
-        "name": "Project management workflow",
-        "steps": [
-            "create_project",
-            "add_team_members",
-            "create_tasks", 
-            "set_milestones",
-            "generate_report"
-        ]
-    }
-]
-```
+### Language-Specific Implementation Guides (Load During Phase 2)
+- [🐍 Python Implementation Guide](./reference/python_mcp_server.md) - Complete Python/FastMCP guide with:
+  - Server initialization patterns
+  - Pydantic model examples
+  - Tool registration with `@mcp.tool`
+  - Complete working examples
+  - Quality checklist
 
-#### 3.2 Agent Testing
-Test the MCP server with real LLM agents:
-- Verify tools work for actual use cases
-- Check error messages guide correct usage
-- Ensure responses are appropriate for agent context
-- Validate workflow completeness
+- [⚡ TypeScript Implementation Guide](./reference/node_mcp_server.md) - Complete TypeScript guide with:
+  - Project structure
+  - Zod schema patterns
+  - Tool registration with `server.registerTool`
+  - Complete working examples
+  - Quality checklist
 
-### Phase 4: Documentation and Deployment
-
-#### 4.1 Tool Documentation
-Each tool should include:
-- Clear description of purpose and use cases
-- Parameter documentation with types and descriptions
-- Return value documentation
-- Usage examples
-- Error handling guidance
-
-#### 4.2 Best Practices Checklist
-
-**Tool Design:**
-- [ ] Tools enable complete workflows, not just API calls
-- [ ] Error messages are actionable and educational
-- [ ] Responses are concise but informative
-- [ ] Tool names reflect natural task subdivisions
-- [ ] Related tools have consistent prefixes
-
-**Development:**
-- [ ] Comprehensive API coverage studied
-- [ ] Authentication handled securely
-- [ ] Rate limiting respected
-- [ ] Pagination implemented
-- [ ] Error handling robust
-- [ ] Type safety maintained
-
-**Testing:**
-- [ ] Realistic evaluation scenarios created
-- [ ] Agent feedback incorporated
-- [ ] Performance tested
-- [ ] Edge cases covered
-
-## Usage Examples
-
-**Create MCP server for calendar service:**
-`/mcp-builder "Google Calendar API" "python"`
-
-**Build integration for project management:**
-`/mcp-builder "Jira API" "typescript"`
-
-**Develop customer support tools:**
-`/mcp-builder "Zendesk API" "python"`
-
-**Create data analytics server:**
-`/mcp-builder "Analytics API" "typescript"`
-
-Remember: Quality MCP servers enable LLMs to accomplish real-world tasks effectively through well-designed, workflow-focused tools.
+### Evaluation Guide (Load During Phase 4)
+- [✅ Evaluation Guide](./reference/evaluation.md) - Complete evaluation creation guide with:
+  - Question creation guidelines
+  - Answer verification strategies
+  - XML format specifications
+  - Example questions and answers
+  - Running an evaluation with the provided scripts

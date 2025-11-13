@@ -1,36 +1,67 @@
 ---
-description: Create animated GIFs optimized for Slack with size validation and composable animation primitives
-argument-hint: <gif-type> <animation-concept>
+name: slack-gif-creator
+description: Toolkit for creating animated GIFs optimized for Slack, with validators for size constraints and composable animation primitives. This skill applies when users request animated GIFs or emoji animations for Slack from descriptions like "make me a GIF for Slack of X doing Y".
+license: Complete terms in LICENSE.txt
 ---
 
-Create animated GIFs optimized for Slack using composable animation primitives and strict size validators.
+# Slack GIF Creator - Flexible Toolkit
 
-## Slack Requirements
+A toolkit for creating animated GIFs optimized for Slack. Provides validators for Slack's constraints, composable animation primitives, and optional helper utilities. **Apply these tools however needed to achieve the creative vision.**
 
-### Message GIFs
+## Slack's Requirements
+
+Slack has specific requirements for GIFs based on their use:
+
+**Message GIFs:**
 - Max size: ~2MB
 - Optimal dimensions: 480x480
 - Typical FPS: 15-20
 - Color limit: 128-256
 - Duration: 2-5s
 
-### Emoji GIFs (Challenging)
+**Emoji GIFs:**
 - Max size: 64KB (strict limit)
 - Optimal dimensions: 128x128
 - Typical FPS: 10-12
 - Color limit: 32-48
 - Duration: 1-2s
 
-**Emoji optimization strategies:**
+**Emoji GIFs are challenging** - the 64KB limit is strict. Strategies that help:
 - Limit to 10-15 frames total
 - Use 32-48 colors maximum
 - Keep designs simple
 - Avoid gradients
 - Validate file size frequently
 
-## Core Validation Tools
+## Toolkit Structure
 
-### File Size Validation
+This skill provides three types of tools:
+
+1. **Validators** - Check if a GIF meets Slack's requirements
+2. **Animation Primitives** - Composable building blocks for motion (shake, bounce, move, kaleidoscope)
+3. **Helper Utilities** - Optional functions for common needs (text, colors, effects)
+
+**Complete creative freedom is available in how these tools are applied.**
+
+## Core Validators
+
+To ensure a GIF meets Slack's constraints, use these validators:
+
+```python
+from core.gif_builder import GIFBuilder
+
+# After creating your GIF, check if it meets requirements
+builder = GIFBuilder(width=128, height=128, fps=10)
+# ... add your frames however you want ...
+
+# Save and check size
+info = builder.save('emoji.gif', num_colors=48, optimize_for_emoji=True)
+
+# The save method automatically warns if file exceeds limits
+# info dict contains: size_kb, size_mb, frame_count, duration_seconds
+```
+
+**File size validator**:
 ```python
 from core.validators import check_slack_size
 
@@ -39,7 +70,7 @@ passes, info = check_slack_size('emoji.gif', is_emoji=True)
 # Returns: (True/False, dict with size details)
 ```
 
-### Dimension Validation
+**Dimension validator**:
 ```python
 from core.validators import validate_dimensions
 
@@ -48,293 +79,568 @@ passes, info = validate_dimensions(128, 128, is_emoji=True)
 # Returns: (True/False, dict with dimension details)
 ```
 
-### Complete Validation
+**Complete validation**:
 ```python
 from core.validators import validate_gif, is_slack_ready
 
 # Run all validations
 all_pass, results = validate_gif('emoji.gif', is_emoji=True)
 
-# Quick readiness check
+# Or quick check
 if is_slack_ready('emoji.gif', is_emoji=True):
     print("Ready to upload!")
 ```
 
 ## Animation Primitives
 
-Composable building blocks for motion that can be combined:
+These are composable building blocks for motion. Apply these to any object in any combination:
 
-### Shake Animation
+### Shake
 ```python
 from templates.shake import create_shake_animation
 
-# Create shaking motion
+# Shake an emoji
 frames = create_shake_animation(
-    object_type='circle',
-    object_data={'radius': 30, 'color': (255, 0, 0)},
+    object_type='emoji',
+    object_data={'emoji': '😱', 'size': 80},
     num_frames=20,
-    shake_intensity=10,
-    start_x=240,
-    start_y=240
+    shake_intensity=15,
+    direction='both'  # or 'horizontal', 'vertical'
 )
 ```
 
-### Bounce Animation
+### Bounce
 ```python
 from templates.bounce import create_bounce_animation
 
-# Create bouncing motion
+# Bounce a circle
 frames = create_bounce_animation(
     object_type='circle',
-    object_data={'radius': 30, 'color': (0, 255, 0)},
+    object_data={'radius': 40, 'color': (255, 100, 100)},
     num_frames=30,
-    bounce_height=150,
-    ground_y=350,
-    start_x=240
+    bounce_height=150
 )
 ```
 
-### Move Animation
+### Spin / Rotate
+```python
+from templates.spin import create_spin_animation, create_loading_spinner
+
+# Clockwise spin
+frames = create_spin_animation(
+    object_type='emoji',
+    object_data={'emoji': '🔄', 'size': 100},
+    rotation_type='clockwise',
+    full_rotations=2
+)
+
+# Wobble rotation
+frames = create_spin_animation(rotation_type='wobble', full_rotations=3)
+
+# Loading spinner
+frames = create_loading_spinner(spinner_type='dots')
+```
+
+### Pulse / Heartbeat
+```python
+from templates.pulse import create_pulse_animation, create_attention_pulse
+
+# Smooth pulse
+frames = create_pulse_animation(
+    object_data={'emoji': '❤️', 'size': 100},
+    pulse_type='smooth',
+    scale_range=(0.8, 1.2)
+)
+
+# Heartbeat (double-pump)
+frames = create_pulse_animation(pulse_type='heartbeat')
+
+# Attention pulse for emoji GIFs
+frames = create_attention_pulse(emoji='⚠️', num_frames=20)
+```
+
+### Fade
+```python
+from templates.fade import create_fade_animation, create_crossfade
+
+# Fade in
+frames = create_fade_animation(fade_type='in')
+
+# Fade out
+frames = create_fade_animation(fade_type='out')
+
+# Crossfade between two emojis
+frames = create_crossfade(
+    object1_data={'emoji': '😊', 'size': 100},
+    object2_data={'emoji': '😂', 'size': 100}
+)
+```
+
+### Zoom
+```python
+from templates.zoom import create_zoom_animation, create_explosion_zoom
+
+# Zoom in dramatically
+frames = create_zoom_animation(
+    zoom_type='in',
+    scale_range=(0.1, 2.0),
+    add_motion_blur=True
+)
+
+# Zoom out
+frames = create_zoom_animation(zoom_type='out')
+
+# Explosion zoom
+frames = create_explosion_zoom(emoji='💥')
+```
+
+### Explode / Shatter
+```python
+from templates.explode import create_explode_animation, create_particle_burst
+
+# Burst explosion
+frames = create_explode_animation(
+    explode_type='burst',
+    num_pieces=25
+)
+
+# Shatter effect
+frames = create_explode_animation(explode_type='shatter')
+
+# Dissolve into particles
+frames = create_explode_animation(explode_type='dissolve')
+
+# Particle burst
+frames = create_particle_burst(particle_count=30)
+```
+
+### Wiggle / Jiggle
+```python
+from templates.wiggle import create_wiggle_animation, create_excited_wiggle
+
+# Jello wobble
+frames = create_wiggle_animation(
+    wiggle_type='jello',
+    intensity=1.0,
+    cycles=2
+)
+
+# Wave motion
+frames = create_wiggle_animation(wiggle_type='wave')
+
+# Excited wiggle for emoji GIFs
+frames = create_excited_wiggle(emoji='🎉')
+```
+
+### Slide
+```python
+from templates.slide import create_slide_animation, create_multi_slide
+
+# Slide in from left with overshoot
+frames = create_slide_animation(
+    direction='left',
+    slide_type='in',
+    overshoot=True
+)
+
+# Slide across
+frames = create_slide_animation(direction='left', slide_type='across')
+
+# Multiple objects sliding in sequence
+objects = [
+    {'data': {'emoji': '🎯', 'size': 60}, 'direction': 'left', 'final_pos': (120, 240)},
+    {'data': {'emoji': '🎪', 'size': 60}, 'direction': 'right', 'final_pos': (240, 240)}
+]
+frames = create_multi_slide(objects, stagger_delay=5)
+```
+
+### Flip
+```python
+from templates.flip import create_flip_animation, create_quick_flip
+
+# Horizontal flip between two emojis
+frames = create_flip_animation(
+    object1_data={'emoji': '😊', 'size': 120},
+    object2_data={'emoji': '😂', 'size': 120},
+    flip_axis='horizontal'
+)
+
+# Vertical flip
+frames = create_flip_animation(flip_axis='vertical')
+
+# Quick flip for emoji GIFs
+frames = create_quick_flip('👍', '👎')
+```
+
+### Morph / Transform
+```python
+from templates.morph import create_morph_animation, create_reaction_morph
+
+# Crossfade morph
+frames = create_morph_animation(
+    object1_data={'emoji': '😊', 'size': 100},
+    object2_data={'emoji': '😂', 'size': 100},
+    morph_type='crossfade'
+)
+
+# Scale morph (shrink while other grows)
+frames = create_morph_animation(morph_type='scale')
+
+# Spin morph (3D flip-like)
+frames = create_morph_animation(morph_type='spin_morph')
+```
+
+### Move Effect
 ```python
 from templates.move import create_move_animation
 
-# Create linear movement
+# Linear movement
 frames = create_move_animation(
     object_type='emoji',
     object_data={'emoji': '🚀', 'size': 60},
-    num_frames=25,
-    start_x=100,
-    start_y=240,
-    end_x=380,
-    end_y=240
+    start_pos=(50, 240),
+    end_pos=(430, 240),
+    motion_type='linear',
+    easing='ease_out'
 )
+
+# Arc movement (parabolic trajectory)
+frames = create_move_animation(
+    object_type='emoji',
+    object_data={'emoji': '⚽', 'size': 60},
+    start_pos=(50, 350),
+    end_pos=(430, 350),
+    motion_type='arc',
+    motion_params={'arc_height': 150}
+)
+
+# Circular movement
+frames = create_move_animation(
+    object_type='emoji',
+    object_data={'emoji': '🌍', 'size': 50},
+    motion_type='circle',
+    motion_params={
+        'center': (240, 240),
+        'radius': 120,
+        'angle_range': 360  # full circle
+    }
+)
+
+# Wave movement
+frames = create_move_animation(
+    motion_type='wave',
+    motion_params={
+        'wave_amplitude': 50,
+        'wave_frequency': 2
+    }
+)
+
+# Or use low-level easing functions
+from core.easing import interpolate, calculate_arc_motion
+
+for i in range(num_frames):
+    t = i / (num_frames - 1)
+    x = interpolate(start_x, end_x, t, easing='ease_out')
+    # Or: x, y = calculate_arc_motion(start, end, height, t)
 ```
 
-### Fade Animation
+### Kaleidoscope Effect
 ```python
-from templates.fade import create_fade_animation
+from templates.kaleidoscope import apply_kaleidoscope, create_kaleidoscope_animation
 
-# Create fade in/out effect
-frames = create_fade_animation(
-    object_type='text',
-    object_data={'text': 'Hello', 'font_size': 48, 'color': (0, 0, 255)},
-    num_frames=20,
-    fade_type='in'  # 'in', 'out', 'in_out'
-)
-```
+# Apply to a single frame
+kaleido_frame = apply_kaleidoscope(frame, segments=8)
 
-### Spin Animation
-```python
-from templates.spin import create_spin_animation
-
-# Create rotational motion
-frames = create_spin_animation(
-    object_type='shape',
-    object_data={'shape': 'square', 'size': 80, 'color': (255, 165, 0)},
-    num_frames=24,
-    rotation_speed=360,  # degrees per second
-    center_x=240,
-    center_y=240
-)
-```
-
-### Kaleidoscope Animation
-```python
-from templates.kaleidoscope import create_kaleidoscope_animation
-
-# Create kaleidoscope effect
+# Or create animated kaleidoscope
 frames = create_kaleidoscope_animation(
+    base_frame=my_frame,  # or None for demo pattern
     num_frames=30,
-    segments=6,
-    base_colors=[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
-    center_x=240,
-    center_y=240
+    segments=8,
+    rotation_speed=1.0
 )
+
+# Simple mirror effects (faster)
+from templates.kaleidoscope import apply_simple_mirror
+
+mirrored = apply_simple_mirror(frame, mode='quad')  # 4-way mirror
+# modes: 'horizontal', 'vertical', 'quad', 'radial'
 ```
 
-### Zoom Animation
+**To compose primitives freely, follow these patterns:**
 ```python
-from templates.zoom import create_zoom_animation
+# Example: Bounce + shake for impact
+for i in range(num_frames):
+    frame = create_blank_frame(480, 480, bg_color)
 
-# Create zoom in/out effect
-frames = create_zoom_animation(
-    object_type='image',
-    object_data={'image_path': 'logo.png'},
-    num_frames=20,
-    start_scale=0.5,
-    end_scale=2.0,
-    center_x=240,
-    center_y=240
-)
+    # Bounce motion
+    t_bounce = i / (num_frames - 1)
+    y = interpolate(start_y, ground_y, t_bounce, 'bounce_out')
+
+    # Add shake on impact (when y reaches ground)
+    if y >= ground_y - 5:
+        shake_x = math.sin(i * 2) * 10
+        x = center_x + shake_x
+    else:
+        x = center_x
+
+    draw_emoji(frame, '⚽', (x, y), size=60)
+    builder.add_frame(frame)
 ```
 
-### Pulse Animation
-```python
-from templates.pulse import create_pulse_animation
+## Helper Utilities
 
-# Create pulsing size effect
-frames = create_pulse_animation(
-    object_type='circle',
-    object_data={'radius': 50, 'color': (255, 0, 255)},
-    num_frames=15,
-    pulse_intensity=0.3,
-    center_x=240,
-    center_y=240
-)
-```
+These are optional helpers for common needs. **Use, modify, or replace these with custom implementations as needed.**
 
-## GIF Builder Usage
+### GIF Builder (Assembly & Optimization)
 
-### Basic Construction
 ```python
 from core.gif_builder import GIFBuilder
 
-# Create builder for emoji
-builder = GIFBuilder(width=128, height=128, fps=10)
+# Create builder with your chosen settings
+builder = GIFBuilder(width=480, height=480, fps=20)
 
-# Add frames using any method
-# ... add your frames ...
+# Add frames (however you created them)
+for frame in my_frames:
+    builder.add_frame(frame)
 
-# Save with emoji optimization
-info = builder.save('emoji.gif', num_colors=48, optimize_for_emoji=True)
-
-# Check results
-print(f"Size: {info['size_kb']}KB")
-print(f"Frames: {info['frame_count']}")
-print(f"Duration: {info['duration_seconds']}s")
+# Save with optimization
+builder.save('output.gif',
+             num_colors=128,
+             optimize_for_emoji=False)
 ```
 
-### Advanced Frame Creation
+Key features:
+- Automatic color quantization
+- Duplicate frame removal
+- Size warnings for Slack limits
+- Emoji mode (aggressive optimization)
+
+### Text Rendering
+
+For small GIFs like emojis, text readability is challenging. A common solution involves adding outlines:
+
 ```python
-from core.frame_composer import create_blank_frame, draw_circle, draw_emoji, draw_text
+from core.typography import draw_text_with_outline, TYPOGRAPHY_SCALE
 
-# Create frame
-frame = create_blank_frame(128, 128, (255, 255, 255))  # White background
-
-# Add elements
-frame = draw_circle(frame, 64, 64, 30, (255, 0, 0))  # Red circle center
-frame = draw_emoji(frame, 64, 64, '😀', 40)  # Emoji at center
-frame = draw_text(frame, 10, 10, 'Hello', (0, 0, 0), 20)  # Text
-
-# Add to builder
-builder.add_frame(frame)
+# Text with outline (helps readability)
+draw_text_with_outline(
+    frame, "BONK!",
+    position=(240, 100),
+    font_size=TYPOGRAPHY_SCALE['h1'],  # 60px
+    text_color=(255, 68, 68),
+    outline_color=(0, 0, 0),
+    outline_width=4,
+    centered=True
+)
 ```
 
-## Color Utilities
+To implement custom text rendering, use PIL's `ImageDraw.text()` which works fine for larger GIFs.
 
-### Color Palettes
+### Color Management
+
+Professional-looking GIFs often use cohesive color palettes:
+
 ```python
-from core.color_palettes import get_slack_emoji_palette, get_vibrant_palette
+from core.color_palettes import get_palette
 
-# Get optimized emoji colors (32-48 colors)
-emoji_colors = get_slack_emoji_palette()
-print(f"Emoji palette: {emoji_colors}")
+# Get a pre-made palette
+palette = get_palette('vibrant')  # or 'pastel', 'dark', 'neon', 'professional'
 
-# Get vibrant colors for message GIFs
-vibrant_colors = get_vibrant_palette()
-print(f"Vibrant palette: {vibrant_colors}")
+bg_color = palette['background']
+text_color = palette['primary']
+accent_color = palette['accent']
 ```
 
-### Color Creation
-```python
-from core.typography import hex_to_rgb, rgb_to_hex
-
-# Convert color formats
-rgb_color = hex_to_rgb('#FF0000')  # (255, 0, 0)
-hex_color = rgb_to_hex((0, 255, 0))  # '#00FF00'
-```
-
-## Visual Effects
-
-### Typography
-```python
-from core.typography import create_text_frame, apply_text_effects
-
-# Create text with effects
-text_frame = create_text_frame('GIF Text', 24, 'Arial')
-enhanced_frame = apply_text_effects(text_frame, shadow=True, outline=True)
-```
+To work with colors directly, use RGB tuples - whatever works for the use case.
 
 ### Visual Effects
+
+Optional effects for impact moments:
+
 ```python
-from core.visual_effects import add_glow, add_shadow, create_gradient
+from core.visual_effects import ParticleSystem, create_impact_flash, create_shockwave_rings
 
-# Add visual effects
-enhanced_frame = add_glow(frame, color=(255, 255, 0), intensity=5)
-shadowed_frame = add_shadow(frame, offset_x=3, offset_y=3, blur=5)
+# Particle system
+particles = ParticleSystem()
+particles.emit_sparkles(x=240, y=200, count=15)
+particles.emit_confetti(x=240, y=200, count=20)
 
-# Create gradient
-gradient_frame = create_gradient(128, 128, (255, 0, 0), (0, 0, 255))
+# Update and render each frame
+particles.update()
+particles.render(frame)
+
+# Flash effect
+frame = create_impact_flash(frame, position=(240, 200), radius=100)
+
+# Shockwave rings
+frame = create_shockwave_rings(frame, position=(240, 200), radii=[30, 60, 90])
 ```
 
-## Animation Templates
+### Easing Functions
 
-### Emoji Animations (64KB limit)
+Smooth motion uses easing instead of linear interpolation:
+
 ```python
-# Create simple emoji bounce
-frames = create_bounce_animation(
-    object_type='emoji',
-    object_data={'emoji': '🚀', 'size': 60},
-    num_frames=12,  # Keep frame count low
-    bounce_height=50,
-    ground_y=64,
-    start_x=64
+from core.easing import interpolate
+
+# Object falling (accelerates)
+y = interpolate(start=0, end=400, t=progress, easing='ease_in')
+
+# Object landing (decelerates)
+y = interpolate(start=0, end=400, t=progress, easing='ease_out')
+
+# Bouncing
+y = interpolate(start=0, end=400, t=progress, easing='bounce_out')
+
+# Overshoot (elastic)
+scale = interpolate(start=0.5, end=1.0, t=progress, easing='elastic_out')
+```
+
+Available easings: `linear`, `ease_in`, `ease_out`, `ease_in_out`, `bounce_out`, `elastic_out`, `back_out` (overshoot), and more in `core/easing.py`.
+
+### Frame Composition
+
+Basic drawing utilities if you need them:
+
+```python
+from core.frame_composer import (
+    create_gradient_background,  # Gradient backgrounds
+    draw_emoji_enhanced,         # Emoji with optional shadow
+    draw_circle_with_shadow,     # Shapes with depth
+    draw_star                    # 5-pointed stars
 )
 
-# Optimize for emoji size
-builder = GIFBuilder(128, 128, fps=8)  # Lower FPS
-for frame in frames:
-    builder.add_frame(frame)
+# Gradient background
+frame = create_gradient_background(480, 480, top_color, bottom_color)
 
-info = builder.save('rocket.gif', num_colors=32, optimize_for_emoji=True)
+# Emoji with shadow
+draw_emoji_enhanced(frame, '🎉', position=(200, 200), size=80, shadow=True)
 ```
 
-### Message GIF Animations (2MB limit)
+## Optimization Strategies
+
+When your GIF is too large:
+
+**For Message GIFs (>2MB):**
+1. Reduce frames (lower FPS or shorter duration)
+2. Reduce colors (128 → 64 colors)
+3. Reduce dimensions (480x480 → 320x320)
+4. Enable duplicate frame removal
+
+**For Emoji GIFs (>64KB) - be aggressive:**
+1. Limit to 10-12 frames total
+2. Use 32-40 colors maximum
+3. Avoid gradients (solid colors compress better)
+4. Simplify design (fewer elements)
+5. Use `optimize_for_emoji=True` in save method
+
+## Example Composition Patterns
+
+### Simple Reaction (Pulsing)
 ```python
-# Create complex multi-element animation
-builder = GIFBuilder(480, 480, fps=15)
+builder = GIFBuilder(128, 128, 10)
 
-# Add multiple animated elements
-for i in range(30):  # 2 seconds at 15fps
-    frame = create_blank_frame(480, 480, (255, 255, 255))
-    
-    # Multiple moving elements
-    frame = draw_circle(frame, 100 + i*2, 240, 30, (255, 0, 0))
-    frame = draw_circle(frame, 380 - i*2, 240, 30, (0, 255, 0))
-    frame = draw_text(frame, 200, 230, f'Frame {i}', (0, 0, 0), 24)
-    
+for i in range(12):
+    frame = Image.new('RGB', (128, 128), (240, 248, 255))
+
+    # Pulsing scale
+    scale = 1.0 + math.sin(i * 0.5) * 0.15
+    size = int(60 * scale)
+
+    draw_emoji_enhanced(frame, '😱', position=(64-size//2, 64-size//2),
+                       size=size, shadow=False)
     builder.add_frame(frame)
 
-info = builder.save('complex.gif', num_colors=128)
+builder.save('reaction.gif', num_colors=40, optimize_for_emoji=True)
+
+# Validate
+from core.validators import check_slack_size
+check_slack_size('reaction.gif', is_emoji=True)
 ```
 
-## Best Practices
+### Action with Impact (Bounce + Flash)
+```python
+builder = GIFBuilder(480, 480, 20)
 
-### Optimization Guidelines
-- **Test frequently** - Check file size after each change
-- **Simplify designs** - Less detail = smaller files
-- **Limit colors** - Use color palettes, not arbitrary colors
-- **Optimize frames** - Remove unnecessary frames
-- **Compress effectively** - Use appropriate compression settings
+# Phase 1: Object falls
+for i in range(15):
+    frame = create_gradient_background(480, 480, (240, 248, 255), (200, 230, 255))
+    t = i / 14
+    y = interpolate(0, 350, t, 'ease_in')
+    draw_emoji_enhanced(frame, '⚽', position=(220, int(y)), size=80)
+    builder.add_frame(frame)
 
-### Performance Tips
-- Reuse frames when possible
-- Use lower FPS for static elements
-- Combine simple animations rather than complex ones
-- Pre-calculate positions for predictable animations
+# Phase 2: Impact + flash
+for i in range(8):
+    frame = create_gradient_background(480, 480, (240, 248, 255), (200, 230, 255))
 
-## Usage Examples
+    # Flash on first frames
+    if i < 3:
+        frame = create_impact_flash(frame, (240, 350), radius=120, intensity=0.6)
 
-**Create emoji GIF:**
-`/slack-gif-creator "emoji" "rocket bouncing"`
+    draw_emoji_enhanced(frame, '⚽', position=(220, 350), size=80)
 
-**Create message GIF:**
-`/slack-gif-creator "message" "company logo spinning"`
+    # Text appears
+    if i > 2:
+        draw_text_with_outline(frame, "GOAL!", position=(240, 150),
+                              font_size=60, text_color=(255, 68, 68),
+                              outline_color=(0, 0, 0), outline_width=4, centered=True)
 
-**Create reaction GIF:**
-`/slack-gif-creator "reaction" "thumbs up with glow"`
+    builder.add_frame(frame)
 
-**Create complex animation:**
-`/slack-gif-creator "message" "kaleidoscope pattern with text"`
+builder.save('goal.gif', num_colors=128)
+```
 
-Remember: Emoji GIFs are size-constrained - prioritize simplicity and frequent validation.
+### Combining Primitives (Move + Shake)
+```python
+from templates.shake import create_shake_animation
+
+# Create shake animation
+shake_frames = create_shake_animation(
+    object_type='emoji',
+    object_data={'emoji': '😰', 'size': 70},
+    num_frames=20,
+    shake_intensity=12
+)
+
+# Create moving element that triggers the shake
+builder = GIFBuilder(480, 480, 20)
+for i in range(40):
+    t = i / 39
+
+    if i < 20:
+        # Before trigger - use blank frame with moving object
+        frame = create_blank_frame(480, 480, (255, 255, 255))
+        x = interpolate(50, 300, t * 2, 'linear')
+        draw_emoji_enhanced(frame, '🚗', position=(int(x), 300), size=60)
+        draw_emoji_enhanced(frame, '😰', position=(350, 200), size=70)
+    else:
+        # After trigger - use shake frame
+        frame = shake_frames[i - 20]
+        # Add the car in final position
+        draw_emoji_enhanced(frame, '🚗', position=(300, 300), size=60)
+
+    builder.add_frame(frame)
+
+builder.save('scare.gif')
+```
+
+## Philosophy
+
+This toolkit provides building blocks, not rigid recipes. To work with a GIF request:
+
+1. **Understand the creative vision** - What should happen? What's the mood?
+2. **Design the animation** - Break it into phases (anticipation, action, reaction)
+3. **Apply primitives as needed** - Shake, bounce, move, effects - mix freely
+4. **Validate constraints** - Check file size, especially for emoji GIFs
+5. **Iterate if needed** - Reduce frames/colors if over size limits
+
+**The goal is creative freedom within Slack's technical constraints.**
+
+## Dependencies
+
+To use this toolkit, install these dependencies only if they aren't already present:
+
+```bash
+pip install pillow imageio numpy
+```

@@ -14,7 +14,7 @@ A clean, simple CLI tool to switch between different Claude Code configuration m
 
 ```bash
 # 1. Install (one-time setup)
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
 bash install.sh install
 
 # 2. Activate in current session
@@ -110,6 +110,155 @@ cc-change cc-native
 Switched to native! ✅
 ```
 
+## 🔌 MCP (Model Context Protocol) Setup
+
+The Claude Switcher now includes integrated MCP server setup for extending Claude Code capabilities!
+
+### What is MCP?
+
+MCP (Model Context Protocol) allows Claude Code to use external tools and capabilities. The Claude Switcher automatically installs two MCP servers:
+
+| Server | Capability | Use Case |
+|--------|-----------|----------|
+| **zai-mcp-server** | Image Analysis (Vision) | Analyze images, screenshots, diagrams |
+| **web-search-prime** | Web Search | Real-time information lookup |
+
+### Quick Start - MCP Setup
+
+**New Flow (Menu-First, No API Prompt Before Menu):**
+
+```bash
+# During installation
+bash install.sh install
+
+# After setup steps, you'll see the MCP menu DIRECTLY:
+#
+# 1) Setup/Update GLM API Key
+#    → Prompts for your API key
+#    → Saves to ~/.claude/.auth-token (600 permissions)
+#
+# 2) Install GLM MCP Servers
+#    → Checks for existing servers (won't reinstall if already present)
+#    → Handles API key mismatches (offers keep/replace)
+#    → Completes partial installations automatically
+#
+# 3) Exit Setup
+#    → Continue with next installation steps
+```
+
+**Intelligent Duplicate Detection:**
+
+If you run the installer again and servers already exist:
+- **Same API key?** → Shows message, skips installation
+- **Different API key?** → Offers to keep existing or replace with new key
+- **Partial installation?** → Automatically completes it
+- **No servers?** → Proceeds with fresh installation
+
+### Setup After Installation
+
+If you skipped MCP during installation or want to update it:
+
+```bash
+# Method 1: Re-run the installer
+bash install.sh install
+# You'll see the MCP menu again
+# Choose option 1 to add/update API key
+# Choose option 2 to install servers
+
+# Method 2: Quick mode switching
+cc-change
+# Not MCP-specific, but shows current mode status
+```
+
+### API Key Setup
+
+Your API key is stored securely:
+
+```bash
+# The installer prompts you for your API key
+# It's saved to: ~/.claude/.auth-token
+# Permissions: 600 (owner read/write only)
+# Display: Only first 8 characters shown (never full key)
+```
+
+To update your API key:
+
+```bash
+# Option 1: Re-run installer
+bash install.sh install
+# When asked for API key, enter your new key
+
+# Option 2: Manual setup
+echo "your-api-key-here" > ~/.claude/.auth-token
+chmod 600 ~/.claude/.auth-token
+```
+
+### Verify MCP Installation
+
+```bash
+# Check installed servers
+claude mcp list
+
+# Check status in Claude Switcher
+cc-change --status
+
+# In Claude Code, run
+/mcp
+# This shows configured MCP servers
+```
+
+### Disable MCP Servers
+
+If you want to remove MCP servers:
+
+```bash
+cc-change nomcp
+
+# You'll be prompted to confirm removal
+# This removes both vision and search servers
+```
+
+### Troubleshooting MCP Issues
+
+For detailed troubleshooting, see **[MCP_TROUBLESHOOTING.md](docs/MCP_TROUBLESHOOTING.md)**
+
+**Common issues:**
+
+| Issue | Solution |
+|-------|----------|
+| **Claude CLI not found** | Run installation command shown in error |
+| **API key not set** | Run `bash install.sh install`, choose option 1 in menu |
+| **Servers already installed** | Installer now detects and handles automatically! |
+| **API key mismatch** | Choose to keep or replace when prompted |
+| **Partial installation** | Installer completes it automatically |
+| **Servers won't remove** | Run `claude mcp remove zai-mcp-server` and `claude mcp remove web-search-prime` manually |
+
+### Using MCP in Claude Code
+
+Once installed, you can use MCP capabilities:
+
+```
+# In Claude Code, use /mcp command to see servers
+/mcp
+
+# Or use the capabilities directly in your prompts
+# The vision server will analyze images
+# The search server will find current information
+```
+
+### MCP and Mode Switching
+
+Important: MCP servers persist across mode switches!
+
+```bash
+cc-change cc-glm      # MCP servers stay installed
+cc-change cc-mixed    # MCP servers stay installed
+cc-change cc-native   # MCP servers stay installed
+cc-change nomcp       # This removes MCP servers
+```
+
+---
+
 ## 📁 Directory Structure
 
 ```
@@ -150,7 +299,7 @@ Switched to native! ✅
 # 2. Update ~/.claude/.auth-token
 # 3. Keep your settings and backups
 
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
 bash install.sh install
 ```
 
@@ -198,7 +347,7 @@ source ~/.bashrc
 ### API key issues?
 ```bash
 # Reinstall and update the key
-cd ~/Documents/PycharmProjects/agentic-toolkit/ai/byok/claude
+cd ~/Documents/PycharmProjects/agentic-toolkit/ai/ollama/claude
 bash install.sh install
 ```
 
@@ -225,6 +374,8 @@ cc-change
 
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Deep dive into design, flow, and technical details
 - **[GLM_README.md](GLM_README.md)** - GLM-specific configuration and setup
+- **[docs/MCP_IMPLEMENTATION.md](docs/MCP_IMPLEMENTATION.md)** - Complete MCP feature implementation guide
+- **[docs/MCP_TROUBLESHOOTING.md](docs/MCP_TROUBLESHOOTING.md)** - MCP troubleshooting and common issues
 
 ## 🎯 Next Steps
 
@@ -243,5 +394,6 @@ cc-change
 
 ---
 
-**Version**: 2.0 (Simplified Architecture)
-**Last Updated**: November 9, 2025
+**Version**: 2.1 (Enhanced with MCP Setup)
+**Last Updated**: November 11, 2025
+**Status**: Production Ready - All 9 implementation phases complete

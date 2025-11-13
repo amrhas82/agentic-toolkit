@@ -1,0 +1,9 @@
+{
+  "name": "zai-mcp-server",
+  "description": "GLM Vision MCP Server for Claude Code",
+  "type": "executable",
+  "env": {
+    "Z_AI_API_KEY": "YOUR_API_KEY",
+    "Z_AI_MODE": "ZAI"
+  }
+}

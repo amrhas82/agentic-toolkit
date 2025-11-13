@@ -1,6 +1,6 @@
 # Claude Code GLM Model Customization
 
-This guide provides instructions for configuring Claude Code to use GLM LLMs from z.ai models.
+This guide provides instructions for configuring Claude Code to use GLM LLMs from z.ai models and MCP websearch and vision for running Claude Code. This can help you continue working with when you hit you Pro/Max plan with a comparable models like GLM 4.6. You can also customize and only use MCP which would also save you a great deal on your precious tokens.
 
 ## 1. Add GLM Models to Claude Code
 
@@ -47,10 +47,10 @@ Configure `~/.claude/settings.json` with the following content:
 
 ### Automatic Installation
 
-Replace `your_api_key` with your actual API Key:
+Replace `YOUR_API_KEY` with your actual API Key:
 
 ```bash
-claude mcp add -s user -t http web-search-prime https://api.z.ai/api/mcp/web_search_prime/mcp --header "Authorization: Bearer your_api_key"
+claude mcp add -s user -t http web-search-prime https://api.z.ai/api/mcp/web_search_prime/mcp --header "Authorization: Bearer YOUR_API_KEY"
 ```
 
 ### Manual Configuration
@@ -60,19 +60,22 @@ Edit Claude Desktop's configuration file `~/.claude.json` mcpServers content (re
 ```json
 {
   "mcpServers": {
-    "zai-mcp-server": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@z_ai/mcp-server"],
-      "env": {
-        "Z_AI_API_KEY": "your_api_key",
-        "Z_AI_MODE": "ZAI"
+    "web-search-prime": {
+      "type": "http",
+      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+      "headers": {
+        "Authorization": "Bearer your_api_key"
       }
     }
   }
 }
 ```
+**Note:** If you forgot to replace the API Key, uninstall the old MCP Server first:
 
+```bash
+claude mcp list
+claude mcp remove zai-mcp-server
+```
 ---
 
 ## 3. Add Vision MCP Server
@@ -85,10 +88,10 @@ Edit Claude Desktop's configuration file `~/.claude.json` mcpServers content (re
 
 ### Automatic Installation
 
-Replace `your_api_key` with your actual API Key:
+Replace `YOUR_API_KEY` with your actual API Key:
 
 ```bash
-claude mcp add -s user zai-mcp-server --env Z_AI_API_KEY=your_api_key Z_AI_MODE=ZAI -- npx -y "@z_ai/mcp-server"
+claude mcp add -s user zai-mcp-server --env Z_AI_API_KEY=YOUR_API_KEY Z_AI_MODE=ZAI -- npx -y "@z_ai/mcp-server"
 ```
 
 **Note:** If you forgot to replace the API Key, uninstall the old MCP Server first:

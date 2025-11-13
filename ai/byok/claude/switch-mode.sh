@@ -64,7 +64,7 @@ LOGS_DIR="$SWITCHER_DIR/logs"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 LOG_FILE="$LOGS_DIR/switch-${TIMESTAMP}.log"
 
-declare -a MODES=("cc-native" "cc-glm" "cc-mixed" "fast-glm")
+declare -a MODES=("cc-native" "cc-glm" "cc-mixed" "fast-glm" "nomcp")
 
 ################################################################################
 # Display Functions
@@ -84,6 +84,10 @@ print_info() {
 
 print_warning() {
   echo -e "${YELLOW}${WARN} $1${NC}"
+}
+
+print_prompt() {
+  echo -e -n "${CYAN}❓ $1${NC}"
 }
 
 print_header() {
@@ -311,9 +315,124 @@ switch_mode() {
   return 0
 }
 
+# Handle nomcp mode - disable MCP servers
+# Purpose: Remove installed MCP servers (vision and search) with user confirmation
+# Parameters: None
+# Returns: 0 always (success or user-cancelled)
+# Behavior:
+#   - Displays list of servers to be removed
+#   - Prompts user for confirmation (y/n)
+#   - If confirmed: Removes both zai-mcp-server and web-search-prime
+#   - If cancelled: Returns without making changes
+#   - Handles gracefully if servers not installed
+#   - Logs all operations with timestamps
+# Exit route: cc-change nomcp (called from main switch routing)
+handle_nomcp_mode() {
+  echo ""
+  echo -e "${BOLD}${MAGENTA}${ARROW} Disabling MCP Servers${NC}"
+  echo ""
+
+  echo "The following MCP servers will be removed:"
+  echo -e "  ${BULLET} zai-mcp-server (GLM vision)"
+  echo -e "  ${BULLET} web-search-prime (GLM web search)"
+  echo ""
+
+  print_prompt "Continue with removal? (y/n): "
+  read -r confirm
+
+  if [[ ! $confirm =~ ^[Yy]$ ]]; then
+    echo ""
+    print_info "Removal cancelled"
+    return 0
+  fi
+
+  echo ""
+  log_message "Starting MCP server removal"
+
+  # Remove vision server
+  if claude mcp remove zai-mcp-server &>/dev/null; then
+    print_success "Removed zai-mcp-server"
+    log_message "Removed zai-mcp-server"
+  else
+    print_warning "zai-mcp-server not found or already removed"
+    log_message "zai-mcp-server not found (already removed or never installed)"
+  fi
+
+  echo ""
+
+  # Remove search server
+  if claude mcp remove web-search-prime &>/dev/null; then
+    print_success "Removed web-search-prime"
+    log_message "Removed web-search-prime"
+  else
+    print_warning "web-search-prime not found or already removed"
+    log_message "web-search-prime not found (already removed or never installed)"
+  fi
+
+  echo ""
+  print_success "MCP servers disabled"
+  log_message "MCP servers disabled successfully"
+  echo ""
+  return 0
+}
+
 ################################################################################
 # Display Functions
 ################################################################################
+
+# Display MCP server status and management information
+# Purpose: Show active MCP servers, API key status, and management options
+# Parameters: None
+# Returns: None (display only)
+# Behavior:
+#   - Checks if Claude CLI is installed
+#   - Lists active MCP servers (if any configured)
+#   - Displays API key configuration status
+#   - Shows management commands and options
+#   - Uses color coding for visual clarity (GREEN for success, YELLOW for warnings)
+# Output sections:
+#   1. MCP Server Status (from 'claude mcp list' output)
+#   2. MCP Management options (nomcp command, mcp command in Claude)
+#   3. API Key Status (configured or not)
+show_mcp_status() {
+  echo ""
+  echo -e "${BOLD}${CYAN}MCP Server Status:${NC}"
+  echo ""
+
+  # Check if Claude CLI is available
+  if ! command -v claude &>/dev/null; then
+    echo -e "${YELLOW}${WARN} Claude CLI not found${NC}"
+    return
+  fi
+
+  # Try to list MCP servers
+  local mcp_output
+  mcp_output=$(claude mcp list 2>/dev/null)
+
+  if [ $? -eq 0 ] && [ -n "$mcp_output" ]; then
+    echo -e "${GREEN}${SUCCESS} MCP servers configured:${NC}"
+    echo "$mcp_output" | head -20
+  else
+    echo -e "${BLUE}${INFO} No MCP servers configured${NC}"
+  fi
+
+  echo ""
+  echo -e "${BOLD}${CYAN}MCP Management:${NC}"
+  echo -e "  ${BULLET} Disable MCP: ${CYAN}cc-change nomcp${NC}"
+  echo -e "  ${BULLET} View full status: ${CYAN}claude mcp list${NC}"
+  echo -e "  ${BULLET} Configure in Claude Code: ${CYAN}/mcp${NC} command"
+
+  # Check API key status
+  echo ""
+  echo -e "${BOLD}${CYAN}API Key Status:${NC}"
+  if [ -f "$AUTH_TOKEN_FILE" ] && [ -s "$AUTH_TOKEN_FILE" ]; then
+    echo -e "${GREEN}${SUCCESS} API key is configured${NC}"
+  else
+    echo -e "${YELLOW}${WARN} API key not configured${NC}"
+  fi
+
+  echo ""
+}
 
 show_status() {
   echo ""
@@ -336,6 +455,9 @@ show_status() {
       echo -e "${BULLET} Haiku: ${YELLOW}$haiku${NC}"
     fi
   fi
+
+  # Show MCP status
+  show_mcp_status
 
   echo ""
 }
@@ -457,6 +579,10 @@ show_help() {
   echo "  cc-change --help             # Show this help"
   echo ""
 
+  echo -e "${BOLD}${YELLOW}MCP Management:${NC}"
+  echo "  cc-change nomcp              # Disable MCP servers"
+  echo ""
+
   echo -e "${BOLD}${YELLOW}Available Modes:${NC}"
   echo -e "  ${CYAN}cc-native${NC}     - Claude Code defaults (web auth)"
   echo -e "  ${CYAN}cc-glm${NC}        - GLM-4.6 (Sonnet/Opus), GLM-4.5-air (Haiku)"
@@ -471,14 +597,17 @@ show_help() {
 
 main() {
   case "${1:-}" in
-    --status)
+    --status|status)
       show_status
       ;;
-    --list)
+    --list|list)
       show_list
       ;;
     --help|help)
       show_help
+      ;;
+    nomcp)
+      handle_nomcp_mode
       ;;
     cc-native|cc-glm|cc-mixed|fast-glm)
       switch_mode "$1"

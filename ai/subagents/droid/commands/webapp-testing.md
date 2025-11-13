@@ -1,22 +1,22 @@
 ---
-description: Test local web applications using Playwright - verify functionality, debug UI, capture screenshots
-argument-hint: <webapp-url-or-local-server>
+name: webapp-testing
+description: Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.
+license: Complete terms in LICENSE.txt
 ---
 
-Test local web applications using native Python Playwright scripts with bundled helper utilities.
+# Web Application Testing
 
-## Available Operations
+To test local web applications, write native Python Playwright scripts.
 
-- `static` - Test static HTML files
-- `dynamic` - Test dynamic web applications  
-- `debug` - Debug UI behavior and capture logs
-- `screenshot` - Capture browser screenshots
-- `server` - Manage server lifecycle for testing
+**Helper Scripts Available**:
+- `scripts/with_server.py` - Manages server lifecycle (supports multiple servers)
 
-## Decision Tree
+**Always run scripts with `--help` first** to see usage. DO NOT read the source until you try running the script first and find that a customized solution is abslutely necessary. These scripts can be very large and thus pollute your context window. They exist to be called directly as black-box scripts rather than ingested into your context window.
+
+## Decision Tree: Choosing Your Approach
 
 ```
-Task → Is it static HTML?
+User task → Is it static HTML?
     ├─ Yes → Read HTML file directly to identify selectors
     │         ├─ Success → Write Playwright script using selectors
     │         └─ Fails/Incomplete → Treat as dynamic (below)
@@ -32,33 +32,16 @@ Task → Is it static HTML?
             4. Execute actions with discovered selectors
 ```
 
-## Basic Playwright Setup
+## Example: Using with_server.py
 
-```python
-from playwright.sync_api import sync_playwright
-
-with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)  # Always chromium in headless
-    page = browser.new_page()
-    page.goto('http://localhost:5173')  # Your local server
-    page.wait_for_load_state('networkidle')  # CRITICAL: Wait for JS execution
-    
-    # Your automation logic here
-    
-    browser.close()
-```
-
-## Server Management with with_server.py
+To start a server, run `--help` first, then use the helper:
 
 **Single server:**
 ```bash
-python scripts/with_server.py \
-  --server "npm run dev" \
-  --port 5173 \
-  -- python your_automation.py
+python scripts/with_server.py --server "npm run dev" --port 5173 -- python your_automation.py
 ```
 
-**Multiple servers (backend + frontend):**
+**Multiple servers (e.g., backend + frontend):**
 ```bash
 python scripts/with_server.py \
   --server "cd backend && python server.py" --port 3000 \
@@ -66,210 +49,48 @@ python scripts/with_server.py \
   -- python your_automation.py
 ```
 
-**Always run `--help` first:**
-```bash
-python scripts/with_server.py --help
-```
-
-## Reconnaissance-Then-Action Pattern
-
-### 1. Inspect Rendered DOM
-```python
-# Take full page screenshot
-page.screenshot(path='/tmp/inspect.png', full_page=True)
-
-# Get page content
-content = page.content()
-
-# Discover all buttons, links, inputs
-page.locator('button').all()
-page.locator('a').all() 
-page.locator('input').all()
-```
-
-### 2. Identify Selectors
-Common selector strategies:
-- **Text-based**: `page.locator('text=Login')`
-- **Role-based**: `page.locator('role=button')`
-- **CSS selectors**: `page.locator('.button-primary')`
-- **IDs**: `page.locator('#submit-form')`
-
-### 3. Execute Actions
-```python
-# Click elements
-page.click('button:has-text("Submit")')
-
-# Fill forms
-page.fill('input[name="email"]', 'user@example.com')
-page.fill('input[type="password"]', 'password123')
-
-# Select from dropdown
-page.select_option('select[name="country"]', 'US')
-
-# Wait for elements
-page.wait_for_selector('.loading-spinner', state='hidden')
-```
-
-## Common Patterns
-
-### Form Interaction
-```python
-# Complete multi-step form
-page.goto('http://localhost:3000/form')
-page.wait_for_load_state('networkidle')
-
-# Fill form fields
-page.fill('input[name="firstName"]', 'John')
-page.fill('input[name="lastName"]', 'Doe')
-page.fill('input[name="email"]', 'john.doe@example.com')
-
-# Select dropdown
-page.select_option('select[name="country"]', 'United States')
-
-# Submit form
-page.click('button[type="submit"]')
-
-# Verify success
-page.wait_for_selector('.success-message')
-assert page.locator('.success-message').text_content() == 'Form submitted successfully!'
-```
-
-### Navigation Testing
-```python
-# Test navigation between pages
-page.click('a[href="/dashboard"]')
-page.wait_for_load_state('networkidle')
-
-# Verify URL changed
-assert page.url == 'http://localhost:3000/dashboard'
-
-# Check page content
-assert page.locator('h1:has-text("Dashboard")').is_visible()
-```
-
-### Data Loading and Waiting
-```python
-# Wait for data to load
-page.wait_for_selector('.data-table')
-page.wait_for_load_state('networkidle')
-
-# Check table content
-table = page.locator('.data-table')
-rows = table.locator('tbody tr')
-
-# Verify data loaded
-assert rows.count() > 0
-
-# Check specific data
-assert page.locator('text=John Doe').is_visible()
-```
-
-### Error Handling
-```python
-# Test error states
-page.goto('http://localhost:3000/invalid-page')
-page.wait_for_load_state('networkidle')
-
-# Check for error message
-error_message = page.locator('.error-message')
-assert error_message.is_visible()
-assert '404' in error_message.text_content()
-```
-
-## Debugging and Logging
-
-### Console Logs
+To create an automation script, include only Playwright logic (servers are managed automatically):
 ```python
 from playwright.sync_api import sync_playwright
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=False)  # Non-headless for debugging
+    browser = p.chromium.launch(headless=True) # Always launch chromium in headless mode
     page = browser.new_page()
-    
-    # Capture console messages
-    page.on('console', lambda msg: print(f'Browser console: {msg.text}'))
-    
-    # Capture JavaScript errors
-    page.on('pageerror', lambda error: print(f'Page error: {error}'))
-    
-    page.goto('http://localhost:5173')
+    page.goto('http://localhost:5173') # Server already running and ready
+    page.wait_for_load_state('networkidle') # CRITICAL: Wait for JS to execute
+    # ... your automation logic
     browser.close()
 ```
 
-### Screenshot Capture
-```python
-# Capture on failure
-try:
-    page.click('button')
-except Exception as e:
-    page.screenshot(path='/tmp/failure.png', full_page=True)
-    raise e
+## Reconnaissance-Then-Action Pattern
 
-# Full page screenshot
-page.screenshot(path='/tmp/full-page.png', full_page=True)
+1. **Inspect rendered DOM**:
+   ```python
+   page.screenshot(path='/tmp/inspect.png', full_page=True)
+   content = page.content()
+   page.locator('button').all()
+   ```
 
-# Element screenshot
-element = page.locator('.widget')
-element.screenshot(path='/tmp/widget.png')
-```
+2. **Identify selectors** from inspection results
+
+3. **Execute actions** using discovered selectors
+
+## Common Pitfall
+
+❌ **Don't** inspect the DOM before waiting for `networkidle` on dynamic apps
+✅ **Do** wait for `page.wait_for_load_state('networkidle')` before inspection
 
 ## Best Practices
 
-### Critical Rules
-- **Always** wait for `networkidle` on dynamic apps before DOM inspection
+- **Use bundled scripts as black boxes** - To accomplish a task, consider whether one of the scripts available in `scripts/` can help. These scripts handle common, complex workflows reliably without cluttering the context window. Use `--help` to see usage, then invoke directly. 
 - Use `sync_playwright()` for synchronous scripts
 - Always close the browser when done
-- Use descriptive selectors (text, role, CSS, or IDs)
-- Add appropriate waits: `wait_for_selector()` or `wait_for_timeout()`
+- Use descriptive selectors: `text=`, `role=`, CSS selectors, or IDs
+- Add appropriate waits: `page.wait_for_selector()` or `page.wait_for_timeout()`
 
-### Performance Tips
-- Use headless mode for CI/automation: `headless=True`
-- Close unused pages to free memory
-- Use specific selectors over generic ones
-- Avoid unnecessary waits
+## Reference Files
 
-### Selector Strategy
-```python
-# Prefer these (most reliable):
-page.locator('text=Submit')           # Text content
-page.locator('role=button')           # ARIA role
-page.locator('#submit-form')          # ID
-page.locator('.button-primary')       # CSS class
-
-# Avoid these (less reliable):
-page.locator('button:nth-child(2)')   # Position-based
-page.locator('a[href*="login"]')      # Partial attribute match
-```
-
-## Reference Examples
-
-**Element Discovery:**
-```python
-# Find all interactive elements
-buttons = page.locator('button').all()
-for button in buttons:
-    print(f"Button: {button.text_content()}")
-```
-
-**Static HTML Testing:**
-```python
-# For local HTML files
-page.goto('file:///path/to/local/file.html')
-page.wait_for_load_state('networkidle')
-```
-
-## Usage Examples
-
-**Test React app:**
-`/webapp-testing "http://localhost:3000"`
-
-**Test with server management:**
-`/webapp-testing "npm run dev --port 3000"`
-
-**Debug UI issues:**
-`/webapp-testing "http://localhost:5173 --debug"`
-
-**Capture screenshots:**
-`/webapp-testing "http://localhost:3000 --screenshot"`
-
-Remember: Use bundled scripts as black boxes for complex workflows - they handle common patterns reliably.
+- **examples/** - Examples showing common patterns:
+  - `element_discovery.py` - Discovering buttons, links, and inputs on a page
+  - `static_html_automation.py` - Using file:// URLs for local HTML
+  - `console_logging.py` - Capturing console logs during automation

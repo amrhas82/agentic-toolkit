@@ -35,6 +35,12 @@
       "path": "agents/business-analyst.md"
     },
     {
+      "id": "context-initializer",
+      "name": "Context Initializer",
+      "description": "Initialize Claude Code context through elicitation, organize docs, create CLAUDE.md and KNOWLEDGE_BASE.md",
+      "path": "agents/context-initializer.md"
+    },
+    {
       "id": "full-stack-dev",
       "name": "Full-Stack Developer",
       "description": "Full-stack development implementation",

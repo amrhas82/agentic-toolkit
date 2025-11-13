@@ -21,6 +21,12 @@
       "name": "Scrum Master",
       "description": "Project management and team coordination",
       "path": "agents/scrum-master.md"
+    },
+    {
+      "id": "context-initializer",
+      "name": "Context Initializer",
+      "description": "Initialize Claude Code context through elicitation, organize docs, create CLAUDE.md and KNOWLEDGE_BASE.md",
+      "path": "agents/context-initializer.md"
     }
   ],
   "skills": [],

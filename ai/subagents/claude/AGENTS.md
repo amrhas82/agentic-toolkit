@@ -36,6 +36,7 @@ Note
 | Master Task Executor | master | Use when you need comprehensive expertise across all domains, running 1 off tasks that do not require a persona, or just wanting to use the same agent for many things. |
 | Architect | holistic-architect | Use for system design, architecture documents, technology selection, API design, and infrastructure planning |
 | Business Analyst | business-analyst | Use for market research, brainstorming, competitive analysis, creating project briefs, initial project discovery, and documenting existing projects (brownfield) |
+| Context Initializer | context-initializer | Use to initialize Claude Code context for new/existing projects, discover and organize documentation, create CLAUDE.md and KNOWLEDGE_BASE.md for optimal token-efficient memory |
 
 
 ### 1-Create PRD (id: 1-create-prd) 
@@ -120,6 +121,13 @@ Source: [./agents/holistic-architect.md](./agents/holistic-architect.md)
 
 - When to use: Use for system design, architecture documents, technology selection, API design, and infrastructure planning
 - How to activate: Mention "As architect, ..." to get role-aligned behavior
+- Full definition: open the source file above (content not embedded)
+
+### Context Initializer (id: context-initializer)
+Source: [./agents/context-initializer.md](./agents/context-initializer.md)
+
+- When to use: Use to initialize Claude Code context for new/existing projects, discover and organize documentation, create CLAUDE.md and KNOWLEDGE_BASE.md for optimal token-efficient memory
+- How to activate: Mention "@context-initializer" or "As context-initializer, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
 ### Business Analyst (id: business-analyst)

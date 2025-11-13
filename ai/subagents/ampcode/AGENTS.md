@@ -17,7 +17,9 @@ Note
 - Orchestrators/master run as mode: primary; other ./agents as mode: sub./agents.
 - All ./agents have enbaled tools: write, edit, bash.
 
-## ./agents Directory
+## Agents
+
+### Directory
 
 | Title | ID | When To Use |
 |---|---|---|
@@ -34,6 +36,7 @@ Note
 | Master Task Executor | master | Comprehensive expertise across all domains |
 | Architect | holistic-architect | System design, architecture docs, API design |
 | Business Analyst | business-analyst | Market research, competitive analysis, project briefs |
+| Context Initializer | context-initializer | Use to initialize Ampcode context for new/existing projects, discover and organize documentation, create AGENT.md and KNOWLEDGE_BASE.md for optimal token-efficient memory |
 
 ## Agent Details
 
@@ -109,6 +112,13 @@ Source: [./agents/holistic-architect.md](./agents/holistic-architect.md)
 
 - When to use: System design, technology selection, API design
 - How to activate: "As architect, ..." or "As holistic-architect, ..."
+
+### Context Initializer (id: context-initializer)
+Source: [./agents/context-initializer.md](./agents/context-initializer.md)
+
+- When to use: Use to initialize Claude Code context for new/existing projects, discover and organize documentation, create CLAUDE.md and KNOWLEDGE_BASE.md for optimal token-efficient memory
+- How to activate: Mention "@context-initializer" or "As context-initializer, ..." to get role-aligned behavior
+- Full definition: open the source file above (content not embedded)
 
 ### Business Analyst (id: business-analyst)
 Source: [./agents/business-analyst.md](./agents/business-analyst.md)

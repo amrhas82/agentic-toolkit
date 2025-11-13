@@ -1,74 +1,285 @@
 ---
-name: artifacts-builder
-description: Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.
-license: Complete terms in LICENSE.txt
+description: Build elaborate multi-component HTML artifacts using React, TypeScript, Tailwind CSS, and shadcn/ui
+argument-hint: <artifact-concept> <project-name>
 ---
 
-# Artifacts Builder
+Build powerful frontend artifacts using modern web technologies for complex interactive experiences.
 
-To build powerful frontend claude.ai artifacts, follow these steps:
-1. Initialize the frontend repo using `scripts/init-artifact.sh`
-2. Develop your artifact by editing the generated code
-3. Bundle all code into a single HTML file using `scripts/bundle-artifact.sh`
-4. Display artifact to user
-5. (Optional) Test the artifact
+## Technology Stack
 
-**Stack**: React 18 + TypeScript + Vite + Parcel (bundling) + Tailwind CSS + shadcn/ui
+**Core Stack:**
+- React 18 + TypeScript
+- Vite for development
+- Parcel for bundling
+- Tailwind CSS 3.4.1
+- shadcn/ui component library
+- 40+ pre-installed components
 
-## Design & Style Guidelines
-
-VERY IMPORTANT: To avoid what is often referred to as "AI slop", avoid using excessive centered layouts, purple gradients, uniform rounded corners, and Inter font.
-
-## Quick Start
+## Development Workflow
 
 ### Step 1: Initialize Project
-
-Run the initialization script to create a new React project:
 ```bash
 bash scripts/init-artifact.sh <project-name>
 cd <project-name>
 ```
 
-This creates a fully configured project with:
+**Creates fully configured project with:**
 - ✅ React + TypeScript (via Vite)
-- ✅ Tailwind CSS 3.4.1 with shadcn/ui theming system
+- ✅ Tailwind CSS with shadcn/ui theming
 - ✅ Path aliases (`@/`) configured
-- ✅ 40+ shadcn/ui components pre-installed
-- ✅ All Radix UI dependencies included
-- ✅ Parcel configured for bundling (via .parcelrc)
-- ✅ Node 18+ compatibility (auto-detects and pins Vite version)
+- ✅ 40+ shadcn/ui components
+- ✅ Radix UI dependencies
+- ✅ Parcel bundling configured
+- ✅ Node 18+ compatibility
 
-### Step 2: Develop Your Artifact
+### Step 2: Develop Artifact
+Edit the generated files to build your artifact:
 
-To build the artifact, edit the generated files. See **Common Development Tasks** below for guidance.
+**Component Structure:**
+```typescript
+// Example component structure
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 
-### Step 3: Bundle to Single HTML File
+export function MyArtifact() {
+  return (
+    <Card className="p-6">
+      <h1 className="text-2xl font-bold">Artifact Title</h1>
+      <Button className="mt-4">Action</Button>
+    </Card>
+  )
+}
+```
 
-To bundle the React app into a single HTML artifact:
+**State Management:**
+```typescript
+import { useState } from "react"
+
+export function InteractiveArtifact() {
+  const [count, setCount] = useState(0)
+  
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <Button onClick={() => setCount(count + 1)}>
+        Increment
+      </Button>
+    </div>
+  )
+}
+```
+
+### Step 3: Bundle to Single HTML
 ```bash
 bash scripts/bundle-artifact.sh
 ```
 
-This creates `bundle.html` - a self-contained artifact with all JavaScript, CSS, and dependencies inlined. This file can be directly shared in Claude conversations as an artifact.
+**Requirements:** Project must have `index.html` in root directory
 
-**Requirements**: Your project must have an `index.html` in the root directory.
-
-**What the script does**:
-- Installs bundling dependencies (parcel, @parcel/config-default, parcel-resolver-tspaths, html-inline)
-- Creates `.parcelrc` config with path alias support
+**What it does:**
+- Installs bundling dependencies
+- Creates `.parcelrc` config with path aliases
 - Builds with Parcel (no source maps)
-- Inlines all assets into single HTML using html-inline
+- Inlines all assets into single HTML
+- Creates `bundle.html` - self-contained artifact
 
-### Step 4: Share Artifact with User
+### Step 4: Share Artifact
+Share the bundled HTML file in conversation as a claude.ai artifact.
 
-Finally, share the bundled HTML file in conversation with the user so they can view it as an artifact.
+### Step 5: Testing (Optional)
+Use tools like Playwright or Puppeteer to test the artifact if issues arise.
 
-### Step 5: Testing/Visualizing the Artifact (Optional)
+## Design Guidelines
 
-Note: This is a completely optional step. Only perform if necessary or requested.
+### Avoid "AI Slop"
+**Don't use:**
+- Excessive centered layouts
+- Purple gradients
+- Uniform rounded corners
+- Inter font (overused)
 
-To test/visualize the artifact, use available tools (including other Skills or built-in tools like Playwright or Puppeteer). In general, avoid testing the artifact upfront as it adds latency between the request and when the finished artifact can be seen. Test later, after presenting the artifact, if requested or if issues arise.
+**Instead use:**
+- Varied layouts and compositions
+- Diverse color palettes
+- Creative typography choices
+- Original design patterns
 
-## Reference
+### Component Usage
+**shadcn/ui Components:**
+- Button, Card, Dialog, Input
+- Table, Tabs, Badge, Avatar
+- Dropdown, Select, Checkbox
+- Accordion, Alert, Avatar
 
-- **shadcn/ui components**: https://ui.shadcn.com/docs/components
+**Example usage:**
+```typescript
+import { 
+  Button, 
+  Card, 
+  CardHeader, 
+  CardContent,
+  Dialog,
+  DialogContent,
+  DialogHeader 
+} from "@/components/ui"
+
+export function ComplexComponent() {
+  return (
+    <Card>
+      <CardHeader>
+        <h2>Title</h2>
+      </CardHeader>
+      <CardContent>
+        <p>Content</p>
+        <Button variant="outline">Action</Button>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+## Common Development Tasks
+
+### Creating Interactive Elements
+```typescript
+// Interactive toggle
+import { useState } from "react"
+import { Switch } from "@/components/ui/switch"
+
+export function Settings() {
+  const [darkMode, setDarkMode] = useState(false)
+  
+  return (
+    <div>
+      <label className="flex items-center space-x-2">
+        <Switch 
+          checked={darkMode} 
+          onCheckedChange={setDarkMode} 
+        />
+        <span>Dark Mode</span>
+      </label>
+    </div>
+  )
+}
+```
+
+### Data Display
+```typescript
+// Table with data
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+
+export function DataTable({ data }: { data: any[] }) {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Name</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead>Actions</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {data.map((item, index) => (
+          <TableRow key={index}>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>{item.status}</TableCell>
+            <TableCell>
+              <Button size="sm">Edit</Button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  )
+}
+```
+
+### Form Handling
+```typescript
+// Form with validation
+import { useState } from "react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
+export function ContactForm() {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log({ name, email })
+  }
+  
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <Input 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+        />
+      </div>
+      <div>
+        <Input 
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+      </div>
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+}
+```
+
+## Performance Considerations
+
+### Bundle Optimization
+- Use React.memo for expensive components
+- Implement code splitting for large artifacts
+- Optimize images and assets
+- Minimize re-renders with proper state management
+
+### Component Patterns
+```typescript
+// Optimized component
+import { memo } from "react"
+
+const ExpensiveComponent = memo(({ data }) => {
+  return (
+    <div className="complex-visualization">
+      {/* Complex rendering logic */}
+    </div>
+  )
+})
+
+// Lazy loading
+import { lazy, Suspense } from "react"
+
+const HeavyComponent = lazy(() => import("./HeavyComponent"))
+
+export function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HeavyComponent />
+    </Suspense>
+  )
+}
+```
+
+## Usage Examples
+
+**Create interactive dashboard:**
+`/artifacts-builder "data visualization dashboard" "analytics-app"`
+
+**Build form-heavy interface:**
+`/artifacts-builder "contact form system" "forms-app"`
+
+**Develop game interface:**
+`/artifacts-builder "puzzle game UI" "game-interface"`
+
+**Create design tool:**
+`/artifacts-builder "canvas design tool" "design-studio"`
+
+Remember: Use this for complex artifacts requiring state management, routing, or rich interactions - not simple single-file HTML.

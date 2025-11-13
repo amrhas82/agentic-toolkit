@@ -90,13 +90,14 @@ Phase 3: As 3-process-task-list, implement tasks one by one
 ### Specialist Agents
 
 #### Core Development Agents
-Available in: **Claude**, **OpenCode**, **Amp**
+Available in: **Claude**, **OpenCode**, **Amp**, **Droid** 
 
 | Agent | ID | Specialization | When To Use |
 |-------|-----|----------------|-------------|
 | **Orchestrator** | `orchestrator` | Coordinate multi-agent workflows, manage complex tasks | Complex features requiring multiple agents, unclear which specialist to use |
 | **Developer** | `developer` / `full-stack-dev` | Code implementation, debugging, refactoring, testing | Feature implementation, bug fixes, writing tests |
 | **Architect** | `architect` / `holistic-architect` | System design, technology selection, API design | Designing new systems, evaluating tech choices, architecture docs |
+| **Context** | `context` / `context-initializer` | initialize context for new/existing projects, discover and organize documentation |
 
 #### Quality & Product Agents
 Available in: **Claude**, **OpenCode**, **Amp**

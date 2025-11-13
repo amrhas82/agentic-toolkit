@@ -17,6 +17,7 @@
 | Master Task Executor | master | Comprehensive expertise across all domains |
 | Architect | holistic-architect | System design, architecture docs, API design |
 | Business Analyst | business-analyst | Market research, competitive analysis, project briefs |
+| Context Initializer | context-initializer | initialize context for new/existing projects, discover and organize documentation |
 
 ## Skills/Commands
 

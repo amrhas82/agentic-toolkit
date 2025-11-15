@@ -59,10 +59,10 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **BMAD Framework** (`/ai/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
 - **Simple Framework** (`/ai/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))
-- **BYOK Config*: Droid/Opencode(BYOK) + Opencode(local) setup using ollama ([get started](/ai/byok))
-- **Local LLM/Ollama Config** (`/ai/byok/ollama`): BYOK/Ollama for Opencode/Droid ([get started](/ai/byok/ollama))
-- **Claude Code Switcher** (`/ai/byok/claude`): Use GLM LLM/MCP on Claude Code ([get started](/ai/byok/claude))
-- **AI Best Practice** (`/ai/config`): AGENT.md and codebase awareness ([get started](/ai/config))
+- **BYOK Config*: Droid/Opencode(BYOK) + Opencode(local) setup using ollama ([get started](/ai/customize/byok))
+- **Local LLM/Ollama Config** (`/ai/byok/ollama`): BYOK/Ollama for Opencode/Droid ([get started](/ai/customize/ollama))
+- **Claude Code Switcher** (`/ai/byok/claude`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
+- **AI Best Practice** (`/ai/config`): AGENT.md and codebase awareness ([get started](/ai/customize/config))
 ---
 
 ## 📂 Directory Structure
@@ -70,20 +70,21 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 ```
 agentic-toolkit/
 ├── ai/                          # AI workflows and agents
-│   ├── subagents/               # ⭐ SUBAGENT KITS
+│   ├── subagentic/              # ⭐ SUBAGENT KITS
 │   │   ├── claude/              # subagents + skills for Claude Code
-│   │   ├── droid/               # subagents + commands for Droid
+│   │   ├── droid/               # droids + commands for Droid
 │   │   ├── ampcode/             # subagents + commands for Ampcode
 │   │   └── opencode/            # subagents + commands for OpenCode
-│   ├── config/                  # ⭐ AI best Practice Config
-│   ├── memcp/                   # ⭐ Memory MCP in json + vector search
-│   ├── byok/                    # ⭐ BYOK/Ollama Config for Droid, Ampcode
-│   │   └── claude/              # ⭐ Claude Code Switcher/GLM LLM/MCP on Claude
-│   ├── marketplace/             # 📖 Curated subagents (droids), plugins, skills, MCP servers
-│   ├── bmad/                    # 📖 BMAD role-based framework
-│   ├── simple/                  # 📖 3-step workflow framework
-│   ├── AGENT_RULES.md           # AI collaboration guidelines
-│   └── README-task-master.md    # Task management guide
+│   ├── Customize/               # ⭐ Agent Customization KITS
+│   │   ├── byok/                # BYOK/Ollama Config for Droid, Ampcode
+│   │   ├── claude-swticher/     # Claude Code Switcher/GLM LLM/MCP on Claude
+│   │   ├── config/              # Agent Best Practice tweaks
+│   │   ├── memcp/               # Memory MCP in json + vector search
+│   │   ├── ollama/              # Ollama Docker for local LLM
+│   │   └── skill-to-command/    # Convert Claude skills to /commands
+│   ├── marketplace/             # 📖 Curated subagents, plugins, skills, workflows (simple, bmad), MCP servers
+│   │   ├── agents/              # 90+ Resuable spcialiazed subagents (droids)
+│   │   └── Workflows/            # 3-steps (simple), BMAD (role-based), Taskmaster
 ├── tools/                       # ⭐ Development utilities & scripts
 │   ├── dev_tools_menu.sh        # Interactive installer
 │   ├── master_tmux_setup.sh     # Tmux automation
@@ -93,6 +94,8 @@ agentic-toolkit/
 ├── docs/                        # Documentation
 │   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
 └── README.md                    # This file
+
+_⭐ Tools developed. Else, all curated from best repos_
 ```
 
 ---
@@ -121,7 +124,7 @@ This toolkit is designed for anyone wanting to maximize AI-powered development:
 
 ### AI Workflows
 - [Subagent Kits](ai/subagentic/) - Your adapted agents
-- [Agent Guidelines](ai/config/AGENT_RULES.md) - AI collaboration guardrails
+- [Agent Guidelines](ai/customize/config/AGENT_RULES.md) - AI collaboration guardrails
 
 ---
 

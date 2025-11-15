@@ -76,6 +76,7 @@ agentic-toolkit/
 │   │   ├── ampcode/             # subagents + commands for Ampcode
 │   │   └── opencode/            # subagents + commands for OpenCode
 │   ├── config/                  # ⭐ AI best Practice Config
+│   ├── memcp/                   # ⭐ Memory MCP in json + vector search
 │   ├── byok/                    # ⭐ BYOK/Ollama Config for Droid, Ampcode
 │   │   └── claude/              # ⭐ Claude Code Switcher/GLM LLM/MCP on Claude
 │   ├── marketplace/             # 📖 Curated subagents (droids), plugins, skills, MCP servers

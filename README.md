@@ -82,7 +82,7 @@ agentic-toolkit/
 │   │   ├── memcp/               # Memory MCP in json + vector search
 │   │   ├── ollama/              # Ollama Docker for local LLM
 │   │   └── skill-to-command/    # Convert Claude skills to /commands
-│   ├── marketplace/             # 📖 Curated subagents, plugins, skills, workflows (simple, bmad), MCP servers
+│   ├── marketplace/             # 📖 Curated subagents, plugins, skills, MCP servers
 │   │   ├── agents/              # 90+ Resuable spcialiazed subagents (droids)
 │   │   └── Workflows/            # 3-steps (simple), BMAD (role-based), Taskmaster
 ├── tools/                       # ⭐ Development utilities & scripts

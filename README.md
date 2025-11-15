@@ -84,7 +84,7 @@ agentic-toolkit/
 │   │   └── skill-to-command/    # Convert Claude skills to /commands
 │   ├── marketplace/             # 📖 Curated subagents, plugins, skills, MCP servers
 │   │   ├── agents/              # 90+ Resuable spcialiazed subagents (droids)
-│   │   └── Workflows/            # 3-steps (simple), BMAD (role-based), Taskmaster
+│   │   └── Workflows/           # 3-steps (simple), BMAD (role-based), Taskmaster
 ├── tools/                       # ⭐ Development utilities & scripts
 │   ├── dev_tools_menu.sh        # Interactive installer
 │   ├── master_tmux_setup.sh     # Tmux automation
@@ -95,7 +95,7 @@ agentic-toolkit/
 │   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
 └── README.md                    # This file
 
-_⭐ Tools developed. Else, all curated from best repos_
+⭐ Tools developed. Else, all curated from best repos
 ```
 
 ---

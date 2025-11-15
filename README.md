@@ -39,30 +39,31 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **3-Phase Workflow**: 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Role-Based Agents**: PO, PM, QA, Dev, Architect, Master, Orchestrator
 - **Two Installation Options**:
-  - **Subagent Kits**: `/ai/subagents/` - Manual copy (e.g., `cp -r ai/subagents/claude/* ~/.claude/`)
+  - **Subagent Kits**: `/ai/subagentic/` - Manual copy (e.g., `cp -rv ai/subagentic/claude/* ~/.claude/`)
   - **Agentic Package**: `npx agentic-kit` - NPM installable version ([repo](https://github.com/amrhas82/agentic-kit))
 - **Benefits of Package**: No cloning needed, always latest, easy updates
 - **Example**: Ask "As full-stack-dev, build a login page" - agents handle the workflow automatically
 - **[Subagents and Skills Reference](docs/subagents-and-skills.md)** - Complete list of available agents and commands
 
-| Bash     | Subagents                | Commands/Skills | Available in Kit    | Global Config      |
-|----------|--------------------------|-----------------|---------------------|--------------------|
-| claude   | @product-manager         | /command        | subagents, skills   | ~/.claude          |
-| droid    | as product manager droid | /command        | droids, commands    | ~/.factory         |
+| Bash     | Subagents                | Commands/Skills | Available in Kit   | Global Config      |
+|----------|--------------------------|-----------------|--------------------|--------------------|
+| claude   | @product-manager         | /command        | subagents, skills  | ~/.claude          |
+| opencode | @product-manager         | /command        | subagents, command | ~/.config/opencode |
+| droid    | as product manager droid | /command        | droids, commands   | ~/.factory         |
 | amp      | as product manager       | /command        | subagents, commands | ~/.config/amp      |
-| opencode | @product-manager         | /command        | subagents, commands | ~/.config/opencode |
 
 *Both Agentic Kit and Subagent Kit provide identical content - choose based on your preferred installation method. Subagents are role-based BMAD+Simple agents, commands/skills provide additional functionality.*
 
 ### 📖 Curated Resources
-- **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers ([explore](https://claude-plugins.dev/))
-- **BMAD Framework** (`/ai/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
-- **Simple Framework** (`/ai/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
+- **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers, workflows ([explore](https://claude-plugins.dev/))
+- **BMAD Framework** (`/ai/marketplace/workflows/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
+- **Simple Framework** (`/ai/marketplace/workflows/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))
 - **BYOK Config*: Droid/Opencode(BYOK) + Opencode(local) setup using ollama ([get started](/ai/customize/byok))
-- **Local LLM/Ollama Config** (`/ai/byok/ollama`): BYOK/Ollama for Opencode/Droid ([get started](/ai/customize/ollama))
-- **Claude Code Switcher** (`/ai/byok/claude`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
-- **AI Best Practice** (`/ai/config`): AGENT.md and codebase awareness ([get started](/ai/customize/config))
+- **Ollama Local LLM Config** (`/ai/customize/ollama`): BYOK/Ollama for Opencode/Droid ([get started](/ai/customize/ollama))
+- **Claude Code Switcher** (`/ai/customize/claude-switcher`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
+- **BYOK Opencode/Droid** (`/ai/customize/byok`): Use Synthetic, GLM on Opencode/Droid Config ([get started](/ai/customize/byok))
+- **AI Best Practice** (`/ai/customize/config`): Agent tweaks and best practices ([get started](/ai/customize/config))
 ---
 
 ## 📂 Directory Structure

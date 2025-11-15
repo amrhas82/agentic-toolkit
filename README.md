@@ -56,14 +56,11 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 ### 📖 Curated Resources
 - **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers, workflows ([explore](https://claude-plugins.dev/))
-- **BMAD Framework** (`/ai/marketplace/workflows/bmad/`): Role-based agentic framework (PO, PM, QA, Dev, Architect, Master, Orchestrator) ([learn more](https://github.com/bmad-code-org/BMAD-METHOD))
 - **Simple Framework** (`/ai/marketplace/workflows/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
-- **Droid Factory**: 90+ specialized AI agents ([get started](https://github.com/aeitroc/Droid-CLI-Orchestrator))
-- **BYOK Config*: Droid/Opencode(BYOK) + Opencode(local) setup using ollama ([get started](/ai/customize/byok))
 - **Ollama Local LLM Config** (`/ai/customize/ollama`): BYOK/Ollama for Opencode/Droid ([get started](/ai/customize/ollama))
 - **Claude Code Switcher** (`/ai/customize/claude-switcher`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
 - **BYOK Opencode/Droid** (`/ai/customize/byok`): Use Synthetic, GLM on Opencode/Droid Config ([get started](/ai/customize/byok))
-- **AI Best Practice** (`/ai/customize/config`): Agent tweaks and best practices ([get started](/ai/customize/config))
+- **Agents Best Practices** (`/ai/customize/config`): Agent tweaks and best practices ([get started](/ai/customize/config))
 ---
 
 ## 📂 Directory Structure
@@ -79,7 +76,7 @@ agentic-toolkit/
 │   ├── Customize/               # ⭐ Agent Customization KITS
 │   │   ├── byok/                # BYOK/Ollama Config for Droid, Ampcode
 │   │   ├── claude-swticher/     # Claude Code Switcher/GLM LLM/MCP on Claude
-│   │   ├── config/              # Agent Best Practice tweaks
+│   │   ├── config/              # Agent tweaks and Best Practices
 │   │   ├── memcp/               # Memory MCP in json + vector search
 │   │   ├── ollama/              # Ollama Docker for local LLM
 │   │   └── skill-to-command/    # Convert Claude skills to /commands

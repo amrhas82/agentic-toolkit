@@ -68,11 +68,11 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 ```
 agentic-toolkit/
 ├── ai/                          # AI workflows and agents
-│   ├── subagentic/              # ⭐ SUBAGENT KITS
+│   ├── subagentic/              # ⭐ SUBAGENTIC KITS
 │   │   ├── claude/              # subagents + skills for Claude Code
+│   │   ├── opencode/            # subagents + command for OpenCode
 │   │   ├── droid/               # droids + commands for Droid
-│   │   ├── ampcode/             # subagents + commands for Ampcode
-│   │   └── opencode/            # subagents + commands for OpenCode
+│   │   └── ampcode/             # subagents + commands for Ampcode
 │   ├── Customize/               # ⭐ Agent Customization KITS
 │   │   ├── byok/                # BYOK/Ollama Config for Droid, Ampcode
 │   │   ├── claude-swticher/     # Claude Code Switcher/GLM LLM/MCP on Claude
@@ -93,7 +93,7 @@ agentic-toolkit/
 │   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
 └── README.md                    # This file
 
-⭐ Developed/adpated tools. Else, all curated from best repos
+⭐ Developed and adpated tools. Everything else is curated from best repos.
 ```
 
 ---

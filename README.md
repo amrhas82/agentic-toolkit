@@ -15,7 +15,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 1. **Clone the Toolkit**: `git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit`
 2. **Set Up Environment**: Run `/tools/dev_tools_menu.sh` for Linux tool installation scripts.
 3. **Learn Basics**: Read `/docs/vibecoding101.md` to understand vibecoding.
-4. **Deploy Subagents**: Copy from `/ai/subagents` or install with `npx agentic-kit` for ready-to-use AI agents.
+4. **Deploy Subagents**: Copy from `/ai/subagentic` or install with `npx agentic-kit` for ready-to-use AI agents.
 5. **Start Vibecoding**: Use your AI tool with the deployed agents.
 
 🚀 [Install Development Tools](tools/dev_tools_menu.sh) | 🤖 [Deploy Subagents](ai/subagentic/) | 🤖 [Install via NPM](https://github.com/amrhas82/agentic-kit)

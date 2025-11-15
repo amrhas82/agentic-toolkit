@@ -93,7 +93,7 @@ agentic-toolkit/
 │   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
 └── README.md                    # This file
 
-⭐ Tools developed. Else, all curated from best repos
+⭐ Developed/adpated tools. Else, all curated from best repos
 ```
 
 ---

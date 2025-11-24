@@ -1,0 +1,10 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY",
+    "ANTHROPIC_BASE_URL": "https://api.anthropic.com",
+    "API_TIMEOUT_MS": "3000000",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-4-5-20250929",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-haiku-4-5-20250929",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-haiku-4-5-20250929"
+  }
+}

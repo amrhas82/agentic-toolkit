@@ -1,2 +1,9 @@
 .idea/
+tools/MENU_REORGANIZATION_SUMMARY.md
 
+
+/ai/marketplace/skill-to-command/tasks/
+/ai/marketplace/skill-to-command/test/
+/ai/customize/skill-to-command/test/
+/ai/customize/skill-to-command/CONVERTER_V2_STATUS.md
+/ai/customize/memcp/tasks/

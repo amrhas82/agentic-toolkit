@@ -1,0 +1,20 @@
+{
+  "custom_models": [
+    {
+      "model_display_name": "Qwen 2.5 Coder 32B [Local]",
+      "model": "qwen2.5-coder:32b",
+      "base_url": "http://localhost:11434/v1",
+      "api_key": "not-needed",
+      "provider": "generic-chat-completion-api",
+      "max_tokens": 16000
+    },
+    {
+      "model_display_name": "Qwen 2.5 Coder 7B [Local]",
+      "model": "qwen2.5-coder:7b",
+      "base_url": "http://localhost:11434/v1",
+      "api_key": "not-needed",
+      "provider": "generic-chat-completion-api",
+      "max_tokens": 4000
+    }
+  ]
+}

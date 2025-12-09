@@ -130,6 +130,172 @@ The setup scripts will automatically configure LazyVim with:
 | `Ctrl + r` | Redo | Redo last change |
 | `u` | Undo | Undo last change |
 
+### Basic Text Editing
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `i` | Insert Mode | Insert before cursor |
+| `a` | Append Mode | Append after cursor |
+| `I` | Insert SOL | Insert at start of line |
+| `A` | Append EOL | Append at end of line |
+| `o` | New Line Below | Insert new line below |
+| `O` | New Line Above | Insert new line above |
+| `x` | Delete Char | Delete character at cursor |
+| `X` | Delete Prev | Delete character before cursor |
+| `dd` | Delete Line | Delete entire line |
+| `D` | Delete EOL | Delete to end of line |
+| `d$` | Delete to EOL | Delete from cursor to end |
+| `d^` | Delete to SOL | Delete from cursor to start |
+| `dw` | Delete Word | Delete word |
+| `dW` | Delete Word+Space | Delete word with space |
+| `diw` | Delete In Word | Delete inner word |
+| `daw` | Delete A Word | Delete word with space |
+| `cc` | Change Line | Change entire line |
+| `cw` | Change Word | Change word |
+| `ciw` | Change In Word | Change inner word |
+| `s` | Substitute Char | Substitute single character |
+| `S` | Substitute Line | Substitute entire line |
+| `.` | Repeat Last | Repeat last command |
+| `u` | Undo | Undo last change |
+| `Ctrl + r` | Redo | Redo undone change |
+
+### Visual Mode & Selection
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `v` | Visual Character | Start visual selection (char) |
+| `V` | Visual Line | Start visual selection (line) |
+| `Ctrl + v` | Visual Block | Start visual selection (block) |
+| `o` | Swap Cursor | Swap cursor position in selection |
+| `h/j/k/l` | Extend Selection | Extend visual selection |
+| `w` | Select Word | Select forward by word |
+| `b` | Select Back | Select backward by word |
+| `e` | Select End | Select to end of word |
+| `$` | Select to EOL | Select to end of line |
+| `^` | Select to SOL | Select to start of line |
+| `%` | Bracket Match | Select matching bracket |
+| `iw` | Inner Word | Select inner word |
+| `aw` | A Word | Select word with space |
+| `i"` | Inner Quote | Select inside quotes |
+| `a"` | A Quote | Select quotes and content |
+| `it` | Inner Tag | Select inner HTML tag |
+| `at` | A Tag | Select HTML tag |
+| `>` | Indent | Indent selection |
+| `<` | Unindent | Unindent selection |
+| `=` | Autoindent | Autoindent selection |
+| `~` | Toggle Case | Toggle case of selection |
+| `u` | Lowercase | Convert to lowercase |
+| `U` | Uppercase | Convert to uppercase |
+
+### Copy, Paste & Registers
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `yy` | Yank Line | Copy entire line |
+| `y$` | Yank to EOL | Copy from cursor to end |
+| `y^` | Yank to SOL | Copy from cursor to start |
+| `yw` | Yank Word | Copy word |
+| `yiw` | Yank Inner Word | Copy inner word |
+| `yaw` | Yank A Word | Copy word with space |
+| `yi"` | Yank Inner Quotes | Copy inside quotes |
+| `yi{` | Yank Inner Braces | Copy inside braces |
+| `p` | Paste After | Paste after cursor |
+| `P` | Paste Before | Paste before cursor |
+| `]p` | Paste Indent | Paste and adjust indent |
+| `[p` | Paste Indent Before | Paste before with indent |
+| `"+y` | Yank to Clipboard | Copy to system clipboard |
+| `"+p` | Paste from Clipboard | Paste from system clipboard |
+| `"ayy` | Yank to Register a | Copy to register 'a' |
+| `"ap` | Paste from Register a | Paste from register 'a' |
+| `:reg` | Show Registers | Show all registers |
+
+### Find & Replace
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `/pattern` | Search Forward | Search for pattern forward |
+| `?pattern` | Search Backward | Search backward for pattern |
+| `n` | Next Match | Jump to next match |
+| `N` | Previous Match | Jump to previous match |
+| `*` | Search Word | Search for word under cursor |
+| `#` | Search Word Back | Search word under cursor backward |
+| `g*` | Search Partial | Search partial word match |
+| `g#` | Search Partial Back | Search partial word backward |
+| `:s/old/new/` | Replace One | Replace first occurrence |
+| `:s/old/new/g` | Replace Line | Replace all on line |
+| `:%s/old/new/g` | Replace All | Replace all in file |
+| `:%s/old/new/gc` | Replace Confirm | Replace with confirmation |
+| `:s/old/new/gi` | Replace Case-Insensitive | Replace ignoring case |
+| `:s/\<old\>/new/g` | Replace Word | Replace whole word only |
+| `:%s/old/new/gi` | Replace All Ignore Case | Replace all, case-insensitive |
+| `:s/\(pattern\)/\1/` | Regex Groups | Use regex with groups |
+| `:s/^/prefix/` | Add Prefix | Add prefix to line |
+| `:s/$/suffix/` | Add Suffix | Add suffix to line |
+
+### Page & Buffer Navigation
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `Ctrl + u` | Page Up | Scroll half page up |
+| `Ctrl + d` | Page Down | Scroll half page down |
+| `Ctrl + b` | Page Up Full | Scroll full page up |
+| `Ctrl + f` | Page Down Full | Scroll full page down |
+| `gg` | Go Top | Go to start of file |
+| `G` | Go Bottom | Go to end of file |
+| `nG` | Go Line | Go to line number n |
+| `:n` | Go Line | Go to line number n (command) |
+| `Ctrl + Home` | Go File Start | Go to start of file |
+| `Ctrl + End` | Go File End | Go to end of file |
+| `H` | High Screen | Go to top of screen |
+| `M` | Middle Screen | Go to middle of screen |
+| `L` | Low Screen | Go to bottom of screen |
+| `zz` | Center Line | Center line in viewport |
+| `zt` | Top Line | Move line to top |
+| `zb` | Bottom Line | Move line to bottom |
+| `z.` | Center & Top | Center and show line at top |
+| `:set number` | Show Line Numbers | Display line numbers |
+| `:set relativenumber` | Relative Numbers | Show relative line numbers |
+| `Ctrl + g` | Show Position | Show current line/column |
+
+### Advanced Vim Functions
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `q:` | Command History | Open command history window |
+| `q/` | Search History | Open search history window |
+| `:read file.txt` | Read File | Insert file contents |
+| `:read !command` | Read Command | Insert command output |
+| `!motion command` | Filter Lines | Filter lines through command |
+| `!!command` | Filter Line | Filter current line through command |
+| `:set paste` | Paste Mode | Enable paste mode (no indent) |
+| `:set nopaste` | Normal Mode | Disable paste mode |
+| `:set nowrap` | No Wrap | Don't wrap long lines |
+| `:set wrap` | Wrap | Wrap long lines |
+| `:set list` | Show Whitespace | Show tabs and spaces |
+| `:set nolist` | Hide Whitespace | Hide tabs and spaces |
+| `Ctrl + w + z` | Close Preview | Close preview window |
+| `:split` | Horizontal Split | Split window horizontally |
+| `:vsplit` | Vertical Split | Split window vertically |
+| `:only` | Close Others | Close all other windows |
+| `:%!command` | Filter Buffer | Filter entire buffer |
+| `:!command` | Run Command | Run shell command |
+| `:read !ls` | List Directory | Insert directory listing |
+| `gq` | Format Text | Format text (wrap) |
+| `gqq` | Format Line | Format current line |
+| `gqap` | Format Paragraph | Format paragraph |
+| `J` | Join Lines | Join lines together |
+| `gJ` | Join No Space | Join lines without space |
+| `~` | Toggle Case | Toggle character case |
+| `g~` | Toggle Case Operator | Toggle case (use with motion) |
+| `gu` | Lowercase | Convert to lowercase |
+| `gU` | Uppercase | Convert to uppercase |
+| `:retab` | Convert Tabs | Convert tabs to spaces |
+| `:set tabstop=4` | Tab Size | Set tab width |
+| `ma` | Mark Position | Mark current position as 'a' |
+| `'a` | Jump Mark | Jump to mark 'a' |
+| `` `a `` | Exact Mark | Jump to exact position of mark |
+| `:marks` | List Marks | Show all marks |
+
 ### LSP Features (Language Server Protocol)
 
 | Shortcut | Action | Description |
@@ -160,6 +326,35 @@ The setup scripts will automatically configure LazyVim with:
 | `Space + p + d` | Debug | Toggle debug mode |
 | `Space + p + D` | Debug Logs | Show debug logs |
 
+### Tab Management & Surfing
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `gt` | Next Tab | Go to next tab |
+| `gT` | Previous Tab | Go to previous tab |
+| `1gt` | Tab 1 | Jump to tab 1 |
+| `2gt` | Tab 2 | Jump to tab 2 |
+| `ngt` | Tab n | Jump to tab number n |
+| `:tabnew` | New Tab | Create new tab |
+| `:tabnew file.txt` | Open in Tab | Open file in new tab |
+| `Ctrl + w + t` | New Tab Window | Create new tab |
+| `:tabedit file.txt` | Tab Edit | Edit file in new tab |
+| `:tabnext` | Next Tab | Go to next tab |
+| `:tabprev` | Previous Tab | Go to previous tab |
+| `:tabnext n` | Jump Tab | Jump to tab n |
+| `:tabfirst` | First Tab | Go to first tab |
+| `:tablast` | Last Tab | Go to last tab |
+| `:tabclose` | Close Tab | Close current tab |
+| `:tabclose n` | Close Tab n | Close tab number n |
+| `:tabonly` | Only Tab | Close all other tabs |
+| `:tabmove` | Move Tab | Move tab to different position |
+| `:tabmove 0` | Move to Start | Move tab to start |
+| `:tabmove $` | Move to End | Move tab to end |
+| `:tabs` | List Tabs | Show all open tabs |
+| `:tabdo command` | Tab All | Execute command in all tabs |
+| `Space + <` | Previous Tab | Go to previous tab (custom) |
+| `Space + >` | Next Tab | Go to next tab (custom) |
+
 ### Telescope (Fuzzy Finder)
 
 | Shortcut | Action | Description |
@@ -176,6 +371,133 @@ The setup scripts will automatically configure LazyVim with:
 | `Space + s + r` | Registers | Registers |
 | `Space + s + k` | Keymaps | Keymaps |
 | `Space + s + o` | Options | Options |
+
+### FZF Integration with LazyVim
+
+**FZF** (Fuzzy Finder) is a command-line fuzzy finder that integrates seamlessly with LazyVim. While Telescope is the default, FZF offers faster performance for large codebases.
+
+#### FZF Installation & Setup
+
+```bash
+# Install FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# Or via package manager
+brew install fzf        # macOS
+sudo apt-get install fzf # Ubuntu/Debian
+```
+
+#### FZF Key Bindings in LazyVim
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `Ctrl + t` | Files | Search files |
+| `Ctrl + r` | History | Search command history |
+| `Alt + c` | Change Dir | Fuzzy navigate directories |
+| `Ctrl + x + Ctrl + f` | Path | Complete file path |
+| `Ctrl + x + Ctrl + d` | Directory | Complete directory |
+| `Ctrl + x + Ctrl + l` | Line | Search line history |
+| `Ctrl + x + Ctrl + k` | Keybindings | Search key bindings |
+
+#### FZF Configuration for LazyVim
+
+```lua
+-- ~/.config/nvim/lua/plugins/fzf.lua
+return {
+  {
+    "junegunn/fzf",
+    build = "./install --all",
+    dependencies = { "junegunn/fzf.vim" },
+  },
+  {
+    "junegunn/fzf.vim",
+    keys = {
+      { "<leader>ff", "<cmd>Files<CR>", desc = "FZF Files" },
+      { "<leader>fb", "<cmd>Buffers<CR>", desc = "FZF Buffers" },
+      { "<leader>fc", "<cmd>Commits<CR>", desc = "FZF Commits" },
+      { "<leader>fl", "<cmd>Lines<CR>", desc = "FZF Lines" },
+      { "<leader>fg", "<cmd>GFiles<CR>", desc = "FZF Git Files" },
+      { "<leader>fr", "<cmd>Rg<CR>", desc = "FZF Ripgrep" },
+      { "<leader>fh", "<cmd>History<CR>", desc = "FZF History" },
+      { "<leader>fs", "<cmd>Snippets<CR>", desc = "FZF Snippets" },
+      { "<leader>fm", "<cmd>Maps<CR>", desc = "FZF Maps" },
+      { "<leader>fw", "<cmd>Windows<CR>", desc = "FZF Windows" },
+    },
+    config = function()
+      vim.g.fzf_layout = { window = { width = 0.9, height = 0.6 } }
+      vim.g.fzf_preview_window = { "right:50%" }
+    end,
+  },
+}
+```
+
+#### FZF Commands in LazyVim
+
+| Command | Description |
+|---------|-------------|
+| `:Files` | Find files in current directory |
+| `:GFiles` | Find git tracked files |
+| `:Buffers` | Search open buffers |
+| `:Lines` | Search lines in current buffer |
+| `:BLines` | Search lines in open buffers |
+| `:Commits` | Search git commits |
+| `:BCommits` | Search commits for current file |
+| `:History` | Search command history |
+| `:History:` | Search search history |
+| `:History/` | Search command line history |
+| `:Rg pattern` | Ripgrep search |
+| `:RgRaw pattern` | Ripgrep with raw flags |
+| `:Snippets` | Search snippets |
+| `:Maps` | Search key maps |
+| `:Colors` | Search color schemes |
+| `:Windows` | Search open windows |
+| `:Marks` | Search marks |
+| `:Tags` | Search tags |
+| `:Jumps` | Search jump list |
+| `:Changes` | Search change list |
+
+#### FZF vs Telescope Comparison
+
+| Feature | FZF | Telescope |
+|---------|-----|-----------|
+| **Speed** | ⚡ Very fast | 🚀 Fast |
+| **Large Codebase** | ✅ Excellent | ⚠️ Good |
+| **Integration** | Simple | Full-featured |
+| **Customization** | Good | Excellent |
+| **Built-in LSP** | No | Yes |
+| **Previews** | Basic | Advanced |
+| **Best For** | Speed, simplicity | Power users |
+
+#### Enable FZF for Specific Commands
+
+```bash
+# ~/.zshrc or ~/.bashrc
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND='fd --type f'
+export FZF_ALT_C_COMMAND='fd --type d'
+
+# Use ripgrep with fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+```
+
+#### FZF Preview Configuration
+
+```lua
+-- ~/.config/nvim/lua/config/keymaps.lua
+-- Enhanced FZF with previews
+local function fzf_files_preview()
+  vim.fn['fzf#run'](vim.fn['fzf#wrap']({
+    source = 'fd --type f',
+    options = {
+      '--preview', 'cat {}',
+      '--preview-window', 'right:50%'
+    }
+  }))
+end
+
+vim.keymap.set('n', '<leader>fp', fzf_files_preview, { desc = "FZF Files with Preview" })
+```
 
 ### Terminal Operations
 

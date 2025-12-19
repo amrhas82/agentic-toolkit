@@ -232,6 +232,50 @@ cd /home/hamr/Documents/PycharmProjects/agentic-toolkit/tools
 | `:bfirst` | First Buffer | Jump to first buffer |
 | `:blast` | Last Buffer | Jump to last buffer |
 
+### Tab Management
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `:tabnew` | New Tab | Create new tab |
+| `:tabedit file` | Tab Edit | Open file in new tab |
+| `gt` | Next Tab | Go to next tab |
+| `gT` | Previous Tab | Go to previous tab |
+| `1gt` | Tab 1 | Jump to tab 1 |
+| `2gt` | Tab 2 | Jump to tab 2 |
+| `ngt` | Tab n | Jump to tab number n |
+| `:tabnext` | Next Tab | Go to next tab (command) |
+| `:tabprev` | Previous Tab | Go to previous tab (command) |
+| `:tabnext n` | Jump Tab | Jump to tab number n |
+| `:tabfirst` | First Tab | Go to first tab |
+| `:tablast` | Last Tab | Go to last tab |
+| `:tabclose` | Close Tab | Close current tab |
+| `:tabclose n` | Close Tab n | Close specific tab number |
+| `:tabonly` | Only Tab | Close all other tabs |
+| `:tabmove` | Move Tab | Move tab to different position |
+| `:tabmove 0` | Move to Start | Move tab to start |
+| `:tabmove $` | Move to End | Move tab to end |
+| `:tabs` | List Tabs | Show all open tabs |
+| `:tabdo command` | Tab All | Execute command in all tabs |
+| `Space + <` | Previous Tab | Go to previous tab (custom) |
+| `Space + >` | Next Tab | Go to next tab (custom) |
+| `Ctrl + w + t` | Tab New Window | Create new tab from current window |
+
+### Workflow: Tabs vs Buffers
+
+**Tabs** are better for organizing different projects/tasks:
+```vim
+:tabnew                  " Create new tab for new task
+gt                       " Switch between tabs
+:tabclose                " Close tab when done
+```
+
+**Buffers** are better for files within same project:
+```vim
+Space + b + b            " Quick buffer switch
+Space + b + n/p          " Navigate between buffers
+Space + b + d            " Close buffer when done
+```
+
 ---
 
 ## 🔎 FZF Integration
@@ -498,6 +542,8 @@ Movement:      h/j/k/l, w/b/e, ^/$, g_
 Jumps:         gg, G, nG, %, Ctrl+o/i
 Marks:         ma, 'a, :marks
 Page:          Ctrl+u/d, Ctrl+b/f, zz/zt/zb
+Tabs:          gt, gT, ngt, :tabnew, :tabclose
+Buffers:       Space+b+n/p, Space+b+d, Space+b+b
 ```
 
 ### Search Shortcuts

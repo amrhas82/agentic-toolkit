@@ -47,6 +47,8 @@ export FZF_DEFAULT_OPS="--extended"
 # Powerlevel10k customization
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+zstyle ':completion:*' menu select
+setopt CORRECT
 
 # Claude Mode Switcher alias
 alias cc-switch="cc-change"

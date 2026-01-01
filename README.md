@@ -58,7 +58,6 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 ### 📖 Curated Resources
 - **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers, workflows ([explore](https://claude-plugins.dev/))
-- **Simple Framework** (`/ai/marketplace/workflows/simple/`): 3-step framework - 1-Create PRD, 2-Generate Tasks, 3-Process Task List
 - **Ollama Local LLM Config** (`/ai/customize/ollama`): Ollama for Opencode/Droid ([get started](/ai/customize/ollama))
 - **Claude Code Switcher** (`/ai/customize/claude-switcher`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
 - **BYOK Opencode/Droid** (`/ai/customize/byok`): Use Synthetic, GLM on Opencode/Droid Config ([get started](/ai/customize/byok))

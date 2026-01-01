@@ -7,6 +7,9 @@
 4. [Tech Stack Preferences](#tech-stack-preferences)
 5. [Development Workflow](#development-workflow)
 6. [Core Principles](#core-principles)
+   - [Twelve-Factor App Methodology](#architecture-methodology-the-twelve-factor-app)
+   - [Technology Choices](#technology-choices)
+   - [Architecture Guidelines](#architecture-guidelines)
 7. [Solution Guidelines](#solution-guidelines)
 8. [Quick Reference](#quick-reference)
 
@@ -176,6 +179,70 @@ Local → GitHub → GHCR → VPS (containerized)
 ```
 
 ## Core Principles
+
+### Architecture Methodology: The Twelve-Factor App
+
+The **Twelve-Factor App** methodology provides a framework for building modern, scalable, and maintainable web applications. Originally designed for cloud platforms, these principles guide our development approach:
+
+#### 📁 **1. Codebase**
+- **Single Repository**: Maintain one codebase per application tracked in version control
+- **Multiple Deploys**: Deploy the same codebase to development, staging, and production environments
+- **Implementation**: Use GitHub for source control with feature branches and clear deployment strategies
+
+#### 📦 **2. Dependencies**
+- **Explicit Declaration**: Use package.json, requirements.txt, or similar dependency files
+- **Isolation**: Ensure dependencies are installed in isolated environments (virtual environments, containers)
+- **Implementation**: Use npm/pip for dependency management, avoid global installations
+
+#### ⚙️ **3. Configuration**
+- **Environment-Based**: Store all configuration in environment variables
+- **No Hardcoded Values**: Never embed API keys, database URLs, or environment-specific settings in code
+- **Implementation**: Use `.env` files for development, environment variables for production
+
+#### 🔌 **4. Backing Services**
+- **Treat as Attached**: View databases, caches, queues, and other services as pluggable resources
+- **Interchangeable**: Design applications to work with different backing services
+- **Implementation**: Use connection strings, abstraction layers, and service discovery patterns
+
+#### 🏗️ **5. Build, Release, Run**
+- **Strict Separation**: Maintain distinct phases for building (compilation), releasing (configuration), and running (execution)
+- **Immutable Releases**: Once built, releases should not be modified
+- **Implementation**: Use CI/CD pipelines, Docker containers, and deployment scripts
+
+#### 🔄 **6. Processes**
+- **Stateless Execution**: Run applications as stateless processes
+- **External State**: Store all persistent data in external backing services (databases, caches)
+- **Implementation**: Avoid in-memory state, use session stores or databases for persistence
+
+#### 🚪 **7. Port Binding**
+- **Self-Contained**: Applications should be fully self-contained and bind to a specified port
+- **Web Server Agnostic**: Don't assume a specific web server or container
+- **Implementation**: Use Express.js with port binding, deploy via reverse proxy
+
+#### ⚡ **8. Concurrency**
+- **Process Model**: Scale out by adding more processes rather than making individual processes larger
+- **Horizontal Scaling**: Design for horizontal scaling across multiple instances
+- **Implementation**: Use process managers (PM2), container orchestration, load balancers
+
+#### 🗑️ **9. Disposability**
+- **Fast Startup**: Applications should start quickly (typically in seconds)
+- **Graceful Shutdown**: Handle shutdown signals cleanly, ensuring data consistency
+- **Implementation**: Use health checks, proper signal handling, and idempotent operations
+
+#### 🔀 **10. Dev/Prod Parity**
+- **Environment Similarity**: Keep development, staging, and production environments as similar as possible
+- **Minimize Differences**: Reduce bugs caused by environment discrepancies
+- **Implementation**: Use Docker for local development, same database types, similar configurations
+
+#### 📊 **11. Logs**
+- **Event Streams**: Treat logs as event streams sent to standard output
+- **Centralized Collection**: Aggregate logs from all environments for analysis
+- **Implementation**: Use `console.log`, structured logging, and log aggregation services
+
+#### 🛠️ **12. Admin Processes**
+- **One-Off Tasks**: Run administrative tasks (migrations, maintenance) as one-off processes
+- **Same Environment**: Execute admin tasks in the same environment as the application
+- **Implementation**: Use npm scripts, separate command-line tools, and task runners
 
 ### Technology Choices
 - Always prefer open-source solutions

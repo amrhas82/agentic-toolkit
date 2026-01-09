@@ -171,14 +171,14 @@ When orchestrator invokes specialists, it passes **minimal necessary context**:
 - ✓ Include: code diff, test requirements, acceptance criteria
 - ✗ Exclude: PRD creation discussions, UI wireframes, database schema decisions
 
-### 1-Create PRD (id: 1-create-prd) 
+### 1-Create PRD (id: 1-create-prd)
 Source: [./agents/ux-expert.md](./agents/1-create-prd.md)
 
 - When to use: Define Scope: use to clearly outlining what needs to be built with a Product Requirement Document (PRD)  optimization
 - How to activate: Mention "create prd, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
-### 2-Generate Tasks (id: 2-generate-tasks) 
+### 2-Generate Tasks (id: 2-generate-tasks)
 Source: [./agents/ux-expert.md](./agents/2-generate-tasks.md)
 
 - When to use: 2. Detailed Planning: use to break down the PRD into a granular, actionable task list
@@ -388,133 +388,139 @@ Source: [./resources/task-briefs.md#advanced-elicitation](./resources/task-brief
 These are slash commands available in the TUI. Use /command-name to execute.
 
 ### Command: xlsx
-Source: [./skills/xlsx.md](./skills/xlsx/SKILLS.md)
+Source: [./skills/xlsx/SKILL.md](./skills/xlsx/SKILL.md)
 - Description: Create, edit, and analyze spreadsheets with formulas, formatting, data analysis, and visualization
 - Usage: `/xlsx <operation> <spreadsheet-file>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: webapp-testing
-Source: [./skills/webapp-testing/SKILLS.md](./skills/webapp-testing/SKILLS.md)
+Source: [./skills/webapp-testing/SKILL.md](./skills/webapp-testing/SKILL.md)
 - Description: Test local web applications using Playwright - verify functionality, debug UI, capture screenshots
 - Usage: `/webapp-testing <webapp-url-or-local-server>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: systematic-debugging
-Source: [./skills/systematic-debugging/SKILLS.md](./skills/systematic-debugging/SKILLS.md)
+Source: [./skills/systematic-debugging/SKILL.md](./skills/systematic-debugging/SKILL.md)
 - Description: Systematic four-phase debugging framework - investigate root cause before any fixes
 - Usage: `/systematic-debugging <bug-or-error-description>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: slack-gif-creator
-Source: [./skills/slack-gif-creator/SKILLS.md](./skills/slack-gif-creator/SKILLS.md)
+Source: [./skills/slack-gif-creator/SKILL.md](./skills/slack-gif-creator/SKILL.md)
 - Description: Create animated GIFs optimized for Slack with size validation and composable animation primitives
 - Usage: `/slack-gif-creator <gif-type> <animation-concept>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: verification-before-completion
-Source: [./skills/verification-before-completion/SKILLS.md](./skills/verification-before-completion/SKILLS.md)
+Source: [./skills/verification-before-completion/SKILL.md](./skills/verification-before-completion/SKILL.md)
 - Description: Verify work meets requirements before marking complete - prevents incomplete deliverables
 - Usage: `/verification-before-completion <work-to-verify>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: skill-creator
-Source: [./skills/skill-creator/SKILLS.md](./skills/command/skill-creator/SKILLS.md)
+Source: [./skills/skill-creator/SKILL.md](./skills/skill-creator/SKILL.md)
 - Description: Create reusable skills with proper structure, validation, and documentation
 - Usage: `/skill-creator <skill-type> <skill-description>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: test-driven-development
-Source: [./skills/test-driven-development/SKILLS.md](./skills/test-driven-development/SKILLS.md)
+Source: [./skills/test-driven-development/SKILL.md](./skills/test-driven-development/SKILL.md)
 - Description: Write test first, watch it fail, write minimal code to pass - ensures tests actually verify behavior
 - Usage: `/test-driven-development <feature-or-behavior-to-test>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: testing-anti-patterns
-Source: [./skills/testing-anti-patterns/SKILLS.md](./skills/testing-anti-patterns/SKILLS.md)
+Source: [./skills/testing-anti-patterns/SKILL.md](./skills/testing-anti-patterns/SKILL.md)
 - Description: Identify and avoid common testing anti-patterns that create fragile, useless tests
 - Usage: `/testing-anti-patterns <testing-scenario>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: theme-factory
-Source: [./skills/theme-factory/SKILLS.md](./skills/theme-factory/SKILLS.md)
+Source: [./skills/theme-factory/SKILL.md](./skills/theme-factory/SKILL.md)
 - Description: Generate consistent themes with proper color systems, typography, and spacing
 - Usage: `/theme-factory <theme-type> <design-requirements>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: root-cause-tracing
-Source: [./skills/root-cause-tracing/SKILLS.md](./skills/root-cause-tracing/SKILLS.md)
+Source: [./skills/root-cause-tracing/SKILL.md](./skills/root-cause-tracing/SKILL.md)
 - Description: Trace issues to their root cause using systematic investigation techniques
 - Usage: `/root-cause-tracing <issue-description>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: internal-comms
-Source: [./skills/internal-comms/SKILLS.md](./skills/internal-comms/SKILLS.md)
+Source: [./skills/internal-comms/SKILL.md](./skills/internal-comms/SKILL.md)
 - Description: Structure internal communications for clarity, actionability, and team alignment
 - Usage: `/internal-comms <communication-type> <audience>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: pdf
-Source: [./skills/pdf/SKILLS.md](./skills/pdf/SKILLS.md)
+Source: [./skills/pdf/SKILL.md](./skills/pdf/SKILL.md)
 - Description: Create, edit, and analyze PDF documents with proper formatting and structure
 - Usage: `/pdf <operation> <pdf-file>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: mcp-builder
-Source: [./skills/mcp-builder/SKILLS.md](./skills/mcp-builder/SKILLS.md)
+Source: [./skills/mcp-builder/SKILL.md](./skills/mcp-builder/SKILL.md)
 - Description: Build Model Context Protocol servers with proper tool definitions and error handling
 - Usage: `/mcp-builder <server-type> <specifications>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: condition-based-waiting
-Source: [./skills/condition-based-waiting/SKILLS.md](./skills/condition-based-waiting/SKILLS.md)
+Source: [./skills/condition-based-waiting/SKILL.md](./skills/condition-based-waiting/SKILL.md)
 - Description: Implement robust waiting mechanisms based on conditions rather than fixed delays
 - Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: pptx
-Source: [./skills/pptx/SKILLS.md](./skills/pptx/SKILLS.md)
+Source: [./skills/pptx/SKILL.md](./skills/pptx/SKILL.md)
 - Description: Create professional PowerPoint presentations with proper structure and design
 - Usage: `/pptx <presentation-type> <content-outline>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: docx
-Source: [./skills/docx/SKILLS.md](./skills/docx/SKILLS.md)
+Source: [./skills/docx/SKILL.md](./skills/docx/SKILL.md)
 - Description: Create and edit Word documents with proper formatting and structure
 - Usage: `/docx <operation> <document-specs>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: brand-guidelines
-Source: [./skills/brand-guidelines/SKILLS.md](./skills/brand-guidelines/SKILLS.md)
+Source: [./skills/brand-guidelines/SKILL.md](./skills/brand-guidelines/SKILL.md)
 - Description: Establish comprehensive brand guidelines with visual identity and usage rules
 - Usage: `/brand-guidelines <brand-type> <requirements>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: brainstorming
-Source: [./skills/brainstorming/SKILLS.md](./skills/brainstorming/SKILLS.md)
+Source: [./skills/brainstorming/SKILL.md](./skills/brainstorming/SKILL.md)
 - Description: Facilitate structured brainstorming sessions with proven techniques and frameworks
 - Usage: `/brainstorming <session-type> <topic>`
 - Full definition: open the source file above (content not embedded)
 
+### Command: market-research-brief
+Source: [./skills/market-research-brief/SKILL.md](./skills/market-research-brief/SKILL.md)
+- Description: Transform loose ideas into structured briefs for market research (@business-analyst), design exploration (/brainstorming), or PRD creation (@1-create-prd)
+- Usage: `/market-research-brief <raw-notes-or-idea>`
+- Full definition: open the source file above (content not embedded)
+
 ### Command: canvas-design
-Source: [./skills/canvas-design/SKILLS.md](./skills/canvas-design/SKILLS.md)
+Source: [./skills/canvas-design/SKILL.md](./skills/canvas-design/SKILL.md)
 - Description: Design visual canvases for business models, user journeys, and strategic planning
 - Usage: `/canvas-design <canvas-type> <design-goals>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: artifacts-builder
-Source: [./skills/artifacts-builder/SKILLS.md](./skills/artifacts-builder/SKILLS.md)
+Source: [./skills/artifacts-builder/SKILL.md](./skills/artifacts-builder/SKILL.md)
 - Description: Build structured artifacts with proper validation, formatting, and documentation
 - Usage: `/artifacts-builder <artifact-type> <specifications>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: algorithmic-art
-Source: [./skills/algorithmic-art/SKILLS.md](./skills/algorithmic-art/SKILLS.md)
+Source: [./skills/algorithmic-art/SKILL.md](./skills/algorithmic-art/SKILL.md)
 - Description: Generate algorithmic art with mathematical patterns and aesthetic principles
 - Usage: `/algorithmic-art <art-type> <pattern-specs>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: code-review
-Source: [./skills/code-review/SKILLS.md](./skills/code-review/SKILLS.md)
+Source: [./skills/code-review/SKILL.md](./skills/code-review/SKILL.md)
 - Description: Conduct thorough code reviews with focus on quality, security, and maintainability
 - Usage: `/code-review <review-scope> <focus-areas>`
 - Full definition: open the source file above (content not embedded)

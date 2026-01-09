@@ -198,4 +198,117 @@ When you invoke the agent, it:
 
 **Savings: ~13K tokens per session! 🚀**
 
+---
+
+## Real-World Claude Code Workflows
+
+There's no single "correct" way to use Claude Code—it's intentionally designed for flexibility. The Claude Code team itself uses it in diverse ways. Here's one battle-tested approach from production usage.
+
+### Multi-Session Parallelism
+
+**Terminal Setup:**
+- Run 5 parallel Claude instances in numbered terminal tabs (1-5)
+- Use system notifications to track which sessions need input
+- Simultaneously run 5-10 additional sessions in Claude Code web
+- Seamlessly hand off between local and web using `&` (background sessions)
+- Use `--teleport` to move context between environments
+- Start sessions from mobile (Claude iOS app) for async progress checks
+
+### Model Strategy
+
+**Opus 4.5 with thinking for everything:**
+- Despite being larger/slower than Sonnet, superior steering and tool use make it faster end-to-end
+- Better first-attempt accuracy reduces iteration cycles
+- Requires less prompt engineering and course correction
+
+### Team CLAUDE.md Maintenance
+
+**Collaborative Documentation:**
+- Single shared CLAUDE.md checked into git for the repository
+- Whole team contributes multiple times per week
+- When Claude makes mistakes, immediately document corrections
+- Each team maintains their own CLAUDE.md—it's a living document
+- Use Claude Code GitHub action (`/install-github-action`) to tag `@.claude` on PRs for CLAUDE.md updates
+- Implements "Compounding Engineering"—the AI learns from its mistakes permanently
+
+### Plan Mode First
+
+**Session Workflow:**
+- Start most sessions in Plan mode (`shift+tab` twice)
+- Iterate on the plan until it's solid before implementation
+- Switch to auto-accept edits mode once plan approved
+- Claude typically one-shots implementation with a good plan
+- **Key insight:** Time invested in planning pays exponential dividends
+
+### Slash Commands for Inner Loops
+
+**Automation Strategy:**
+- Create slash commands for any workflow repeated multiple times daily
+- Eliminates repetitive prompting overhead
+- Commands stored in `.claude/commands/` and checked into git
+- Claude itself can invoke these commands
+
+**Example:** `/commit-push-pr` command
+- Used dozens of times daily
+- Pre-computes `git status` and context using inline bash
+- Runs quickly without model back-and-forth
+
+### Subagent Specialization
+
+**Common Patterns:**
+- `code-simplifier`: Refactors code after completion
+- `verify-app`: Contains detailed end-to-end testing instructions
+- Think of subagents as workflow automation for common PR patterns
+
+### Code Formatting Hooks
+
+**PostToolUse Hook:**
+- Automatically formats Claude's code after edits
+- Claude generates ~90% clean code; hook handles the last 10%
+- Prevents formatting errors in CI
+
+### Permission Management
+
+**Avoid `--dangerously-skip-permissions`:**
+- Instead, use `/permissions` to pre-allow safe bash commands
+- Configurations stored in `.claude/settings.json` and shared with team
+- Reduces unnecessary permission prompts without security compromise
+
+### Tool Integration via MCP
+
+**Claude as Universal Tool Operator:**
+- Searches and posts to Slack (via MCP server)
+- Runs BigQuery analytics queries (`bq` CLI)
+- Fetches error logs from Sentry
+- MCP configuration in `.mcp.json`, shared with team
+- Claude handles all tool usage autonomously
+
+### Long-Running Task Strategies
+
+**Three Approaches:**
+
+1. **Background Agent Verification:** Prompt Claude to verify work with background agent when complete
+2. **Agent Stop Hooks:** Deterministic verification via hooks
+3. **Ralph-Wiggum Plugin:** For fully autonomous long sessions
+4. **Sandbox Permissions:** Use `--permission-mode=dontAsk` or `--dangerously-skip-permissions` in sandboxed environments to avoid blocking on prompts
+
+### The Critical Success Factor: Verification Loops
+
+**Most Important Practice:**
+- Give Claude a way to verify its own work
+- 2-3x improvement in final result quality
+- Verification approach varies by domain:
+  - Simple: Bash command execution
+  - Moderate: Test suite execution
+  - Complex: Browser/simulator testing
+
+**Example:** Claude tests every change to Claude Code web using the Claude Chrome extension
+- Opens browser autonomously
+- Tests UI functionality
+- Iterates until code works AND UX feels polished
+
+**Invest heavily in rock-solid verification infrastructure—this is the multiplier.**
+
+---
+
 

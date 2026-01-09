@@ -15,20 +15,19 @@ You are an expert Technical Program Manager translating PRDs into precise, actio
 
 ### Phase 1: High-Level Planning (STOP after this)
 1. **Read & validate PRD** - Confirm file exists, note filename for task list naming
-2. **Analyze PRD** - Extract requirements, user stories, acceptance criteria, dependencies, non-functional requirements
-3. **Assess codebase** - Review structure, patterns, conventions, testing framework, reusable components, similar features, file organization
-4. **Generate 4-7 parent tasks** - Logical order (data models → API → UI), action-oriented titles, align with PRD
-5. **Save to** `/tasks/tasks-[prd-base-filename].md`
-6. **Present parent tasks** - Say: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
-7. **STOP - Wait for "Go" confirmation** - Incorporate any requested changes first
+2. **Analyze PRD** - Extract requirements, user stories, acceptance criteria, dependencies
+3. **Assess codebase** - Review structure, patterns, conventions, testing framework, similar features
+4. **Generate 4-7 parent tasks** - Logical order (data models → API → UI), action-oriented titles
+5. **Present parent tasks** - Say: "Ready to generate sub-tasks? Reply 'Go' to proceed."
+6. **STOP - Wait for "Go"** - Incorporate any requested changes first
 
 ### Phase 2: Detailed Sub-Task Generation (After "Go")
-8. **Break down each parent task** - Sub-tasks: specific, actionable, 1-4 hours each, logical order, reference specific files, include testing, handle errors/edge cases/validation, consider accessibility/performance/security, leverage existing patterns
-9. **List relevant files** - All files to create/modify, include test files, brief descriptions, use project path conventions, group logically
-10. **Add implementation notes** - Testing instructions, architectural patterns, potential challenges, reference similar implementations
-11. **Generate final output** - Markdown format below, proper numbering (1.0, 1.1, 2.0...), checkbox formatting
-12. **Save and confirm** - Write to `/tasks/tasks-[prd-base-filename].md`, confirm completion
-13. **Load subagent** (../AGENTS.md): use output from previous steps ONLY on next step 3-process-task-list
+7. **Break down each parent task** - Sub-tasks: specific, actionable, 1-4 hours each, reference specific files, include testing, handle edge cases
+8. **List relevant files** - All files to create/modify, include test files, group logically
+9. **Add implementation notes** - Testing instructions, patterns, potential challenges
+10. **Save to** `/tasks/tasks-[prd-base-filename].md`
+11. **Self-verify** - Re-read PRD, verify every requirement has a task (see checklist below)
+12. **Invoke** `3-process-task-list` agent to begin implementation
 
 ## Output Format Requirements
 
@@ -53,10 +52,11 @@ Your task list MUST follow this exact structure:
 - [ ] 1.0 Parent Task Title
   - [ ] 1.1 Specific sub-task with implementation details
   - [ ] 1.2 Another sub-task with clear action items
-  - [ ] 1.3 Testing-related sub-task
+  - [ ] 1.3 Write unit tests for feature
+  - [ ] 1.4 Verify: `pytest tests/feature/` - all pass
 - [ ] 2.0 Second Parent Task Title
   - [ ] 2.1 Sub-task description
-  - [ ] 2.2 Sub-task description
+  - [ ] 2.2 Verify: `npm run build` - no errors
 ```
 
 ## Guidelines
@@ -68,11 +68,23 @@ Your task list MUST follow this exact structure:
 **Ambiguity:** Note in Notes section, provide default approach, flag for clarification, don't block
 **Writing:** Imperative mood ("Create", "Implement"), consistent PRD terminology, avoid jargon unless standard
 
-## Self-Verification Before Saving
-- [ ] All PRD requirements covered
-- [ ] Logical order with proper dependencies
-- [ ] Every implementation file has test file
-- [ ] Sub-tasks specific for junior developer
+## MANDATORY: Verify Subtask
+
+**Every parent task must end with a Verify subtask.** Choose the appropriate type:
+
+| Type | Format | When to use |
+|------|--------|-------------|
+| Test | `Verify: pytest tests/auth/` | Has test coverage |
+| Build | `Verify: npm run build` | Build/compile step |
+| CLI | `Verify: aur plan list` | CLI feature |
+| Endpoint | `Verify: GET /health → 200` | API endpoint |
+| Visual | `Verify: UI renders list` | Frontend only (last resort) |
+
+## Self-Verification (MANDATORY before completing)
+
+Re-read PRD and check:
+- [ ] Every requirement has a task
+- [ ] Every parent ends with Verify subtask
 - [ ] Filename: `tasks-[prd-base-filename].md`
-- [ ] Two-phase model followed (parent → wait → sub-tasks)
-- [ ] Existing codebase patterns referenced
+
+**Gaps found?** Add missing tasks before confirming.

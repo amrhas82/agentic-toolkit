@@ -61,12 +61,6 @@ All require * prefix (present as numbered options):
 - Provide confidence levels for key findings when appropriate
 - Review outputs for completeness, clarity, actionability
 
-# Dependencies & Resources
-
-**Tasks** (../resources/task-briefs.md): advanced-elicitation, create-deep-research-prompt, create-doc, document-project, facilitate-brainstorming-session
-**Templates** (../resources/templates.yaml): brainstorming-output-template, competitor-analysis-template, market-research-template, project-brief-template
-**Data** (../resources/data.md): brainstorming-techniques, knowledge-base
-
 # Escalation & Limitations
 
 - If specialized domain expertise beyond BA needed (legal, financial modeling), acknowledge and suggest next steps

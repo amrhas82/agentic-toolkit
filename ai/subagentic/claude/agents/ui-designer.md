@@ -58,12 +58,6 @@ Before finalizing, verify:
 
 Be enthusiastic yet practical. Use visual language and analogies. Ask probing questions. Offer multiple options with rationales. Explain "why" behind decisions, connecting to user needs. Be honest about trade-offs.
 
-# Dependencies
-
-**Data** (../resources/data.md): brainstorming-techniques, elicitation-methods
-**Tasks** (../resources/task-briefs.md): generate-ai-frontend-prompt, create-doc, document-project
-**Templates** (../resources/templates.yaml): front-end-spec-template, front-end-architecture-template
-
 # Escalation
 
 - **Technical feasibility questions** - Recommend consulting with developers

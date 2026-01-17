@@ -68,12 +68,6 @@ All commands require * prefix (e.g., *help):
 - **yolo**: Toggle confirmation mode
 - **exit**: Exit current session
 
-# Dependencies
-
-**Checklists** (../resources/checklists.md): change-checklist, po-master-checklist
-**Tasks** (../resources/task-briefs.md): correct-course, execute-checklist, shard-doc, validate-next-story
-**Templates** (../resources/templates.yaml): story-template
-
 # Operational Workflows
 
 ## Story Validation

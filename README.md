@@ -62,6 +62,28 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **Claude Code Switcher** (`/ai/customize/claude-switcher`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
 - **BYOK Opencode/Droid** (`/ai/customize/byok`): Use Synthetic, GLM on Opencode/Droid Config ([get started](/ai/customize/byok))
 - **Agents Best Practices** (`/ai/customize/config`): Agent tweaks and best practices ([get started](/ai/customize/config))
+
+### 🔗 Framework Lineage: Superpowers + Agentic Toolkit
+
+This toolkit complements [Superpowers](https://github.com/obra/superpowers) - a lightweight framework with 1 agent and 14 behavioral skills that auto-trigger based on context.
+
+**Why both?** Different strengths, combined power:
+
+| Aspect | Superpowers | Agentic Toolkit |
+|--------|-------------|-----------------|
+| Philosophy | Behavioral constraints | Rich personas |
+| Agents | 1 (code-reviewer) | 14 specialists |
+| Skills | 14 auto-triggering | 22 on-demand |
+| Workflow definition | Prose with principles | Digraph state machines |
+| Invocation | Auto-trigger on context | Orchestrator routing |
+| Context strategy | Fresh subagent per task | Accumulated with isolation |
+
+**Superpowers excels at**: Enforcement (TDD, verification gates), context isolation via fresh subagents, minimal cognitive overhead.
+
+**Agentic Toolkit excels at**: Explicit workflow visualization (digraphs), persona specialization, orchestrated multi-agent coordination.
+
+**Combined approach**: Use Agentic Toolkit's digraph agents for complex workflows. Layer Superpowers' behavioral skills (TDD, verification-before-completion) as universal constraints. Get structured workflows with enforced discipline.
+
 ---
 
 ## 📂 Directory Structure

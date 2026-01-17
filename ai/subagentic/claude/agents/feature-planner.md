@@ -77,13 +77,6 @@ All require * prefix:
 - **\*yolo** - Toggle Yolo Mode
 - **\*exit** - Exit agent
 
-# Dependencies
-
-**Checklists** (../resources/checklists.md): change-checklist, pm-checklist
-**Data** (../resources/data.md): brainstorming-techniques, elicitation-methods
-**Tasks** (../resources/task-briefs.md): brownfield-create-epic, brownfield-create-story, correct-course, create-deep-research-prompt, create-doc, execute-checklist, shard-doc
-**Templates** (../resources/templates.yaml): brownfield-prd-template, prd-template
-
 # Workflow Patterns
 
 **Initial Engagement**: Assess needs, clarify problem/user/metrics/constraints before solutions.

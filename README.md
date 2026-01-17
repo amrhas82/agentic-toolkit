@@ -20,7 +20,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 |----------|-----------|-------------|
 | **Agents** | 14 Role-Based Specialists | PO, PM, QA, Dev, Architect, UX, Master, Orchestrator plus 3-phase workflow agents (1-create-prd, 2-generate-tasks, 3-process-task-list) |
 | **Skills** | 11 Core Workflows | systematic-debugging, test-driven-development, verification-before-completion, testing-anti-patterns, root-cause-tracing, condition-based-waiting, brainstorming, code-review, skill-creator, docs-builder, subagent-spawning |
-| **Commands** | 22+ Ready-to-Use | xlsx, pdf, docx, pptx, webapp-testing, slack-gif-creator, theme-factory, mcp-builder, canvas-design, algorithmic-art, brand-guidelines, internal-comms, artifacts-builder, and more |
+| **Commands** | 9 Development Tools | debug, explain, git-commit, optimize, refactor, review, security, ship, test-generate |
 | **Workflows** | 3-Phase Development | PRD Creation → Task Generation → Sequential Execution with automatic routing through digraph state machines |
 | **Architecture** | Token Efficient | Progressive disclosure loads ~950 tokens for agent stubs, expands only when invoked |
 | **Installation** | Multiple Options | Manual copy-paste (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx agentic-kit`) |

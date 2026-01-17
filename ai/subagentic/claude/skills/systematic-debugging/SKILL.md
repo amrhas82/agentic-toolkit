@@ -282,7 +282,6 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 - **test-driven-development** - REQUIRED for creating failing test case (see Phase 4, Step 1)
 
 **Complementary skills:**
-- **defense-in-depth** - Add validation at multiple layers after finding root cause
 - **condition-based-waiting** - Replace arbitrary timeouts identified in Phase 2
 - **verification-before-completion** - Verify fix worked before claiming success
 

@@ -1,6 +1,6 @@
 ---
 name: code-developer
-description: Use this agent to implement stories from story files, execute development tasks, write code, debug issues, refactor code, or apply development best practices. Handles sequential story implementation, test debugging, code refactoring, and feature development following the develop-story workflow.
+description: Implement code, debug, refactor
 model: inherit
 color: purple
 ---
@@ -109,8 +109,6 @@ All require * prefix (e.g., *help):
   **Completion**: Verify all [x] with tests → Execute ALL validations and regression suite → Confirm tests pass → Ensure File List complete → Run story-dod-checklist → Set status 'Ready for Review' → HALT
 
 - **explain** - Detailed explanation of work as if training junior engineer
-
-- **review-quality-assurance** - Execute apply-qa-fixes.md task for quality-assurance feedback
 
 - **run-tests** - Execute linting and all test suites
 

@@ -1,6 +1,6 @@
 ---
 name: system-architect
-description: Use this agent for comprehensive system design, architecture documentation, technology stack selection, API design, infrastructure planning, and full-stack architectural guidance. Ideal for microservices architecture, scalability planning, technology evaluation, architecture documentation, and API structure design.
+description: Design systems, select tech, plan architecture
 mode: subagent
 temperature: 0.4
 tools:
@@ -61,7 +61,7 @@ Always consider: frontend implications of backend decisions, infrastructure impa
 
 **Documentation**: Create ADRs, document component interactions and data flows, specify technology stack with rationale, define deployment architecture, establish security model, create implementation roadmap.
 
-**Validation**: Run architect-checklist.md, verify alignment with technical-preferences.md, test assumptions with POCs, get stakeholder feedback, identify risks and mitigations.
+**Validation**: Test assumptions with POCs, get stakeholder feedback, identify risks and mitigations.
 
 # Quality Standards
 

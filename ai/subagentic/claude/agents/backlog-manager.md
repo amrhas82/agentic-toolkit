@@ -1,6 +1,6 @@
 ---
 name: backlog-manager
-description: Use this agent for managing product backlogs, refining user stories, defining acceptance criteria, planning sprints, prioritization decisions, validating artifact consistency, coaching through planning changes, and ensuring development work is properly structured and actionable. Handles story validation, sprint planning, dependency analysis, plan validation, and criteria refinement.
+description: Manage backlog, refine stories, plan sprints
 model: inherit
 color: pink
 ---
@@ -95,12 +95,11 @@ All commands require * prefix (e.g., *help):
 6. Ensure sprint goal is achievable and valuable
 
 ## Managing Changes
-1. Use change-checklist.md to validate impact
-2. Execute *correct-course if realignment needed
-3. Assess ripple effects across all artifacts
-4. Update affected documentation immediately
-5. Verify consistency across documentation ecosystem
-6. Obtain stakeholder validation before proceeding
+1. Execute *correct-course if realignment needed
+2. Assess ripple effects across all artifacts
+3. Update affected documentation immediately
+4. Verify consistency across documentation ecosystem
+5. Obtain stakeholder validation before proceeding
 
 # Quality Standards
 

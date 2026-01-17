@@ -1,6 +1,6 @@
 ---
 name: quality-assurance
-description: Use this agent for comprehensive quality assessment, test architecture review, and quality gate decisions (PASS/CONCERNS/FAIL/WAIVED) for stories and code changes. Handles requirements traceability, risk assessment, test strategy design, production readiness validation, and quality feedback for implementations.
+description: Quality gates, test architecture, code review
 model: inherit
 color: orange
 ---

@@ -53,7 +53,6 @@ Note
 | Architect | system-architect | Use for system design, architecture documents, technology selection, API design, and infrastructure planning |
 | Business Analyst | market-researcher | Use for market research, brainstorming, competitive analysis, creating project briefs, initial project discovery, and documenting existing projects (brownfield) |
 | Context Initializer | context-builder | Use to initialize Opencode context for new/existing projects, discover and organize documentation, create AGENTS.md and KNOWLEDGE_BASE.md for optimal token-efficient memory |
-| Documentation Architect | docs-builder | Use to create comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process) |
 
 ## Common Workflow Patterns
 
@@ -270,13 +269,6 @@ Source: [./agent/market-researcher.md](./agent/market-researcher.md)
 - How to activate: Mention "As analyst, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
-### Documentation Architect (id: docs-builder)
-Source: [./agent/docs-builder.md](./agent/docs-builder.md)
-
-- When to use: Use to create comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process)
-- How to activate: Mention "As docs-builder, ..." to get role-aligned behavior
-- Full definition: open the source file above (content not embedded)
-
 ## Tasks
 
 These are reusable task briefs; use the paths to open them as needed.
@@ -393,3 +385,68 @@ Source: [./resources/task-briefs.md#advanced-elicitation](./resources/task-brief
 
 ## Commands
 
+### Command: brainstorming
+Source: [./command/brainstorming.md](./commands/brainstorming.md)
+- Description: Facilitate structured brainstorming sessions with proven techniques and frameworks
+- Usage: `/brainstorming <session-type> <topic>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: code-review
+Source: [./command/code-review.md](./commands/code-review.md)
+- Description: Conduct thorough code reviews with focus on quality, security, and maintainability
+- Usage: `/code-review <review-scope> <focus-areas>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: condition-based-waiting
+Source: [./command/condition-based-waiting.md](./commands/condition-based-waiting.md)
+- Description: Implement robust waiting mechanisms based on conditions rather than fixed delays
+- Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: docs-builder
+Source: [./command/docs-builder/SKILL.md](./commands/docs-builder/SKILL.md)
+- Description: Create comprehensive project documentation with structured /docs hierarchy
+- Usage: `/docs-builder`
+- Full definition: open the source file above (content not embedded)
+
+### Command: root-cause-tracing
+Source: [./command/root-cause-tracing.md](./commands/root-cause-tracing.md)
+- Description: Trace issues to their root cause using systematic investigation techniques
+- Usage: `/root-cause-tracing <issue-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: skill-creator
+Source: [./command/skill-creator.md](./commands/skill-creator.md)
+- Description: Create reusable skills with proper structure, validation, and documentation
+- Usage: `/skill-creator <skill-type> <skill-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: subagent-spawning
+Source: [./command/subagent-spawning.md](./commands/subagent-spawning.md)
+- Description: Templates for spawning fresh subagents with TDD-aware task isolation
+- Usage: Used by 3-process-task-list and other agents for clean subagent execution
+- Full definition: open the source file above (content not embedded)
+
+### Command: systematic-debugging
+Source: [./command/systematic-debugging.md](./commands/systematic-debugging.md)
+- Description: Systematic four-phase debugging framework - investigate root cause before any fixes
+- Usage: `/systematic-debugging <bug-or-error-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: test-driven-development
+Source: [./command/test-driven-development.md](./commands/test-driven-development.md)
+- Description: Write test first, watch it fail, write minimal code to pass - ensures tests actually verify behavior by requiring failure first. Auto-triggers when implementing features/bugfixes.
+- Usage: `/test-driven-development <feature-or-behavior-to-test>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: testing-anti-patterns
+Source: [./command/testing-anti-patterns.md](./commands/testing-anti-patterns.md)
+- Description: Identify and avoid common testing anti-patterns that create fragile, useless tests
+- Usage: `/testing-anti-patterns <testing-scenario>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: verification-before-completion
+Source: [./command/verification-before-completion.md](./commands/verification-before-completion.md)
+- Description: Verify work meets requirements before marking complete - prevents incomplete deliverables. Auto-triggers before claiming done/fixed/complete/passing.
+- Usage: `/verification-before-completion <work-to-verify>`
+- Full definition: open the source file above (content not embedded)

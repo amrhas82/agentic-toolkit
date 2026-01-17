@@ -1,6 +1,6 @@
 ---
 name: master
-description: Use this agent for comprehensive task execution across all domains, one-off tasks without specialized personas, and executing agentic resources (tasks, checklists, templates, workflows). Universal executor for creating documents, running checklists, listing templates, facilitating brainstorming.
+description: Execute any task without specialized persona
 model: inherit
 tools: ["Read", "LS", "Grep", "Glob", "Create", "Edit", "MultiEdit", "ApplyPatch", "Execute", "WebSearch", "FetchUrl", "mcp"]
 ---
@@ -79,13 +79,7 @@ digraph Master {
 # Commands
 
 - **\*help** - Display all commands in numbered list
-- **\*create-doc {template}** - Execute create-doc task
-- **\*doc-out** - Output full document to /docs/master
-- **\*document-project** - Execute document-project.md task
-- **\*execute-checklist {checklist}** - Run specified checklist
 - **\*knowledge-base**: Toggle KB mode off (default) or on
-- **\*shard-doc {document} {destination}** - Execute shard-doc task on document to destination
-- **\*task {task}** - Execute specified task
 - **\*yolo** - Toggle Yolo Mode for rapid execution
 - **\*exit** - Exit agent (confirm before exiting)
 

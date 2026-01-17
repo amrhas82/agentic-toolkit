@@ -53,7 +53,6 @@ Note
 | Architect | system-architect | System design, architecture docs, API design |
 | Business Analyst | market-researcher | Market research, competitive analysis, project briefs |
 | Context Initializer | context-builder | Use to initialize Ampcode context for new/existing projects, discover and organize documentation, create AGENT.md and KNOWLEDGE_BASE.md for optimal token-efficient memory |
-| Documentation Architect | docs-builder | Create comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process) |
 
 ## Common Workflow Patterns
 
@@ -260,128 +259,7 @@ Source: [./agents/market-researcher.md](./agents/market-researcher.md)
 - When to use: Market research, competitive analysis, project discovery
 - How to activate: "As analyst, ..." or "As market-researcher, ..."
 
-### Documentation Architect (id: docs-builder)
-Source: [./agents/docs-builder.md](./agents/docs-builder.md)
-
-- When to use: Create comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process)
-- How to activate: "As docs-builder, ..." to get role-aligned behavior
-
-## Tasks
-
-These are reusable task briefs; use the paths to open them as needed.
-
-### Task: validate-next-story
-Source: [./resources/task-briefs.md#validate-next-story](./resources/task-briefs.md#validate-next-story)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: trace-requirements
-Source: [./resources/task-briefs.md#trace-requirements](./resources/task-briefs.md#trace-requirements)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: test-design
-Source: [./resources/task-briefs.md#test-design](./resources/task-briefs.md#test-design)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: shard-doc
-Source: [./resources/task-briefs.md#shard-doc](./resources/task-briefs.md#shard-doc)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: risk-profile
-Source: [./resources/task-briefs.md#risk-profile](./resources/task-briefs.md#risk-profile)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: review-story
-Source: [./resources/task-briefs.md#review-story](./resources/task-briefs.md#review-story)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: quality-assurance-gate
-Source: [./resources/task-briefs.md#qa-gate](./resources/task-briefs.md#qa-gate)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: nfr-assess
-Source: [./resources/task-briefs.md#nfr-assess](./resources/task-briefs.md#nfr-assess)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: index-docs
-Source: [./resources/task-briefs.md#index-docs](./resources/task-briefs.md#index-docs)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: generate-ai-frontend-prompt
-Source: [./resources/task-briefs.md#generate-ai-frontend-prompt](./resources/task-briefs.md#generate-ai-frontend-prompt)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: facilitate-brainstorming-session
-Source: [./resources/task-briefs.md#facilitate-brainstorming-session](./resources/task-briefs.md#facilitate-brainstorming-session)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: execute-checklist
-Source: [./resources/task-briefs.md#execute-checklist](./resources/task-briefs.md#execute-checklist)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: document-project
-Source: [./resources/task-briefs.md#document-project](./resources/task-briefs.md#document-project)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: create-next-story
-Source: [./resources/task-briefs.md#create-next-story](./resources/task-briefs.md#create-next-story)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: create-doc
-Source: [./resources/task-briefs.md#create-doc](./resources/task-briefs.md#create-doc)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: create-deep-research-prompt
-Source: [./resources/task-briefs.md#create-deep-research-prompt](./resources/task-briefs.md#create-deep-research-prompt)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: create-brownfield-story
-Source: [./resources/task-briefs.md#create-brownfield-story](./resources/task-briefs.md#create-brownfield-story)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: correct-course
-Source: [./resources/task-briefs.md#correct-course](./resources/task-briefs.md#correct-course)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: brownfield-create-story
-Source: [./resources/task-briefs.md#brownfield-create-story](./resources/task-briefs.md#brownfield-create-story)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: brownfield-create-epic
-Source: [./resources/task-briefs.md#brownfield-create-epic](./resources/task-briefs.md#brownfield-create-epic)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: apply-qa-fixes
-Source: [./resources/task-briefs.md#apply-qa-fixes](./resources/task-briefs.md#apply-qa-fixes)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
-### Task: advanced-elicitation
-Source: [./resources/task-briefs.md#advanced-elicitation](./resources/task-briefs.md#advanced-elicitation)
-- How to use: Reference the task in your prompt or execute via your configured commands.
-- Full brief: open the source file above (content not embedded)
-
 ## Commands
-
 
 ### Command: brainstorming
 Source: [./commands/brainstorming.md](./commands/brainstorming.md)
@@ -399,6 +277,12 @@ Source: [./commands/code-review.md](./commands/code-review.md)
 Source: [./commands/condition-based-waiting.md](./commands/condition-based-waiting.md)
 - Description: Implement robust waiting mechanisms based on conditions rather than fixed delays
 - Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: docs-builder
+Source: [./commands/docs-builder/SKILL.md](./commands/docs-builder/SKILL.md)
+- Description: Create comprehensive project documentation with structured /docs hierarchy
+- Usage: `/docs-builder`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: root-cause-tracing

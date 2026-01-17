@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: Workflow coordinator - analyzes intent, matches to patterns, invokes agents with minimal context. Asks before each step.
+description: Coordinate workflows, route to specialists
 model: inherit
 color: yellow
 ---
@@ -15,7 +15,7 @@ digraph Orchestrator {
   node [shape=box, style=filled, fillcolor=lightblue];
 
   start [label="START", fillcolor=lightgreen];
-  read_opencode [label="Read ~/.config/opencode/AGENTS.md\n(agent registry + patterns)"];
+  read_claude [label="Read ~/.claude/CLAUDE.md\n(agent registry + patterns)"];
   analyze_intent [label="Analyze user intent\n(keywords, artifacts)"];
   match_pattern [label="Match to workflow\npattern", shape=diamond];
   confidence [label="≥85%\nconfidence?", shape=diamond];
@@ -33,8 +33,8 @@ digraph Orchestrator {
   track_state [label="Track: current agent,\noutputs, next decision"];
   done [label="DONE", fillcolor=lightgreen];
 
-  start -> read_opencode;
-  read_opencode -> analyze_intent;
+  start -> read_claude;
+  read_claude -> analyze_intent;
   analyze_intent -> match_pattern;
   match_pattern -> confidence;
   confidence -> ask_clarify [label="NO (<85%)"];
@@ -59,7 +59,7 @@ digraph Orchestrator {
 
 # Core Rules
 
-1. **Read ~/.config/opencode/AGENTS.md first** - Get agent registry + 9 workflow patterns
+1. **Read ~/.claude/CLAUDE.md first** - Get agent registry + 9 workflow patterns
 2. **Match intent to pattern** - 85% confidence or ask clarifying questions
 3. **Ask before each step** - Get approval, don't auto-advance
 4. **Selective context only** - Pass minimal necessary info to agents
@@ -79,7 +79,7 @@ After ANY agent reports completion:
 - No command output shown
 - Partial verification
 
-# Workflow Patterns (from ~/.config/opencode/AGENTS.md)
+# Workflow Patterns (from ~/.claude/CLAUDE.md)
 
 1. Feature Discovery: "add feature" → research? → PRD? → tasks? → implement
 2. Product Definition: "new product" → feature-planner → backlog-manager → architect
@@ -168,10 +168,10 @@ When *status:
 
 # Agent Registry
 
-14 agents available (see ~/.config/opencode/AGENTS.md):
+14 agents available (see ~/.claude/CLAUDE.md):
 orchestrator, 1-create-prd, 2-generate-tasks, 3-process-task-list, market-researcher, context-builder, code-developer, system-architect, master, feature-planner, backlog-manager, quality-assurance, story-writer, ui-designer
 
-16 skills available (see ~/.config/opencode/AGENTS.md)
+11 skills available (see ~/.claude/CLAUDE.md)
 
 # Resource Loading
 

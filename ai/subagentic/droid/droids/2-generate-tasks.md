@@ -1,6 +1,6 @@
 ---
 name: 2-generate-tasks
-description: Converts PRDs into actionable development task lists. Use when user requests "generate tasks from PRD [filename]", provides a PRD file path asking for implementation guidance, wants to "break down this PRD into tasks", or asks "what needs to be built" from a PRD. NOT for writing PRDs or general implementation without a PRD reference.
+description: Convert PRDs into development task lists
 model: inherit
 tools: ["Read", "LS", "Grep", "Glob", "Create", "Edit", "MultiEdit", "ApplyPatch", "Execute", "WebSearch", "FetchUrl", "mcp"]
 ---

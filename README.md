@@ -10,6 +10,26 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 ---
 
+## ⚡ Core Value: Structured AI Development Made Simple
+
+**Lightweight, structured subagents that enforce sequential task execution with built-in verification** - not just natural language prompting.
+
+### Why Agentic Toolkit?
+
+🎯 **Structured Workflows Over Chaos**: 14 role-based agents execute tasks in order through digraph state machines, not fuzzy natural language
+🔒 **Built-in Verification**: 11 core skills provide systematic debugging, TDD enforcement, and verification gates before claiming completion
+📦 **Ready to Deploy**: Copy-paste installation (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx agentic-kit`)
+⚡ **Token Efficient**: Progressive disclosure loads only ~950 tokens for agent stubs, expanding to full content only when invoked
+🔄 **3-Phase Development**: PRD Creation → Task Generation → Sequential Execution with automatic routing
+
+### Complete & Self-Sufficient
+
+Works standalone out of the box. Optional: Add [Superpowers](https://github.com/obra/superpowers) framework for auto-triggering behavioral constraints if desired.
+
+**[📖 Full Subagent Manual](ai/subagentic/subagentic-manual.md)** | **[🚀 Install Now](#-quick-start)**
+
+---
+
 ## 🚀 Quick Start
 
 1. **Clone the Toolkit**: `git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit`
@@ -34,18 +54,14 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **Core Concepts**: Tool selection, AI collaboration, avoiding common pitfalls
 - **Practical Examples**: Real-world vibecoding scenarios and best practices
 
-### ⭐ Subagent Kits & Agentic Package - Ready-to-Use AI Agents
-- **Author-Created Content**: Adapted and compacted BMAD+Simple subagents with skills/commands and detailed role-based flows to save context
-- **Token-Efficient Design**: 14 agents use **progressive disclosure** - only ~967 tokens for stubs in base conversation, full content (889-3.5k tokens) loads only when invoked. 22 skills (~3.1k tokens as metadata) expand on-demand (163-6.3k tokens when activated)
-- **Orchestrator-First**: Orchestrator (~2k tokens) automatically routes requests to optimal specialist workflows with conditional questions, minimizing context overhead
-- **3-Phase Workflow**: 1-Create PRD, 2-Generate Tasks, 3-Process Task List
-- **Role-Based Agents**: PO, PM, QA, Dev, Architect, UX, Master, Orchestrator
-- **Two Installation Options**:
-  - **Subagent Kits**: `/ai/subagentic/` - Manual copy (e.g., `cp -rv ai/subagentic/claude/* ~/.claude/`)
-  - **Agentic Package**: `npx agentic-kit` - NPM installable version ([repo](https://github.com/amrhas82/agentic-kit))
-- **Benefits of Package**: No cloning needed, always latest, easy updates
-- **Example**: Ask "As full-stack-dev, build a login page" - agents handle the workflow automatically
-- **[Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Complete guide with token loads and progressive disclosure details
+### ⭐ Subagent Kits & Agentic Package - Installation & Platform Support
+- **14 Role-Based Agents**: PO, PM, QA, Dev, Architect, UX, Master, Orchestrator (1-create-prd, 2-generate-tasks, 3-process-task-list, etc.)
+- **11 Core Skills**: systematic-debugging, test-driven-development, verification-before-completion, testing-anti-patterns, root-cause-tracing, condition-based-waiting, brainstorming, code-review, skill-creator, docs-builder, subagent-spawning
+- **Installation Options**:
+  - **Manual**: Copy from `/ai/subagentic/` (e.g., `cp -rv ai/subagentic/claude/* ~/.claude/`)
+  - **NPM Package**: `npx agentic-kit` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/agentic-kit))
+- **Usage**: Ask "As code-developer, build a login page" or "Create PRD for user auth" - agents route to optimal workflows
+- **[📖 Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Token loads, progressive disclosure, complete reference
 
 | Bash     | Subagents                | Commands/Skills | Available in Kit   | Global Config      |
 |----------|--------------------------|-----------------|--------------------|--------------------|
@@ -63,26 +79,21 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 - **BYOK Opencode/Droid** (`/ai/customize/byok`): Use Synthetic, GLM on Opencode/Droid Config ([get started](/ai/customize/byok))
 - **Agents Best Practices** (`/ai/customize/config`): Agent tweaks and best practices ([get started](/ai/customize/config))
 
-### 🔗 Framework Lineage: Superpowers + Agentic Toolkit
+### 🔗 Optional Enhancement: Superpowers Integration
 
-This toolkit complements [Superpowers](https://github.com/obra/superpowers) - a lightweight framework with 1 agent and 14 behavioral skills that auto-trigger based on context.
+Agentic Toolkit is **complete and self-sufficient** out of the box. For users who want **auto-triggering behavioral constraints**, you can optionally layer [Superpowers](https://github.com/obra/superpowers) - a complementary framework with 14 auto-triggering skills that enforce discipline through context detection.
 
-**Why both?** Different strengths, combined power:
+| Aspect | Agentic Toolkit (Standalone) | + Superpowers (Optional) |
+|--------|------------------------------|--------------------------|
+| **Workflow execution** | Digraph state machines with explicit routing | Same, plus auto-triggered constraints |
+| **Agents** | 14 role-based specialists | Same 14, plus 1 code-reviewer |
+| **Skills** | 11 on-demand workflow skills | Same 11, plus 14 auto-triggering behavioral skills |
+| **Invocation** | Orchestrator routing | Same, plus context-based auto-triggers |
+| **Use case** | Structured multi-agent workflows | Same, plus enforced TDD/verification gates |
 
-| Aspect | Superpowers | Agentic Toolkit |
-|--------|-------------|-----------------|
-| Philosophy | Behavioral constraints | Rich personas |
-| Agents | 1 (code-reviewer) | 14 specialists |
-| Skills | 14 auto-triggering | 22 on-demand |
-| Workflow definition | Prose with principles | Digraph state machines |
-| Invocation | Auto-trigger on context | Orchestrator routing |
-| Context strategy | Fresh subagent per task | Accumulated with isolation |
+**Use Agentic Toolkit alone for**: Structured development with role-based agents and explicit workflow control.
 
-**Superpowers excels at**: Enforcement (TDD, verification gates), context isolation via fresh subagents, minimal cognitive overhead.
-
-**Agentic Toolkit excels at**: Explicit workflow visualization (digraphs), persona specialization, orchestrated multi-agent coordination.
-
-**Combined approach**: Use Agentic Toolkit's digraph agents for complex workflows. Layer Superpowers' behavioral skills (TDD, verification-before-completion) as universal constraints. Get structured workflows with enforced discipline.
+**Add Superpowers if you want**: Auto-triggering enforcement (TDD must run first, verification before claiming done), fresh subagent isolation per task, behavioral constraints without explicit invocation.
 
 ---
 

@@ -53,7 +53,6 @@ Note
 | Architect | system-architect | Use for system design, architecture documents, technology selection, API design, and infrastructure planning |
 | Business Analyst | market-researcher | Use for market research, brainstorming, competitive analysis, creating project briefs, initial project discovery, and documenting existing projects (brownfield) |
 | Context Initializer | context-builder | Use to initialize Claude Code context for new/existing projects, discover and organize documentation, create CLAUDE.md and KNOWLEDGE_BASE.md for optimal token-efficient memory |
-| Documentation Architect | docs-builder | Use to create comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process) |
 
 ## Common Workflow Patterns
 
@@ -270,16 +269,9 @@ Source: [./agents/market-researcher.md](./agents/market-researcher.md)
 - How to activate: Mention "As analyst, ..." to get role-aligned behavior
 - Full definition: open the source file above (content not embedded)
 
-### Documentation Architect (id: docs-builder)
-Source: [./agents/docs-builder.md](./agents/docs-builder.md)
-
-- When to use: Use to create comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process)
-- How to activate: Mention "As docs-builder, ..." to get role-aligned behavior
-- Full definition: open the source file above (content not embedded)
-
 ## Skills
 
-Core workflow skills (10 total). Use /command-name to execute.
+Core workflow skills (11 total). Use /command-name to execute.
 
 ### Skill: brainstorming
 Source: [./skills/brainstorming/SKILL.md](./skills/brainstorming/SKILL.md)
@@ -297,6 +289,12 @@ Source: [./skills/code-review/SKILL.md](./skills/code-review/SKILL.md)
 Source: [./skills/condition-based-waiting/SKILL.md](./skills/condition-based-waiting/SKILL.md)
 - Description: Implement robust waiting mechanisms based on conditions rather than fixed delays
 - Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
+- Full definition: open the source file above (content not embedded)
+
+### Skill: docs-builder
+Source: [./skills/docs-builder/SKILL.md](./skills/docs-builder/SKILL.md)
+- Description: Create comprehensive project documentation with structured /docs hierarchy
+- Usage: `/docs-builder`
 - Full definition: open the source file above (content not embedded)
 
 ### Skill: root-cause-tracing

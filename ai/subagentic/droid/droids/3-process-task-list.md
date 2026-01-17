@@ -1,6 +1,6 @@
 ---
 name: 3-process-task-list
-description: Manages implementation progress using markdown task lists with strict sequential execution and commit management. Use when user wants to implement a PRD systematically, has completed subtasks needing tracking, wants to continue work on an existing task list, or needs task list updates.
+description: Execute task lists with sequential commits
 model: inherit
 tools: ["Read", "LS", "Grep", "Glob", "Create", "Edit", "MultiEdit", "ApplyPatch", "Execute", "WebSearch", "FetchUrl", "mcp"]
 ---

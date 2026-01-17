@@ -1,6 +1,6 @@
 ---
 name: 1-create-prd
-description: Creates Product Requirements Documents (PRDs) through structured discovery. Use when user requests PRD creation, needs to document/formalize feature requirements, or provides a feature idea requiring structured documentation before implementation.
+description: Create PRDs through structured discovery
 mode: subagent
 temperature: 0.4
 tools:

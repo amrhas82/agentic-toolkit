@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: Workflow coordinator - analyzes intent, matches to patterns, invokes agents with minimal context. Asks before each step.
+description: Coordinate workflows, route to specialists
 model: inherit
 color: yellow
 ---
@@ -171,7 +171,7 @@ When *status:
 14 agents available (see ~/.claude/CLAUDE.md):
 orchestrator, 1-create-prd, 2-generate-tasks, 3-process-task-list, market-researcher, context-builder, code-developer, system-architect, master, feature-planner, backlog-manager, quality-assurance, story-writer, ui-designer
 
-16 skills available (see ~/.claude/CLAUDE.md)
+11 skills available (see ~/.claude/CLAUDE.md)
 
 # Resource Loading
 

@@ -58,13 +58,12 @@ Install and invoke for your platform:
 | **orchestrator** | Workflow coordination, multi-agent task management, automatic routing | ~902 tokens    |
 | **master** | Comprehensive expertise across all domains, universal executor | ~1,073 tokens  |
 | **context-builder** | Project context setup, documentation discovery, creates CLAUDE.md with agent system | ~1,614 tokens |
-| **docs-builder** | Comprehensive project documentation with structured /docs hierarchy (00-context, 01-product, 02-features, 03-logs, 04-process) | ~1,759 tokens  |
 
-**\*Progressive Disclosure:** Token loads shown are **full agent sizes when invoked**. Your base conversation only loads lightweight stubs (~50-90 tokens each, ~1,050 tokens total for all 15 agents). Full agent content loads only when you invoke that specific agent via `Task` tool. Check with `/context` command to see actual current usage.
+**\*Progressive Disclosure:** Token loads shown are **full agent sizes when invoked**. Your base conversation only loads lightweight stubs (~50-90 tokens each, ~950 tokens total for all 14 agents). Full agent content loads only when you invoke that specific agent via `Task` tool. Check with `/context` command to see actual current usage.
 
 ---
 
-## 🛠 22 Reusable Skills
+## 🛠 11 Core Skills
 
 ### Development & Testing (7)
 | Skill | Purpose | Token Load* |
@@ -77,38 +76,14 @@ Install and invoke for your platform:
 | **condition-based-waiting** | Replace timeouts with polling to eliminate flaky tests | ~937 tokens |
 | **verification-before-completion** | Verify claims with evidence before marking tasks complete | ~1,050 tokens |
 
-### Design & Creativity (5)
-| Skill | Purpose | Token Load* |
-|-------|---------|------------|
-| **algorithmic-art** | Create generative art using p5.js with seeded randomness | ~4,942 tokens |
-| **canvas-design** | Create visual art in PNG/PDF with design philosophy | ~2,984 tokens |
-| **artifacts-builder** | Build React/TypeScript/Tailwind/shadcn artifacts with Parcel bundling | ~769 tokens |
-| **theme-factory** | Apply 10 curated professional themes with color/font pairings | ~781 tokens |
-| **slack-gif-creator** | Create optimized animated GIFs for Slack | ~4,285 tokens |
-
-### Office & Document Processing (4)
-| Skill | Purpose | Token Load* |
-|-------|---------|------------|
-| **pdf** | Extract/create PDFs, merge/split, handle forms and tables | ~2,359 tokens |
-| **docx** | Create/edit Word documents with tracked changes and comments | ~2,537 tokens |
-| **pptx** | Create/edit PowerPoint with design-first approach and HTML conversion | ~6,387 tokens |
-| **xlsx** | Create/edit spreadsheets with formulas, formatting, and data analysis | ~2,658 tokens |
-
-### Strategy & Communication (4)
+### Strategy & Planning (3)
 | Skill | Purpose | Token Load* |
 |-------|---------|------------|
 | **brainstorming** | Collaborative design through questioning and exploration | ~640 tokens |
-| **internal-comms** | Write internal communications with company-approved formats | ~377 tokens |
-| **brand-guidelines** | Apply Anthropic's official brand colors and typography | ~558 tokens |
-| **mcp-builder** | Create MCP servers for LLM-service integration | ~3,388 tokens |
-
-### Specialized (2)
-| Skill | Purpose | Token Load* |
-|-------|---------|------------|
-| **webapp-testing** | Test local web apps with Playwright – verify, debug, screenshot | ~978 tokens |
 | **skill-creator** | Create custom skills extending Claude's capabilities | ~2,886 tokens |
+| **docs-builder** | Create comprehensive project documentation with structured /docs hierarchy | ~1,000 tokens |
 
-**\*Progressive Disclosure:** Token loads shown are **full skill sizes when activated**. Skills load on-demand via the `Skill` tool when you invoke them (e.g., `/pdf`, `/brainstorming`). Until activated, skills consume minimal tokens as slash command metadata (~3.1k tokens total for all 22 skills). Use `/context` to monitor actual usage.
+**\*Progressive Disclosure:** Token loads shown are **full skill sizes when activated**. Skills load on-demand via the `Skill` tool when you invoke them (e.g., `/brainstorming`, `/docs-builder`). Until activated, skills consume minimal tokens as slash command metadata (~1.5k tokens total for all 11 skills). Use `/context` to monitor actual usage.
 
 ---
 
@@ -160,7 +135,7 @@ Pre-built workflows for common development patterns (available in all kits):
 
 **Key files:**
 - `~/.claude/CLAUDE.md` – Agent system with orchestrator-first routing and 9 workflows
-- `~/.claude/agents/` – 15 specialist agents (orchestrator, 1-create-prd, code-developer, docs-builder, qa, etc.)
+- `~/.claude/agents/` – 14 specialist agents (orchestrator, 1-create-prd, code-developer, qa, etc.)
 - Project `CLAUDE.md` – Auto-created by context-builder with agent system reminder
 
 ### Other Platforms

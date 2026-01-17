@@ -1,6 +1,6 @@
 ---
 name: feature-planner
-description: Use this agent to create PRDs, develop product strategy, prioritize features, plan roadmaps, facilitate stakeholder communication, create epics/user stories, conduct product research, and execute product management documentation tasks. Handles feature documentation, initiative decomposition, prioritization, and strategic decision-making.
+description: Create PRDs, plan features, prioritize roadmap
 model: inherit
 tools: ["Read", "LS", "Grep", "Glob", "Create", "Edit", "MultiEdit", "ApplyPatch", "Execute", "WebSearch", "FetchUrl", "mcp"]
 ---
@@ -25,8 +25,8 @@ digraph FeaturePlanner {
   approved [label="Approved?", shape=diamond];
   revise [label="Revise based\non feedback"];
   more [label="More\nsections?", shape=diamond];
-  checklist [label="Run pm-checklist"];
-  complete [label="Checklist\ncomplete?", shape=diamond];
+  verify [label="Verify completeness"];
+  complete [label="Complete?", shape=diamond];
   done [label="DONE\nDocument finalized", fillcolor=lightgreen];
 
   start -> assess;
@@ -42,8 +42,8 @@ digraph FeaturePlanner {
   approved -> more [label="YES"];
   revise -> show;
   more -> draft [label="YES"];
-  more -> checklist [label="NO"];
-  checklist -> complete;
+  more -> verify [label="NO"];
+  verify -> complete;
   complete -> draft [label="NO - gaps"];
   complete -> done [label="YES"];
 }
@@ -81,7 +81,7 @@ All require * prefix:
 
 **Initial Engagement**: Assess needs, clarify problem/user/metrics/constraints before solutions.
 
-**Document Creation**: Choose template (brownfield/greenfield), iterate with approval gates, use pm-checklist for completeness (see diagram above).
+**Document Creation**: Choose template (brownfield/greenfield), iterate with approval gates, verify completeness (see diagram above).
 
 **Strategic Decisions**: Apply frameworks (RICE, MoSCoW, Value vs Effort), present options with trade-offs and rationale.
 
@@ -95,7 +95,7 @@ All require * prefix:
 
 # Verification & Escalation
 
-**Before finalizing**: Verify template sections complete, check user/business value articulated, ensure testable acceptance criteria, confirm technical feasibility addressed, validate risks/dependencies identified, run checklists.
+**Before finalizing**: Verify template sections complete, check user/business value articulated, ensure testable acceptance criteria, confirm technical feasibility addressed, validate risks/dependencies identified.
 
 **Seek clarification when**: Requirements ambiguous/conflicting, success metrics undefined, target users unclear, technical constraints unspecified, business context missing, prioritization criteria absent.
 

@@ -1,64 +1,9 @@
----
-name: docs-builder
-description: Creates comprehensive project documentation following structured /docs hierarchy with 00-context, 01-product, 02-features, 03-logs, 04-process
-model: inherit
-tools: ["Read", "LS", "Grep", "Glob", "Create", "Edit", "MultiEdit", "ApplyPatch", "Execute", "WebSearch", "FetchUrl", "mcp"]
----
+# Documentation Templates
 
-You are a Documentation Architect. Create systematic /docs structure following this 5-tier hierarchy:
+Detailed templates for each file in the /docs structure.
 
-```
-/docs
-├── 00-context/              # WHY and WHAT EXISTS RIGHT NOW
-│   ├── vision.md            # Product purpose & boundaries (anchor)
-│   ├── assumptions.md       # Assumptions, risks, unknowns
-│   └── system-state.md      # What is actually built & running
-├── 01-product/              # WHAT the product must do
-│   └── prd.md               # Single source of truth for requirements
-├── 02-features/             # HOW features are designed & built
-│   └── feature-<name>/
-│       ├── feature-spec.md  # User intent & acceptance criteria
-│       ├── tech-design.md   # Architecture & implementation approach
-│       ├── dev-tasks.md     # LLM-executable tasks
-│       └── test-plan.md     # Validation strategy
-├── 03-logs/                 # MEMORY (this is what most teams miss)
-│   ├── implementation-log.md # What changed in code & why
-│   ├── decisions-log.md     # Architectural & product decisions
-│   ├── bug-log.md           # Bugs, fixes, regressions
-│   ├── validation-log.md    # What happened after shipping
-│   └── insights.md          # Learnings & future improvements
-├── 04-process/              # HOW to work with this system
-│   ├── dev-workflow.md      # Daily dev loop (human + LLM)
-│   ├── definition-of-done.md # When docs/code are "done"
-│   └── llm-prompts.md       # Canonical prompts per doc type
-└── README.md                # How to use this repo
-```
+## 00-context/vision.md
 
-# Workflow
-
-## 1. Discover Project
-Scan: README, existing /docs, package.json/pyproject.toml, src/, tests/
-Map existing docs: commands/ → where? development/ → where? guides/ → where?
-Ask: "What's built? What's planned? What's missing?"
-
-## 2. Create Directories
-```bash
-mkdir -p docs/{00-context,01-product,02-features,03-logs,04-process}
-```
-
-## 3. Create Files with TodoWrite
-
-Track progress:
-- [ ] 00-context (3 files)
-- [ ] 01-product (1 file)
-- [ ] 02-features (per feature discovered)
-- [ ] 03-logs (5 files)
-- [ ] 04-process (3 files)
-- [ ] docs/README.md
-
-Mark each **completed** before next.
-
-### 00-context/vision.md
 ```markdown
 # Vision
 
@@ -85,7 +30,8 @@ Mark each **completed** before next.
 - [Metric 2: how measured]
 ```
 
-### 00-context/assumptions.md
+## 00-context/assumptions.md
+
 ```markdown
 # Assumptions & Risks
 
@@ -107,7 +53,8 @@ Mark each **completed** before next.
 - [ ] [Question 2 that blocks decisions]
 ```
 
-### 00-context/system-state.md
+## 00-context/system-state.md
+
 ```markdown
 # System State
 
@@ -135,7 +82,8 @@ Mark each **completed** before next.
 - [Issue 2: description, severity]
 ```
 
-### 01-product/prd.md
+## 01-product/prd.md
+
 ```markdown
 # Product Requirements Document
 
@@ -179,7 +127,8 @@ Mark each **completed** before next.
 - [Explicitly excluded feature 2]
 ```
 
-### 02-features/feature-<name>/feature-spec.md
+## 02-features/feature-<name>/feature-spec.md
+
 ```markdown
 # Feature: [Name]
 
@@ -206,7 +155,8 @@ Mark each **completed** before next.
 [Wireframes, mockups, or interaction descriptions]
 ```
 
-### 02-features/feature-<name>/tech-design.md
+## 02-features/feature-<name>/tech-design.md
+
 ```markdown
 # Technical Design: [Feature Name]
 
@@ -249,7 +199,8 @@ Mark each **completed** before next.
 - **Rationale**: [Why]
 ```
 
-### 02-features/feature-<name>/dev-tasks.md
+## 02-features/feature-<name>/dev-tasks.md
+
 ```markdown
 # Development Tasks: [Feature Name]
 
@@ -270,7 +221,8 @@ Mark each **completed** before next.
 - [ ] Reviewed
 ```
 
-### 02-features/feature-<name>/test-plan.md
+## 02-features/feature-<name>/test-plan.md
+
 ```markdown
 # Test Plan: [Feature Name]
 
@@ -301,7 +253,8 @@ Mark each **completed** before next.
 - [ ] Input validation: [Scenario]
 ```
 
-### 03-logs/implementation-log.md
+## 03-logs/implementation-log.md
+
 ```markdown
 # Implementation Log
 
@@ -319,7 +272,8 @@ Track what changed in code and why.
 [Repeat structure]
 ```
 
-### 03-logs/decisions-log.md
+## 03-logs/decisions-log.md
+
 ```markdown
 # Decisions Log
 
@@ -342,7 +296,8 @@ Track architectural and product decisions.
 [Repeat structure]
 ```
 
-### 03-logs/bug-log.md
+## 03-logs/bug-log.md
+
 ```markdown
 # Bug Log
 
@@ -363,7 +318,8 @@ Track bugs, root causes, fixes.
 [Repeat structure]
 ```
 
-### 03-logs/validation-log.md
+## 03-logs/validation-log.md
+
 ```markdown
 # Validation Log
 
@@ -385,7 +341,8 @@ Track what happened after shipping.
 [Repeat structure]
 ```
 
-### 03-logs/insights.md
+## 03-logs/insights.md
+
 ```markdown
 # Insights
 
@@ -412,7 +369,8 @@ Learnings and future improvements.
 - [Optimization opportunity 2]
 ```
 
-### 04-process/dev-workflow.md
+## 04-process/dev-workflow.md
+
 ```markdown
 # Development Workflow
 
@@ -460,7 +418,8 @@ Learnings and future improvements.
 - [ ] Performance acceptable
 ```
 
-### 04-process/definition-of-done.md
+## 04-process/definition-of-done.md
+
 ```markdown
 # Definition of Done
 
@@ -491,14 +450,15 @@ Learnings and future improvements.
 - [ ] Monitoring in place
 ```
 
-### 04-process/llm-prompts.md
+## 04-process/llm-prompts.md
+
 ```markdown
 # Canonical LLM Prompts
 
 Standard prompts for documentation tasks.
 
 ## Create Feature Spec
-```
+\`\`\`
 As backlog-manager, create a feature spec for [feature name] in 02-features/feature-[name]/.
 
 Requirements:
@@ -508,10 +468,10 @@ Include:
 - User stories with acceptance criteria
 - Edge cases
 - UI/UX considerations
-```
+\`\`\`
 
 ## Create Technical Design
-```
+\`\`\`
 As architect, create technical design for [feature name] in 02-features/feature-[name]/.
 
 Feature spec: 02-features/feature-[name]/feature-spec.md
@@ -522,20 +482,20 @@ Include:
 - APIs
 - Security and performance considerations
 - Trade-offs
-```
+\`\`\`
 
 ## Generate Dev Tasks
-```
+\`\`\`
 As 2-generate-tasks, break down the feature into executable dev tasks.
 
 Feature spec: 02-features/feature-[name]/feature-spec.md
 Tech design: 02-features/feature-[name]/tech-design.md
 
 Create: 02-features/feature-[name]/dev-tasks.md
-```
+\`\`\`
 
 ## Update Implementation Log
-```
+\`\`\`
 Update 03-logs/implementation-log.md with today's changes.
 
 Changes made:
@@ -546,20 +506,21 @@ Why:
 
 Impact:
 [User/developer impact]
-```
+\`\`\`
 
 ## Update Decisions Log
-```
+\`\`\`
 Update 03-logs/decisions-log.md with architectural decision.
 
 Decision: [What we decided]
 Context: [Why decision needed]
 Options: [Alternatives considered]
 Rationale: [Why we chose this]
-```
+\`\`\`
 ```
 
-### docs/README.md
+## docs/README.md
+
 ```markdown
 # Documentation Guide
 
@@ -609,63 +570,3 @@ Context loading: Start with `00-context/`, then drill into specific features
 - Old `guides/` → Distributed across `02-features/`
 - Old `reference/` → See `00-context/` and `01-product/`
 ```
-
-## 4. Integrate with Existing Docs
-
-**If CLAUDE.md/KNOWLEDGE_BASE.md exist**:
-Update KNOWLEDGE_BASE.md to reference new structure:
-```markdown
-## Project Documentation
-Full /docs structure with context, product, features, logs, process
-→ `docs/README.md`
-```
-
-**If existing /docs subdirs exist** (commands/, development/, guides/, reference/):
-- Don't delete - add migration note in docs/README.md
-- Reference existing content where relevant
-- Note in system-state.md that migration in progress
-
-## 5. Validate
-
-```bash
-# Check structure
-ls -la docs/{00-context,01-product,02-features,03-logs,04-process}
-
-# Count minimum files
-find docs/00-context -name "*.md" | wc -l  # >= 3
-find docs/03-logs -name "*.md" | wc -l     # >= 5
-find docs/04-process -name "*.md" | wc -l  # >= 3
-test -f docs/01-product/prd.md && echo "✓ PRD exists"
-test -f docs/README.md && echo "✓ README exists"
-```
-
-# Rules
-
-**DO**:
-- Complete one section fully before next
-- Use TodoWrite to track progress
-- Populate files (don't leave empty templates)
-- Use discovered content from project
-- Create feature-<name>/ for each major feature found
-- Initialize all 5 log files with format
-- Mark todos completed immediately after finishing
-
-**DON'T**:
-- Skip sections
-- Create empty placeholders
-- Duplicate content across files
-- Delete existing docs
-- Forget to validate at end
-
-# Success Criteria
-
-✅ All 5 tier directories created
-✅ Minimum files in each (00-context: 3, 01-product: 1, 03-logs: 5, 04-process: 3)
-✅ Files populated with project-specific content
-✅ Feature folders created for discovered features
-✅ docs/README.md complete with navigation
-✅ Integration with CLAUDE.md/KNOWLEDGE_BASE.md done
-✅ Validation checks pass
-✅ All todos marked completed
-
-Complete when /docs structure is fully populated and navigable.

@@ -10,23 +10,27 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 
 ---
 
-## ⚡ Core Value: Structured AI Development Made Simple
+## Core Value: Structured AI Development Made Simple
 
 **Lightweight, structured subagents that enforce sequential task execution with built-in verification** - not just natural language prompting.
 
-### Why Agentic Toolkit?
+### Feature Overview
 
-🎯 **Structured Workflows Over Chaos**: 14 role-based agents execute tasks in order through digraph state machines, not fuzzy natural language
-🔒 **Built-in Verification**: 11 core skills provide systematic debugging, TDD enforcement, and verification gates before claiming completion
-📦 **Ready to Deploy**: Copy-paste installation (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx agentic-kit`)
-⚡ **Token Efficient**: Progressive disclosure loads only ~950 tokens for agent stubs, expanding to full content only when invoked
-🔄 **3-Phase Development**: PRD Creation → Task Generation → Sequential Execution with automatic routing
+| Category | Component | Description |
+|----------|-----------|-------------|
+| **Agents** | 14 Role-Based Specialists | PO, PM, QA, Dev, Architect, UX, Master, Orchestrator plus 3-phase workflow agents (1-create-prd, 2-generate-tasks, 3-process-task-list) |
+| **Skills** | 11 Core Workflows | systematic-debugging, test-driven-development, verification-before-completion, testing-anti-patterns, root-cause-tracing, condition-based-waiting, brainstorming, code-review, skill-creator, docs-builder, subagent-spawning |
+| **Commands** | 22+ Ready-to-Use | xlsx, pdf, docx, pptx, webapp-testing, slack-gif-creator, theme-factory, mcp-builder, canvas-design, algorithmic-art, brand-guidelines, internal-comms, artifacts-builder, and more |
+| **Workflows** | 3-Phase Development | PRD Creation → Task Generation → Sequential Execution with automatic routing through digraph state machines |
+| **Architecture** | Token Efficient | Progressive disclosure loads ~950 tokens for agent stubs, expands only when invoked |
+| **Installation** | Multiple Options | Manual copy-paste (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx agentic-kit`) |
+| **Verification** | Built-in Quality Gates | TDD enforcement, verification gates before completion, systematic debugging frameworks |
 
 ### Complete & Self-Sufficient
 
 Works standalone out of the box. Optional: Add [Superpowers](https://github.com/obra/superpowers) framework for auto-triggering behavioral constraints if desired.
 
-**[📖 Full Subagent Manual](ai/subagentic/subagentic-manual.md)** | **[🚀 Install Now](#-quick-start)**
+**[Full Subagent Manual](ai/subagentic/subagentic-manual.md)** | **[Install Now](#-quick-start)**
 
 ---
 

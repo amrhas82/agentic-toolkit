@@ -35,6 +35,7 @@ digraph FullStackDev {
   dod_pass [label="DoD passes?", shape=diamond];
   fix_dod [label="Fix DoD issues"];
   set_ready [label="Set status:\n'Ready for Review'"];
+  verify_before_done [label="Run verification", fillcolor=orange];
   halt_blocker [label="HALT\nReport blocker", fillcolor=red];
   done [label="DONE", fillcolor=lightgreen];
 
@@ -64,7 +65,8 @@ digraph FullStackDev {
   dod_pass -> fix_dod [label="FAIL"];
   dod_pass -> set_ready [label="PASS"];
   fix_dod -> run_dod;
-  set_ready -> done;
+  set_ready -> verify_before_done;
+  verify_before_done -> done;
 }
 ```
 

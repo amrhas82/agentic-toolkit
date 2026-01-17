@@ -30,6 +30,7 @@ digraph QATestArchitect {
   waived [label="WAIVED\nAccepted risks", fillcolor=orange];
   document [label="Document decision\nUpdate QA Results\nCreate gate file"];
   educational [label="Explain reasoning\nHelp team improve"];
+  verify_before_done [label="Run verification", fillcolor=orange];
   done [label="DONE", fillcolor=lightgreen];
 
   start -> context;
@@ -50,7 +51,8 @@ digraph QATestArchitect {
   fail -> document;
   waived -> document;
   document -> educational;
-  educational -> done;
+  educational -> verify_before_done;
+  verify_before_done -> done;
 }
 ```
 

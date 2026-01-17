@@ -36,68 +36,62 @@ Works standalone out of the box. Optional: Add [Superpowers](https://github.com/
 
 ## 🚀 Quick Start
 
-1. **Clone the Toolkit**: `git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit`
-2. **Set Up Environment**: Run `/tools/dev_tools_menu.sh` for Linux tool installation scripts.
-3. **Learn Basics**: Read `/docs/vibecoding101.md` to understand vibecoding.
-4. **Deploy Subagents**: Copy from `/ai/subagentic` or install with `npx agentic-kit` for ready-to-use AI agents.
-5. **Start Vibecoding**: Use your AI tool with the deployed agents.
+```bash
+# Clone the repository
+git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit
 
-🚀 [Install Development Tools](tools/dev_tools_menu.sh) | 🤖 [Deploy Subagents](ai/subagentic/) | 🤖 [Install via NPM](https://github.com/amrhas82/agentic-kit)
+# Install subagents for your platform (choose one)
+cp -rv ai/subagentic/claude/* ~/.claude/          # Claude Code
+cp -rv ai/subagentic/opencode/* ~/.config/opencode/  # OpenCode
+cp -rv ai/subagentic/droid/* ~/.factory/         # Droid
+cp -rv ai/subagentic/ampcode/* ~/.config/amp/    # Amp
+
+# Or use NPM package
+npx agentic-kit
+```
+
+[Vibecoding 101](docs/vibecoding-101-guide.md) | [Subagent Manual](ai/subagentic/subagentic-manual.md) | [Development Tools](tools/dev_tools_menu.sh)
 
 ---
 
 ## 📁 What's Included
 
-### ⭐ Development Tools - Essential Scripts
-- **Interactive Installer**: `/tools/dev_tools_menu.sh` - Choose and install Linux tools (Tmux, Neovim, etc.) with one command
+### Development Tools
+- **Interactive Installer**: `tools/dev_tools_menu.sh` - Choose and install Linux tools (Tmux, Neovim, etc.)
 - **Automation Scripts**: Pre-configured setups for development environments
-- **Guides**: `/tools/tools_guide.md` - Complete documentation for all tools
+- **Complete Guide**: `tools/tools_guide.md` - Documentation for all tools
 
-### ⭐ Vibecoding 101 Guide - Your Learning Path
-- **Beginner's Course**: `/docs/vibecoding101.md` - Step-by-step guide for non-technical users
+### Vibecoding 101 Guide
+- **Beginner's Course**: `docs/vibecoding-101-guide.md` - Step-by-step guide for non-technical users
 - **Core Concepts**: Tool selection, AI collaboration, avoiding common pitfalls
 - **Practical Examples**: Real-world vibecoding scenarios and best practices
 
-### ⭐ Subagent Kits & Agentic Package - Installation & Platform Support
-- **14 Role-Based Agents**: PO, PM, QA, Dev, Architect, UX, Master, Orchestrator (1-create-prd, 2-generate-tasks, 3-process-task-list, etc.)
-- **11 Core Skills**: systematic-debugging, test-driven-development, verification-before-completion, testing-anti-patterns, root-cause-tracing, condition-based-waiting, brainstorming, code-review, skill-creator, docs-builder, subagent-spawning
-- **Installation Options**:
-  - **Manual**: Copy from `/ai/subagentic/` (e.g., `cp -rv ai/subagentic/claude/* ~/.claude/`)
-  - **NPM Package**: `npx agentic-kit` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/agentic-kit))
-- **Usage**: Ask "As code-developer, build a login page" or "Create PRD for user auth" - agents route to optimal workflows
+### Subagent Kits - Platform Support
+
+**Installation Options**:
+- **Manual**: `cp -rv ai/subagentic/<platform>/* <install-path>/` (see table below)
+- **NPM Package**: `npx agentic-kit` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/agentic-kit))
 - **[📖 Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Token loads, progressive disclosure, complete reference
 
-| Bash     | Subagents                | Commands/Skills | Available in Kit   | Global Config      |
-|----------|--------------------------|-----------------|--------------------|--------------------|
-| claude   | @product-manager         | /command        | subagents, skills  | ~/.claude          |
-| opencode | @product-manager         | /command        | subagents, command | ~/.config/opencode |
-| droid    | as product manager droid | /command        | droids, commands   | ~/.factory         |
-| amp      | as product manager       | /command        | subagents, commands | ~/.config/amp      |
+| Platform | Agents | Skills/Commands | Install Path | Source Path |
+|----------|--------|-----------------|--------------|-------------|
+| **Claude Code** | 14 agents | 11 skills + 9 commands | `~/.claude/` | `ai/subagentic/claude/` |
+| **OpenCode** | 14 agents | 20 commands | `~/.config/opencode/` | `ai/subagentic/opencode/` |
+| **Droid** | 14 droids | 19 commands | `~/.factory/` | `ai/subagentic/droid/` |
+| **Amp** | 14 agents | 19 commands | `~/.config/amp/` | `ai/subagentic/ampcode/` |
 
-*Both Agentic Kit and Subagent Kit provide identical content - choose based on your preferred installation method. Subagents are adapted, token-efficient role-based BMAD+Simple agents, commands/skills provide additional functionality.*
+**Usage**: Invoke with `@agent-name` or `As agent-name, ...` (Claude/OpenCode/Amp) or `invoke droid agent-name` (Droid). Commands via `/command-name`.
 
-### 📖 Curated Resources
-- **AI Marketplace** (`/ai/marketplace/`): Subagents (droids), plugins, skills, 200+ MCP servers, workflows ([explore](https://claude-plugins.dev/))
-- **Ollama Local LLM Config** (`/ai/customize/ollama`): Ollama for Opencode/Droid ([get started](/ai/customize/ollama))
-- **Claude Code Switcher** (`/ai/customize/claude-switcher`): Use GLM LLM/MCP on Claude Code ([get started](/ai/customize/claude-switcher))
-- **BYOK Opencode/Droid** (`/ai/customize/byok`): Use Synthetic, GLM on Opencode/Droid Config ([get started](/ai/customize/byok))
-- **Agents Best Practices** (`/ai/customize/config`): Agent tweaks and best practices ([get started](/ai/customize/config))
+### Curated Resources
+- **AI Marketplace** (`ai/marketplace/`): 90+ reusable subagents (droids), plugins, skills, 200+ MCP servers, workflows
+- **Ollama Local LLM** (`ai/customize/ollama`): Ollama configuration for OpenCode/Droid
+- **Claude Code Switcher** (`ai/customize/claude-switcher`): Use GLM LLM/MCP on Claude Code
+- **BYOK Config** (`ai/customize/byok`): Use Synthetic, GLM on OpenCode/Droid
+- **Agent Best Practices** (`ai/customize/config`): Agent tweaks and guidelines
 
-### 🔗 Optional Enhancement: Superpowers Integration
+### 🔗 Optional: Superpowers Integration
 
-Agentic Toolkit is **complete and self-sufficient** out of the box. For users who want **auto-triggering behavioral constraints**, you can optionally layer [Superpowers](https://github.com/obra/superpowers) - a complementary framework with 14 auto-triggering skills that enforce discipline through context detection.
-
-| Aspect | Agentic Toolkit (Standalone) | + Superpowers (Optional) |
-|--------|------------------------------|--------------------------|
-| **Workflow execution** | Digraph state machines with explicit routing | Same, plus auto-triggered constraints |
-| **Agents** | 14 role-based specialists | Same 14, plus 1 code-reviewer |
-| **Skills** | 11 on-demand workflow skills | Same 11, plus 14 auto-triggering behavioral skills |
-| **Invocation** | Orchestrator routing | Same, plus context-based auto-triggers |
-| **Use case** | Structured multi-agent workflows | Same, plus enforced TDD/verification gates |
-
-**Use Agentic Toolkit alone for**: Structured development with role-based agents and explicit workflow control.
-
-**Add Superpowers if you want**: Auto-triggering enforcement (TDD must run first, verification before claiming done), fresh subagent isolation per task, behavioral constraints without explicit invocation.
+Agentic Toolkit is **complete and self-sufficient**. Optionally add [Superpowers](https://github.com/obra/superpowers) for auto-triggering behavioral constraints (TDD must run first, verification before completion, fresh subagent isolation per task).
 
 ---
 
@@ -105,33 +99,30 @@ Agentic Toolkit is **complete and self-sufficient** out of the box. For users wh
 
 ```
 agentic-toolkit/
-├── ai/                          # AI workflows and agents
-│   ├── subagentic/              # ⭐ SUBAGENTIC KITS
-│   │   ├── claude/              # subagents + skills for Claude Code
-│   │   ├── opencode/            # subagents + command for OpenCode
-│   │   ├── droid/               # droids + commands for Droid
-│   │   └── ampcode/             # subagents + commands for Ampcode
-│   ├── Customize/               # ⭐ Agent Customization KITS
-│   │   ├── byok/                # Ollama Config for Droid, Ampcode
-│   │   ├── claude-swticher/     # Claude Code Switcher/GLM LLM/MCP on Claude
-│   │   ├── config/              # Agent tweaks and Best Practices
-│   │   ├── memcp/               # Memory MCP in json + vector search
-│   │   ├── ollama/              # Local LLM Ollama for Opencode/Ampcode
-│   │   └── skill-to-command/    # Convert Claude skills to /commands
-│   ├── marketplace/             # 📖 Curated subagents, plugins, skills, MCP servers
-│   │   ├── agents/              # 90+ Resuable spcialiazed subagents (droids)
-│   │   └── Workflows/           # 3-steps (simple), BMAD (role-based), Taskmaster
-├── tools/                       # ⭐ Development utilities & scripts
+├── ai/
+│   ├── subagentic/              # Subagent kits for all platforms
+│   │   ├── claude/              # 14 agents + 11 skills + 9 commands
+│   │   ├── opencode/            # 14 agents + 20 commands
+│   │   ├── droid/               # 14 droids + 19 commands
+│   │   └── ampcode/             # 14 agents + 19 commands
+│   ├── customize/               # Platform customization configs
+│   │   ├── byok/                # Bring Your Own Key configs
+│   │   ├── claude-switcher/     # Claude Code LLM/MCP switcher
+│   │   ├── config/              # Agent best practices
+│   │   ├── memcp/               # Memory MCP server
+│   │   ├── ollama/              # Local LLM configs
+│   │   └── skill-to-command/    # Skill conversion tools
+│   └── marketplace/             # Curated AI resources
+│       ├── agents/              # 90+ specialized subagents
+│       └── workflows/           # Workflow patterns
+├── tools/                       # Development utilities
 │   ├── dev_tools_menu.sh        # Interactive installer
 │   ├── master_tmux_setup.sh     # Tmux automation
 │   ├── master_neovim_setup.sh   # Neovim automation
-│   └── tools_guide.md           # Complete tools documentation
-├── env/                         # Environment configuration
+│   └── tools_guide.md           # Tools documentation
 ├── docs/                        # Documentation
-│   └── vibecoding-101.md        # ⭐ Vibecoding beginner's guide
-└── README.md                    # This file
-
-⭐ Developed and adpated tools. Everything else is curated from best repos.
+│   └── vibecoding-101-guide.md  # Beginner's guide
+└── env/                         # Environment configs
 ```
 
 ---
@@ -152,14 +143,9 @@ This toolkit is designed for anyone wanting to maximize AI-powered development:
 
 ## 📖 Documentation
 
-### Getting Started
-- [This README](#-quick-start) - Start here
-- [Vibecoding 101](docs/vibecoding-101.md) - Comprehensive beginner's guide
+- [Vibecoding 101](docs/vibecoding-101.md) - Beginner's guide to AI-powered development
+- [Subagent Manual](ai/subagentic/subagentic-manual.md) - Complete agent reference with token loads
 - [Tools Guide](tools/tools_guide.md) - Development tools documentation
-- [Subagent Manual](ai/subagentic/subagentic-manual.md) - Complete agent guide
-
-### AI Workflows
-- [Subagent Kits](ai/subagentic/) - Your adapted agents
 - [Agent Guidelines](ai/customize/config/AGENT_RULES.md) - AI collaboration guardrails
 
 ---

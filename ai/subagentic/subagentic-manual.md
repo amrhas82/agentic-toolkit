@@ -25,15 +25,14 @@ Install and invoke for your platform:
 
 ## 📦 What's Included
 
-**Per-kit contents** (15 subagents + 22 skills + 20+ tasks):
+**Per-kit contents** (14 subagents + 11 skills):
 - **3 Workflow Subagents** – Three-phase development: 1-Create PRD → 2-Generate Tasks → 3-Process Task List
-- **12 Specialist Subagents** – Expert roles (UX, QA, Product, Dev, Architecture, Documentation, etc.)
-- **22 Reusable Skills** – Code creation, testing, debugging, docs, design, file processing
-- **20+ Task Templates** – Validation, planning, development, documentation, specialized workflows
+- **11 Specialist Subagents** – Expert roles (UX, QA, Product, Dev, Architecture, Documentation, etc.)
+- **11 Core Skills** – Code creation, testing, debugging, docs, design, file processing
 - **Zero Configuration** – Ready to use immediately
 ---
 
-## 🤖 15 Subagents
+## 🤖 14 Subagents
 
 ### Workflow Phase Agents (3)
 | Agent | Purpose | Token Load* |
@@ -84,43 +83,6 @@ Install and invoke for your platform:
 | **docs-builder** | Create comprehensive project documentation with structured /docs hierarchy | ~1,000 tokens |
 
 **\*Progressive Disclosure:** Token loads shown are **full skill sizes when activated**. Skills load on-demand via the `Skill` tool when you invoke them (e.g., `/brainstorming`, `/docs-builder`). Until activated, skills consume minimal tokens as slash command metadata (~1.5k tokens total for all 11 skills). Use `/context` to monitor actual usage.
-
----
-
-## 📋 20+ Reusable Task Templates
-
-Pre-built workflows for common development patterns (available in all kits):
-
-### Quality & Validation (5)
-- **validate-next-story** – Validate user story before implementation
-- **review-story** – Comprehensive story review and feedback
-- **trace-requirements** – Map requirements to tests
-- **qa-gate** – Quality gate decision (PASS/CONCERNS/FAIL)
-- **apply-qa-fixes** – Apply QA feedback to code
-
-### Planning & Analysis (4)
-- **risk-profile** – Risk assessment matrix and mitigation
-- **nfr-assess** – Non-functional requirements validation
-- **advanced-elicitation** – Structured requirements discovery
-- **test-design** – Test scenario creation
-
-### Development (4)
-- **create-next-story** – Generate user story from requirements
-- **create-brownfield-story** – Story template for existing codebase
-- **brownfield-create-epic** – Epic breakdown for existing systems
-- **correct-course** – Realign strategy or approach mid-project
-
-### Documentation (4)
-- **create-doc** – Generate documentation from code/context
-- **shard-doc** – Break large documents into focused sections
-- **index-docs** – Create documentation indices
-- **document-project** – Comprehensive project documentation
-
-### Specialized (3+)
-- **generate-ai-frontend-prompt** – v0 and Lovable UI generation prompts
-- **facilitate-brainstorming-session** – Structured brainstorming workflow
-- **create-deep-research-prompt** – Deep research and analysis workflow
-- **execute-checklist** – Universal checklist execution
 
 ---
 

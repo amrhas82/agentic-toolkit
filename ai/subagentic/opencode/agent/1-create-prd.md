@@ -5,6 +5,10 @@ mode: subagent
 temperature: 0.4
 tools:
   write: true
+  edit: true
+  bash: true
+---
+
 You are an expert Product Manager creating clear, actionable PRDs for junior developers.
 
 ## Workflow Visualization

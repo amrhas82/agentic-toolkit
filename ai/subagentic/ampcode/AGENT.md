@@ -382,18 +382,41 @@ Source: [./resources/task-briefs.md#advanced-elicitation](./resources/task-brief
 
 ## Commands
 
-These are slash commands available in the TUI. Use /command-name to execute.
 
-### Command: xlsx
-Source: [./commands/xlsx.md](./commands/xlsx.md)
-- Description: Create, edit, and analyze spreadsheets with formulas, formatting, data analysis, and visualization
-- Usage: `/xlsx <operation> <spreadsheet-file>`
+### Command: brainstorming
+Source: [./commands/brainstorming.md](./commands/brainstorming.md)
+- Description: Facilitate structured brainstorming sessions with proven techniques and frameworks
+- Usage: `/brainstorming <session-type> <topic>`
 - Full definition: open the source file above (content not embedded)
 
-### Command: webapp-testing
-Source: [./commands/webapp-testing.md](./commands/webapp-testing.md)
-- Description: Test local web applications using Playwright - verify functionality, debug UI, capture screenshots
-- Usage: `/webapp-testing <webapp-url-or-local-server>`
+### Command: code-review
+Source: [./commands/code-review.md](./commands/code-review.md)
+- Description: Conduct thorough code reviews with focus on quality, security, and maintainability
+- Usage: `/code-review <review-scope> <focus-areas>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: condition-based-waiting
+Source: [./commands/condition-based-waiting.md](./commands/condition-based-waiting.md)
+- Description: Implement robust waiting mechanisms based on conditions rather than fixed delays
+- Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: root-cause-tracing
+Source: [./commands/root-cause-tracing.md](./commands/root-cause-tracing.md)
+- Description: Trace issues to their root cause using systematic investigation techniques
+- Usage: `/root-cause-tracing <issue-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: skill-creator
+Source: [./commands/skill-creator.md](./commands/skill-creator.md)
+- Description: Create reusable skills with proper structure, validation, and documentation
+- Usage: `/skill-creator <skill-type> <skill-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: subagent-spawning
+Source: [./commands/subagent-spawning.md](./commands/subagent-spawning.md)
+- Description: Templates for spawning fresh subagents with TDD-aware task isolation
+- Usage: Used by 3-process-task-list and other agents for clean subagent execution
 - Full definition: open the source file above (content not embedded)
 
 ### Command: systematic-debugging
@@ -402,27 +425,9 @@ Source: [./commands/systematic-debugging.md](./commands/systematic-debugging.md)
 - Usage: `/systematic-debugging <bug-or-error-description>`
 - Full definition: open the source file above (content not embedded)
 
-### Command: slack-gif-creator
-Source: [./commands/slack-gif-creator.md](./commands/slack-gif-creator.md)
-- Description: Create animated GIFs optimized for Slack with size validation and composable animation primitives
-- Usage: `/slack-gif-creator <gif-type> <animation-concept>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: verification-before-completion
-Source: [./commands/verification-before-completion.md](./commands/verification-before-completion.md)
-- Description: Verify work meets requirements before marking complete - prevents incomplete deliverables
-- Usage: `/verification-before-completion <work-to-verify>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: skill-creator
-Source: [./commands/skill-creator.md](./commands/command/skill-creator.md)
-- Description: Create reusable skills with proper structure, validation, and documentation
-- Usage: `/skill-creator <skill-type> <skill-description>`
-- Full definition: open the source file above (content not embedded)
-
 ### Command: test-driven-development
 Source: [./commands/test-driven-development.md](./commands/test-driven-development.md)
-- Description: Write test first, watch it fail, write minimal code to pass - ensures tests actually verify behavior
+- Description: Write test first, watch it fail, write minimal code to pass - ensures tests actually verify behavior by requiring failure first. Auto-triggers when implementing features/bugfixes.
 - Usage: `/test-driven-development <feature-or-behavior-to-test>`
 - Full definition: open the source file above (content not embedded)
 
@@ -432,87 +437,8 @@ Source: [./commands/testing-anti-patterns.md](./commands/testing-anti-patterns.m
 - Usage: `/testing-anti-patterns <testing-scenario>`
 - Full definition: open the source file above (content not embedded)
 
-### Command: theme-factory
-Source: [./commands/theme-factory.md](./commands/theme-factory.md)
-- Description: Generate consistent themes with proper color systems, typography, and spacing
-- Usage: `/theme-factory <theme-type> <design-requirements>`
+### Command: verification-before-completion
+Source: [./commands/verification-before-completion.md](./commands/verification-before-completion.md)
+- Description: Verify work meets requirements before marking complete - prevents incomplete deliverables. Auto-triggers before claiming done/fixed/complete/passing.
+- Usage: `/verification-before-completion <work-to-verify>`
 - Full definition: open the source file above (content not embedded)
-
-### Command: root-cause-tracing
-Source: [./commands/root-cause-tracing.md](./commands/root-cause-tracing.md)
-- Description: Trace issues to their root cause using systematic investigation techniques
-- Usage: `/root-cause-tracing <issue-description>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: internal-comms
-Source: [./commands/internal-comms.md](./commands/internal-comms.md)
-- Description: Structure internal communications for clarity, actionability, and team alignment
-- Usage: `/internal-comms <communication-type> <audience>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: pdf
-Source: [./commands/pdf.md](./commands/pdf.md)
-- Description: Create, edit, and analyze PDF documents with proper formatting and structure
-- Usage: `/pdf <operation> <pdf-file>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: mcp-builder
-Source: [./commands/mcp-builder.md](./commands/mcp-builder.md)
-- Description: Build Model Context Protocol servers with proper tool definitions and error handling
-- Usage: `/mcp-builder <server-type> <specifications>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: condition-based-waiting
-Source: [./commands/condition-based-waiting.md](./commands/condition-based-waiting.md)
-- Description: Implement robust waiting mechanisms based on conditions rather than fixed delays
-- Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: pptx
-Source: [./commands/pptx.md](./commands/pptx.md)
-- Description: Create professional PowerPoint presentations with proper structure and design
-- Usage: `/pptx <presentation-type> <content-outline>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: docx
-Source: [./commands/docx.md](./commands/docx.md)
-- Description: Create and edit Word documents with proper formatting and structure
-- Usage: `/docx <operation> <document-specs>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: brand-guidelines
-Source: [./commands/brand-guidelines.md](./commands/brand-guidelines.md)
-- Description: Establish comprehensive brand guidelines with visual identity and usage rules
-- Usage: `/brand-guidelines <brand-type> <requirements>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: brainstorming
-Source: [./commands/brainstorming.md](./commands/brainstorming.md)
-- Description: Facilitate structured brainstorming sessions with proven techniques and frameworks
-- Usage: `/brainstorming <session-type> <topic>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: canvas-design
-Source: [./commands/canvas-design.md](./commands/canvas-design.md)
-- Description: Design visual canvases for business models, user journeys, and strategic planning
-- Usage: `/canvas-design <canvas-type> <design-goals>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: artifacts-builder
-Source: [./commands/artifacts-builder.md](./commands/artifacts-builder.md)
-- Description: Build structured artifacts with proper validation, formatting, and documentation
-- Usage: `/artifacts-builder <artifact-type> <specifications>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: algorithmic-art
-Source: [./commands/algorithmic-art.md](./commands/algorithmic-art.md)
-- Description: Generate algorithmic art with mathematical patterns and aesthetic principles
-- Usage: `/algorithmic-art <art-type> <pattern-specs>`
-- Full definition: open the source file above (content not embedded)
-
-### Command: code-review
-Source: [./commands/code-review.md](./commands/code-review.md)
-- Description: Conduct thorough code reviews with focus on quality, security, and maintainability
-- Usage: `/code-review <review-scope> <focus-areas>`
-- Full definition: open the source file above (content not embedded)
-

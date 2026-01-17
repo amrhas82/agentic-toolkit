@@ -41,7 +41,7 @@ Track progress:
 
 Mark each **completed** before next.
 
-For detailed templates, see: `references/templates.md`
+For detailed templates, see: `docs-builder/templates.md`
 
 ### 4. Integrate with Existing Docs
 

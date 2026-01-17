@@ -158,17 +158,6 @@ This toolkit is designed for anyone wanting to maximize AI-powered development:
 - 🐛 **[GitHub Issues](https://github.com/amrhas82/agentic-toolkit/issues)** for bug reports
 - 💡 **[GitHub Discussions](https://github.com/amrhas82/agentic-toolkit/discussions)** for questions
 
-### Common Questions
-
-**Q: Which subagent kit should I use?**  
-A: Use the one for your AI coding tool: Claude Code → claude, OpenCode → opencode, Amp → ampcode
-
-**Q: What's the difference between the subagent kits and BMAD?**  
-A: Subagent kits are ready-to-use, copy-paste agents. BMAD is a full framework - start with subagents for simplicity.
-
-**Q: Can I use multiple agent kits?**  
-A: Yes! Each deploys to a different location and works with different AI tools.
-
 ---
 
 ## 🤝 Contributing

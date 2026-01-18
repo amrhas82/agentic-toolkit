@@ -18,7 +18,7 @@ When processing ANY user request, invoke the `orchestrator` agent FIRST unless:
 
 **Orchestrator reads this registry** to match requests to specialists and invoke via Task tool with selective context injection.
 
-# Claude subagents and Tasks (Claude Code)
+# Claude subagents, Skills, and Commands (Claude Code)
 
 Claude Code reads CLAUDE.md when other subagents want to invoke other subagents, tasks, or resources
 
@@ -271,7 +271,7 @@ Source: [./agents/market-researcher.md](./agents/market-researcher.md)
 
 ## Skills
 
-Core workflow skills (11 total). Use /command-name to execute.
+Core workflow skills (11 total). Use /skill-name to execute.
 
 ### Skill: brainstorming
 Source: [./skills/brainstorming/SKILL.md](./skills/brainstorming/SKILL.md)
@@ -337,5 +337,63 @@ Source: [./skills/testing-anti-patterns/SKILL.md](./skills/testing-anti-patterns
 Source: [./skills/verification-before-completion/SKILL.md](./skills/verification-before-completion/SKILL.md)
 - Description: Verify work meets requirements before marking complete - prevents incomplete deliverables. Auto-triggers before claiming done/fixed/complete/passing.
 - Usage: `/verification-before-completion <work-to-verify>`
+- Full definition: open the source file above (content not embedded)
+
+## Commands
+
+Additional workflow commands (9 total). Use /command-name to execute.
+
+### Command: debug
+Source: [./commands/debug.md](./commands/debug.md)
+- Description: Debug an issue systematically using structured investigation techniques
+- Usage: `/debug <issue-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: explain
+Source: [./commands/explain.md](./commands/explain.md)
+- Description: Explain code for someone new to the codebase
+- Usage: `/explain <code-section>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: git-commit
+Source: [./commands/git-commit.md](./commands/git-commit.md)
+- Description: Analyze changes and create intelligent git commits
+- Usage: `/git-commit`
+- Full definition: open the source file above (content not embedded)
+
+### Command: optimize
+Source: [./commands/optimize.md](./commands/optimize.md)
+- Description: Analyze and optimize performance issues
+- Usage: `/optimize <target-area>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: refactor
+Source: [./commands/refactor.md](./commands/refactor.md)
+- Description: Refactor code while maintaining behavior and tests
+- Usage: `/refactor <code-section>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: review
+Source: [./commands/review.md](./commands/review.md)
+- Description: Comprehensive code review including quality, tests, and architecture
+- Usage: `/review`
+- Full definition: open the source file above (content not embedded)
+
+### Command: security
+Source: [./commands/security.md](./commands/security.md)
+- Description: Security vulnerability scan and analysis
+- Usage: `/security`
+- Full definition: open the source file above (content not embedded)
+
+### Command: ship
+Source: [./commands/ship.md](./commands/ship.md)
+- Description: Pre-deployment verification checklist
+- Usage: `/ship`
+- Full definition: open the source file above (content not embedded)
+
+### Command: test-generate
+Source: [./commands/test-generate.md](./commands/test-generate.md)
+- Description: Generate comprehensive test suites for existing code
+- Usage: `/test-generate <code-section>`
 - Full definition: open the source file above (content not embedded)
 

@@ -18,9 +18,9 @@ When processing ANY user request, invoke the `orchestrator` agent FIRST unless:
 
 **Orchestrator reads this registry** to match requests to specialists and invoke via Task tool with selective context injection.
 
-# Droid CLI subagents and Tasks (Droid)
+# Droid CLI subagents and Commands (Droid)
 
-Droid reads AGENTS.md when other subagents want to invoke other subagents, tasks, or resources
+Droid reads AGENTS.md when other subagents want to invoke other subagents, or Commands
 
 ## How To Use With Droid
 
@@ -291,16 +291,64 @@ Source: [./commands/condition-based-waiting.md](./commands/condition-based-waiti
 - Usage: `/condition-based-waiting <condition-type> <timeout-specs>`
 - Full definition: open the source file above (content not embedded)
 
+### Command: debug
+Source: [./commands/debug.md](./commands/debug.md)
+- Description: Debug an issue systematically using structured investigation techniques
+- Usage: `/debug <issue-description>`
+- Full definition: open the source file above (content not embedded)
+
 ### Command: docs-builder
 Source: [./commands/docs-builder/SKILL.md](./commands/docs-builder/SKILL.md)
 - Description: Create comprehensive project documentation with structured /docs hierarchy
 - Usage: `/docs-builder`
 - Full definition: open the source file above (content not embedded)
 
+### Command: explain
+Source: [./commands/explain.md](./commands/explain.md)
+- Description: Explain code for someone new to the codebase
+- Usage: `/explain <code-section>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: git-commit
+Source: [./commands/git-commit.md](./commands/git-commit.md)
+- Description: Analyze changes and create intelligent git commits
+- Usage: `/git-commit`
+- Full definition: open the source file above (content not embedded)
+
+### Command: optimize
+Source: [./commands/optimize.md](./commands/optimize.md)
+- Description: Analyze and optimize performance issues
+- Usage: `/optimize <target-area>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: refactor
+Source: [./commands/refactor.md](./commands/refactor.md)
+- Description: Refactor code while maintaining behavior and tests
+- Usage: `/refactor <code-section>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: review
+Source: [./commands/review.md](./commands/review.md)
+- Description: Comprehensive code review including quality, tests, and architecture
+- Usage: `/review`
+- Full definition: open the source file above (content not embedded)
+
 ### Command: root-cause-tracing
 Source: [./commands/root-cause-tracing.md](./commands/root-cause-tracing.md)
 - Description: Trace issues to their root cause using systematic investigation techniques
 - Usage: `/root-cause-tracing <issue-description>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: security
+Source: [./commands/security.md](./commands/security.md)
+- Description: Security vulnerability scan and analysis
+- Usage: `/security`
+- Full definition: open the source file above (content not embedded)
+
+### Command: ship
+Source: [./commands/ship.md](./commands/ship.md)
+- Description: Pre-deployment verification checklist
+- Usage: `/ship`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: skill-creator
@@ -325,6 +373,12 @@ Source: [./commands/systematic-debugging.md](./commands/systematic-debugging.md)
 Source: [./commands/test-driven-development.md](./commands/test-driven-development.md)
 - Description: Write test first, watch it fail, write minimal code to pass - ensures tests actually verify behavior by requiring failure first. Auto-triggers when implementing features/bugfixes.
 - Usage: `/test-driven-development <feature-or-behavior-to-test>`
+- Full definition: open the source file above (content not embedded)
+
+### Command: test-generate
+Source: [./commands/test-generate.md](./commands/test-generate.md)
+- Description: Generate comprehensive test suites for existing code
+- Usage: `/test-generate <code-section>`
 - Full definition: open the source file above (content not embedded)
 
 ### Command: testing-anti-patterns

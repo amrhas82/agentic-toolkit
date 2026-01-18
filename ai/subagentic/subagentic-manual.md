@@ -95,11 +95,6 @@ Install and invoke for your platform:
 4. **Bypass when needed** – `@agent-name` or `As agent-name, ...` for direct agent access
 5. **9 workflow patterns** – Pre-defined sequences in CLAUDE.md (Feature Discovery, Architecture Decision, etc.)
 
-**Key files:**
-- `~/.claude/CLAUDE.md` – Agent system with orchestrator-first routing and 9 workflows
-- `~/.claude/agents/` – 14 specialist agents (orchestrator, 1-create-prd, code-developer, qa, etc.)
-- Project `CLAUDE.md` – Auto-created by context-builder with agent system reminder
-
 ### Other Platforms
 1. **Clone and Install** – Copy files to your CLI's config directory
 2. **Start with Workflow** – Use 1-create-prd → 2-generate-tasks → 3-process-task-list

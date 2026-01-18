@@ -111,7 +111,7 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN error is deep in call stack:**
 
-   **REQUIRED SUB-SKILL:** Use superpowers:root-cause-tracing for backward tracing technique
+   **REQUIRED SUB-SKILL:** Use root-cause-tracing for backward tracing technique
 
    **Quick version:**
    - Where does bad value originate?

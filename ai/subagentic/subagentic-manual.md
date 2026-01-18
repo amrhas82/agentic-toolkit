@@ -25,10 +25,13 @@ Install and invoke for your platform:
 
 ## 📦 What's Included
 
-**Per-kit contents** (14 subagents + 11 skills):
-- **3 Workflow Subagents** – Three-phase development: 1-Create PRD → 2-Generate Tasks → 3-Process Task List
-- **11 Specialist Subagents** – Expert roles (UX, QA, Product, Dev, Architecture, Documentation, etc.)
-- **11 Core Skills** – Code creation, testing, debugging, docs, design, file processing
+**Per-kit contents**:
+- **14 Subagents Total** – 3 Workflow + 11 Specialist agents
+  - **3 Workflow Subagents** – Three-phase development: 1-Create PRD → 2-Generate Tasks → 3-Process Task List
+  - **11 Specialist Subagents** – Expert roles (UX, QA, Product, Dev, Architecture, Documentation, etc.)
+- **Commands/Skills by Platform**:
+  - **OpenCode, Droid, Amp**: 20 commands (full set)
+  - **Claude Code**: 9 commands (core subset)
 - **Zero Configuration** – Ready to use immediately
 ---
 
@@ -62,27 +65,46 @@ Install and invoke for your platform:
 
 ---
 
-## 🛠 11 Core Skills
+## 🛠 Commands/Skills
 
-### Development & Testing (7)
-| Skill | Purpose | Token Load* |
-|-------|---------|------------|
-| **test-driven-development** | Write tests first, red-green-refactor cycle ensures tests verify behavior | ~2,434 tokens |
-| **testing-anti-patterns** | Avoid mock testing, test-only code, and mindless mocking | ~2,101 tokens |
-| **code-review** | Structured code review workflow before merging | ~846 tokens |
-| **systematic-debugging** | Four-phase debugging: investigate → analyze → hypothesize → implement | ~163 tokens |
-| **root-cause-tracing** | Trace bugs backward through call stack to find original trigger | ~1,400 tokens |
-| **condition-based-waiting** | Replace timeouts with polling to eliminate flaky tests | ~937 tokens |
-| **verification-before-completion** | Verify claims with evidence before marking tasks complete | ~1,050 tokens |
+### Full Package: 20 Commands (OpenCode, Droid, Amp)
 
-### Strategy & Planning (3)
-| Skill | Purpose | Token Load* |
-|-------|---------|------------|
-| **brainstorming** | Collaborative design through questioning and exploration | ~640 tokens |
-| **skill-creator** | Create custom skills extending Claude's capabilities | ~2,886 tokens |
-| **docs-builder** | Create comprehensive project documentation with structured /docs hierarchy | ~1,000 tokens |
+**Development & Testing (10)**
+| Command | Purpose |
+|---------|---------|
+| **test-driven-development** | Write tests first, red-green-refactor cycle ensures tests verify behavior |
+| **testing-anti-patterns** | Avoid mock testing, test-only code, and mindless mocking |
+| **test-generate** | Generate comprehensive test suites |
+| **code-review** | Structured code review workflow before merging |
+| **systematic-debugging** | Four-phase debugging: investigate → analyze → hypothesize → implement |
+| **root-cause-tracing** | Trace bugs backward through call stack to find original trigger |
+| **debug** | Debug an issue systematically |
+| **condition-based-waiting** | Replace timeouts with polling to eliminate flaky tests |
+| **verification-before-completion** | Verify claims with evidence before marking tasks complete |
+| **subagent-spawning** | Templates for spawning fresh subagents with TDD-aware task isolation |
 
-**\*Progressive Disclosure:** Token loads shown are **full skill sizes when activated**. Skills load on-demand via the `Skill` tool when you invoke them (e.g., `/brainstorming`, `/docs-builder`). Until activated, skills consume minimal tokens as slash command metadata (~1.5k tokens total for all 11 skills). Use `/context` to monitor actual usage.
+**Code Operations (6)**
+| Command | Purpose |
+|---------|---------|
+| **refactor** | Refactor while maintaining behavior |
+| **optimize** | Analyze and optimize performance |
+| **explain** | Explain code for someone new |
+| **review** | Comprehensive code review |
+| **security** | Security vulnerability scan |
+| **ship** | Pre-deployment verification |
+
+**Strategy & Planning (4)**
+| Command | Purpose |
+|---------|---------|
+| **brainstorming** | Collaborative design through questioning and exploration |
+| **skill-creator** | Create custom skills extending Claude's capabilities |
+| **docs-builder** | Create comprehensive project documentation with structured /docs hierarchy |
+| **git-commit** | Analyze changes and create commit |
+
+### Claude Code Package: 9 Commands (Core Subset)
+**debug, explain, git-commit, optimize, refactor, review, security, ship, test-generate**
+
+**\*Progressive Disclosure:** Commands load on-demand when invoked. Until activated, they consume minimal tokens as slash command metadata. Use `/context` to monitor actual usage.
 
 ---
 

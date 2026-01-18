@@ -73,12 +73,12 @@ npx agentic-kit
 - **NPM Package**: `npx agentic-kit` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/agentic-kit))
 - **[📖 Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Token loads, progressive disclosure, complete reference
 
-| Platform | Agents | Skills/Commands | Install Path | Source Path |
-|----------|--------|-----------------|--------------|-------------|
+| Platform | Agents | Skills/Commands      | Install Path | Source Path |
+|----------|--------|----------------------|--------------|-------------|
 | **Claude Code** | 14 agents | 11 skills + 9 commands | `~/.claude/` | `ai/subagentic/claude/` |
-| **OpenCode** | 14 agents | 20 commands | `~/.config/opencode/` | `ai/subagentic/opencode/` |
-| **Droid** | 14 droids | 19 commands | `~/.factory/` | `ai/subagentic/droid/` |
-| **Amp** | 14 agents | 19 commands | `~/.config/amp/` | `ai/subagentic/ampcode/` |
+| **OpenCode** | 14 agents | 20 commands          | `~/.config/opencode/` | `ai/subagentic/opencode/` |
+| **Droid** | 14 droids | 20 commands          | `~/.factory/` | `ai/subagentic/droid/` |
+| **Amp** | 14 agents | 20 commands          | `~/.config/amp/` | `ai/subagentic/ampcode/` |
 
 **Usage**: Invoke with `@agent-name` or `As agent-name, ...` (Claude/OpenCode/Amp) or `invoke droid agent-name` (Droid). Commands via `/command-name`.
 

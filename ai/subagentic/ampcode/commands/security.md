@@ -1,5 +1,5 @@
 ---
-description: Security vulnerability scan
+description: Scan security [target]
 argument-hint: [file, directory, or leave empty for full scan]
 allowed-tools: Read, Grep, Glob
 ---

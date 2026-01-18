@@ -1,5 +1,5 @@
 ---
-description: Explain code for someone new
+description: Explain [code]
 argument-hint: [file, function, or concept]
 model: claude-3-5-haiku-20241022
 ---

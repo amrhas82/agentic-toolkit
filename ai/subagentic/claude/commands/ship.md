@@ -1,5 +1,5 @@
 ---
-description: Pre-deployment verification
+description: Check pre-deployment
 allowed-tools: Bash(npm *), Bash(git *)
 ---
 Pre-deploy checklist:

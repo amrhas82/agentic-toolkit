@@ -1,5 +1,5 @@
 ---
-description: Generate comprehensive tests
+description: Generate tests [file]
 argument-hint: [file-to-test]
 ---
 Generate tests for $ARGUMENTS.

@@ -1,5 +1,5 @@
 ---
-description: Refactor while maintaining behavior
+description: Refactor [code]
 argument-hint: [file-or-function]
 ---
 Refactor $ARGUMENTS.

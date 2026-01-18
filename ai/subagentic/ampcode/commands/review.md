@@ -1,5 +1,5 @@
 ---
-description: Comprehensive code review
+description: Review code [file]
 argument-hint: [file or leave empty for staged changes]
 ---
 Review $ARGUMENTS (or staged changes if not specified).

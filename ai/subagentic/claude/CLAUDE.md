@@ -20,7 +20,7 @@ When processing ANY user request, invoke the `orchestrator` agent FIRST unless:
 
 # Claude subagents, Skills, and Commands (Claude Code)
 
-Claude Code reads CLAUDE.md when other subagents want to invoke other subagents, tasks, or resources
+Claude Code reads CLAUDE.md when other subagents want to invoke other subagents, skills, or commands
 
 ## How To Use With Claude
 

@@ -1,5 +1,5 @@
 ---
-description: Analyze and optimize performance
+description: Optimize performance [target]
 argument-hint: [file-or-function]
 ---
 Analyze $ARGUMENTS for performance.

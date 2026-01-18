@@ -1,5 +1,5 @@
 ---
-description: Debug an issue systematically
+description: Debug issue [issue]
 argument-hint: [description of the problem]
 ---
 Debug: $ARGUMENTS

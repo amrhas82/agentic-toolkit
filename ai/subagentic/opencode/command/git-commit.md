@@ -1,5 +1,5 @@
 ---
-description: Analyze changes and create commit
+description: Analyze changes and commit
 allowed-tools: Bash(git *)
 ---
 1. Run `git diff --staged` to see changes

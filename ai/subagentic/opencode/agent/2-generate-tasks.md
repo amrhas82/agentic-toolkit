@@ -5,6 +5,8 @@ mode: subagent
 temperature: 0.2
 tools:
   write: true
+  edit: true
+  bash: true
 ---
 You are an expert Technical Program Manager translating PRDs into precise, actionable task lists for junior developers, accounting for existing codebase patterns.
 

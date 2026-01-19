@@ -36,6 +36,27 @@ Works standalone out of the box. Optional: Add [Superpowers](https://github.com/
 
 ## 🚀 Quick Start
 
+### Option 1: NPM Global Install (Recommended)
+
+```bash
+# Install globally
+npm install -g @amrhas82/agentic-kit
+
+# Run installer
+agentic-kit
+
+# Choose tool(s): claude, opencode, ampcode, or droid
+# Each tool gets 14 agents + 20 commands
+```
+
+### Option 2: NPX (No Installation)
+
+```bash
+npx agentic-kit
+```
+
+### Option 3: Manual Installation
+
 ```bash
 # Clone the repository
 git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit
@@ -45,9 +66,6 @@ cp -rv ai/subagentic/claude/* ~/.claude/          # Claude Code
 cp -rv ai/subagentic/opencode/* ~/.config/opencode/  # OpenCode
 cp -rv ai/subagentic/droid/* ~/.factory/         # Droid
 cp -rv ai/subagentic/ampcode/* ~/.config/amp/    # Amp
-
-# Or use NPM package
-npx agentic-kit
 ```
 
 [Vibecoding 101](docs/vibecoding-101-guide.md) | [Subagent Manual](ai/subagentic/subagentic-manual.md) | [Development Tools](tools/dev_tools_menu.sh)

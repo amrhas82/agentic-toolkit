@@ -15,7 +15,7 @@ Save session context for compaction recovery or handoffs.
 1. Captures current conversation context and key decisions
 2. Records active work in progress
 3. Stores important findings and insights
-4. Creates stash file in `~/.claude/stash/`
+4. Creates stash file in `.opencode/stash/`
 5. Enables context restoration after compaction
 
 **When to use**
@@ -33,13 +33,13 @@ Save session context for compaction recovery or handoffs.
 /stash "feature-auth-investigation"
 
 # List available stashes
-ls ~/.claude/stash/
+ls .opencode/stash/
 
 # Restore from stash
-cat ~/.claude/stash/<name>.md
+cat .opencode/stash/<name>.md
 ```
 
 **Reference**
-- Stashes stored in `~/.claude/stash/`
+- Stashes stored in `.opencode/stash/` (project-local)
 - Automatically includes: timestamp, active plan, recent decisions
 - Maximum context retention with minimal token usage

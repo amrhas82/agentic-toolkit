@@ -168,10 +168,41 @@ install_ghostty() {
     fi
 }
 
+# Function to install Kitty Terminal
+install_kitty() {
+    print_info "Installing Kitty Terminal (GPU-accelerated terminal with Catppuccin theme)..."
+
+    if [ -f "$SCRIPT_DIR/install_kitty.sh" ]; then
+        # Check if script is executable
+        if [ ! -x "$SCRIPT_DIR/install_kitty.sh" ]; then
+            print_info "Making install_kitty.sh executable..."
+            chmod +x "$SCRIPT_DIR/install_kitty.sh"
+        fi
+
+        # Prompt user for confirmation
+        echo -e "${YELLOW}This will install Kitty Terminal with custom configuration.${NC}"
+        echo -e "${YELLOW}Features: GPU acceleration, Catppuccin Frappe theme, Ctrl+S keybindings${NC}"
+        echo -e "${YELLOW}Note: Optimized for lower GPU usage to prevent system freezes${NC}"
+        read -p "Do you want to continue? (y/N): " -n 1 -r
+        echo ""
+
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            bash "$SCRIPT_DIR/install_kitty.sh"
+            print_success "Kitty Terminal setup completed via install_kitty.sh"
+            print_info "For keybindings reference, see: kitty_guide.md"
+        else
+            print_info "Installation cancelled."
+        fi
+    else
+        print_error "install_kitty.sh not found in $SCRIPT_DIR"
+        print_info "Please ensure the install_kitty.sh script exists in the tools directory."
+    fi
+}
+
 # Function to install Tmux + TPM
 install_tmux() {
     print_info "Installing Tmux + TPM..."
-    
+
     if [ -f "$SCRIPT_DIR/master_tmux_setup.sh" ]; then
         bash "$SCRIPT_DIR/master_tmux_setup.sh"
         print_success "Tmux setup completed via master_tmux_setup.sh"
@@ -519,6 +550,8 @@ install_all() {
     echo ""
     install_ghostty
     echo ""
+    install_kitty
+    echo ""
     install_lazyvim
     echo ""
     install_lazygit
@@ -559,15 +592,16 @@ show_menu() {
     echo -e "${GREEN}8)${NC} Install Neovim + NvimTree + Plugins (from source)"
     echo -e "${GREEN}9)${NC} Install Zsh + Oh My Zsh + Agnoster Theme"
     echo -e "${GREEN}10)${NC} Install Ghostty Terminal"
-    echo -e "${GREEN}11)${NC} Install LazyVim (Requires Neovim + Ghostty)"
-    echo -e "${GREEN}12)${NC} Install Lazygit"
-    echo -e "${GREEN}13)${NC} Install Sublime Text"
-    echo -e "${GREEN}14)${NC} Install Tmux + TPM + Config (from source)"
-    echo -e "${GREEN}15)${NC} Install Lite XL (Markdown Editor)"
-    echo -e "${GREEN}16)${NC} Install Pass CLI (Password Manager)"
-    echo -e "${GREEN}17)${NC} Install FZF (Fuzzy Finder)"
+    echo -e "${GREEN}11)${NC} Install Kitty Terminal"
+    echo -e "${GREEN}12)${NC} Install LazyVim (Requires Neovim + Ghostty/Kitty)"
+    echo -e "${GREEN}13)${NC} Install Lazygit"
+    echo -e "${GREEN}14)${NC} Install Sublime Text"
+    echo -e "${GREEN}15)${NC} Install Tmux + TPM + Config (from source)"
+    echo -e "${GREEN}16)${NC} Install Lite XL (Markdown Editor)"
+    echo -e "${GREEN}17)${NC} Install Pass CLI (Password Manager)"
+    echo -e "${GREEN}18)${NC} Install FZF (Fuzzy Finder)"
     echo ""
-    echo -e "${YELLOW}18)${NC} Install All Tools"
+    echo -e "${YELLOW}19)${NC} Install All Tools"
     echo ""
     echo -e "${RED}0)${NC} Exit"
     echo ""
@@ -613,27 +647,30 @@ main() {
                 install_ghostty
                 ;;
             11)
-                install_lazyvim
+                install_kitty
                 ;;
             12)
-                install_lazygit
+                install_lazyvim
                 ;;
             13)
-                install_sublime
+                install_lazygit
                 ;;
             14)
-                install_tmux
+                install_sublime
                 ;;
             15)
-                install_litexl
+                install_tmux
                 ;;
             16)
-                install_pass
+                install_litexl
                 ;;
             17)
-                install_fzf
+                install_pass
                 ;;
             18)
+                install_fzf
+                ;;
+            19)
                 install_all
                 ;;
             0)

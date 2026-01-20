@@ -27,7 +27,7 @@ digraph ProcessTaskList {
   output_valid [label="Output valid?", shape=diamond];
   stuck [label="Stuck/Blocked?", shape=diamond, fillcolor=pink];
   ask_help [label="Ask user for help\nDON'T SKIP!", fillcolor=red];
-  mark_subtask [label="Mark [x] immediately"];
+  mark_subtask [label="Mark [x] immediately\n(Edit tool: [ ]→[x])"];
   more_subtasks [label="More subtasks\nin parent?", shape=diamond];
   run_tests [label="Run tests"];
   tests_pass [label="Tests pass?", shape=diamond];
@@ -72,7 +72,7 @@ digraph ProcessTaskList {
 ## Sequential Execution
 - Follow diagram flow: **no skipping, no jumping, no reordering**
 - Execute tasks in exact order (1.1 → 1.2 → 1.3 → 2.1 → ...)
-- Mark `[x]` immediately after completing each subtask
+- **Mark `[x]` immediately after completing each subtask** - use Edit tool to update the task file, changing `- [ ]` to `- [x]`
 
 ## When Stuck
 - **DO NOT skip to next task**
@@ -90,6 +90,23 @@ digraph ProcessTaskList {
 4. Continue to next parent task
 
 **You MUST commit after completing each parent task. Do not batch commits.**
+
+## Marking Tasks as Complete
+
+**CRITICAL:** After completing EACH subtask, you MUST update the task list file:
+
+1. **Use the Edit tool** to modify the task list file
+2. **Find the task line** (e.g., `  - [ ] 3.2 Remove checkpoint imports from spawn.py`)
+3. **Change `[ ]` to `[x]`** (e.g., `  - [x] 3.2 Remove checkpoint imports from spawn.py`)
+4. **Verify the change** by reading the file or using grep
+
+**Example:**
+```
+Before: - [ ] 1.2 Remove "checkpoint" entry from COMMAND_TEMPLATES
+After:  - [x] 1.2 Remove "checkpoint" entry from COMMAND_TEMPLATES
+```
+
+**DO NOT skip this step.** The task file is the single source of truth for progress. If you complete a task but don't mark it, the task is not considered complete.
 
 ## Continuous Execution
 - Work through ALL tasks without stopping for permission

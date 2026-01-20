@@ -218,6 +218,19 @@ sudo snap install ghostty --classic
 - Built-in multiplexing capabilities
 - Customizable themes and fonts
 - Cross-platform support
+
+# Kitty Terminal
+sudo apt install kitty -y
+# Or use automated script:
+cd /path/to/agentic-toolkit/tools
+./install_kitty.sh
+
+# Features:
+- Optimized GPU acceleration (lower resource usage)
+- Built-in tabs and splits
+- Catppuccin Frappe theme
+- Custom Ctrl+S keybindings
+- Better stability for heavy workloads
 ```
 
 ### `tmux-install-guide.md` - Tmux Installation Guide
@@ -235,6 +248,55 @@ sudo snap install ghostty --classic
 - GPG key setup
 - Git integration for password sync
 - Usage examples and best practices
+
+### `kitty_guide.md` - Kitty Terminal Quick Reference
+
+#### **What it provides:**
+- Complete keybinding reference with Ctrl+S prefix system
+- Common workflows for development and Claude usage
+- Split and tab management guide
+- Visual layout examples and tips
+- Troubleshooting section
+- Printable cheat sheet
+
+#### **Quick Start:**
+```bash
+# View guide
+cat /path/to/agentic-toolkit/tools/kitty_guide.md
+
+# Install Kitty with automation
+./install_kitty.sh
+
+# Manual installation
+sudo apt install kitty
+cp kitty.conf ~/.config/kitty/
+```
+
+#### **Key Features:**
+- **Ctrl+S prefix system** - All keybindings use Ctrl+S prefix (same as Ghostty)
+- **Tab management** - Ctrl+S > C (new), Ctrl+S > 1-9 (jump to tab)
+- **Split management** - Ctrl+S > | (vertical), Ctrl+S > - (horizontal)
+- **Navigation** - Ctrl+S > H/J/K/L (vim-style between splits)
+- **Layouts** - Tall (side-by-side) and Fat (stacked) automatic layouts
+
+### `KITTY_MIGRATION_GUIDE.md` - Complete Kitty Setup
+
+#### **What it covers:**
+- Full installation instructions
+- Configuration file breakdown
+- Catppuccin Frappe theme setup
+- All keybinding mappings explained
+- Troubleshooting and performance tips
+- Migration from Ghostty
+- Resource optimization for Intel integrated graphics
+
+#### **Migration Checklist:**
+- Install Kitty terminal
+- Copy configuration files
+- Test keybindings and splits
+- Verify theme and colors
+- Monitor resource usage
+- Set as default terminal (optional)
 
 ---
 

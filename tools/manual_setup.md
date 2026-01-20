@@ -28,6 +28,54 @@ sudo snap install ghostty --classic
 - Customizable themes and fonts
 - Cross-platform support
 
+### Kitty Terminal
+Fast, feature-rich, GPU-accelerated terminal emulator optimized for performance and stability.
+
+```bash
+# Quick installation
+sudo apt update && sudo apt install kitty -y
+
+# Or use the automated installation script
+cd /path/to/agentic-toolkit/tools
+chmod +x install_kitty.sh
+./install_kitty.sh
+```
+
+**Features:**
+- GPU-accelerated with lower resource usage than Ghostty
+- Built-in tabs and splits (no tmux needed)
+- Catppuccin Frappe theme pre-configured
+- Custom Ctrl+S keybindings (same as Ghostty)
+- Optimized for Intel integrated graphics
+- Better stability for running multiple heavy processes (Claude, etc.)
+
+**Configuration Files:**
+- `kitty.conf` - Ready-to-use configuration
+- `kitty_guide.md` - Complete keybinding reference
+- `KITTY_MIGRATION_GUIDE.md` - Full setup guide
+- `install_kitty.sh` - Automated installation script
+
+**Quick Setup:**
+```bash
+# Install Kitty
+sudo apt install kitty
+
+# Copy config
+mkdir -p ~/.config/kitty
+cp kitty.conf ~/.config/kitty/
+
+# Launch
+kitty
+```
+
+**Common Keybindings:**
+- `Ctrl+S > C` - New tab
+- `Ctrl+S > |` - Vertical split (side-by-side)
+- `Ctrl+S > -` - Horizontal split (top/bottom)
+- `Ctrl+S > H/J/K/L` - Navigate between splits
+- `Ctrl+S > 1-9` - Jump to tab
+- `Ctrl+S > R` - Reload config
+
 ---
 
 ## Shell Environment (Zsh)
@@ -529,6 +577,7 @@ return M
 
 ### Core Terminal Environment
 - [ ] Install Ghostty terminal
+- [ ] Install Kitty terminal (recommended for stability)
 - [ ] Install Zsh shell
 - [ ] Install Oh My Zsh framework
 - [ ] Configure Zsh (see zsh-guide.md for customization)

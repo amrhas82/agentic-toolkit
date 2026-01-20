@@ -20,7 +20,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 |----------|-----------|-------------|
 | **Agents** | 14 Role-Based Specialists | PO, PM, QA, Dev, Architect, UX, Master, Orchestrator plus 3-phase workflow agents (1-create-prd, 2-generate-tasks, 3-process-task-list) |
 | **Skills** | 11 Core Workflows | systematic-debugging, test-driven-development, verification-before-completion, testing-anti-patterns, root-cause-tracing, condition-based-waiting, brainstorming, code-review, skill-creator, docs-builder, subagent-spawning |
-| **Commands** | 9 Development Tools | debug, explain, git-commit, optimize, refactor, review, security, ship, test-generate |
+| **Commands** | 10 Development Tools | debug, explain, git-commit, optimize, refactor, review, security, ship, stash, test-generate |
 | **Workflows** | 3-Phase Development | PRD Creation → Task Generation → Sequential Execution with automatic routing through digraph state machines |
 | **Architecture** | Token Efficient | Progressive disclosure loads ~950 tokens for agent stubs, expands only when invoked |
 | **Installation** | Multiple Options | Manual copy-paste (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx agentic-kit`) |
@@ -93,10 +93,10 @@ cp -rv ai/subagentic/ampcode/* ~/.config/amp/    # Amp
 
 | Platform | Agents | Skills/Commands      | Install Path | Source Path |
 |----------|--------|----------------------|--------------|-------------|
-| **Claude Code** | 14 agents | 11 skills + 9 commands | `~/.claude/` | `ai/subagentic/claude/` |
-| **OpenCode** | 14 agents | 20 commands          | `~/.config/opencode/` | `ai/subagentic/opencode/` |
-| **Droid** | 14 droids | 20 commands          | `~/.factory/` | `ai/subagentic/droid/` |
-| **Amp** | 14 agents | 20 commands          | `~/.config/amp/` | `ai/subagentic/ampcode/` |
+| **Claude Code** | 14 agents | 11 skills + 10 commands | `~/.claude/` | `ai/subagentic/claude/` |
+| **OpenCode** | 14 agents | 21 commands          | `~/.config/opencode/` | `ai/subagentic/opencode/` |
+| **Droid** | 14 droids | 21 commands          | `~/.factory/` | `ai/subagentic/droid/` |
+| **Amp** | 14 agents | 21 commands          | `~/.config/amp/` | `ai/subagentic/ampcode/` |
 
 **Usage**: Invoke with `@agent-name` or `As agent-name, ...` (Claude/OpenCode/Amp) or `invoke droid agent-name` (Droid). Commands via `/command-name`.
 
@@ -119,10 +119,10 @@ Agentic Toolkit is **complete and self-sufficient**. Optionally add [Superpowers
 agentic-toolkit/
 ├── ai/
 │   ├── subagentic/              # Subagent kits for all platforms
-│   │   ├── claude/              # 14 agents + 11 skills + 9 commands
-│   │   ├── opencode/            # 14 agents + 20 commands
-│   │   ├── droid/               # 14 droids + 19 commands
-│   │   └── ampcode/             # 14 agents + 19 commands
+│   │   ├── claude/              # 14 agents + 11 skills + 10 commands
+│   │   ├── opencode/            # 14 agents + 21 commands
+│   │   ├── droid/               # 14 droids + 21 commands
+│   │   └── ampcode/             # 14 agents + 21 commands
 │   ├── customize/               # Platform customization configs
 │   │   ├── byok/                # Bring Your Own Key configs
 │   │   ├── claude-switcher/     # Claude Code LLM/MCP switcher

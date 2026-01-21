@@ -115,20 +115,56 @@ fi
 if [[ $INSTALL_KITTY == true ]]; then
     print_header "Step 3: Installing Kitty"
 
-    print_info "Updating package list..."
-    sudo apt update
-    print_success "Package list updated"
+    print_info "Installing Kitty from official installer (latest version)..."
+    print_info "This ensures support for all modern terminal features including mode 2026"
 
-    print_info "Installing Kitty terminal emulator..."
-    sudo apt install -y kitty
-    print_success "Kitty installed successfully"
+    # Download and run the official installer
+    if curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin; then
+        print_success "Kitty installer completed"
+    else
+        print_error "Kitty installation failed"
+        exit 1
+    fi
+
+    # Add kitty to PATH if not already there
+    KITTY_BIN="$HOME/.local/kitty.app/bin"
+    if [[ -d "$KITTY_BIN" ]]; then
+        print_info "Adding Kitty to PATH..."
+
+        # Add to current shell
+        export PATH="$KITTY_BIN:$PATH"
+
+        # Add to shell rc files
+        for rc_file in "$HOME/.bashrc" "$HOME/.zshrc"; do
+            if [[ -f "$rc_file" ]]; then
+                if ! grep -q "kitty.app/bin" "$rc_file"; then
+                    echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >> "$rc_file"
+                    print_success "Added to $(basename $rc_file)"
+                fi
+            fi
+        done
+    fi
+
+    # Create symbolic links for desktop integration
+    print_info "Setting up desktop integration..."
+    if [[ -d "$HOME/.local/kitty.app" ]]; then
+        ln -sf "$HOME/.local/kitty.app/share/applications/kitty.desktop" "$HOME/.local/share/applications/" 2>/dev/null || true
+        ln -sf "$HOME/.local/kitty.app/share/applications/kitty-open.desktop" "$HOME/.local/share/applications/" 2>/dev/null || true
+
+        # Update desktop database
+        if command -v update-desktop-database &> /dev/null; then
+            update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
+        fi
+    fi
 
     # Verify installation
     if command -v kitty &> /dev/null; then
         KITTY_VERSION=$(kitty --version | head -n1)
         print_success "Verified: $KITTY_VERSION"
+        print_success "Kitty supports synchronized output (mode 2026) - no more errors!"
     else
-        print_error "Kitty installation failed"
+        print_error "Kitty installation failed - kitty command not found"
+        print_info "You may need to restart your shell or run: source ~/.bashrc"
         exit 1
     fi
 else

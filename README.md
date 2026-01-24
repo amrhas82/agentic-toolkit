@@ -23,7 +23,7 @@ Featuring structured thinking frameworks, skills, and plugins that guide your AI
 | **Commands** | 10 Development Tools | debug, explain, git-commit, optimize, refactor, review, security, ship, stash, test-generate |
 | **Workflows** | 3-Phase Development | PRD Creation → Task Generation → Sequential Execution with automatic routing through digraph state machines |
 | **Architecture** | Token Efficient | Progressive disclosure loads ~950 tokens for agent stubs, expands only when invoked |
-| **Installation** | Multiple Options | Manual copy-paste (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx agentic-kit`) |
+| **Installation** | Multiple Options | Manual copy-paste (`cp -r ai/subagentic/claude/* ~/.claude/`) or NPM (`npx liteagents`) |
 | **Verification** | Built-in Quality Gates | TDD enforcement, verification gates before completion, systematic debugging frameworks |
 
 ### Complete & Self-Sufficient
@@ -36,23 +36,26 @@ Works standalone out of the box. Optional: Add [Superpowers](https://github.com/
 
 ## 🚀 Quick Start
 
-### Option 1: NPM Global Install (Recommended)
+### Option 1: NPX (Recommended - No Installation)
 
 ```bash
-# Install globally
-npm install -g @amrhas82/agentic-kit
-
-# Run installer
-agentic-kit
-
-# Choose tool(s): claude, opencode, ampcode, or droid
-# Each tool gets 11 agents + 20 commands
+npx liteagents
 ```
 
-### Option 2: NPX (No Installation)
+### Option 2: NPM Global Install
 
 ```bash
-npx agentic-kit
+# Install globally (never use sudo)
+npm install -g liteagents
+
+# If permission errors, configure npm first:
+mkdir -p ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+
+# Run installer
+liteagents
 ```
 
 ### Option 3: Manual Installation
@@ -88,7 +91,7 @@ cp -rv ai/subagentic/ampcode/* ~/.config/amp/    # Amp
 
 **Installation Options**:
 - **Manual**: `cp -rv ai/subagentic/<platform>/* <install-path>/` (see table below)
-- **NPM Package**: `npx agentic-kit` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/agentic-kit))
+- **NPM Package**: `npx liteagents` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/liteagents))
 - **[📖 Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Token loads, progressive disclosure, complete reference
 
 | Platform | Agents | Skills/Commands      | Install Path | Source Path |

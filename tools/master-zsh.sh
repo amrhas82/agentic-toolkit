@@ -2,7 +2,11 @@
 
 ################################################################################
 # Zsh Installation and Configuration Script
-# This script automates the installation of Zsh with Oh My Zsh and Agnoster theme
+# This script automates the installation of Zsh with:
+#   - Oh My Zsh framework
+#   - Powerlevel10k theme (run: p10k configure)
+#   - zsh-syntax-highlighting plugin
+#   - zsh-autosuggestions plugin
 ################################################################################
 
 set -e  # Exit on error
@@ -79,10 +83,55 @@ fi
 echo ""
 
 ################################################################################
-# Step 3: Backup existing .zshrc
+# Step 3: Install Powerlevel10k Theme
 ################################################################################
 
-print_message "Step 3: Backing up existing .zshrc..."
+print_message "Step 3: Installing Powerlevel10k theme..."
+
+P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+if [ -d "$P10K_DIR" ]; then
+    print_warning "Powerlevel10k is already installed"
+else
+    print_message "Cloning Powerlevel10k..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
+    print_message "Powerlevel10k installed successfully"
+fi
+
+echo ""
+
+################################################################################
+# Step 4: Install Zsh Plugins
+################################################################################
+
+print_message "Step 4: Installing Zsh plugins..."
+
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+# zsh-syntax-highlighting
+if [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+    print_warning "zsh-syntax-highlighting is already installed"
+else
+    print_message "Installing zsh-syntax-highlighting..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+    print_message "zsh-syntax-highlighting installed"
+fi
+
+# zsh-autosuggestions
+if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+    print_warning "zsh-autosuggestions is already installed"
+else
+    print_message "Installing zsh-autosuggestions..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+    print_message "zsh-autosuggestions installed"
+fi
+
+echo ""
+
+################################################################################
+# Step 5: Backup existing .zshrc
+################################################################################
+
+print_message "Step 5: Backing up existing .zshrc..."
 
 if [ -f "$HOME/.zshrc" ]; then
     BACKUP_FILE="$HOME/.zshrc.backup.$(date +%Y%m%d_%H%M%S)"
@@ -95,10 +144,10 @@ fi
 echo ""
 
 ################################################################################
-# Step 4: Configure Agnoster Theme
+# Step 6: Configure Powerlevel10k Theme and Plugins
 ################################################################################
 
-print_message "Step 4: Configuring Agnoster theme..."
+print_message "Step 6: Configuring Powerlevel10k theme and plugins..."
 
 # Check if .zshrc exists
 if [ ! -f "$HOME/.zshrc" ]; then
@@ -108,20 +157,28 @@ fi
 
 # Update theme in .zshrc
 if grep -q "^ZSH_THEME=" "$HOME/.zshrc"; then
-    sed -i 's/^ZSH_THEME=.*/ZSH_THEME="agnoster"/' "$HOME/.zshrc"
-    print_message "Agnoster theme configured in .zshrc"
+    sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' "$HOME/.zshrc"
+    print_message "Powerlevel10k theme configured in .zshrc"
 else
     print_error "Could not find ZSH_THEME line in .zshrc"
     exit 1
 fi
 
+# Update plugins in .zshrc
+if grep -q "^plugins=" "$HOME/.zshrc"; then
+    sed -i 's/^plugins=.*/plugins=(git fzf zsh-syntax-highlighting zsh-autosuggestions)/' "$HOME/.zshrc"
+    print_message "Plugins configured in .zshrc"
+else
+    print_warning "Could not find plugins line in .zshrc"
+fi
+
 echo ""
 
 ################################################################################
-# Step 5: Set Zsh as default shell (optional)
+# Step 7: Set Zsh as default shell (optional)
 ################################################################################
 
-print_message "Step 5: Checking default shell..."
+print_message "Step 7: Checking default shell..."
 
 CURRENT_SHELL=$(basename "$SHELL")
 if [ "$CURRENT_SHELL" = "zsh" ]; then
@@ -155,15 +212,18 @@ echo ""
 print_message "Installed components:"
 echo "  ✓ Zsh shell"
 echo "  ✓ Oh My Zsh framework"
-echo "  ✓ Agnoster theme"
+echo "  ✓ Powerlevel10k theme"
+echo "  ✓ zsh-syntax-highlighting (colors commands as you type)"
+echo "  ✓ zsh-autosuggestions (history suggestions, press → to accept)"
 echo ""
 print_message "Next steps:"
 echo "  1. Start a new Zsh session: zsh"
-echo "  2. Or source your configuration: source ~/.zshrc"
+echo "  2. The Powerlevel10k configuration wizard will start automatically"
+echo "  3. Or run manually: p10k configure"
 echo ""
-print_message "For additional customizations (themes, plugins, etc.):"
-echo "  • See: zsh-guide.md"
+print_message "To reconfigure Powerlevel10k later:"
+echo "  • Run: p10k configure"
 echo ""
-print_warning "Note: For best Agnoster theme appearance, install a Powerline-compatible font"
-echo "      (e.g., Meslo Nerd Font, Fira Code) and configure your terminal to use it."
+print_warning "Note: For best appearance, install a Nerd Font"
+echo "      (e.g., MesloLGS NF, FiraCode Nerd Font) and configure your terminal to use it."
 echo ""

@@ -16,7 +16,7 @@
 
 ```bash
 # Ubuntu/Debian
-sudo apt install fzf
+sudo dnf install -y fzf
 
 # macOS
 brew install fzf

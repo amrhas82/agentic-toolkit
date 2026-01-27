@@ -211,7 +211,7 @@ git push -u origin main
 #### **Installation Examples:**
 ```bash
 # Ghostty Terminal
-sudo snap install ghostty --classic
+sudo dnf install -y ghostty
 
 # Features:
 - GPU acceleration for smooth rendering
@@ -220,7 +220,7 @@ sudo snap install ghostty --classic
 - Cross-platform support
 
 # Kitty Terminal
-sudo apt install kitty -y
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # Or use automated script:
 cd /path/to/agentic-toolkit/tools
 ./install_kitty.sh
@@ -268,7 +268,7 @@ cat /path/to/agentic-toolkit/tools/kitty_guide.md
 ./install_kitty.sh
 
 # Manual installation
-sudo apt install kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 cp kitty.conf ~/.config/kitty/
 ```
 
@@ -437,7 +437,7 @@ ping google.com
 #### **Dependency Conflicts:**
 ```bash
 # Fix: Remove conflicting packages
-sudo apt remove package-name
+sudo dnf remove -y package-name
 # Re-run installation
 ```
 
@@ -465,10 +465,10 @@ For issues with specific tools:
 To update tools after installation:
 ```bash
 # Update package lists
-sudo apt update
+sudo dnf check-update
 
 # Upgrade installed packages
-sudo apt upgrade
+sudo dnf upgrade -y
 
 # Re-run setup scripts for latest versions
 ./master_neovim_setup.sh

@@ -19,7 +19,7 @@
 Modern, GPU-accelerated terminal emulator with excellent performance.
 
 ```bash
-sudo snap install ghostty --classic
+sudo dnf install -y ghostty
 ```
 
 **Features:**
@@ -33,7 +33,7 @@ Fast, feature-rich, GPU-accelerated terminal emulator optimized for performance 
 
 ```bash
 # Quick installation
-sudo apt update && sudo apt install kitty -y
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 # Or use the automated installation script
 cd /path/to/agentic-toolkit/tools
@@ -58,7 +58,7 @@ chmod +x install_kitty.sh
 **Quick Setup:**
 ```bash
 # Install Kitty
-sudo apt install kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 # Copy config
 mkdir -p ~/.config/kitty
@@ -85,7 +85,7 @@ Modern shell with powerful features and extensive customization options.
 
 ```bash
 # Install Zsh
-sudo apt install zsh
+sudo dnf install -y zsh
 
 # Optional: Set as default shell
 chsh -s $(which zsh)
@@ -138,7 +138,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 Modern Vim-based text editor with Lua configuration and LSP support.
 
 ```bash
-sudo snap install nvim --classic
+sudo dnf install -y neovim
 ```
 
 **Features:**
@@ -151,15 +151,9 @@ sudo snap install nvim --classic
 Lightweight, fast text editor with extensive plugin ecosystem.
 
 ```bash
-# Install GPG key
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
-
-# Add repository
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-
-# Update and install
-sudo apt update
-sudo apt install sublime-text
+sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+sudo dnf install -y sublime-text
 ```
 
 **Features:**
@@ -203,8 +197,7 @@ Lightweight, extensible text editor with Lua scripting.
 
 ```bash
 # Install dependencies
-sudo apt update
-sudo apt install build-essential libsdl2-dev libfreetype6-dev
+sudo dnf install -y @development-tools SDL2-devel freetype-devel
 
 # Build from source (see master_litexl_setup.sh for complete setup)
 ```
@@ -219,7 +212,7 @@ sudo apt install build-essential libsdl2-dev libfreetype6-dev
 Full-featured Python IDE with debugging and testing tools.
 
 ```bash
-sudo snap install pycharm-community --classic
+cd ~/Downloads && tar -xzf pycharm-2025.3.2.tar.gz && ~/Downloads/pycharm-2025.3.2/bin/pycharm
 ```
 
 **Features:**
@@ -377,7 +370,7 @@ make prefix=/usr/local all
 sudo make prefix=/usr/local install
 
 # Method 2: Install from package manager
-sudo apt install git
+sudo dnf install -y git
 git --version
 ```
 
@@ -402,7 +395,7 @@ lazygit --version
 Command-line interface for GitHub.
 
 ```bash
-sudo apt install gh
+sudo dnf install -y gh
 ```
 
 **Features:**
@@ -419,7 +412,7 @@ sudo apt install gh
 Unix password manager using GPG encryption.
 
 ```bash
-sudo apt install pass
+sudo dnf install -y pass
 ```
 
 **Setup Instructions:**

@@ -6,7 +6,7 @@
 3. [Pass Store Initialization](#pass-store-initialization)
 4. [Basic Pass Operations](#basic-pass-operations)
 5. [Git Operations](#git-operations)
-6. [Setting Up on New Machine](#setting-up-on-new-machine)
+6. [Reinitialize Pass on a New Machine](#reinitialize-pass-on-a-new-machine-full-walkthrough)
 7. [Using Pass in Scripts](#using-pass-in-scripts)
 8. [Directory Structure](#directory-structure)
 9. [Best Practices](#best-practices)
@@ -19,7 +19,7 @@
 ### Install Pass
 ```bash
 # Install password manager with git option
-sudo apt install pass
+sudo dnf install -y pass
 ```
 
 ## GPG Key Setup
@@ -161,7 +161,7 @@ pass git add *.gpg
 # OR be more specific:
 find . -name "*.gpg" -type f | xargs pass git add
 
-# Push to remote using https (need sudo apt install gh)
+# Push to remote using https (need sudo dnf install -y gh)
 gh auth login
 pass git remote set-url origin https://github.com/username/pwd.git
 
@@ -233,13 +233,147 @@ pass git remote set-url origin https://github.com/username/store.git
 pass git push origin master
 ```
 
-## Setting Up on New Machine
+## Reinitialize Pass on a New Machine (Full Walkthrough)
 
-### Import Keys
+Tested on Fedora 43. Assumes GPG keys are backed up and password store is on GitHub.
+
+### Step 1: Install pass and GPG
+
 ```bash
-# Navigate to exported keys directory
-cd exported-keys
+sudo dnf install -y pass gnupg2 git
+```
 
+### Step 2: Set git identity
+
+```bash
+git config --global user.name "YOUR_GITHUB_USERNAME"
+git config --global user.email "YOUR_EMAIL"
+```
+
+### Step 3: Copy GPG key backups to ~/.gnupg
+
+Copy your `private.gpg` and `public.gpg` backup files to `~/.gnupg/`:
+
+```bash
+cp /path/to/your/backup/private.gpg ~/.gnupg/
+cp /path/to/your/backup/public.gpg ~/.gnupg/
+```
+
+### Step 4: Import the private key
+
+```bash
+gpg --import ~/.gnupg/private.gpg
+```
+
+### Step 5: Get your KEY-ID
+
+```bash
+gpg --list-secret-keys --keyid-format long
+```
+
+Output example:
+```
+sec   rsa3072/DE58B476E256C606 2025-10-12 [SC] [expires: 2027-10-12]
+      ^^^^^^^^^^^^^^^^^^^^
+      This is your KEY-ID (the part after rsa3072/)
+```
+
+### Step 6: Trust the key
+
+```bash
+gpg --edit-key YOUR_KEY_ID
+```
+
+At the `gpg>` prompt:
+```
+gpg> trust
+# Select 5 (ultimate trust)
+# Confirm with y
+gpg> quit
+```
+
+### Step 7: Set up SSH for GitHub (if not done)
+
+```bash
+ssh-keygen -t ed25519 -C "YOUR_EMAIL"
+cat ~/.ssh/id_ed25519.pub
+```
+
+Copy the output, go to **https://github.com/settings/keys**, click **New SSH key**, paste it.
+
+Test with:
+```bash
+ssh -T git@github.com
+```
+
+If SSH doesn't work, you can use HTTPS with a personal access token instead (see Step 8).
+
+### Step 8: Clone password store from GitHub
+
+```bash
+# Remove empty/stale password store if it exists
+rm -rf ~/.password-store
+
+# Clone via SSH
+git clone git@github.com:USERNAME/REPO.git ~/.password-store
+
+# Or clone via HTTPS (will prompt for username + personal access token)
+git clone https://github.com/USERNAME/REPO.git ~/.password-store
+```
+
+### Step 9: Move GPG backup files out of the store
+
+If you stored your GPG key backups inside the pass repo, move them out **before** running `pass init`. Otherwise pass will try to decrypt them and fail with `decrypt_message failed: Unexpected error`.
+
+```bash
+# Check if GPG backups are in the store
+ls ~/.password-store/*.gpg
+
+# Move them out if they exist
+mv ~/.password-store/public.gpg ~/public-key-backup.gpg
+mv ~/.password-store/private.gpg ~/private-key-backup.gpg
+```
+
+### Step 10: Initialize pass
+
+```bash
+pass init YOUR_KEY_ID
+```
+
+### Step 11: Verify
+
+```bash
+pass
+```
+
+You should see your password tree. Test decryption:
+
+```bash
+pass show SOME_ENTRY
+```
+
+### Quick Reference (all commands)
+
+```bash
+sudo dnf install -y pass gnupg2 git
+git config --global user.name "USERNAME"
+git config --global user.email "EMAIL"
+gpg --import ~/.gnupg/private.gpg
+gpg --list-secret-keys --keyid-format long
+gpg --edit-key KEY_ID          # trust → 5 → y → quit
+rm -rf ~/.password-store
+git clone https://github.com/USER/REPO.git ~/.password-store
+mv ~/.password-store/public.gpg ~/public-key-backup.gpg 2>/dev/null
+mv ~/.password-store/private.gpg ~/private-key-backup.gpg 2>/dev/null
+pass init KEY_ID
+pass
+```
+
+---
+
+## Legacy: Import Keys (Simple)
+
+```bash
 # Import private key
 gpg --import private.gpg
 

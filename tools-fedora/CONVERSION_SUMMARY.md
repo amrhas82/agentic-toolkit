@@ -40,9 +40,9 @@ These were copied unchanged (work on both distros):
 
 ```bash
 # OLD (Zorin/Ubuntu)
-sudo apt update
-sudo apt install -y package-name
-sudo apt remove package-name
+sudo dnf check-update
+sudo dnf install -y package-name
+sudo dnf remove -y package-name
 
 # NEW (Fedora)
 sudo dnf check-update  # or just skip, dnf auto-updates

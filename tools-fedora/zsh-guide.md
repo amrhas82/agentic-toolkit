@@ -18,7 +18,7 @@
 Install Zsh shell on Ubuntu/Debian systems:
 
 ```bash
-sudo apt install zsh
+sudo dnf install -y zsh
 ```
 
 After installation, you can optionally set Zsh as your default shell:
@@ -134,7 +134,7 @@ ColorLS adds colors and icons to the `ls` command output.
 Install Ruby development files:
 
 ```bash
-sudo apt install ruby-dev
+sudo dnf install -y ruby-devel
 ```
 
 ### Installation

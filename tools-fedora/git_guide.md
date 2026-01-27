@@ -22,7 +22,7 @@
 ### Installation
 ```bash
 # Ubuntu/Debian
-sudo apt install git
+sudo dnf install -y git
 
 # macOS (with Homebrew)
 brew install git

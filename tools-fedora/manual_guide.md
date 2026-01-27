@@ -6,6 +6,7 @@
 - [Text Editors & IDEs](#text-editors--ides)
 - [AI-Powered Development Tools](#ai-powered-development-tools)
 - [Version Control Tools](#version-control-tools)
+- [Email Client](#email-client)
 - [Password Management](#password-management)
 - [Terminal Multiplexer (Tmux)](#terminal-multiplexer-tmux)
 - [Configuration & Integration](#configuration--integration)
@@ -226,10 +227,32 @@ sudo dnf install -y @development-tools SDL2-devel freetype-devel
 Full-featured Python IDE with debugging and testing tools.
 
 ```bash
-# Install via Flatpak (recommended)
-flatpak install flathub com.jetbrains.PyCharm-Community
+# Download PyCharm Community from https://www.jetbrains.com/pycharm/download/
+# Save the .tar.gz file to ~/Downloads/
 
-# Or via JetBrains Toolbox
+# Extract
+cd ~/Downloads
+tar -xzf pycharm-2025.3.2.tar.gz
+
+# Run PyCharm
+~/Downloads/pycharm-2025.3.2/bin/pycharm
+
+# Create desktop entry (so it appears in app menu)
+mkdir -p ~/.local/share/applications
+cat > ~/.local/share/applications/pycharm.desktop << 'EOF'
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm
+Comment=Python IDE for Professional Developers
+Exec=$HOME/Downloads/pycharm-2025.3.2/bin/pycharm %f
+Icon=$HOME/Downloads/pycharm-2025.3.2/bin/pycharm.png
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm
+Categories=Development;IDE;
+EOF
+update-desktop-database ~/.local/share/applications/
 ```
 
 **Features:**
@@ -237,6 +260,19 @@ flatpak install flathub com.jetbrains.PyCharm-Community
 - Built-in debugger and profiler
 - Version control integration
 - Database tools
+
+### Thunderbird
+Full-featured email client with calendar and contact management.
+
+```bash
+sudo dnf install -y thunderbird
+```
+
+**Features:**
+- Email, calendar, and contacts
+- Built-in RSS reader
+- PGP/GPG encryption support
+- Extensive add-on ecosystem
 
 ---
 
@@ -646,7 +682,7 @@ sudo dnf install -y @development-tools
 - [ ] Install Neovim
 - [ ] Install Sublime Text
 - [ ] Install Lite XL (optional)
-- [ ] Install PyCharm Community (via Flatpak)
+- [ ] Install PyCharm Community (from tarball)
 
 ### AI Development Tools
 - [ ] Install Claude Code
@@ -659,6 +695,9 @@ sudo dnf install -y @development-tools
 - [ ] Install/Update Git
 - [ ] Install Lazygit
 - [ ] Install GitHub CLI
+
+### Email Client
+- [ ] Install Thunderbird
 
 ### Password Management
 - [ ] Install Pass CLI

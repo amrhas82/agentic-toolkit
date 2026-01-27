@@ -50,9 +50,7 @@
 **Ubuntu/Debian:**
 ```bash
 # Add Ghostty repository
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt update
-sudo apt install ghostty
+sudo dnf install -y ghostty
 ```
 
 **Fedora/CentOS:**

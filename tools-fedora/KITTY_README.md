@@ -39,7 +39,7 @@ cd /home/hamr/Documents/PycharmProjects/agentic-toolkit/tools
 ### Option 2: Manual
 ```bash
 # Install Kitty
-sudo apt update && sudo apt install kitty -y
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 # Copy config
 mkdir -p ~/.config/kitty

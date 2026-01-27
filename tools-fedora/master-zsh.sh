@@ -174,10 +174,32 @@ fi
 echo ""
 
 ################################################################################
-# Step 7: Set Zsh as default shell (optional)
+# Step 7: Set hostname (fix IPv6 hostname)
 ################################################################################
 
-print_message "Step 7: Checking default shell..."
+print_message "Step 7: Checking hostname..."
+
+CURRENT_HOSTNAME=$(hostname)
+if echo "$CURRENT_HOSTNAME" | grep -qE '^[0-9a-f]{4}-'; then
+    print_warning "Hostname is set to an IPv6 address: $CURRENT_HOSTNAME"
+    read -p "Enter a new hostname (e.g. hamr): " NEW_HOSTNAME
+    if [ -n "$NEW_HOSTNAME" ]; then
+        sudo hostnamectl set-hostname "$NEW_HOSTNAME"
+        print_message "Hostname set to: $NEW_HOSTNAME"
+    else
+        print_message "Skipping hostname change"
+    fi
+else
+    print_message "Hostname is: $CURRENT_HOSTNAME"
+fi
+
+echo ""
+
+################################################################################
+# Step 8: Set Zsh as default shell (optional)
+################################################################################
+
+print_message "Step 8: Checking default shell..."
 
 CURRENT_SHELL=$(basename "$SHELL")
 if [ "$CURRENT_SHELL" = "zsh" ]; then

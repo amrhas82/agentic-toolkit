@@ -154,7 +154,7 @@ After making changes to the configuration file:
 sudo snap refresh
 
 # Or install Ghostty manually
-sudo snap install ghostty --classic
+sudo dnf install -y ghostty
 ```
 
 ### Permission Issues

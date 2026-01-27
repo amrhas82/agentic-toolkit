@@ -27,7 +27,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # Or via package manager
 brew install fzf        # macOS
-sudo apt-get install fzf # Ubuntu/Debian
+sudo dnf install -y fzf
 ```
 
 ### Quick Setup
@@ -289,7 +289,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # Or install via package manager
 brew install fzf        # macOS
-sudo apt-get install fzf # Ubuntu/Debian
+sudo dnf install -y fzf
 
 # Set up environment variables in ~/.zshrc or ~/.bashrc
 export FZF_DEFAULT_COMMAND='fd --type f'

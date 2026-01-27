@@ -211,7 +211,7 @@ install_tmux() {
         
         # Install dependencies
         sudo dnf check-update
-        sudo dnf install -y event-devel ncurses-dev @development-tools bison pkg-config automake
+        sudo dnf install -y libevent-devel ncurses-devel @development-tools bison pkg-config automake
         
         # Clone and build tmux
         if [ ! -d "$HOME/tmux-build" ]; then
@@ -251,7 +251,7 @@ install_neovim() {
             print_warning "Neovim is already installed"
             nvim --version | head -n 1
         else
-            sudo snap install nvim --classic
+            sudo dnf install -y neovim
             print_success "Neovim installed successfully"
         fi
         
@@ -354,7 +354,7 @@ update_git() {
     mv "$HOME/git-${GIT_VERSION}" "$HOME/git-build"
     cd "$HOME/git-build"
     
-    sudo dnf install -y libcurl4-openssl-dev expat1-devel gettext openssl-devel
+    sudo dnf install -y libcurl-devel expat-devel gettext openssl-devel
     
     make prefix=/usr/local all
     sudo make prefix=/usr/local install
@@ -369,12 +369,62 @@ update_git() {
 # Function to install PyCharm Community
 install_pycharm() {
     print_info "Installing PyCharm Community Edition..."
-    
-    if command_exists pycharm-community; then
-        print_warning "PyCharm Community is already installed"
+
+    PYCHARM_DIR="$HOME/Downloads/pycharm-2025.3.2"
+
+    if [ -d "$PYCHARM_DIR" ]; then
+        print_warning "PyCharm is already extracted at $PYCHARM_DIR"
     else
-        sudo snap install pycharm-community --classic
-        print_success "PyCharm Community installed successfully"
+        PYCHARM_TAR="$HOME/Downloads/pycharm-2025.3.2.tar.gz"
+        if [ ! -f "$PYCHARM_TAR" ]; then
+            print_error "PyCharm tarball not found at $PYCHARM_TAR"
+            print_info "Download PyCharm Community from https://www.jetbrains.com/pycharm/download/"
+            print_info "Save the .tar.gz file to ~/Downloads/"
+            return 1
+        fi
+        print_info "Extracting PyCharm..."
+        tar -xzf "$PYCHARM_TAR" -C "$HOME/Downloads/"
+    fi
+
+    # Create desktop entry
+    if [ ! -f "$HOME/.local/share/applications/pycharm.desktop" ]; then
+        print_info "Creating desktop entry..."
+        mkdir -p "$HOME/.local/share/applications"
+        cat > "$HOME/.local/share/applications/pycharm.desktop" << DESKTOP_EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm
+Comment=Python IDE for Professional Developers
+Exec=$PYCHARM_DIR/bin/pycharm %f
+Icon=$PYCHARM_DIR/bin/pycharm.png
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm
+Categories=Development;IDE;
+DESKTOP_EOF
+        update-desktop-database "$HOME/.local/share/applications/" 2>/dev/null
+        print_success "Desktop entry created"
+    fi
+
+    print_success "PyCharm Community installed successfully"
+    print_info "Launch from app menu or run: $PYCHARM_DIR/bin/pycharm"
+}
+
+# Function to install Thunderbird
+install_thunderbird() {
+    print_info "Installing Thunderbird email client..."
+
+    if command_exists thunderbird; then
+        print_warning "Thunderbird is already installed"
+        thunderbird --version 2>/dev/null || true
+    else
+        sudo dnf install -y thunderbird
+        if [ $? -eq 0 ]; then
+            print_success "Thunderbird installed successfully"
+        else
+            print_error "Failed to install Thunderbird"
+        fi
     fi
 }
 
@@ -395,7 +445,7 @@ install_litexl() {
             # Install dependencies
             sudo dnf check-update
             sudo dnf install -y @development-tools git ninja-build sdl2-devel \
-                freetype6-devel python3-pip cmake
+                freetype-devel python3-pip cmake
             
             # Install meson
             pip3 install --user --upgrade meson
@@ -441,13 +491,18 @@ install_pass() {
 
     if command_exists pass; then
         print_warning "Pass is already installed"
-        pass version
+        pass --version
     else
-        sudo dnf check-update
-        sudo dnf install -y pass
-        print_success "Pass CLI password manager installed successfully"
-        print_info "To initialize pass, run: pass init <gpg-key-id>"
-        print_info "For more setup instructions, see: manual_setup.md"
+        sudo dnf install -y pass gnupg2
+        if [ $? -eq 0 ]; then
+            print_success "Pass CLI password manager installed successfully"
+            print_info "To set up Pass, run the following:"
+            print_info "  1. Generate a GPG key:  gpg --gen-key"
+            print_info "  2. Get your key ID:     gpg --list-keys"
+            print_info "  3. Initialize pass:     pass init <your-gpg-key-id>"
+        else
+            print_error "Failed to install Pass CLI"
+        fi
     fi
 }
 
@@ -502,17 +557,13 @@ install_sublime() {
         print_warning "Sublime Text is already installed"
         subl --version
     else
-        # Install GPG key
-        print_info "Adding Sublime Text GPG key..."
-        wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
-        
-        # Add repository
+        # Import GPG key and add repo for Fedora
         print_info "Adding Sublime Text repository..."
-        echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-        
-        # Update and install
+        sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+        sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+
+        # Install
         print_info "Installing Sublime Text..."
-        sudo dnf check-update
         sudo dnf install -y sublime-text
         
         print_success "Sublime Text installed successfully"
@@ -566,6 +617,8 @@ install_all() {
     echo ""
     install_fzf
     echo ""
+    install_thunderbird
+    echo ""
 
     print_success "All development tools installed successfully!"
     print_info "Please restart your terminal to ensure all commands are available."
@@ -600,8 +653,9 @@ show_menu() {
     echo -e "${GREEN}16)${NC} Install Lite XL (Markdown Editor)"
     echo -e "${GREEN}17)${NC} Install Pass CLI (Password Manager)"
     echo -e "${GREEN}18)${NC} Install FZF (Fuzzy Finder)"
+    echo -e "${GREEN}19)${NC} Install Thunderbird (Email Client)"
     echo ""
-    echo -e "${YELLOW}19)${NC} Install All Tools"
+    echo -e "${YELLOW}20)${NC} Install All Tools"
     echo ""
     echo -e "${RED}0)${NC} Exit"
     echo ""
@@ -671,6 +725,9 @@ main() {
                 install_fzf
                 ;;
             19)
+                install_thunderbird
+                ;;
+            20)
                 install_all
                 ;;
             0)

@@ -7,8 +7,7 @@ This guide covers installing the latest version of tmux from the GitHub reposito
 Install all required build dependencies before compiling:
 
 ```bash
-sudo apt update
-sudo apt install -y libevent-dev ncurses-dev build-essential bison pkg-config automake autoconf
+sudo dnf install -y libevent-devel ncurses-devel @development-tools bison pkg-config automake autoconf
 ```
 
 ## Installation Steps

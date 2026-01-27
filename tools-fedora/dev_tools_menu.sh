@@ -506,6 +506,30 @@ install_pass() {
     fi
 }
 
+# Function to install GitHub CLI
+install_github_cli() {
+    print_info "Installing GitHub CLI..."
+
+    if command_exists gh; then
+        print_warning "GitHub CLI is already installed"
+        gh --version
+    else
+        sudo dnf install -y gh
+        if [ $? -eq 0 ]; then
+            print_success "GitHub CLI installed successfully"
+            print_info "Run 'gh auth login' to authenticate (one-time setup)"
+            print_info "Select: GitHub.com → HTTPS → Login with a web browser"
+            read -p "Do you want to authenticate now? (y/N): " -n 1 -r
+            echo ""
+            if [[ $REPLY =~ ^[Yy]$ ]]; then
+                gh auth login
+            fi
+        else
+            print_error "Failed to install GitHub CLI"
+        fi
+    fi
+}
+
 # Function to install FZF (Fuzzy Finder)
 install_fzf() {
     print_info "Installing FZF (Fuzzy Finder)..."
@@ -619,6 +643,8 @@ install_all() {
     echo ""
     install_thunderbird
     echo ""
+    install_github_cli
+    echo ""
 
     print_success "All development tools installed successfully!"
     print_info "Please restart your terminal to ensure all commands are available."
@@ -654,8 +680,9 @@ show_menu() {
     echo -e "${GREEN}17)${NC} Install Pass CLI (Password Manager)"
     echo -e "${GREEN}18)${NC} Install FZF (Fuzzy Finder)"
     echo -e "${GREEN}19)${NC} Install Thunderbird (Email Client)"
+    echo -e "${GREEN}20)${NC} Install GitHub CLI (gh auth login)"
     echo ""
-    echo -e "${YELLOW}20)${NC} Install All Tools"
+    echo -e "${YELLOW}21)${NC} Install All Tools"
     echo ""
     echo -e "${RED}0)${NC} Exit"
     echo ""
@@ -728,6 +755,9 @@ main() {
                 install_thunderbird
                 ;;
             20)
+                install_github_cli
+                ;;
+            21)
                 install_all
                 ;;
             0)

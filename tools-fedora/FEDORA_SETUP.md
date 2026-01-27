@@ -4,6 +4,54 @@ Complete guide for partitioning and post-installation setup on Fedora.
 
 ---
 
+## Creating Bootable USB
+
+### Before You Start
+
+**Check which device is your USB:**
+
+```bash
+lsblk
+```
+
+Look for your USB drive (usually 8GB-32GB). Example output:
+```
+sda           8:0    1   7.5G  0 disk
+└─sda1        8:1    1   7.5G  0 part
+nvme0n1     259:0    0 931.5G  0 disk  (your main drive)
+```
+
+In this case, `sda` is the USB drive.
+
+### Write Fedora KDE ISO to USB
+
+**1. Unmount the USB if mounted:**
+
+```bash
+sudo umount /media/$USER/Fedora*
+```
+
+**2. Write the ISO (replace `/dev/sda` with YOUR USB device):**
+
+```bash
+sudo dd if=/home/hamr/Downloads/Fedora-KDE-Desktop-Live-43-1.6.x86_64.iso of=/dev/sda bs=4M status=progress oflag=sync
+```
+
+**Important:**
+- Use `/dev/sda` (whole device), NOT `/dev/sda1` (partition)
+- Double-check device name with `lsblk` first!
+- Wrong device = data loss
+
+**3. Sync and wait:**
+
+```bash
+sync
+```
+
+**4. Done!** USB is ready to boot.
+
+---
+
 ## Partition Layout (931.5GB NVMe SSD)
 
 ### Recommended Scheme

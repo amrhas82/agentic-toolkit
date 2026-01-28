@@ -119,6 +119,29 @@ echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 sudo hostnamectl set-hostname your-hostname
 ```
 
+### Konsole setup
+```bash
+# Install Nerd Font for icon support (required for LazyVim, Neovim, etc.)
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts
+curl -fLo "JetBrainsMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+unzip JetBrainsMono.zip -d JetBrainsMono
+rm JetBrainsMono.zip
+fc-cache -fv
+```
+
+After installing:
+1. **Restart Konsole** (close all windows and reopen)
+2. Go to **Settings → Edit Current Profile... → Appearance**
+3. Click **Choose...** under Font
+4. Search for and select **JetBrainsMono Nerd Font Mono**
+5. Click **OK**
+
+Test icons display:
+```bash
+echo -e "\uf015 \ue7c5 \uf121 \uf09b"
+```
+
 ---
 
 ## 5. Apps

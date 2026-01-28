@@ -366,51 +366,6 @@ update_git() {
     git --version
 }
 
-# Function to install PyCharm Community
-install_pycharm() {
-    print_info "Installing PyCharm Community Edition..."
-
-    PYCHARM_DIR="$HOME/Downloads/pycharm-2025.3.2"
-
-    if [ -d "$PYCHARM_DIR" ]; then
-        print_warning "PyCharm is already extracted at $PYCHARM_DIR"
-    else
-        PYCHARM_TAR="$HOME/Downloads/pycharm-2025.3.2.tar.gz"
-        if [ ! -f "$PYCHARM_TAR" ]; then
-            print_error "PyCharm tarball not found at $PYCHARM_TAR"
-            print_info "Download PyCharm Community from https://www.jetbrains.com/pycharm/download/"
-            print_info "Save the .tar.gz file to ~/Downloads/"
-            return 1
-        fi
-        print_info "Extracting PyCharm..."
-        tar -xzf "$PYCHARM_TAR" -C "$HOME/Downloads/"
-    fi
-
-    # Create desktop entry
-    if [ ! -f "$HOME/.local/share/applications/pycharm.desktop" ]; then
-        print_info "Creating desktop entry..."
-        mkdir -p "$HOME/.local/share/applications"
-        cat > "$HOME/.local/share/applications/pycharm.desktop" << DESKTOP_EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=PyCharm
-Comment=Python IDE for Professional Developers
-Exec=$PYCHARM_DIR/bin/pycharm %f
-Icon=$PYCHARM_DIR/bin/pycharm.png
-Terminal=false
-StartupNotify=true
-StartupWMClass=jetbrains-pycharm
-Categories=Development;IDE;
-DESKTOP_EOF
-        update-desktop-database "$HOME/.local/share/applications/" 2>/dev/null
-        print_success "Desktop entry created"
-    fi
-
-    print_success "PyCharm Community installed successfully"
-    print_info "Launch from app menu or run: $PYCHARM_DIR/bin/pycharm"
-}
-
 # Function to install Thunderbird
 install_thunderbird() {
     print_info "Installing Thunderbird email client..."
@@ -617,8 +572,6 @@ install_all() {
     print_info "=== Installing Core Development Tools ==="
     update_git
     echo ""
-    install_pycharm
-    echo ""
     install_neovim
     echo ""
     install_zsh
@@ -667,22 +620,21 @@ show_menu() {
     echo ""
     echo -e "${YELLOW}=== Core Development Tools ===${NC}"
     echo -e "${GREEN}6)${NC} Update Git to Latest"
-    echo -e "${GREEN}7)${NC} Install PyCharm Community"
-    echo -e "${GREEN}8)${NC} Install Neovim + NvimTree + Plugins (from source)"
-    echo -e "${GREEN}9)${NC} Install Zsh + Oh My Zsh + Agnoster Theme"
-    echo -e "${GREEN}10)${NC} Install Ghostty Terminal"
-    echo -e "${GREEN}11)${NC} Install Kitty Terminal"
-    echo -e "${GREEN}12)${NC} Install LazyVim (Requires Neovim + Ghostty/Kitty)"
-    echo -e "${GREEN}13)${NC} Install Lazygit"
-    echo -e "${GREEN}14)${NC} Install Sublime Text"
-    echo -e "${GREEN}15)${NC} Install Tmux + TPM + Config (from source)"
-    echo -e "${GREEN}16)${NC} Install Lite XL (Markdown Editor)"
-    echo -e "${GREEN}17)${NC} Install Pass CLI (Password Manager)"
-    echo -e "${GREEN}18)${NC} Install FZF (Fuzzy Finder)"
-    echo -e "${GREEN}19)${NC} Install Thunderbird (Email Client)"
-    echo -e "${GREEN}20)${NC} Install GitHub CLI (gh auth login)"
+    echo -e "${GREEN}7)${NC} Install Neovim + NvimTree + Plugins (from source)"
+    echo -e "${GREEN}8)${NC} Install Zsh + Oh My Zsh + Agnoster Theme"
+    echo -e "${GREEN}9)${NC} Install Ghostty Terminal"
+    echo -e "${GREEN}10)${NC} Install Kitty Terminal"
+    echo -e "${GREEN}11)${NC} Install LazyVim (Requires Neovim + Ghostty/Kitty)"
+    echo -e "${GREEN}12)${NC} Install Lazygit"
+    echo -e "${GREEN}13)${NC} Install Sublime Text"
+    echo -e "${GREEN}14)${NC} Install Tmux + TPM + Config (from source)"
+    echo -e "${GREEN}15)${NC} Install Lite XL (Markdown Editor)"
+    echo -e "${GREEN}16)${NC} Install Pass CLI (Password Manager)"
+    echo -e "${GREEN}17)${NC} Install FZF (Fuzzy Finder)"
+    echo -e "${GREEN}18)${NC} Install Thunderbird (Email Client)"
+    echo -e "${GREEN}19)${NC} Install GitHub CLI (gh auth login)"
     echo ""
-    echo -e "${YELLOW}21)${NC} Install All Tools"
+    echo -e "${YELLOW}20)${NC} Install All Tools"
     echo ""
     echo -e "${RED}0)${NC} Exit"
     echo ""
@@ -716,48 +668,45 @@ main() {
                 update_git
                 ;;
             7)
-                install_pycharm
-                ;;
-            8)
                 install_neovim
                 ;;
-            9)
+            8)
                 install_zsh
                 ;;
-            10)
+            9)
                 install_ghostty
                 ;;
-            11)
+            10)
                 install_kitty
                 ;;
-            12)
+            11)
                 install_lazyvim
                 ;;
-            13)
+            12)
                 install_lazygit
                 ;;
-            14)
+            13)
                 install_sublime
                 ;;
-            15)
+            14)
                 install_tmux
                 ;;
-            16)
+            15)
                 install_litexl
                 ;;
-            17)
+            16)
                 install_pass
                 ;;
-            18)
+            17)
                 install_fzf
                 ;;
-            19)
+            18)
                 install_thunderbird
                 ;;
-            20)
+            19)
                 install_github_cli
                 ;;
-            21)
+            20)
                 install_all
                 ;;
             0)

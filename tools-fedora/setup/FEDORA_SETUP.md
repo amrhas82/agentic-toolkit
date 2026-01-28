@@ -142,6 +142,75 @@ Test icons display:
 echo -e "\uf015 \ue7c5 \uf121 \uf09b"
 ```
 
+### Hibernation setup
+
+Enable hibernation by configuring GRUB to resume from swap partition.
+
+**Method 1: Automated script**
+```bash
+cd ~/PycharmProjects/agentic-toolkit/tools-fedora
+./setup-hibernation.sh
+```
+
+**Method 2: Manual setup**
+
+1. **Identify swap partition**
+   ```bash
+   swapon --show
+   # Look for /dev/nvme0n1p1 (20GB swap partition)
+   ```
+
+2. **Backup GRUB config**
+   ```bash
+   sudo cp /etc/default/grub /etc/default/grub.backup
+   ```
+
+3. **Edit GRUB configuration**
+   ```bash
+   sudo nano /etc/default/grub
+   ```
+
+   Change:
+   ```
+   GRUB_CMDLINE_LINUX="rhgb quiet"
+   ```
+
+   To (add `resume=/dev/nvme0n1p1`):
+   ```
+   GRUB_CMDLINE_LINUX="resume=/dev/nvme0n1p1 rhgb quiet"
+   ```
+
+   Or with Intel GPU fixes:
+   ```
+   GRUB_CMDLINE_LINUX="resume=/dev/nvme0n1p1 i915.enable_psr=0 i915.enable_fbc=0 intel_idle.max_cstate=1 rhgb quiet"
+   ```
+
+4. **Configure dracut for resume**
+   ```bash
+   echo 'add_dracutmodules+=" resume "' | sudo tee /etc/dracut.conf.d/resume.conf
+   ```
+
+5. **Rebuild initramfs**
+   ```bash
+   sudo dracut -f
+   ```
+
+6. **Update GRUB**
+   ```bash
+   sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+   ```
+
+7. **Reboot and test**
+   ```bash
+   sudo reboot
+
+   # After reboot, verify:
+   cat /proc/cmdline | grep resume
+
+   # Test hibernation:
+   sudo systemctl hibernate
+   ```
+
 ---
 
 ## 5. Apps

@@ -211,9 +211,35 @@ sudo dnf install -y @development-tools SDL2-devel freetype-devel
 ### PyCharm Community
 Full-featured Python IDE with debugging and testing tools.
 
+#### Manual Installation Steps
+
+1. **Download PyCharm Community Edition**
+   - Visit: https://www.jetbrains.com/pycharm/download/
+   - Download the Linux `.tar.gz` file (e.g., `pycharm-2025.3.2.tar.gz`)
+   - Save to `~/Downloads/`
+
+2. **Extract the archive**
+   ```bash
+   cd ~/Downloads
+   tar -xzf pycharm-2025.3.2.tar.gz
+   ```
+
+   **Important:** A new instance MUST NOT be extracted over an existing one. The target folder must be empty.
+
+3. **Run PyCharm**
+   ```bash
+   ~/Downloads/pycharm-2025.3.2/bin/pycharm.sh
+   ```
+
+#### Using the Automated Script
+
+Alternatively, run the `dev_tools_menu.sh` script:
 ```bash
-cd ~/Downloads && tar -xzf pycharm-2025.3.2.tar.gz && ~/Downloads/pycharm-2025.3.2/bin/pycharm
+cd ~/PycharmProjects/agentic-toolkit/tools-fedora
+./dev_tools_menu.sh
 ```
+
+Note: PyCharm has been removed from the automated menu. Use manual installation above.
 
 **Features:**
 - Intelligent code completion

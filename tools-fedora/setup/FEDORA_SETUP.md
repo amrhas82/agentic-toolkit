@@ -146,26 +146,45 @@ echo -e "\uf015 \ue7c5 \uf121 \uf09b"
 
 Enable hibernation by configuring GRUB to resume from swap partition.
 
-**Method 1: Automated script**
+**Important Note:** Kernel 6.8+ has a regression in the `intel_hid` driver that causes spurious wakeup events during hibernation on Dell/Intel laptops. This affects Dell Latitude 7400 and similar models. The fix below includes blacklisting the `intel_hid` module.
+
+**Bug reference:** https://bugzilla.kernel.org/show_bug.cgi?id=218634
+
+**Method 1: Automated script (Recommended)**
 ```bash
-cd ~/PycharmProjects/agentic-toolkit/tools-fedora
+cd ~/PycharmProjects/agentic-toolkit/tools-fedora/setup
 ./setup-hibernation.sh
 ```
 
 **Method 2: Manual setup**
 
-1. **Identify swap partition**
+1. **Blacklist intel_hid module** (fixes kernel 6.8+ hibernation bug)
+   ```bash
+   sudo nano /etc/modprobe.d/blacklist-intel-hid.conf
+   ```
+
+   Add this content:
+   ```
+   # Blacklist intel_hid to prevent spurious wakeup events during hibernate
+   # This fixes kernel 6.8+ regression causing "Wakeup event detected" errors
+   # Bug: https://bugzilla.kernel.org/show_bug.cgi?id=218634
+   blacklist intel_hid
+   ```
+
+   Save and exit (Ctrl+O, Enter, Ctrl+X)
+
+2. **Identify swap partition**
    ```bash
    swapon --show
    # Look for /dev/nvme0n1p1 (20GB swap partition)
    ```
 
-2. **Backup GRUB config**
+3. **Backup GRUB config**
    ```bash
    sudo cp /etc/default/grub /etc/default/grub.backup
    ```
 
-3. **Edit GRUB configuration**
+4. **Edit GRUB configuration**
    ```bash
    sudo nano /etc/default/grub
    ```
@@ -185,31 +204,39 @@ cd ~/PycharmProjects/agentic-toolkit/tools-fedora
    GRUB_CMDLINE_LINUX="resume=/dev/nvme0n1p1 i915.enable_psr=0 i915.enable_fbc=0 intel_idle.max_cstate=1 rhgb quiet"
    ```
 
-4. **Configure dracut for resume**
+5. **Configure dracut for resume**
    ```bash
    echo 'add_dracutmodules+=" resume "' | sudo tee /etc/dracut.conf.d/resume.conf
    ```
 
-5. **Rebuild initramfs**
+6. **Rebuild initramfs**
    ```bash
    sudo dracut -f
    ```
 
-6. **Update GRUB**
+7. **Update GRUB**
    ```bash
    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
    ```
 
-7. **Reboot and test**
+8. **Reboot and test**
    ```bash
    sudo reboot
 
-   # After reboot, verify:
+   # After reboot, verify intel_hid is not loaded:
+   lsmod | grep intel_hid
+   # Expected: No output (module is blacklisted)
+
+   # Verify resume parameter:
    cat /proc/cmdline | grep resume
 
    # Test hibernation:
    sudo systemctl hibernate
    ```
+
+**What you lose by blacklisting intel_hid:**
+- Some vendor-specific hardware button handling (minimal impact)
+- Most functions still work via other drivers (ACPI, desktop environment)
 
 ---
 

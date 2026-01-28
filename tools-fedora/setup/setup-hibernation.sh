@@ -67,10 +67,11 @@ fi
 # Ask for confirmation
 echo ""
 print_warning "This script will:"
-echo "  1. Add 'resume=$SWAP_DEVICE' to GRUB configuration"
-echo "  2. Configure dracut to include resume module"
-echo "  3. Rebuild initramfs"
-echo "  4. Update GRUB configuration"
+echo "  1. Blacklist intel_hid module (fixes kernel 6.8+ hibernation bug)"
+echo "  2. Add 'resume=$SWAP_DEVICE' to GRUB configuration"
+echo "  3. Configure dracut to include resume module"
+echo "  4. Rebuild initramfs"
+echo "  5. Update GRUB configuration"
 echo ""
 read -p "Do you want to continue? (y/N): " -n 1 -r
 echo ""
@@ -84,12 +85,24 @@ echo ""
 print_info "Starting hibernation setup..."
 echo ""
 
-# Step 1: Backup GRUB config
+# Step 1: Blacklist intel_hid module (fixes kernel 6.8+ hibernation bug)
+print_info "Blacklisting intel_hid module to fix hibernation wakeup bug..."
+if [ -f /etc/modprobe.d/blacklist-intel-hid.conf ]; then
+    print_warning "intel_hid blacklist already exists"
+else
+    echo '# Blacklist intel_hid to prevent spurious wakeup events during hibernate' | sudo tee /etc/modprobe.d/blacklist-intel-hid.conf > /dev/null
+    echo '# This fixes kernel 6.8+ regression causing "Wakeup event detected" errors' | sudo tee -a /etc/modprobe.d/blacklist-intel-hid.conf > /dev/null
+    echo '# Bug: https://bugzilla.kernel.org/show_bug.cgi?id=218634' | sudo tee -a /etc/modprobe.d/blacklist-intel-hid.conf > /dev/null
+    echo 'blacklist intel_hid' | sudo tee -a /etc/modprobe.d/blacklist-intel-hid.conf > /dev/null
+    print_success "Created: /etc/modprobe.d/blacklist-intel-hid.conf"
+fi
+
+# Step 2: Backup GRUB config
 print_info "Backing up GRUB configuration..."
 sudo cp /etc/default/grub /etc/default/grub.backup
 print_success "Backup created: /etc/default/grub.backup"
 
-# Step 2: Update GRUB config
+# Step 3: Update GRUB config
 print_info "Updating GRUB configuration..."
 
 # Check if resume parameter exists
@@ -106,17 +119,17 @@ print_info "New GRUB configuration:"
 grep "GRUB_CMDLINE_LINUX=" /etc/default/grub
 echo ""
 
-# Step 3: Configure dracut
+# Step 4: Configure dracut
 print_info "Configuring dracut to include resume module..."
 echo 'add_dracutmodules+=" resume "' | sudo tee /etc/dracut.conf.d/resume.conf > /dev/null
 print_success "Dracut configuration created: /etc/dracut.conf.d/resume.conf"
 
-# Step 4: Rebuild initramfs
+# Step 5: Rebuild initramfs
 print_info "Rebuilding initramfs (this may take a minute)..."
 sudo dracut -f
 print_success "Initramfs rebuilt successfully"
 
-# Step 5: Update GRUB
+# Step 6: Update GRUB
 print_info "Updating GRUB bootloader configuration..."
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg > /dev/null 2>&1
 print_success "GRUB configuration updated"
@@ -126,9 +139,11 @@ print_success "Hibernation setup completed successfully!"
 echo ""
 print_warning "Next steps:"
 echo "  1. Reboot your system: sudo reboot"
-echo "  2. After reboot, test hibernation: sudo systemctl hibernate"
-echo "  3. Your system should hibernate and resume from $SWAP_DEVICE"
+echo "  2. After reboot, verify intel_hid is not loaded: lsmod | grep intel_hid"
+echo "  3. Verify resume parameter: cat /proc/cmdline | grep resume"
+echo "  4. Test hibernation: sudo systemctl hibernate"
+echo "  5. Your system should hibernate and resume from $SWAP_DEVICE"
 echo ""
-print_info "To verify after reboot, check kernel parameters:"
-echo "  cat /proc/cmdline | grep resume"
+print_info "Known issue: Kernel 6.8+ has intel_hid driver bug causing spurious wakeups"
+print_info "Bug report: https://bugzilla.kernel.org/show_bug.cgi?id=218634"
 echo ""

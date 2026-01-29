@@ -237,6 +237,8 @@ tar -xzf pycharm-2025.3.2.tar.gz
 # Run PyCharm
 ~/Downloads/pycharm-2025.3.2/bin/pycharm
 
+# install python3 pip
+sudo dnf install python3 python3-pip
 # Create desktop entry (so it appears in app menu)
 mkdir -p ~/.local/share/applications
 cat > ~/.local/share/applications/pycharm.desktop << 'EOF'

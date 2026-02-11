@@ -2,6 +2,35 @@
 
 Detailed templates for each file in the /docs structure.
 
+## 00-context/blueprint.md
+
+```markdown
+# [Project Name] Blueprint
+
+## Identity
+[What this project IS in 2-3 sentences. Sourced from README.]
+
+## Status
+| Area | Status | Notes |
+|------|--------|-------|
+| [feature/module] | implemented / in-progress / planned | [brief] |
+
+## Architecture
+[High-level structure: packages, modules, entry points. Tables or flat lists, no ASCII trees.]
+
+## Implemented
+[What works today. Group by feature area. Be specific about what ships.]
+
+## Planned
+[What's next. Ordered by priority. Link to design docs if they exist.]
+
+## Future Direction
+[Where does this project want to be? North star. 3-5 bullets max.]
+
+## Key Decisions
+[Major architectural choices already made. Brief rationale. Link to decisions-log if available.]
+```
+
 ## 00-context/vision.md
 
 ```markdown

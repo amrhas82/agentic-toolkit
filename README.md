@@ -94,12 +94,12 @@ cp -rv ai/subagentic/ampcode/* ~/.config/amp/    # Amp
 - **NPM Package**: `npx liteagents` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/liteagents))
 - **[📖 Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Token loads, progressive disclosure, complete reference
 
-| Platform | Agents | Skills/Commands      | Install Path | Source Path |
-|----------|--------|----------------------|--------------|-------------|
-| **Claude Code** | 11 agents | 10 skills + 10 commands | `~/.claude/` | `ai/subagentic/claude/` |
-| **OpenCode** | 11 agents | 20 commands          | `~/.config/opencode/` | `ai/subagentic/opencode/` |
-| **Droid** | 11 droids | 20 commands          | `~/.factory/` | `ai/subagentic/droid/` |
-| **Amp** | 11 agents | 10 skills + 10 commands | `~/.config/amp/` | `ai/subagentic/ampcode/` |
+| Platform | Agents | Skills/Commands      | Install Path | Project Path | Source Path |
+|----------|--------|----------------------|--------------|--------------|-------------|
+| **Claude Code** | 11 agents | 10 skills + 12 commands | `~/.claude/` | `./.claude/` | `ai/subagentic/claude/` |
+| **OpenCode** | 11 agents | 22 commands          | `~/.config/opencode/` | `./.opencode/` | `ai/subagentic/opencode/` |
+| **Droid** | 11 droids | 22 commands          | `~/.factory/` | `./.factory/` | `ai/subagentic/droid/` |
+| **Amp** | 11 agents | 22 commands | `~/.config/amp/` | `./.amp/` | `ai/subagentic/ampcode/` |
 
 **Usage**: Invoke with `@agent-name` or `As agent-name, ...` (Claude/OpenCode/Amp) or `invoke droid agent-name` (Droid). Commands via `/command-name`.
 

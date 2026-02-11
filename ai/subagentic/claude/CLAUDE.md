@@ -37,15 +37,17 @@ These subagents are available when using Claude Code CLI. Droid can reference th
 | testing-anti-patterns | Prevents testing mock behavior and production pollution with test-only methods | /testing-anti-patterns <testing-scenario> | true |
 | verification-before-completion | Requires running verification commands before making any success claims | /verification-before-completion <work-to-verify> | true |
 
-### Commands (10 total)
+### Commands (12 total)
 
 | ID | Description | Usage |
 |---|---|---|
 | debug | Debug an issue systematically using structured investigation techniques | /debug <issue-description> |
 | explain | Explain code for someone new to the codebase | /explain <code-section> |
+| friction | Analyze session logs for failure patterns and behavioral signals | /friction <sessions-path> |
 | git-commit | Analyze changes and create intelligent git commits | /git-commit |
 | optimize | Analyze and optimize performance issues | /optimize <target-area> |
 | refactor | Refactor code while maintaining behavior and tests | /refactor <code-section> |
+| remember | Consolidate stashes + friction into project memory | /remember |
 | review | Comprehensive code review including quality, tests, and architecture | /review |
 | security | Security vulnerability scan and analysis | /security |
 | ship | Pre-deployment verification checklist | /ship |

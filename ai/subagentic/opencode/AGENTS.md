@@ -22,7 +22,7 @@ These subagents are available when using Claude Code CLI. Opencode can reference
 | system-architect | Architect | Use for system design, architecture documents, technology selection, API design, and infrastructure planning |
 | ui-designer | UX Expert | Use for UI/UX design, wireframes, prototypes, front-end specifications, and user experience optimization |
 
-## Opencode Commands (20 total)
+## Opencode Commands (22 total)
 
 | ID | Description | Usage | Auto |
 |---|---|---|---|
@@ -32,9 +32,11 @@ These subagents are available when using Claude Code CLI. Opencode can reference
 | debug | Debug an issue systematically using structured investigation techniques | /debug <issue-description> | - |
 | docs-builder | Create comprehensive project documentation with structured /docs hierarchy | /docs-builder | false |
 | explain | Explain code for someone new to the codebase | /explain <code-section> | - |
+| friction | Analyze session logs for failure patterns and behavioral signals | /friction <sessions-path> | - |
 | git-commit | Analyze changes and create intelligent git commits | /git-commit | - |
 | optimize | Analyze and optimize performance issues | /optimize <target-area> | - |
 | refactor | Refactor code while maintaining behavior and tests | /refactor <code-section> | - |
+| remember | Consolidate stashes + friction into project memory | /remember | - |
 | review | Comprehensive code review including quality, tests, and architecture | /review | - |
 | root-cause-tracing | Systematically traces bugs backward through call stack to identify source | /root-cause-tracing <issue-description> | false |
 | security | Security vulnerability scan and analysis | /security | - |

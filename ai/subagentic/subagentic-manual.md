@@ -31,10 +31,10 @@ Install for your platform:
 
 | Platform | Installation | What's Included |
 |----------|--------------|-----------------|
-| **Claude Code** | `cp -r claude/* ~/.claude/` | 11 subagents + 10 skills + 10 commands |
-| **Droid** | `cp -r droid/* ~/.factory/` | 20 commands (subagent references) |
-| **Ampcode** | `cp -r ampcode/* ~/.config/amp/` | 11 subagents + 10 skills + 10 commands |
-| **OpenCode** | `cp -r opencode/* ~/.config/opencode/` | 20 commands (subagent references) |
+| **Claude Code** | `cp -r claude/* ~/.claude/` | 11 subagents + 10 skills + 12 commands |
+| **Droid** | `cp -r droid/* ~/.factory/` | 22 commands (subagent references) |
+| **Ampcode** | `cp -r ampcode/* ~/.config/amp/` | 11 subagents + 10 skills + 12 commands |
+| **OpenCode** | `cp -r opencode/* ~/.config/opencode/` | 22 commands (subagent references) |
 
 **Key Difference**:
 - **Claude Code / Ampcode** implement full subagent system with orchestrator
@@ -54,8 +54,8 @@ Install for your platform:
 - test-driven-development, testing-anti-patterns, verification-before-completion (auto-trigger)
 - brainstorming, code-review, systematic-debugging, docs-builder, etc.
 
-**10 Commands** - Simple workflow helpers
-- debug, explain, git-commit, optimize, refactor, review, security, ship, stash, test-generate
+**12 Commands** - Simple workflow helpers
+- debug, explain, friction, git-commit, optimize, refactor, remember, review, security, ship, stash, test-generate
 
 **Orchestration System**
 - Automatic intent matching to 9 workflow patterns
@@ -64,7 +64,7 @@ Install for your platform:
 
 ### Droid/OpenCode (Commands Only)
 
-**20 Commands** - All workflow capabilities in command form
+**22 Commands** - All workflow capabilities in command form
 - Combines skills + commands into unified command set
 - Same functionality, different invocation model (no auto-triggering)
 - Includes reference documentation for subagents
@@ -102,7 +102,7 @@ Install for your platform:
 
 ## Commands Reference
 
-### Claude Code / Ampcode: 20 Total (10 Skills + 10 Commands)
+### Claude Code / Ampcode: 22 Total (10 Skills + 12 Commands)
 
 **Auto-Triggering Skills (3)**
 - `test-driven-development` - Write test first, watch fail, minimal passing code
@@ -118,19 +118,21 @@ Install for your platform:
 - `skill-creator` - Guide for creating new skills
 - `systematic-debugging` - Four-phase debugging framework
 
-**Simple Commands (10)**
+**Simple Commands (12)**
 - `debug` - Systematic investigation techniques
 - `explain` - Explain code for newcomers
+- `friction` - Analyze session logs for failure patterns and behavioral signals
 - `git-commit` - Intelligent commit creation
 - `optimize` - Performance analysis
 - `refactor` - Maintain behavior while improving code
+- `remember` - Consolidate stashes + friction into project memory
 - `review` - Comprehensive code review
 - `security` - Vulnerability scanning
 - `ship` - Pre-deployment checklist
 - `stash` - Save session context for compaction recovery or handoffs
 - `test-generate` - Test suite generation
 
-### Droid/OpenCode: 20 Commands
+### Droid/OpenCode: 22 Commands
 
 Same functionality as skills+commands, but:
 - All invoked as commands (no auto-triggering)
@@ -140,7 +142,23 @@ Same functionality as skills+commands, but:
 **Command Categories**:
 - **Development & Testing (9)**: test-driven-development, testing-anti-patterns, test-generate, code-review, systematic-debugging, root-cause-tracing, debug, condition-based-waiting, verification-before-completion
 - **Code Operations (6)**: refactor, optimize, explain, review, security, ship
-- **Session & Planning (5)**: brainstorming, skill-creator, docs-builder, git-commit, stash
+- **Session & Memory (7)**: brainstorming, skill-creator, docs-builder, git-commit, stash, friction, remember
+
+---
+
+## Hot Memory
+
+Lightweight session memory that learns from your usage patterns across sessions.
+
+```
+/stash → /friction → /remember
+```
+
+1. **`/stash`** - Snapshot current session context to `.claude/stash/`. Use before compaction, handoffs, or ending complex work.
+2. **`/friction`** - Analyze session logs for failure patterns. Scores sessions, clusters failures by signal and tool sequence, outputs actionable antigens to `.claude/friction/`.
+3. **`/remember`** - Consolidate stashes + friction into `.claude/memory/MEMORY.md`. Extracts facts, episodes, and behavioral preferences. References into CLAUDE.md via `@MEMORY.md`.
+
+**Result:** Project-local memory that accumulates across sessions — no external dependencies, no databases, just markdown.
 
 ---
 
@@ -237,7 +255,7 @@ Subagent workflows require manual coordination.
 ├── CLAUDE.md           # Registry + orchestrator workflows
 ├── agents/             # 11 subagent implementations (*.md)
 ├── skills/             # 11 skills (subdirectories with SKILL.md)
-└── commands/           # 10 commands (*.md)
+└── commands/           # 12 commands (*.md)
 ```
 
 **Features**:
@@ -252,7 +270,7 @@ Subagent workflows require manual coordination.
 ├── AGENT.md            # Reference doc (subagents + commands)
 ├── agents/             # 11 subagent implementations (*.md)
 ├── skills/             # 11 skills (subdirectories with SKILL.md)
-└── commands/           # 10 commands (*.md)
+└── commands/           # 12 commands (*.md)
 ```
 
 **Features**:
@@ -264,7 +282,7 @@ Subagent workflows require manual coordination.
 ```
 ~/.factory/
 ├── AGENTS.md           # Reference doc (subagents + commands)
-└── commands/           # 21 commands (*.md)
+└── commands/           # 22 commands (*.md)
 ```
 
 **Features**:
@@ -276,7 +294,7 @@ Subagent workflows require manual coordination.
 ```
 ~/.config/opencode/
 ├── AGENTS.md           # Reference doc (subagents + commands)
-└── command/            # 21 commands (*.md)
+└── command/            # 22 commands (*.md)
 ```
 
 **Features**:

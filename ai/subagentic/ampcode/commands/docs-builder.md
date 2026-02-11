@@ -125,7 +125,8 @@ mkdir -p docs/{00-context,01-product,02-features,03-logs,04-process,archive}
 
 Create these files (see `docs-builder/templates.md` for content):
 
-**00-context/** (3 files):
+**00-context/** (4 files):
+- [ ] `blueprint.md` - Overarching project artifact (see below)
 - [ ] `vision.md` - Product purpose & boundaries
 - [ ] `assumptions.md` - Constraints, risks, unknowns
 - [ ] `system-state.md` - What's currently built
@@ -175,7 +176,7 @@ When moving files:
 
 ## Step 5: Integration
 
-**If CLAUDE.md exists:**
+**If AGENT.md exists:**
 Add or update documentation pointer:
 ```markdown
 ## Documentation
@@ -194,16 +195,66 @@ Update to reference new structure with quick links.
 ls -la docs/{00-context,01-product,02-features,03-logs,04-process,archive}
 
 # Verify minimum files
+test -f docs/00-context/blueprint.md && echo "✓ blueprint.md"
 test -f docs/00-context/vision.md && echo "✓ vision.md"
 test -f docs/00-context/system-state.md && echo "✓ system-state.md"
 test -f docs/01-product/prd.md && echo "✓ prd.md"
 test -f docs/README.md && echo "✓ README.md"
 
 # Count files per tier
-find docs/00-context -name "*.md" | wc -l  # >= 3
+find docs/00-context -name "*.md" | wc -l  # >= 4
 find docs/03-logs -name "*.md" | wc -l     # >= 5
 find docs/04-process -name "*.md" | wc -l  # >= 3
 ```
+
+---
+
+## Blueprint: The Overarching Project Artifact
+
+`docs/00-context/blueprint.md` is the **one and only** high-level project document. It answers: what is this project, what's built, what's planned, where is it headed.
+
+**When to create:** Always. blueprint.md is the first file created in 00-context/. It is required for both Fresh and Existing modes.
+
+**Content sources:**
+- Root `README.md` — project identity, purpose, stats
+- `package.json` / `pyproject.toml` — tech stack, dependencies
+- Existing docs — features implemented vs planned
+- Code structure — what modules/packages exist
+
+**Structure:**
+
+```markdown
+# [Project Name] Blueprint
+
+## Identity
+[What this project IS in 2-3 sentences. Sourced from README.]
+
+## Status
+| Area | Status | Notes |
+|------|--------|-------|
+| [feature/module] | implemented / in-progress / planned | [brief] |
+
+## Architecture
+[High-level structure: packages, modules, entry points. No ASCII trees — use tables or flat lists.]
+
+## Implemented
+[What works today. Group by feature area. Be specific.]
+
+## Planned
+[What's next. Ordered by priority. Include design docs if they exist.]
+
+## Future Direction
+[Where does this project want to be? North star. 3-5 bullets max.]
+
+## Key Decisions
+[Major architectural choices already made. Link to decisions-log if it exists.]
+```
+
+**Rules for blueprint.md:**
+- Keep it under 150 lines — it's an overview, not a manual
+- Update it when features ship or plans change
+- It is the FIRST document a new contributor or LLM should read
+- No duplication with vision.md (vision = WHY, blueprint = WHAT + WHERE)
 
 ---
 

@@ -185,6 +185,14 @@
       "template": "{file:./command/ship.md}",
       "description": "Pre-deployment verification checklist"
     },
+    "friction": {
+      "template": "{file:./command/friction.md}",
+      "description": "Analyze session logs for failure patterns and behavioral signals"
+    },
+    "remember": {
+      "template": "{file:./command/remember.md}",
+      "description": "Consolidate stashes + friction into project memory"
+    },
     "stash": {
       "template": "{file:./command/stash.md}",
       "description": "Save session context for compaction recovery or handoffs"

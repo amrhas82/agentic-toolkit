@@ -62,7 +62,7 @@ liteagents
 
 ```bash
 # Clone the repository
-git clone https://github.com/amrhas82/agentic-toolkit.git && cd agentic-toolkit
+git clone https://github.com/hamr0/agentic-toolkit.git && cd agentic-toolkit
 
 # Install subagents for your platform (choose one)
 cp -rv ai/subagentic/claude/* ~/.claude/          # Claude Code
@@ -91,7 +91,7 @@ cp -rv ai/subagentic/ampcode/* ~/.config/amp/    # Amp
 
 **Installation Options**:
 - **Manual**: `cp -rv ai/subagentic/<platform>/* <install-path>/` (see table below)
-- **NPM Package**: `npx liteagents` - Auto-updates, no cloning ([repo](https://github.com/amrhas82/liteagents))
+- **NPM Package**: `npx liteagents` - Auto-updates, no cloning ([repo](https://github.com/hamr0/liteagents))
 - **[📖 Subagentic Manual](ai/subagentic/subagentic-manual.md)** - Token loads, progressive disclosure, complete reference
 
 | Platform | Agents | Skills/Commands      | Install Path | Project Path | Source Path |
@@ -174,10 +174,10 @@ This toolkit is designed for anyone wanting to maximize AI-powered development:
 ## 🆘 Support & Community
 
 ### Getting Help
-- ⭐ **[Star this repo](https://github.com/amrhas82/agentic-toolkit)** for updates
+- ⭐ **[Star this repo](https://github.com/hamr0/agentic-toolkit)** for updates
 - 💬 **[Join Discord](https://discord.gg/SDaSrH3J8d)** for vibecoding support
-- 🐛 **[GitHub Issues](https://github.com/amrhas82/agentic-toolkit/issues)** for bug reports
-- 💡 **[GitHub Discussions](https://github.com/amrhas82/agentic-toolkit/discussions)** for questions
+- 🐛 **[GitHub Issues](https://github.com/hamr0/agentic-toolkit/issues)** for bug reports
+- 💡 **[GitHub Discussions](https://github.com/hamr0/agentic-toolkit/discussions)** for questions
 
 ---
 

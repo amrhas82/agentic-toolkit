@@ -213,7 +213,7 @@ If you want to avoid the trap, here's what I'd tell you on Day 1:
 | **Automation** | Entry level is low with right tools | Use scripts to automate setup<br/>Use frameworks to automate planning<br/>Use specialized agents to automate decision-making<br/>Don't try to learn everything at once |
 | **Community** | You don't have to figure this out alone | If you get stuck, reach out<br/>Discord: tinyurl.com/discochat |
 
-You can find setup scripts here: https://github.com/amrhas82/agentic-toolkit
+You can find setup scripts here: https://github.com/hamr0/agentic-toolkit
 
 ### The Decision Framework
 
@@ -642,7 +642,7 @@ If your idea is small and you're sure about it, skip Business Analyst and go str
 **Automated scripts:** 15 minutes, everything installed and configured.
 **Manual setup:** 1+ hours, download and configure each tool.
 
-Scripts available at: https://github.com/amrhas82/agentic-toolkit
+Scripts available at: https://github.com/hamr0/agentic-toolkit
 
 ---
 
@@ -696,7 +696,7 @@ This is where the 3-step method lives.
 
 ### Step 1: Create PRD (30-45 Minutes)
 
-**Tool:** Use the `1-create-prd.md` template from https://github.com/amrhas82/agent-dev-suite
+**Tool:** Use the `1-create-prd.md` template from https://github.com/hamr0/agent-dev-suite
 
 **How it works:**
 1. Tell the agent your idea in casual language

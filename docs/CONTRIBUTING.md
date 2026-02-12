@@ -34,7 +34,7 @@ Thank you for your interest in contributing! This toolkit is built for the vibec
 # Fork on GitHub, then:
 git clone https://github.com/YOUR-USERNAME/agentic-toolkit.git
 cd agentic-toolkit
-git remote add upstream https://github.com/amrhas82/agentic-toolkit.git
+git remote add upstream https://github.com/hamr0/agentic-toolkit.git
 ```
 
 ### Make Changes
@@ -142,8 +142,8 @@ cd tools
 ## Questions?
 
 - **Discord**: [Join the community](https://discord.gg/SDaSrH3J8d)
-- **Discussions**: [GitHub Discussions](https://github.com/amrhas82/agentic-toolkit/discussions)
-- **Issues**: [GitHub Issues](https://github.com/amrhas82/agentic-toolkit/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/hamr0/agentic-toolkit/discussions)
+- **Issues**: [GitHub Issues](https://github.com/hamr0/agentic-toolkit/issues)
 
 ---
 

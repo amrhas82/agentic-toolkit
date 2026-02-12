@@ -342,4 +342,4 @@ Footer navigation
     Docs
     Contact
 
-Comparing main...claude/auto-terminal-permissions-011CV4CcuU5o8VKcsrT6rnVg · amrhas82/agentic-kit
+Comparing main...claude/auto-terminal-permissions-011CV4CcuU5o8VKcsrT6rnVg · hamr0/agentic-kit

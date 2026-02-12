@@ -357,4 +357,4 @@ MIT
 
 ## Support
 
-For issues, questions, or contributions, see the [main AddyPin repository](https://github.com/amrhas82/addypin).
+For issues, questions, or contributions, see the [main AddyPin repository](https://github.com/hamr0/addypin).

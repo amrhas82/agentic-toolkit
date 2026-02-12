@@ -137,8 +137,8 @@ Yes! The agent files are markdown - edit them to match your preferences, tech st
 
 ### Where do I get help?
 - **Discord**: [Join community](https://discord.gg/SDaSrH3J8d)
-- **GitHub Issues**: [Report bugs](https://github.com/amrhas82/agentic-toolkit/issues)
-- **Discussions**: [Ask questions](https://github.com/amrhas82/agentic-toolkit/discussions)
+- **GitHub Issues**: [Report bugs](https://github.com/hamr0/agentic-toolkit/issues)
+- **Discussions**: [Ask questions](https://github.com/hamr0/agentic-toolkit/discussions)
 
 ### How do I report a bug?
 1. Check if it's already reported in Issues
@@ -178,4 +178,4 @@ Yes! Open a GitHub Issue with the "enhancement" tag describing what you'd like t
 
 ---
 
-Have a question not answered here? [Open a discussion](https://github.com/amrhas82/agentic-toolkit/discussions) or ask in [Discord](https://discord.gg/SDaSrH3J8d)!
+Have a question not answered here? [Open a discussion](https://github.com/hamr0/agentic-toolkit/discussions) or ask in [Discord](https://discord.gg/SDaSrH3J8d)!

@@ -2,8 +2,8 @@
 
 ## Table of Contents
 1. [Communication Protocol](#communication-protocol)
-2. [Development Philosophy](#development-philosophy)
-3. [Testing Strategy](#testing-strategy)
+2. [Development Standards](#development-standards)
+3. [Testing Standards](#testing-standards)
 4. [Tech Stack & Tools](#tech-stack--tools)
 5. [Development Workflow](#development-workflow)
 6. [Twelve-Factor Reference](#twelve-factor-reference)
@@ -14,7 +14,7 @@
 
 ## Communication Protocol
 
-### Core Principles
+### Core Rules
 - **Clarity First**: Always ask clarifying questions when requirements are ambiguous
 - **Fact-Based**: Base all recommendations on verified, current information
 - **Simplicity Advocate**: Call out overcomplications and suggest simpler alternatives
@@ -23,8 +23,8 @@
 ### User Profile
 - **Technical Level**: Non-coder but technically savvy
 - **Learning Style**: Understands concepts, needs executable instructions
-- **Preference**: Step-by-step guidance with clear explanations
-- **Tools**: Comfortable with command-line operations and scripts
+- **Expects**: Step-by-step guidance with clear explanations
+- **Comfortable with**: Command-line operations and scripts
 
 ### Required Safeguards
 - Always identify affected files before making changes
@@ -34,18 +34,18 @@
 
 ---
 
-## Development Philosophy
+## Development Standards
 
 ### Validate Before You Build
 
 - **POC everything first.** Before committing to a design, build a quick proof-of-concept (~15 min) that validates the core logic. Keep it stupidly simple — manual steps are fine, hardcoded values are fine, no tests needed yet
 - **POC scope:** Cover the happy path and 2-3 common edge cases. If those work, the idea is sound
 - **Graduation criteria:** POC validates logic and covers most common scenarios → stop, design properly, then build with structure, tests, and error handling. Never ship the POC — rewrite it
-- **Build incrementally.** After POC graduates, break the work into small, independent modules. Focus on one at a time. Each piece should work on its own before integrating with the next
+- **Build incrementally.** After POC graduates, break the work into small, independent modules. Focus on one at a time. Each piece must work on its own before integrating with the next
 
 ### Dependency Hierarchy
 
-Use this order — always exhaust the simpler option before reaching for the next:
+Always exhaust the simpler option before reaching for the next:
 
 1. **Vanilla language** — Write it yourself using only language primitives. If it's <50 lines and not security-critical, this is the answer
 2. **Standard library** — Use built-in modules (`os`, `json`, `pathlib`, `http`, `fs`, `crypto`). The stdlib is tested, maintained, and has zero supply chain risk
@@ -62,20 +62,20 @@ Before adding any external dependency, all of these must be true:
 
 ### Language Selection
 
-- **Prefer widely-adopted languages** — Python, JavaScript/TypeScript, Go, Rust. Avoid niche languages unless the domain demands it
+- **Use widely-adopted languages only** — Python, JavaScript/TypeScript, Go, Rust. No niche languages unless the domain demands it
 - **Pick the lightest language that fits the domain:** shell scripts for automation, Python for data/backend/CLI, TypeScript for web, Go for systems/infra, Rust for performance-critical
-- **Minimize the polyglot tax.** Every language in the stack adds CI config, tooling, and onboarding friction. Don't add a new language for one microservice — use what you already have unless there's a compelling reason
-- **Vanilla over frameworks.** Use Express over NestJS, Flask over Django, unless the project genuinely needs the framework's structure. You can always add structure later; removing a framework is painful
+- **Minimize the polyglot tax.** Every language in the stack adds CI config, tooling, and onboarding friction. Do not add a new language for one microservice — use what's already in the stack unless there's a compelling reason
+- **Vanilla over frameworks.** Express over NestJS, Flask over Django, unless the project genuinely needs the framework's structure. Structure can always be added later; removing a framework is painful
 
-### Build Philosophy
+### Build Rules
 
-- **Open-source first.** Always prefer open-source solutions. Avoid vendor lock-in
-- **Lightweight over complex.** If two solutions solve the same problem, pick the one with fewer moving parts, fewer dependencies, and less configuration
+- **Open-source only.** Always use open-source solutions. No vendor lock-in
+- **Lightweight over complex.** If two solutions solve the same problem, use the one with fewer moving parts, fewer dependencies, and less configuration
 - **Every line must have a purpose.** No speculative code, no "might need this later", no abstractions for one use case
 - **Simple > clever.** Readable code that a junior can follow beats elegant code that requires a PhD to debug
 - **Containerize only when necessary.** Start with a virtualenv or bare metal. Docker adds value for deployment parity and isolation — not for running a script
 
-### Red Flags to Call Out
+### Red Flags — Stop and Flag These
 - Over-engineering simple problems
 - Adding external dependencies for trivial operations
 - Frameworks where a library or stdlib would suffice
@@ -84,13 +84,13 @@ Before adding any external dependency, all of these must be true:
 
 ---
 
-## Testing Strategy
+## Testing Standards
 
-### Core Philosophy
+### Rules
 
-**Test behavior, not implementation.** A test suite should give you confidence to refactor freely. If changing internal code (without changing behavior) breaks tests, those tests are liabilities, not assets.
+**Test behavior, not implementation.** A test suite must give you confidence to refactor freely. If changing internal code (without changing behavior) breaks tests, those tests are liabilities, not assets.
 
-**The Testing Trophy** (preferred over the Testing Pyramid):
+**Follow the Testing Trophy** (not the Testing Pyramid):
 - Few unit tests — only for pure logic, algorithms, and complex calculations
 - Many integration tests — the sweet spot; test real components working together
 - Some E2E tests — cover critical user journeys end-to-end
@@ -98,28 +98,28 @@ Before adding any external dependency, all of these must be true:
 
 ### When to Write Tests
 
-- **After the design stabilizes, not during exploration.** Don't TDD a prototype — you'll write 500 tests for code you delete tomorrow. First make it work (POC), then make it right (refactor + tests), then make it fast
+- **After the design stabilizes, not during exploration.** Do not TDD a prototype — you'll write 500 tests for code you delete tomorrow. First make it work (POC), then make it right (refactor + tests), then make it fast
 - **Write tests when the code has users.** If a function is called by other modules or exposed to users, it needs tests. Internal helpers that only serve one caller don't need their own test file
-- **Write tests for bugs.** Every bug fix should include a regression test that fails before the fix and passes after. This is the highest-value test you can write
-- **Write tests before refactoring.** If you're about to change working code, write characterization tests first to lock in current behavior, then refactor with confidence
-- **Don't write tests for glue code.** Code that just wires components together (calls A then B then C) is better tested at the integration level, not unit level
+- **Write tests for bugs.** Every bug fix must include a regression test that fails before the fix and passes after. This is the highest-value test you can write
+- **Write tests before refactoring.** Before changing working code, write characterization tests first to lock in current behavior, then refactor with confidence
+- **Do not write tests for glue code.** Code that just wires components together (calls A then B then C) is tested at the integration level, not unit level
 
-### TDD: When It Helps and When It Hurts
+### TDD: When It Works and When It Doesn't
 
-- **TDD works well for:** Pure functions, algorithms, parsers, validators, data transformations — anything with clear inputs and outputs
-- **TDD hurts when:** You're exploring a design, building a POC, or the interface isn't settled yet. Writing tests for unstable APIs creates churn and false confidence
-- **The real rule:** You must understand what you're building before you TDD it. TDD is a design tool for known problems, not a discovery tool for unknown ones
-- **Red-green-refactor discipline:** If you do TDD, actually follow the cycle. Write a failing test, write minimal code to pass, refactor. Don't write 20 tests then implement — that's just front-loading waste
+- **TDD works for:** Pure functions, algorithms, parsers, validators, data transformations — anything with clear inputs and outputs
+- **TDD does not work for:** Exploring a design, building a POC, or unstable interfaces. Writing tests for unstable APIs creates churn and false confidence
+- **The rule:** You must understand what you're building before you TDD it. TDD is a design tool for known problems, not a discovery tool for unknown ones
+- **Red-green-refactor discipline:** If you do TDD, follow the cycle strictly. Write a failing test, write minimal code to pass, refactor. Do not write 20 tests then implement — that's front-loading waste
 
 ### What Makes a Good Test
 
-- **Tests real behavior.** Call the public API, assert on observable output. Don't reach into internals
+- **Tests real behavior.** Call the public API, assert on observable output. Do not reach into internals
 - **Fails for the right reason.** A good test fails when the feature is broken, not when the implementation changes
-- **Reads like a spec.** Someone unfamiliar with the code should understand what the feature does by reading the test
+- **Reads like a spec.** Someone unfamiliar with the code must understand what the feature does by reading the test
 - **Self-contained.** Each test sets up its own state, runs, and cleans up. No ordering dependencies between tests
 - **Fast and deterministic.** Flaky tests erode trust. If a test depends on timing, network, or global state, fix that dependency
 
-### What Makes a Bad Test (Anti-Patterns)
+### Anti-Patterns — Do Not Do These
 
 - **Mocking more than 60% of the test.** If most of the test is mock setup, you're testing mocks, not code. Use real implementations with `tmp_path`, `:memory:` SQLite, or test containers
 - **Smoke tests.** `assert result is not None` proves nothing. Assert on specific values, structure, or side effects
@@ -156,17 +156,17 @@ Before adding any external dependency, all of these must be true:
 
 ### Coverage and Ratios
 
-- **Don't chase a coverage number.** 80% coverage with meaningless tests is worse than 40% with behavior-testing integration tests
+- **Do not chase a coverage number.** 80% coverage with meaningless tests is worse than 40% with behavior-testing integration tests
 - **Cover the critical path first.** Data layer, auth, payment, core business logic — before helper utilities
 - **Coverage tells you what's NOT tested, not what IS tested.** High coverage with bad assertions is false confidence
 - **Delete tests that don't catch bugs.** If a test has never failed (or only fails on refactors), it's not providing value
 
 **Target ratio:** ~20% unit, ~60% integration, ~15% E2E, ~5% manual/exploratory
 
-### Practical Preferences
+### Test Tooling Standards
 
 - Use `tmp_path` for filesystem tests, `:memory:` or `tmp_path` SQLite for DB tests
-- Prefer dependency injection over `@patch` — it's more readable and survives refactors
+- Use dependency injection over `@patch` — it's more readable and survives refactors
 - Tests must be self-sufficient — no dependency on project directories, user config, or environment state
 - Use factories or builders for test data, not raw constructors with 15 arguments
 - Keep test fixtures close to where they're used. Shared fixtures in `conftest.py`, not a global test utilities package
@@ -256,7 +256,7 @@ Before adding any external dependency, all of these must be true:
 
 ## Twelve-Factor Reference
 
-The [Twelve-Factor App](https://12factor.net) methodology for modern, scalable applications. Compressed for quick reference:
+The [Twelve-Factor App](https://12factor.net) methodology for modern, scalable applications:
 
 | # | Factor | Rule |
 |---|--------|------|
@@ -277,22 +277,22 @@ The [Twelve-Factor App](https://12factor.net) methodology for modern, scalable a
 
 ## CLAUDE.md Stub
 
-Copy this to any project's CLAUDE.md for a concise summary of dev preferences:
+Copy this to any project's CLAUDE.md. These are mandatory rules, not suggestions.
 
 ```markdown
-## Dev Preferences
+## Dev Rules
 
-**POC first.** Validate logic with a quick ~15min proof-of-concept before building. Cover happy path + common edges. POC works → design properly → build with tests. Never ship the POC.
+**POC first.** Always validate logic with a ~15min proof-of-concept before building. Cover happy path + common edges. POC works → design properly → build with tests. Never ship the POC.
 
-**Build incrementally.** Break work into small independent modules. One piece at a time, each works on its own before integrating.
+**Build incrementally.** Break work into small independent modules. One piece at a time, each must work on its own before integrating.
 
-**Dependency hierarchy:** vanilla language → standard library → external (only when stdlib can't do it in <100 lines). External deps must be maintained, lightweight, and widely adopted. Exception: always use vetted libraries for security-critical code (crypto, auth, sanitization).
+**Dependency hierarchy — follow strictly:** vanilla language → standard library → external (only when stdlib can't do it in <100 lines). External deps must be maintained, lightweight, and widely adopted. Exception: always use vetted libraries for security-critical code (crypto, auth, sanitization).
 
 **Lightweight over complex.** Fewer moving parts, fewer deps, less config. Express over NestJS, Flask over Django, unless the project genuinely needs the framework. Simple > clever. Readable > elegant.
 
-**Language choice.** Use widely-adopted languages (Python, JS/TS, Go, Rust). Pick the lightest that fits the domain. Minimize polyglot tax — don't add a new language without compelling reason.
+**Open-source only.** No vendor lock-in. Every line of code must have a purpose — no speculative code, no premature abstractions.
 
-**Open-source first.** Always prefer open-source. Avoid vendor lock-in. Every line of code must have a purpose — no speculative code, no premature abstractions.
+For full development and testing standards, see `.claude/memory/AGENT_RULES.md`.
 ```
 
 ---

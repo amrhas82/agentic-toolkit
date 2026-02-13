@@ -292,33 +292,62 @@ The **Twelve-Factor App** methodology provides a framework for building modern, 
 - **Same Environment**: Execute admin tasks in the same environment as the application
 - **Implementation**: Use npm scripts, separate command-line tools, and task runners
 
-### Technology Choices
-- Always prefer open-source solutions
-- Avoid vendor lock-in whenever possible
-- Use free/generous tiers for initial development
-- Simplicity wins over complexity
-- Every piece of code must have a purpose
+## Development Philosophy
 
-### Architecture Guidelines
-- Keep it simple - don't introduce complexity without clear need
-- Containerize only when necessary - start simple, scale as needed
-- Use established patterns - don't reinvent the wheel
-- Focus on maintainability - clean, documented code
+### Validate Before You Build
+
+- **POC everything first.** Before committing to a design, build a quick proof-of-concept (~15 min) that validates the core logic. Keep it stupidly simple — manual steps are fine, hardcoded values are fine, no tests needed yet
+- **POC scope:** Cover the happy path and 2-3 common edge cases. If those work, the idea is sound
+- **Graduation criteria:** POC validates logic and covers most common scenarios → stop, design properly, then build with structure, tests, and error handling. Never ship the POC — rewrite it
+- **Build incrementally.** After POC graduates, break the work into small, independent modules. Focus on one at a time. Each piece should work on its own before integrating with the next
+
+### Dependency Hierarchy
+
+Use this order — always exhaust the simpler option before reaching for the next:
+
+1. **Vanilla language** — Write it yourself using only language primitives. If it's <50 lines and not security-critical, this is the answer
+2. **Standard library** — Use built-in modules (`os`, `json`, `pathlib`, `http`, `fs`, `crypto`). The stdlib is tested, maintained, and has zero supply chain risk
+3. **External library** — Only when both vanilla and stdlib are insufficient. Must pass the checklist below
+
+### External Dependency Checklist
+
+Before adding any external dependency, all of these must be true:
+- **Necessity:** Can't reasonably implement this with stdlib in <100 lines
+- **Maintained:** Active commits in the last 6 months, responsive maintainer
+- **Lightweight:** Few transitive dependencies (check the dep tree, not just the top-level)
+- **Established:** Widely used, not a single-maintainer hobby project for production-critical code
+- **Security-aware:** For security-critical domains (crypto, auth, sanitization, parsing untrusted input), a vetted library is *required* — never roll your own
+
+### Language Selection
+
+- **Prefer widely-adopted languages** — Python, JavaScript/TypeScript, Go, Rust. Avoid niche languages unless the domain demands it (e.g., Elixir for telecom-grade concurrency)
+- **Pick the lightest language that fits the domain:** shell scripts for automation, Python for data/backend/CLI, TypeScript for web, Go for systems/infra, Rust for performance-critical
+- **Minimize the polyglot tax.** Every language in the stack adds CI config, tooling, and onboarding friction. Don't add a new language for one microservice — use what you already have unless there's a compelling reason
+- **Vanilla over frameworks.** Use Express over NestJS, Flask over Django, unless the project genuinely needs the framework's structure. You can always add structure later; removing a framework is painful
+
+### Build Philosophy
+
+- **Open-source first.** Always prefer open-source solutions. Avoid vendor lock-in
+- **Lightweight over complex.** If two solutions solve the same problem, pick the one with fewer moving parts, fewer dependencies, and less configuration
+- **Every line must have a purpose.** No speculative code, no "might need this later", no abstractions for one use case
+- **Simple > clever.** Readable code that a junior can follow beats elegant code that requires a PhD to debug
+- **Containerize only when necessary.** Start with a virtualenv or bare metal. Docker adds value for deployment parity and isolation — not for running a script
 
 ## Solution Guidelines
 
 ### Always Consider
 - Is this the simplest approach?
-- Can this be done with existing tools?
-- What's the maintenance burden?
+- Can this be done with vanilla language or stdlib?
+- What's the maintenance and dependency burden?
 - Is there vendor lock-in?
-- Does this align with my tech preferences?
+- Would a 15-minute POC validate this before I commit?
 
 ### Red Flags to Call Out
 - Over-engineering simple problems
-- Adding unnecessary dependencies
-- Complex solutions for straightforward tasks
+- Adding external dependencies for trivial operations
+- Frameworks where a library or stdlib would suffice
 - Vendor-specific implementations when open alternatives exist
+- Skipping POC validation for unproven ideas
 
 ## Quick Reference
 

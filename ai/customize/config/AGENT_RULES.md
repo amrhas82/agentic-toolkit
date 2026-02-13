@@ -4,7 +4,7 @@
 1. [Communication Protocol](#communication-protocol)
 2. [Development Standards](#development-standards)
 3. [Testing Standards](#testing-standards)
-4. [Tech Stack & Tools](#tech-stack--tools)
+4. [Environment](#environment)
 5. [Development Workflow](#development-workflow)
 6. [Twelve-Factor Reference](#twelve-factor-reference)
 7. [CLAUDE.md Stub](#claudemd-stub)
@@ -173,69 +173,10 @@ Before adding any external dependency, all of these must be true:
 
 ---
 
-## Tech Stack & Tools
+## Environment
 
-### Core Development Stack
-
-| Component | Technology | Version | Purpose |
-|-----------|------------|---------|---------|
-| Runtime | Node.js | 18+ | JavaScript server runtime |
-| Framework | Express.js | 4.x | Web application framework |
-| Language | TypeScript | 5.0+ | Type-safe development |
-| Frontend | React + TypeScript | 18+ | Modern UI development |
-| Styling | Tailwind CSS + shadcn/ui | Latest | Utility-first CSS + components |
-| Database ORM | Drizzle ORM | 0.28+ | Type-safe database operations |
-| Validation | Zod | 3.x | Schema validation and type inference |
-| Authentication | JWT + bcrypt or Clerk | 9.x + 5.x | Secure authentication |
-| HTTP Client | Axios | 1.x | External service integration |
-| Caching | Redis | Latest | In-memory data structure store |
-| Server State | TanStack Query (React Query) | Latest | Server state management in React |
-| UI Components | Radix UI primitives | Latest | Accessible UI components |
-| Language | Python | Latest | Versatile programming language |
-
-### Database Layer
-
-| Component | Technology | Version | Purpose |
-|-----------|------------|---------|---------|
-| Database | PostgreSQL | 15+ | ACID-compliant relational database |
-| Migration Tool | Drizzle Kit | 0.19+ | Database schema management |
-| Connection | postgres.js | 3.x | Database connection pooling |
-
-### Infrastructure & Deployment
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| VPS | RackNerd VPS | Production hosting |
-| Database | Supabase | Development/Staging database |
-| Analytics | Umami Analytics | Privacy-focused analytics |
-| Email | MSMTP + Resend | Transactional emails |
-| Reverse Proxy | Nginx | Load balancing and SSL |
-| SSL | Let's Encrypt | Free SSL certificates |
-| Version Control | GitHub | Source code management |
-| Container Registry | GHCR | Docker image storage (complex projects) |
-| Orchestration | Docker + Docker Compose | Container management (complex projects) |
-| CI/CD | GitHub Actions | Automated deployment |
-| Monitoring | PostHog | Product analytics |
-
-### Development Tools
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| Text Editor | Nvim | Highly customizable text editor |
-| Terminal Multiplexer | tmux | Terminal session manager |
-| IDE | PyCharm Community Edition | Python development environment |
-| Terminal Emulator | ghostty | Terminal emulator |
-| OS | Linux Ubuntu | Development environment |
-| Code Editor | Ampcode | Collaborative code editing |
-
-### Testing Tools
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| API Client | Postman | API testing and documentation |
-| JS Testing | Jest / Vitest | JavaScript/TypeScript testing |
-| Browser Automation | Playwright | Automated browser testing |
-| Python Testing | pytest | Python testing framework |
+- **OS**: Fedora Linux (use `dnf` for packages, `systemctl` for services)
+- **Testing**: pytest (Python), Jest/Vitest (JS/TS), Playwright (browser automation)
 
 ---
 

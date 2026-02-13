@@ -1,25 +1,23 @@
-# 🤖 AI Agent Collaboration Guide
+# AI Agent Collaboration Guide
 
 ## Table of Contents
 1. [Communication Protocol](#communication-protocol)
-2. [Tool Selection Guidelines](#tool-selection-guidelines)
-3. [Testing Strategy Framework](#testing-strategy-framework)
-4. [Tech Stack Preferences](#tech-stack-preferences)
+2. [Development Philosophy](#development-philosophy)
+3. [Testing Strategy](#testing-strategy)
+4. [Tech Stack & Tools](#tech-stack--tools)
 5. [Development Workflow](#development-workflow)
-6. [Core Principles](#core-principles)
-   - [Twelve-Factor App Methodology](#architecture-methodology-the-twelve-factor-app)
-   - [Technology Choices](#technology-choices)
-   - [Architecture Guidelines](#architecture-guidelines)
-7. [Solution Guidelines](#solution-guidelines)
-8. [Quick Reference](#quick-reference)
+6. [Twelve-Factor Reference](#twelve-factor-reference)
+7. [CLAUDE.md Stub](#claudemd-stub)
+8. [AI Agent Instructions](#ai-agent-instructions)
+
+---
 
 ## Communication Protocol
 
-### Core Communication Principles
+### Core Principles
 - **Clarity First**: Always ask clarifying questions when requirements are ambiguous
-- **Fact-Based Responses**: Base all recommendations on verified, current information
+- **Fact-Based**: Base all recommendations on verified, current information
 - **Simplicity Advocate**: Call out overcomplications and suggest simpler alternatives
-- **Technical Translation**: Explain complex concepts in clear, actionable terms
 - **Safety First**: Never modify critical systems without explicit understanding and approval
 
 ### User Profile
@@ -29,20 +27,64 @@
 - **Tools**: Comfortable with command-line operations and scripts
 
 ### Required Safeguards
-- **File Impact Analysis**: Always identify affected files before making changes
-- **Authentication Protection**: Never modify authentication systems without explicit permission
-- **Database Safety**: Never alter database schema without proper migration files
-- **Change Documentation**: Explain what changes will be made and why
+- Always identify affected files before making changes
+- Never modify authentication systems without explicit permission
+- Never alter database schema without proper migration files
+- Explain what changes will be made and why
 
-## Tool Selection Guidelines
+---
 
-| Tool | Best For | When to Use |
-|------|----------|-------------|
-| **DeepSeek** | Detailed code discussions, complex problem solving | Architecture decisions, code reviews, detailed technical analysis |
-| **Replit** | UI development, rapid prototyping | Frontend work, visual components, interactive demos |
-| **Claude** | Bug fixing, code simplification, refactoring | Debugging, code cleanup, optimization tasks |
+## Development Philosophy
 
-## Testing Strategy Framework
+### Validate Before You Build
+
+- **POC everything first.** Before committing to a design, build a quick proof-of-concept (~15 min) that validates the core logic. Keep it stupidly simple — manual steps are fine, hardcoded values are fine, no tests needed yet
+- **POC scope:** Cover the happy path and 2-3 common edge cases. If those work, the idea is sound
+- **Graduation criteria:** POC validates logic and covers most common scenarios → stop, design properly, then build with structure, tests, and error handling. Never ship the POC — rewrite it
+- **Build incrementally.** After POC graduates, break the work into small, independent modules. Focus on one at a time. Each piece should work on its own before integrating with the next
+
+### Dependency Hierarchy
+
+Use this order — always exhaust the simpler option before reaching for the next:
+
+1. **Vanilla language** — Write it yourself using only language primitives. If it's <50 lines and not security-critical, this is the answer
+2. **Standard library** — Use built-in modules (`os`, `json`, `pathlib`, `http`, `fs`, `crypto`). The stdlib is tested, maintained, and has zero supply chain risk
+3. **External library** — Only when both vanilla and stdlib are insufficient. Must pass the checklist below
+
+### External Dependency Checklist
+
+Before adding any external dependency, all of these must be true:
+- **Necessity:** Can't reasonably implement this with stdlib in <100 lines
+- **Maintained:** Active commits in the last 6 months, responsive maintainer
+- **Lightweight:** Few transitive dependencies (check the dep tree, not just the top-level)
+- **Established:** Widely used, not a single-maintainer hobby project for production-critical code
+- **Security-aware:** For security-critical domains (crypto, auth, sanitization, parsing untrusted input), a vetted library is *required* — never roll your own
+
+### Language Selection
+
+- **Prefer widely-adopted languages** — Python, JavaScript/TypeScript, Go, Rust. Avoid niche languages unless the domain demands it
+- **Pick the lightest language that fits the domain:** shell scripts for automation, Python for data/backend/CLI, TypeScript for web, Go for systems/infra, Rust for performance-critical
+- **Minimize the polyglot tax.** Every language in the stack adds CI config, tooling, and onboarding friction. Don't add a new language for one microservice — use what you already have unless there's a compelling reason
+- **Vanilla over frameworks.** Use Express over NestJS, Flask over Django, unless the project genuinely needs the framework's structure. You can always add structure later; removing a framework is painful
+
+### Build Philosophy
+
+- **Open-source first.** Always prefer open-source solutions. Avoid vendor lock-in
+- **Lightweight over complex.** If two solutions solve the same problem, pick the one with fewer moving parts, fewer dependencies, and less configuration
+- **Every line must have a purpose.** No speculative code, no "might need this later", no abstractions for one use case
+- **Simple > clever.** Readable code that a junior can follow beats elegant code that requires a PhD to debug
+- **Containerize only when necessary.** Start with a virtualenv or bare metal. Docker adds value for deployment parity and isolation — not for running a script
+
+### Red Flags to Call Out
+- Over-engineering simple problems
+- Adding external dependencies for trivial operations
+- Frameworks where a library or stdlib would suffice
+- Vendor-specific implementations when open alternatives exist
+- Skipping POC validation for unproven ideas
+
+---
+
+## Testing Strategy
 
 ### Core Philosophy
 
@@ -97,11 +139,9 @@
     conftest.py     # Shared fixtures for this package
   ```
 - **One test file per module** (not per function). `test_auth.py` tests the auth module, not `test_login.py` + `test_logout.py` + `test_session.py`
-- **No duplicate test files.** Before creating a new test file, check if one already exists for that module. Duplicates cause collection conflicts and confusion
+- **No duplicate test files.** Before creating a new test file, check if one already exists for that module
 
 ### Markers and Signals
-
-Use markers to get fast feedback on what matters:
 
 | Marker | Purpose | CI Behavior |
 |--------|---------|-------------|
@@ -109,27 +149,21 @@ Use markers to get fast feedback on what matters:
 | `@pytest.mark.ml` | Requires ML deps (torch, etc.) | Skip if deps not installed |
 | `@pytest.mark.real_api` | Calls external APIs | Skip in CI — run manually before release |
 
-**Organize CI runs for fast signals:**
+**CI runs for fast signals:**
 - `pytest -m "not slow and not ml and not real_api"` — fast gate on every push (~30s)
 - `pytest` — full suite on PR merge or nightly
 - Package-level runs for targeted debugging: `pytest packages/core/tests/`
 
-### Coverage Rules
+### Coverage and Ratios
 
-- **Don't chase a coverage number.** 80% coverage with meaningless tests is worse than 40% coverage with behavior-testing integration tests
-- **Cover the critical path first.** Data layer, auth, payment, core business logic — these get tests before helper utilities
+- **Don't chase a coverage number.** 80% coverage with meaningless tests is worse than 40% with behavior-testing integration tests
+- **Cover the critical path first.** Data layer, auth, payment, core business logic — before helper utilities
 - **Coverage tells you what's NOT tested, not what IS tested.** High coverage with bad assertions is false confidence
 - **Delete tests that don't catch bugs.** If a test has never failed (or only fails on refactors), it's not providing value
 
-### The Right Test Ratio
+**Target ratio:** ~20% unit, ~60% integration, ~15% E2E, ~5% manual/exploratory
 
-Aim for roughly:
-- **~20% unit tests** — pure logic, math, parsing, validation
-- **~60% integration tests** — components working together with real dependencies (DB, filesystem, HTTP)
-- **~15% E2E tests** — critical user journeys, CLI workflows, API contracts
-- **~5% manual/exploratory** — security, UX, edge cases that are hard to automate
-
-### Practical Test Preferences
+### Practical Preferences
 
 - Use `tmp_path` for filesystem tests, `:memory:` or `tmp_path` SQLite for DB tests
 - Prefer dependency injection over `@patch` — it's more readable and survives refactors
@@ -137,7 +171,17 @@ Aim for roughly:
 - Use factories or builders for test data, not raw constructors with 15 arguments
 - Keep test fixtures close to where they're used. Shared fixtures in `conftest.py`, not a global test utilities package
 
-## Tech Stack Preferences
+---
+
+## Tech Stack & Tools
+
+### AI Tools
+
+| Tool | Best For | When to Use |
+|------|----------|-------------|
+| **DeepSeek** | Detailed code discussions, complex problem solving | Architecture decisions, code reviews, detailed technical analysis |
+| **Replit** | UI development, rapid prototyping | Frontend work, visual components, interactive demos |
+| **Claude** | Bug fixing, code simplification, refactoring | Debugging, code cleanup, optimization tasks |
 
 ### Core Development Stack
 
@@ -155,7 +199,6 @@ Aim for roughly:
 | Caching | Redis | Latest | In-memory data structure store |
 | Server State | TanStack Query (React Query) | Latest | Server state management in React |
 | Language | Python | Latest | Versatile programming language |
-| Language | JavaScript | Latest | Core web development language |
 
 ### Database Layer
 
@@ -176,13 +219,8 @@ Aim for roughly:
 | Reverse Proxy | Nginx | Load balancing and SSL |
 | SSL | Let's Encrypt | Free SSL certificates |
 | Version Control | GitHub | Source code management |
-
-### For Complex Projects
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| Container Registry | GHCR (GitHub Container Registry) | Docker image storage |
-| Orchestration | Docker + Docker Compose | Container management |
+| Container Registry | GHCR | Docker image storage (complex projects) |
+| Orchestration | Docker + Docker Compose | Container management (complex projects) |
 | CI/CD | GitHub Actions | Automated deployment |
 | Monitoring | PostHog | Product analytics |
 
@@ -193,19 +231,21 @@ Aim for roughly:
 | Text Editor | Nvim | Highly customizable text editor |
 | Terminal Multiplexer | tmux | Terminal session manager |
 | IDE | PyCharm Community Edition | Python development environment |
-| Terminal Emulator | ghostty | Terminal emulator with enhanced features |
+| Terminal Emulator | ghostty | Terminal emulator |
 | OS | Linux Ubuntu | Development environment |
 | Code Editor | Ampcode | Collaborative code editing |
 
-### Testing and Utilities
+### Testing Tools
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
 | API Client | Postman | API testing and documentation |
-| Testing Framework | Jest | JavaScript testing framework |
+| JS Testing | Jest / Vitest | JavaScript/TypeScript testing |
 | Browser Automation | Playwright | Automated browser testing |
-| Environment Variables | dotenv | Manage environment variables |
-| UI Components | Radix UI primitives | Building accessible UI components |
+| Python Testing | pytest | Python testing framework |
+| UI Components | Radix UI primitives | Accessible UI components |
+
+---
 
 ## Development Workflow
 
@@ -216,194 +256,51 @@ Aim for roughly:
 
 ### Deployment Strategy
 
-#### Simple Projects
-```bash
-Local → GitHub → VPS (direct deployment)
-```
+**Simple Projects:** `Local → GitHub → VPS (direct deployment)`
 
-#### Complex Projects
-```bash
-Local → GitHub → GHCR → VPS (containerized)
-```
+**Complex Projects:** `Local → GitHub → GHCR → VPS (containerized)`
 
-## Core Principles
+---
 
-### Architecture Methodology: The Twelve-Factor App
+## Twelve-Factor Reference
 
-The **Twelve-Factor App** methodology provides a framework for building modern, scalable, and maintainable web applications. Originally designed for cloud platforms, these principles guide our development approach:
+The [Twelve-Factor App](https://12factor.net) methodology for modern, scalable applications. Compressed for quick reference:
 
-#### 📁 **1. Codebase**
-- **Single Repository**: Maintain one codebase per application tracked in version control
-- **Multiple Deploys**: Deploy the same codebase to development, staging, and production environments
-- **Implementation**: Use GitHub for source control with feature branches and clear deployment strategies
+| # | Factor | Rule |
+|---|--------|------|
+| 1 | Codebase | One repo per app, multiple deploys from same codebase |
+| 2 | Dependencies | Explicitly declare and isolate all dependencies |
+| 3 | Config | Store config in environment variables, never in code |
+| 4 | Backing Services | Treat databases, caches, queues as attached resources |
+| 5 | Build, Release, Run | Strict separation between build, release, and run stages |
+| 6 | Processes | Run as stateless processes, persist state externally |
+| 7 | Port Binding | Apps are self-contained, export services via port binding |
+| 8 | Concurrency | Scale out via the process model, not bigger instances |
+| 9 | Disposability | Fast startup, graceful shutdown, idempotent operations |
+| 10 | Dev/Prod Parity | Keep dev, staging, and production as similar as possible |
+| 11 | Logs | Treat logs as event streams to stdout |
+| 12 | Admin Processes | Run admin/maintenance tasks as one-off processes |
 
-#### 📦 **2. Dependencies**
-- **Explicit Declaration**: Use package.json, requirements.txt, or similar dependency files
-- **Isolation**: Ensure dependencies are installed in isolated environments (virtual environments, containers)
-- **Implementation**: Use npm/pip for dependency management, avoid global installations
+---
 
-#### ⚙️ **3. Configuration**
-- **Environment-Based**: Store all configuration in environment variables
-- **No Hardcoded Values**: Never embed API keys, database URLs, or environment-specific settings in code
-- **Implementation**: Use `.env` files for development, environment variables for production
+## CLAUDE.md Stub
 
-#### 🔌 **4. Backing Services**
-- **Treat as Attached**: View databases, caches, queues, and other services as pluggable resources
-- **Interchangeable**: Design applications to work with different backing services
-- **Implementation**: Use connection strings, abstraction layers, and service discovery patterns
+Copy this to any project's CLAUDE.md for a concise summary of dev preferences:
 
-#### 🏗️ **5. Build, Release, Run**
-- **Strict Separation**: Maintain distinct phases for building (compilation), releasing (configuration), and running (execution)
-- **Immutable Releases**: Once built, releases should not be modified
-- **Implementation**: Use CI/CD pipelines, Docker containers, and deployment scripts
+```markdown
+## Dev Preferences
 
-#### 🔄 **6. Processes**
-- **Stateless Execution**: Run applications as stateless processes
-- **External State**: Store all persistent data in external backing services (databases, caches)
-- **Implementation**: Avoid in-memory state, use session stores or databases for persistence
+**POC first.** Validate logic with a quick ~15min proof-of-concept before building. Cover happy path + common edges. POC works → design properly → build with tests. Never ship the POC.
 
-#### 🚪 **7. Port Binding**
-- **Self-Contained**: Applications should be fully self-contained and bind to a specified port
-- **Web Server Agnostic**: Don't assume a specific web server or container
-- **Implementation**: Use Express.js with port binding, deploy via reverse proxy
+**Build incrementally.** Break work into small independent modules. One piece at a time, each works on its own before integrating.
 
-#### ⚡ **8. Concurrency**
-- **Process Model**: Scale out by adding more processes rather than making individual processes larger
-- **Horizontal Scaling**: Design for horizontal scaling across multiple instances
-- **Implementation**: Use process managers (PM2), container orchestration, load balancers
+**Dependency hierarchy:** vanilla language → standard library → external (only when stdlib can't do it in <100 lines). External deps must be maintained, lightweight, and widely adopted. Exception: always use vetted libraries for security-critical code (crypto, auth, sanitization).
 
-#### 🗑️ **9. Disposability**
-- **Fast Startup**: Applications should start quickly (typically in seconds)
-- **Graceful Shutdown**: Handle shutdown signals cleanly, ensuring data consistency
-- **Implementation**: Use health checks, proper signal handling, and idempotent operations
+**Lightweight over complex.** Fewer moving parts, fewer deps, less config. Express over NestJS, Flask over Django, unless the project genuinely needs the framework. Simple > clever. Readable > elegant.
 
-#### 🔀 **10. Dev/Prod Parity**
-- **Environment Similarity**: Keep development, staging, and production environments as similar as possible
-- **Minimize Differences**: Reduce bugs caused by environment discrepancies
-- **Implementation**: Use Docker for local development, same database types, similar configurations
+**Language choice.** Use widely-adopted languages (Python, JS/TS, Go, Rust). Pick the lightest that fits the domain. Minimize polyglot tax — don't add a new language without compelling reason.
 
-#### 📊 **11. Logs**
-- **Event Streams**: Treat logs as event streams sent to standard output
-- **Centralized Collection**: Aggregate logs from all environments for analysis
-- **Implementation**: Use `console.log`, structured logging, and log aggregation services
-
-#### 🛠️ **12. Admin Processes**
-- **One-Off Tasks**: Run administrative tasks (migrations, maintenance) as one-off processes
-- **Same Environment**: Execute admin tasks in the same environment as the application
-- **Implementation**: Use npm scripts, separate command-line tools, and task runners
-
-## Development Philosophy
-
-### Validate Before You Build
-
-- **POC everything first.** Before committing to a design, build a quick proof-of-concept (~15 min) that validates the core logic. Keep it stupidly simple — manual steps are fine, hardcoded values are fine, no tests needed yet
-- **POC scope:** Cover the happy path and 2-3 common edge cases. If those work, the idea is sound
-- **Graduation criteria:** POC validates logic and covers most common scenarios → stop, design properly, then build with structure, tests, and error handling. Never ship the POC — rewrite it
-- **Build incrementally.** After POC graduates, break the work into small, independent modules. Focus on one at a time. Each piece should work on its own before integrating with the next
-
-### Dependency Hierarchy
-
-Use this order — always exhaust the simpler option before reaching for the next:
-
-1. **Vanilla language** — Write it yourself using only language primitives. If it's <50 lines and not security-critical, this is the answer
-2. **Standard library** — Use built-in modules (`os`, `json`, `pathlib`, `http`, `fs`, `crypto`). The stdlib is tested, maintained, and has zero supply chain risk
-3. **External library** — Only when both vanilla and stdlib are insufficient. Must pass the checklist below
-
-### External Dependency Checklist
-
-Before adding any external dependency, all of these must be true:
-- **Necessity:** Can't reasonably implement this with stdlib in <100 lines
-- **Maintained:** Active commits in the last 6 months, responsive maintainer
-- **Lightweight:** Few transitive dependencies (check the dep tree, not just the top-level)
-- **Established:** Widely used, not a single-maintainer hobby project for production-critical code
-- **Security-aware:** For security-critical domains (crypto, auth, sanitization, parsing untrusted input), a vetted library is *required* — never roll your own
-
-### Language Selection
-
-- **Prefer widely-adopted languages** — Python, JavaScript/TypeScript, Go, Rust. Avoid niche languages unless the domain demands it (e.g., Elixir for telecom-grade concurrency)
-- **Pick the lightest language that fits the domain:** shell scripts for automation, Python for data/backend/CLI, TypeScript for web, Go for systems/infra, Rust for performance-critical
-- **Minimize the polyglot tax.** Every language in the stack adds CI config, tooling, and onboarding friction. Don't add a new language for one microservice — use what you already have unless there's a compelling reason
-- **Vanilla over frameworks.** Use Express over NestJS, Flask over Django, unless the project genuinely needs the framework's structure. You can always add structure later; removing a framework is painful
-
-### Build Philosophy
-
-- **Open-source first.** Always prefer open-source solutions. Avoid vendor lock-in
-- **Lightweight over complex.** If two solutions solve the same problem, pick the one with fewer moving parts, fewer dependencies, and less configuration
-- **Every line must have a purpose.** No speculative code, no "might need this later", no abstractions for one use case
-- **Simple > clever.** Readable code that a junior can follow beats elegant code that requires a PhD to debug
-- **Containerize only when necessary.** Start with a virtualenv or bare metal. Docker adds value for deployment parity and isolation — not for running a script
-
-## Solution Guidelines
-
-### Always Consider
-- Is this the simplest approach?
-- Can this be done with vanilla language or stdlib?
-- What's the maintenance and dependency burden?
-- Is there vendor lock-in?
-- Would a 15-minute POC validate this before I commit?
-
-### Red Flags to Call Out
-- Over-engineering simple problems
-- Adding external dependencies for trivial operations
-- Frameworks where a library or stdlib would suffice
-- Vendor-specific implementations when open alternatives exist
-- Skipping POC validation for unproven ideas
-
-## Quick Reference
-
-### Common Commands
-
-#### Database
-```bash
-npx drizzle-kit generate
-npx drizzle-kit push
-```
-
-#### Development
-```bash
-npm run dev
-npm run build
-```
-
-#### Docker
-```bash
-docker-compose up -d
-docker-compose down
-```
-
-#### Testing
-```bash
-# Unit tests
-npm test
-npm test --coverage
-
-# E2E tests
-npx playwright test
-npx playwright test --ui
-
-# API tests
-newman run collection.json
-```
-
-### Default Ports & URLs
-- **Local Dev**: http://localhost:3000
-- **PostgreSQL**: 5432
-- **API Server**: 3001 (if separate)
-
-### Environment Setup
-```bash
-# Node.js project setup
-npm init -y
-npm install express typescript @types/node
-npm install -D jest @types/jest ts-jest
-npm install -D playwright @playwright/test
-
-# Database setup
-npm install drizzle-orm postgres
-npm install -D drizzle-kit
-
-# Testing setup
-npm install -D supertest @types/supertest
+**Open-source first.** Always prefer open-source. Avoid vendor lock-in. Every line of code must have a purpose — no speculative code, no premature abstractions.
 ```
 
 ---

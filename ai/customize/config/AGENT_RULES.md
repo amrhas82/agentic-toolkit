@@ -175,14 +175,6 @@ Before adding any external dependency, all of these must be true:
 
 ## Tech Stack & Tools
 
-### AI Tools
-
-| Tool | Best For | When to Use |
-|------|----------|-------------|
-| **DeepSeek** | Detailed code discussions, complex problem solving | Architecture decisions, code reviews, detailed technical analysis |
-| **Replit** | UI development, rapid prototyping | Frontend work, visual components, interactive demos |
-| **Claude** | Bug fixing, code simplification, refactoring | Debugging, code cleanup, optimization tasks |
-
 ### Core Development Stack
 
 | Component | Technology | Version | Purpose |
@@ -198,6 +190,7 @@ Before adding any external dependency, all of these must be true:
 | HTTP Client | Axios | 1.x | External service integration |
 | Caching | Redis | Latest | In-memory data structure store |
 | Server State | TanStack Query (React Query) | Latest | Server state management in React |
+| UI Components | Radix UI primitives | Latest | Accessible UI components |
 | Language | Python | Latest | Versatile programming language |
 
 ### Database Layer
@@ -243,7 +236,6 @@ Before adding any external dependency, all of these must be true:
 | JS Testing | Jest / Vitest | JavaScript/TypeScript testing |
 | Browser Automation | Playwright | Automated browser testing |
 | Python Testing | pytest | Python testing framework |
-| UI Components | Radix UI primitives | Accessible UI components |
 
 ---
 

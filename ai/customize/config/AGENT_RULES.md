@@ -242,7 +242,7 @@ Before adding any external dependency, all of these must be true:
 ## Development Workflow
 
 ### Environments
-- **Development**: Local machines + Replit for UI
+- **Development**: Local machines
 - **Staging**: VPS with isolated database
 - **Production**: VPS with containerized setup
 

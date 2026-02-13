@@ -44,50 +44,98 @@
 
 ## Testing Strategy Framework
 
-### Testing Types to Implement
+### Core Philosophy
 
-| Test Type | When to Use | What to Do | Tools | Additional Notes |
-|-----------|-------------|------------|-------|------------------|
-| **Unit Tests** | • Testing individual functions<br>• Validating component logic<br>• Before any integration work | • Test each function in isolation<br>• Mock external dependencies<br>• Aim for 80%+ code coverage | • Jest (JavaScript/TypeScript)<br>• Vitest (Vite projects)<br>• Mocha + Chai | • Fast execution<br>• Run on every commit<br>• Should be deterministic |
-| **Integration Tests** | • Testing API endpoints<br>• Database interactions<br>• Service-to-service communication | • Test real database connections<br>• Test API request/response cycles<br>• Test external service integrations | • Jest + Supertest<br>• Postman/Newman<br>• Testcontainers | • Use test database<br>• Clean up after tests<br>• Test real data flows |
-| **End-to-End Tests** | • User journey validation<br>• Critical business workflows<br>• Before production releases | • Simulate real user interactions<br>• Test complete user scenarios<br>• Validate UI/UX flows | • Playwright<br>• Cypress<br>• Selenium | • Run in CI/CD pipeline<br>• Test on multiple browsers<br>• Use realistic test data |
-| **Performance Tests** | • Before scaling decisions<br>• Load capacity planning<br>• After major changes | • Simulate high user load<br>• Measure response times<br>• Test under stress conditions | • Artillery<br>• k6<br>• JMeter | • Test realistic scenarios<br>• Monitor resource usage<br>• Set performance baselines |
-| **Security Tests** | • Before production deployment<br>• After adding authentication<br>• Regular security audits | • Test for common vulnerabilities<br>• Validate input sanitization<br>• Check authentication/authorization | • OWASP ZAP<br>• Burp Suite<br>• Custom security scripts | • Follow OWASP guidelines<br>• Test both positive and negative cases<br>• Regular security updates |
-| **Regression Tests** | • After any code changes<br>• Before merging branches<br>• Automated in CI/CD | • Run existing test suites<br>• Verify no new bugs introduced<br>• Validate existing functionality | • All testing tools<br>• CI/CD pipelines<br>• Automated test runners | • Should be comprehensive<br>• Fast feedback loop<br>• Clear pass/fail criteria |
+**Test behavior, not implementation.** A test suite should give you confidence to refactor freely. If changing internal code (without changing behavior) breaks tests, those tests are liabilities, not assets.
 
-### Critical Testing Focus Areas
-- **Silent Failures**: Test error handling and edge cases
-- **Edge Cases**: Boundary conditions and unexpected inputs
-- **Regression Prevention**: Automated testing for existing features
-- **Data Integrity**: Database operations and data validation
-- **API Reliability**: External service integration testing
-- **User Experience**: UI/UX consistency and accessibility
+**The Testing Trophy** (preferred over the Testing Pyramid):
+- Few unit tests — only for pure logic, algorithms, and complex calculations
+- Many integration tests — the sweet spot; test real components working together
+- Some E2E tests — cover critical user journeys end-to-end
+- Static analysis — types and linters catch bugs cheaper than tests
 
-### Testing Implementation Strategy
-```bash
-# Unit Testing (Jest)
-npm test                    # Run all tests
-npm test --watch          # Watch mode
-npm test --coverage       # Coverage report
+### When to Write Tests
 
-# E2E Testing (Playwright)
-npx playwright test       # Run E2E tests
-npx playwright test --ui  # Interactive mode
-npx playwright test --headed  # Run with browser UI
+- **After the design stabilizes, not during exploration.** Don't TDD a prototype — you'll write 500 tests for code you delete tomorrow. First make it work (POC), then make it right (refactor + tests), then make it fast
+- **Write tests when the code has users.** If a function is called by other modules or exposed to users, it needs tests. Internal helpers that only serve one caller don't need their own test file
+- **Write tests for bugs.** Every bug fix should include a regression test that fails before the fix and passes after. This is the highest-value test you can write
+- **Write tests before refactoring.** If you're about to change working code, write characterization tests first to lock in current behavior, then refactor with confidence
+- **Don't write tests for glue code.** Code that just wires components together (calls A then B then C) is better tested at the integration level, not unit level
 
-# API Testing (Postman/Newman)
-newman run collection.json  # Run API tests
-```
+### TDD: When It Helps and When It Hurts
 
-### Additional Testing Strategies
-- **Load Testing**: Use tools like Artillery or k6 for performance testing
-- **Security Testing**: Implement OWASP security testing practices
-- **Accessibility Testing**: Ensure WCAG compliance
-- **Cross-Browser Testing**: Test across different browsers and devices
-- **Database Testing**: Test migrations, constraints, and data integrity
-- **Error Boundary Testing**: Test application error handling
-- **Concurrent User Testing**: Test multi-user scenarios
-- **Data Migration Testing**: Test data transformation and migration scripts
+- **TDD works well for:** Pure functions, algorithms, parsers, validators, data transformations — anything with clear inputs and outputs
+- **TDD hurts when:** You're exploring a design, building a POC, or the interface isn't settled yet. Writing tests for unstable APIs creates churn and false confidence
+- **The real rule:** You must understand what you're building before you TDD it. TDD is a design tool for known problems, not a discovery tool for unknown ones
+- **Red-green-refactor discipline:** If you do TDD, actually follow the cycle. Write a failing test, write minimal code to pass, refactor. Don't write 20 tests then implement — that's just front-loading waste
+
+### What Makes a Good Test
+
+- **Tests real behavior.** Call the public API, assert on observable output. Don't reach into internals
+- **Fails for the right reason.** A good test fails when the feature is broken, not when the implementation changes
+- **Reads like a spec.** Someone unfamiliar with the code should understand what the feature does by reading the test
+- **Self-contained.** Each test sets up its own state, runs, and cleans up. No ordering dependencies between tests
+- **Fast and deterministic.** Flaky tests erode trust. If a test depends on timing, network, or global state, fix that dependency
+
+### What Makes a Bad Test (Anti-Patterns)
+
+- **Mocking more than 60% of the test.** If most of the test is mock setup, you're testing mocks, not code. Use real implementations with `tmp_path`, `:memory:` SQLite, or test containers
+- **Smoke tests.** `assert result is not None` proves nothing. Assert on specific values, structure, or side effects
+- **Testing private methods.** If you need to test a private method, either it should be public or the public method's tests should cover it
+- **Mirroring implementation.** Tests that replicate the source code line-by-line break on every refactor and catch zero bugs
+- **Test-only production code.** Never add methods, flags, or branches to production code solely for testing. Use dependency injection instead
+
+### Test Organization
+
+- **Co-locate tests with packages:** `packages/<pkg>/tests/` not a root `tests/` directory. Each package owns its tests
+- **Separate by type:**
+  ```
+  packages/<pkg>/tests/
+    unit/           # Fast, isolated, mocked deps, <1s each
+    integration/    # Real DB, filesystem, multi-component, <10s each
+    e2e/            # Full workflows, subprocess calls, <60s each
+    conftest.py     # Shared fixtures for this package
+  ```
+- **One test file per module** (not per function). `test_auth.py` tests the auth module, not `test_login.py` + `test_logout.py` + `test_session.py`
+- **No duplicate test files.** Before creating a new test file, check if one already exists for that module. Duplicates cause collection conflicts and confusion
+
+### Markers and Signals
+
+Use markers to get fast feedback on what matters:
+
+| Marker | Purpose | CI Behavior |
+|--------|---------|-------------|
+| `@pytest.mark.slow` | Runtime > 5s | Run in full suite, skip in quick checks |
+| `@pytest.mark.ml` | Requires ML deps (torch, etc.) | Skip if deps not installed |
+| `@pytest.mark.real_api` | Calls external APIs | Skip in CI — run manually before release |
+
+**Organize CI runs for fast signals:**
+- `pytest -m "not slow and not ml and not real_api"` — fast gate on every push (~30s)
+- `pytest` — full suite on PR merge or nightly
+- Package-level runs for targeted debugging: `pytest packages/core/tests/`
+
+### Coverage Rules
+
+- **Don't chase a coverage number.** 80% coverage with meaningless tests is worse than 40% coverage with behavior-testing integration tests
+- **Cover the critical path first.** Data layer, auth, payment, core business logic — these get tests before helper utilities
+- **Coverage tells you what's NOT tested, not what IS tested.** High coverage with bad assertions is false confidence
+- **Delete tests that don't catch bugs.** If a test has never failed (or only fails on refactors), it's not providing value
+
+### The Right Test Ratio
+
+Aim for roughly:
+- **~20% unit tests** — pure logic, math, parsing, validation
+- **~60% integration tests** — components working together with real dependencies (DB, filesystem, HTTP)
+- **~15% E2E tests** — critical user journeys, CLI workflows, API contracts
+- **~5% manual/exploratory** — security, UX, edge cases that are hard to automate
+
+### Practical Test Preferences
+
+- Use `tmp_path` for filesystem tests, `:memory:` or `tmp_path` SQLite for DB tests
+- Prefer dependency injection over `@patch` — it's more readable and survives refactors
+- Tests must be self-sufficient — no dependency on project directories, user config, or environment state
+- Use factories or builders for test data, not raw constructors with 15 arguments
+- Keep test fixtures close to where they're used. Shared fixtures in `conftest.py`, not a global test utilities package
 
 ## Tech Stack Preferences
 
